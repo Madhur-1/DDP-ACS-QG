@@ -1,0 +1,36 @@
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+Namespace(data_type='gpt2', input_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.debug.txt', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad', output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.debug.qa.txt')
+Reading dataset from  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.debug.txt
+Saved to  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.debug.qa.txt
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+Namespace(data_type='gpt2', input_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.txt', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad', output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.qa.txt')
+Reading dataset from  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.txt
+Saved to  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.qg.generated.gpt2.qa.txt
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+Namespace(data_type='gpt2', input_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.qg.generated.gpt2.txt', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad', output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.qg.generated.gpt2.qa.txt')
+Reading dataset from  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.qg.generated.gpt2.txt
+Traceback (most recent call last):
+  File "QA_generate.py", line 4, in <module>
+    run()
+  File "/storage/home/madhurjindal/ACS-QG/QA/qa_gen.py", line 43, in run
+    data = pd.read_csv(args.input_file, sep="\t", index_col=0)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 586, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 482, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 811, in __init__
+    self._engine = self._make_engine(self.engine)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/parsers/readers.py", line 1040, in _make_engine
+    return mapping[engine](self.f, **self.options)  # type: ignore[call-arg]
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 51, in __init__
+    self._open_handles(src, kwds)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/parsers/base_parser.py", line 229, in _open_handles
+    errors=kwds.get("encoding_errors", "strict"),
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pandas/io/common.py", line 707, in get_handle
+    newline="",
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.qg.generated.gpt2.txt'

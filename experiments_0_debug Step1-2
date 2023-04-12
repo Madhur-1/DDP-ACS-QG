@@ -1,0 +1,687 @@
+*******STEP 1*******
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+-- Loading the libraries
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+-- Libraries loaded
+-- Entered Main function
+Namespace(ablation_no_answer=False, ablation_no_cfseparate=False, ablation_no_clue=False, ablation_no_softcopy=False, ablation_no_style=False, ans_limit=30, att_vec_size=512, batch_size=2, beam_size=20, beta1=0.8, beta2=0.999, bpe_limit=6, brnn=True, brnn_merge='concat', char_limit=16, checkpoint_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/', clue_coef=1.0, copy_loss_type=1, copy_type='hard-oov', counters_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/counters.pkl', curriculum=0, d_model=128, da_augmented_sentences_file='', da_end_index=10000, da_input_file='', da_input_type='', da_max_num=100000, da_paragraphs_file='', da_sentences_file='', da_start_index=0, da_task='', data_type='squad', debug=True, debug_batchnum=5, dec_rnn_size=512, dev_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-eval.pkl', dev_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-examples.pkl', dev_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/dev.txt', dev_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-meta.pkl', dev_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-spacy-processed-examples.pkl', dropout=0.5, early_stop=20, ema_decay=0.9999, emb_config={'word': {'emb_file': '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Glove/glove.840B.300d.txt', 'emb_size': 20000, 'emb_dim': 300, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'char': {'emb_file': None, 'emb_size': None, 'emb_dim': 64, 'trainable': True, 'need_conv': True, 'need_emb': True, 'is_feature': False}, 'bpe': {'emb_file': '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/BPE/en.wiki.bpe.vs50000.d100.w2v.txt', 'emb_size': 50509, 'emb_dim': 100, 'trainable': False, 'need_conv': True, 'need_emb': True, 'is_feature': False}, 'pos': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'ner': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'iob': {'emb_file': None, 'emb_size': None, 'emb_dim': 3, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'dep': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'is_lower': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_stop': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_punct': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_digit': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'like_num': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_bracket': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_overlap': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'answer_iob': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'is_clue': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_clue_hard': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_content': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}}, emb_dicts_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/emb_dicts.pkl', emb_mats_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/emb_mats.pkl', emb_not_count_tags={'is_overlap': [0.0, 1.0], 'answer_iob': ['B', 'I', 'O'], 'is_clue': [0.0, 1.0], 'is_clue_hard': [0.0, 1.0], 'is_clue_soft': [0.0, 1.0], 'is_content': [0.0, 1.0]}, emb_tags=['word', 'answer_iob', 'pos', 'ner', 'dep', 'is_lower', 'is_digit', 'is_content'], enc_rnn_size=512, epochs=2, eval_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/eval_output.txt', eval_per_batch=500, experiment=False, extra_shuffle=False, halve_lr_bad_count=1, input_feed=1, is_clue_topN=20, layers=1, learning_rate=0.001, learning_rate_decay=0.5, log_file='log.txt', lower=True, lr=0.001, lr_warm_up_num=1000, max_grad_norm=5.0, max_sample_times=20, max_topN=128, max_weight_value=15, maxout_pool_size=2, mode='train', net='FQG', no_cuda=False, no_grad_clip=False, not_processed_data=True, not_processed_sample_probs_file=False, num_head=8, num_question_style=9, num_sample_answer=5, num_sample_clue=2, num_sample_style=2, only_copy_content=False, optim='adam', para_limit=400, print_freq=10, processed_by_spacy=False, processed_emb=False, processed_example_features=False, processed_related_words=False, qa_data_file='', qg_augmented_sentences_file='', qg_result_file='', ques_limit=50, refined_copy_vocab_limit=2000, refined_src_vocab_limit=2000, refined_tgt_vocab_limit=2000, related_words_dict_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/related_words_dict.pkl', related_words_ids_mat_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/related_words_ids_mat.pkl', resume='', resume_partial=False, save_freq=1, seed=12345, sent_limit=100, share_embedder=True, soft_copy_topN=128, start_decay_at=8, start_eval_batch=1000, style_coef=1.0, style_emb_dim=16, test_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-eval.pkl', test_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-examples.pkl', test_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/test.txt', test_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-meta.pkl', test_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test_output.txt', test_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-spacy-processed-examples.pkl', tgt_vocab_limit=20000, train_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-eval.pkl', train_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-examples.pkl', train_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/train.txt', train_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-meta.pkl', train_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train_output.txt', train_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-spacy-processed-examples.pkl', use_answer_separate=False, use_clue_info=True, use_content_separator=False, use_early_stop=True, use_ema=False, use_multi_gpu=True, use_refine_copy=False, use_refine_copy_src=False, use_refine_copy_tgt=False, use_refine_copy_tgt_src=True, use_soft_copy=False, use_style_info=True, use_vocab_mask=False, val_num_examples=10000, visualizer=False)
+device is cpu
+Start get SQuAD raw examples ...
+  0%|          | 0/86635 [00:00<?, ?it/s]  0%|          | 9/86635 [00:00<00:14, 6063.08it/s]
+Time of get raw examples: 0:00:01.569763
+Number of raw examples:  10
+Start transform raw examples to spaCy processed examples...
+  0%|          | 0/10 [00:00<?, ?it/s] 40%|████      | 4/10 [00:00<00:00, 38.55it/s] 80%|████████  | 8/10 [00:00<00:00, 33.78it/s] 90%|█████████ | 9/10 [00:00<00:00, 32.25it/s]
+Time of get spaCy processed examples: 0:00:00.279787
+Number of spaCy processed examples:  10
+Start get SQuAD raw examples ...
+  0%|          | 0/8965 [00:00<?, ?it/s]  0%|          | 9/8965 [00:00<00:01, 4766.86it/s]
+Time of get raw examples: 0:00:00.158330
+Number of raw examples:  10
+Start transform raw examples to spaCy processed examples...
+  0%|          | 0/10 [00:00<?, ?it/s] 50%|█████     | 5/10 [00:00<00:00, 41.64it/s] 90%|█████████ | 9/10 [00:00<00:00, 39.19it/s]
+Time of get spaCy processed examples: 0:00:00.230114
+Number of spaCy processed examples:  10
+Start get SQuAD raw examples ...
+  0%|          | 0/8964 [00:00<?, ?it/s]  0%|          | 9/8964 [00:00<00:02, 3639.13it/s]
+Time of get raw examples: 0:00:00.153730
+Number of raw examples:  10
+Start transform raw examples to spaCy processed examples...
+  0%|          | 0/10 [00:00<?, ?it/s] 40%|████      | 4/10 [00:00<00:00, 31.15it/s] 90%|█████████ | 9/10 [00:00<00:00, 39.94it/s] 90%|█████████ | 9/10 [00:00<00:00, 34.57it/s]
+Time of get spaCy processed examples: 0:00:00.260753
+Number of spaCy processed examples:  10
+  0%|          | 0/10 [00:00<?, ?it/s]100%|██████████| 10/10 [00:00<00:00, 1027.56it/s]
+Saving train examples...
+Saving dev examples...
+Saving test examples...
+Saving train meta...
+Saving dev meta...
+Saving test meta...
+Saving train eval...
+Saving dev eval...
+Saving test eval...
+Saving counters...
+Generating word embedding...
+0it [00:00, ?it/s]590it [00:00, 5896.46it/s]1576it [00:00, 8225.42it/s]2863it [00:00, 10345.39it/s]4165it [00:00, 11399.48it/s]5500it [00:00, 12102.38it/s]6711it [00:00, 11829.18it/s]8033it [00:00, 12275.39it/s]9278it [00:00, 12328.42it/s]10886it [00:00, 13491.97it/s]12572it [00:01, 14524.35it/s]14365it [00:01, 15560.33it/s]16201it [00:01, 16407.08it/s]18013it [00:01, 16890.14it/s]19776it [00:01, 17111.82it/s]21652it [00:01, 17605.04it/s]23413it [00:01, 17520.84it/s]25210it [00:01, 17654.41it/s]26976it [00:01, 17570.89it/s]28841it [00:01, 17890.89it/s]30631it [00:02, 17672.58it/s]32482it [00:02, 17919.96it/s]34335it [00:02, 18101.18it/s]36146it [00:02, 17959.10it/s]37943it [00:02, 17762.43it/s]39721it [00:02, 17742.25it/s]41607it [00:02, 18072.29it/s]43426it [00:02, 18106.07it/s]45282it [00:02, 18239.66it/s]47161it [00:02, 18403.55it/s]49002it [00:03, 12815.09it/s]50516it [00:03, 13343.61it/s]52402it [00:03, 14704.15it/s]54281it [00:03, 15768.56it/s]56111it [00:03, 16453.47it/s]57982it [00:03, 17082.48it/s]59761it [00:03, 17139.32it/s]61525it [00:03, 17232.19it/s]63284it [00:04, 14390.14it/s]64825it [00:04, 13023.59it/s]66215it [00:04, 12214.01it/s]67499it [00:04, 11577.15it/s]68699it [00:04, 11041.99it/s]69831it [00:04, 10857.31it/s]70934it [00:04, 10721.44it/s]72017it [00:04, 10620.75it/s]73086it [00:05, 10424.04it/s]74132it [00:05, 10391.75it/s]75174it [00:05, 10382.61it/s]76214it [00:05, 10376.29it/s]77253it [00:05, 10370.76it/s]78291it [00:05, 10366.63it/s]79329it [00:05, 10247.98it/s]80359it [00:05, 10262.68it/s]81394it [00:05, 10286.75it/s]82426it [00:05, 10294.80it/s]83461it [00:06, 10310.87it/s]84499it [00:06, 10328.66it/s]85532it [00:06, 10164.04it/s]86565it [00:06, 10211.92it/s]87601it [00:06, 10255.26it/s]88637it [00:06, 10284.01it/s]89673it [00:06, 10306.39it/s]90709it [00:06, 10319.94it/s]91742it [00:06, 10199.85it/s]92774it [00:06, 10235.00it/s]93810it [00:07, 10270.75it/s]94847it [00:07, 10299.35it/s]95884it [00:07, 10319.74it/s]96917it [00:07, 10215.42it/s]97946it [00:07, 10235.88it/s]98980it [00:07, 10265.80it/s]100007it [00:07, 10162.26it/s]101024it [00:07, 10123.29it/s]102037it [00:07, 9908.58it/s] 103853it [00:07, 12328.15it/s]105713it [00:08, 14179.59it/s]107592it [00:08, 15545.62it/s]109427it [00:08, 16380.20it/s]111300it [00:08, 17078.87it/s]113071it [00:08, 17266.60it/s]114948it [00:08, 17715.29it/s]116722it [00:08, 17654.27it/s]118592it [00:08, 17964.79it/s]120469it [00:08, 18203.53it/s]122291it [00:08, 18187.95it/s]124165it [00:09, 18352.69it/s]126038it [00:09, 18465.22it/s]127885it [00:09, 18401.23it/s]129726it [00:09, 18393.39it/s]131566it [00:09, 17821.87it/s]133390it [00:09, 17941.84it/s]135240it [00:09, 18103.61it/s]137053it [00:09, 18022.62it/s]138857it [00:09, 18007.17it/s]140669it [00:09, 18039.23it/s]142533it [00:10, 18215.41it/s]144380it [00:10, 18290.16it/s]146210it [00:10, 18155.46it/s]148064it [00:10, 18268.01it/s]149892it [00:10, 18149.58it/s]151722it [00:10, 18192.97it/s]153573it [00:10, 18286.79it/s]155430it [00:10, 18370.40it/s]157282it [00:10, 18414.23it/s]159124it [00:10, 18362.61it/s]160968it [00:11, 18383.60it/s]162849it [00:11, 18510.57it/s]164701it [00:11, 18317.92it/s]166559it [00:11, 18395.41it/s]168399it [00:11, 18222.37it/s]170224it [00:11, 18230.28it/s]172077it [00:11, 18318.96it/s]173910it [00:11, 18200.27it/s]175734it [00:11, 18207.66it/s]177556it [00:12, 14361.08it/s]179119it [00:12, 12755.11it/s]180506it [00:12, 11822.83it/s]181769it [00:12, 11191.74it/s]182942it [00:12, 10740.23it/s]184050it [00:12, 10623.31it/s]185135it [00:12, 10536.43it/s]186203it [00:12, 10471.35it/s]187260it [00:13, 10419.47it/s]188309it [00:13, 10294.49it/s]189343it [00:13, 10281.91it/s]190376it [00:13, 10295.54it/s]191410it [00:13, 10306.12it/s]192445it [00:13, 10318.31it/s]193481it [00:13, 10328.38it/s]194515it [00:13, 10225.55it/s]195543it [00:13, 10239.50it/s]196574it [00:13, 10260.26it/s]197609it [00:14, 10285.98it/s]198644it [00:14, 10304.59it/s]199679it [00:14, 10316.05it/s]200711it [00:14, 10213.92it/s]201740it [00:14, 10236.38it/s]202775it [00:14, 10269.70it/s]203810it [00:14, 10292.33it/s]204846it [00:14, 10310.04it/s]205878it [00:14, 10309.87it/s]206910it [00:14, 10203.41it/s]207940it [00:15, 10228.40it/s]208977it [00:15, 10267.71it/s]210013it [00:15, 10293.60it/s]211048it [00:15, 10310.38it/s]212084it [00:15, 10323.69it/s]213117it [00:15, 10223.25it/s]214147it [00:15, 10245.86it/s]215172it [00:15, 10214.00it/s]216619it [00:15, 11481.40it/s]218500it [00:15, 13668.06it/s]220325it [00:16, 15037.94it/s]222208it [00:16, 16172.51it/s]224079it [00:16, 16931.84it/s]225916it [00:16, 17361.99it/s]227756it [00:16, 17672.13it/s]229609it [00:16, 17927.73it/s]231449it [00:16, 18067.77it/s]233327it [00:16, 18278.81it/s]235216it [00:16, 18461.31it/s]237063it [00:16, 18413.78it/s]238923it [00:17, 18468.18it/s]240792it [00:17, 18533.08it/s]242681it [00:17, 18638.99it/s]244545it [00:17, 18529.50it/s]246408it [00:17, 18559.36it/s]248295it [00:17, 18650.01it/s]250161it [00:17, 18554.18it/s]252046it [00:17, 18642.13it/s]253933it [00:17, 18709.35it/s]255805it [00:17, 18622.33it/s]257685it [00:18, 18675.13it/s]259561it [00:18, 18698.74it/s]261431it [00:18, 18563.40it/s]263298it [00:18, 18594.51it/s]265160it [00:18, 18600.03it/s]267050it [00:18, 18687.06it/s]268919it [00:18, 18562.34it/s]270781it [00:18, 18577.64it/s]272663it [00:18, 18649.26it/s]274529it [00:18, 18544.50it/s]276384it [00:19, 18323.38it/s]278272it [00:19, 18483.99it/s]280122it [00:19, 18437.88it/s]281999it [00:19, 18534.19it/s]283874it [00:19, 18597.54it/s]285735it [00:19, 18541.84it/s]287608it [00:19, 18595.73it/s]289494it [00:19, 18673.63it/s]291362it [00:19, 18204.09it/s]293186it [00:20, 14695.12it/s]294764it [00:20, 13221.06it/s]296180it [00:20, 12339.89it/s]297481it [00:20, 11776.14it/s]298703it [00:20, 11280.72it/s]299859it [00:20, 11020.12it/s]300978it [00:20, 10837.21it/s]302072it [00:20, 10700.93it/s]303148it [00:21, 10602.30it/s]304212it [00:21, 10428.32it/s]305257it [00:21, 10385.88it/s]306297it [00:21, 10376.17it/s]307336it [00:21, 10365.01it/s]308373it [00:21, 10358.44it/s]309410it [00:21, 10360.35it/s]310447it [00:21, 10248.37it/s]311476it [00:21, 10260.12it/s]312512it [00:21, 10288.03it/s]313543it [00:22, 10292.94it/s]314579it [00:22, 10312.38it/s]315615it [00:22, 10325.55it/s]316648it [00:22, 10165.86it/s]317679it [00:22, 10206.32it/s]318714it [00:22, 10247.15it/s]319747it [00:22, 10271.17it/s]320783it [00:22, 10296.45it/s]321817it [00:22, 10309.20it/s]322849it [00:22, 10194.29it/s]323881it [00:23, 10230.56it/s]324916it [00:23, 10264.00it/s]325951it [00:23, 10289.24it/s]326988it [00:23, 10310.32it/s]328022it [00:23, 10319.09it/s]329054it [00:23, 10208.79it/s]330083it [00:23, 10231.99it/s]331120it [00:23, 10270.69it/s]332358it [00:23, 10900.47it/s]334239it [00:23, 13265.03it/s]336071it [00:24, 14775.96it/s]337936it [00:24, 15935.16it/s]339820it [00:24, 16803.35it/s]341649it [00:24, 17246.25it/s]343526it [00:24, 17702.43it/s]345408it [00:24, 18037.30it/s]347248it [00:24, 18144.18it/s]349118it [00:24, 18309.13it/s]351001it [00:24, 18462.67it/s]352848it [00:24, 18431.03it/s]354712it [00:25, 18491.40it/s]356586it [00:25, 18565.51it/s]358469it [00:25, 18641.91it/s]360334it [00:25, 18513.24it/s]362208it [00:25, 18580.21it/s]364086it [00:25, 18637.33it/s]365950it [00:25, 18507.45it/s]367802it [00:25, 18146.04it/s]369677it [00:25, 18321.31it/s]371511it [00:25, 18292.74it/s]373380it [00:26, 18409.62it/s]375253it [00:26, 18502.52it/s]377132it [00:26, 18588.10it/s]378992it [00:26, 18487.56it/s]380860it [00:26, 18543.63it/s]382733it [00:26, 18596.88it/s]384593it [00:26, 18466.52it/s]386463it [00:26, 18533.66it/s]388338it [00:26, 18595.41it/s]390198it [00:26, 18501.47it/s]392068it [00:27, 18558.96it/s]393944it [00:27, 18617.40it/s]395806it [00:27, 18489.93it/s]397672it [00:27, 18539.14it/s]399535it [00:27, 18565.51it/s]401393it [00:27, 18568.15it/s]403250it [00:27, 18456.75it/s]405119it [00:27, 18524.98it/s]406972it [00:27, 17761.21it/s]408755it [00:28, 14532.73it/s]410306it [00:28, 13101.84it/s]411701it [00:28, 12247.22it/s]412986it [00:28, 11694.20it/s]414195it [00:28, 11212.60it/s]415341it [00:28, 10942.91it/s]416450it [00:28, 10732.12it/s]417532it [00:28, 10609.86it/s]418598it [00:29, 10315.78it/s]419632it [00:29, 10312.02it/s]420665it [00:29, 10179.69it/s]421692it [00:29, 10203.65it/s]422723it [00:29, 10232.67it/s]423753it [00:29, 10252.18it/s]424782it [00:29, 10261.77it/s]425814it [00:29, 10277.07it/s]426842it [00:29, 10152.01it/s]427864it [00:29, 10170.02it/s]428894it [00:30, 10206.71it/s]429921it [00:30, 10224.16it/s]430949it [00:30, 10240.27it/s]431975it [00:30, 10245.87it/s]433000it [00:30, 10137.94it/s]434027it [00:30, 10176.96it/s]435053it [00:30, 10200.24it/s]436083it [00:30, 10227.88it/s]437109it [00:30, 10237.37it/s]438133it [00:30, 10235.64it/s]439157it [00:31, 10129.39it/s]440184it [00:31, 10169.15it/s]441215it [00:31, 10210.43it/s]442247it [00:31, 10241.17it/s]443277it [00:31, 10256.93it/s]444307it [00:31, 10269.23it/s]445334it [00:31, 10153.46it/s]446350it [00:31, 10150.05it/s]447634it [00:31, 10951.24it/s]449505it [00:31, 13267.62it/s]451330it [00:32, 14755.17it/s]453192it [00:32, 15910.80it/s]455067it [00:32, 16760.09it/s]456898it [00:32, 17222.57it/s]458739it [00:32, 17575.48it/s]460607it [00:32, 17903.47it/s]462482it [00:32, 18155.35it/s]464303it [00:32, 18169.70it/s]466164it [00:32, 18301.07it/s]468041it [00:32, 18438.84it/s]469885it [00:33, 18396.70it/s]471754it [00:33, 18482.10it/s]473625it [00:33, 18550.02it/s]475481it [00:33, 18467.18it/s]477345it [00:33, 18517.10it/s]479226it [00:33, 18603.93it/s]481087it [00:33, 18519.90it/s]482945it [00:33, 18535.35it/s]484818it [00:33, 18591.01it/s]486690it [00:33, 18627.64it/s]488553it [00:34, 18496.59it/s]490425it [00:34, 18562.13it/s]492302it [00:34, 18621.53it/s]494165it [00:34, 18518.90it/s]496029it [00:34, 18554.54it/s]497907it [00:34, 18619.74it/s]499770it [00:34, 18501.55it/s]501638it [00:34, 18553.36it/s]503514it [00:34, 18611.91it/s]505391it [00:34, 18656.62it/s]507257it [00:35, 18505.48it/s]509129it [00:35, 18567.97it/s]511004it [00:35, 18621.58it/s]512867it [00:35, 18507.99it/s]514735it [00:35, 18557.49it/s]516604it [00:35, 18596.62it/s]518464it [00:35, 18444.46it/s]520309it [00:35, 18041.26it/s]522116it [00:35, 17159.42it/s]523841it [00:36, 14287.95it/s]525351it [00:36, 12941.03it/s]526716it [00:36, 12147.18it/s]527980it [00:36, 11613.20it/s]529173it [00:36, 11246.60it/s]530317it [00:36, 10882.50it/s]531417it [00:36, 10705.63it/s]532494it [00:36, 10588.67it/s]533556it [00:37, 10508.94it/s]534609it [00:37, 10448.14it/s]535655it [00:37, 10408.84it/s]536697it [00:37, 10246.54it/s]537722it [00:37, 10241.69it/s]539317it [00:37, 11902.87it/s]541008it [00:37, 13370.84it/s]542700it [00:37, 14418.99it/s]544428it [00:37, 15267.82it/s]546191it [00:37, 15971.23it/s]547960it [00:38, 16482.25it/s]549668it [00:38, 16660.80it/s]551424it [00:38, 16929.18it/s]553194it [00:38, 17157.41it/s]554911it [00:38, 17145.01it/s]556667it [00:38, 17266.47it/s]558426it [00:38, 17362.33it/s]560201it [00:38, 17477.06it/s]561950it [00:38, 17356.85it/s]563709it [00:38, 17425.19it/s]565475it [00:39, 17494.94it/s]567225it [00:39, 17133.46it/s]569077it [00:39, 17541.82it/s]570943it [00:39, 17871.73it/s]572768it [00:39, 17982.24it/s]574630it [00:39, 18171.38it/s]576449it [00:39, 18103.91it/s]578321it [00:39, 18285.75it/s]580151it [00:39, 18238.55it/s]582014it [00:39, 18354.26it/s]583883it [00:40, 18452.06it/s]585729it [00:40, 18370.33it/s]587593it [00:40, 18450.14it/s]589467it [00:40, 18534.63it/s]591321it [00:40, 18449.15it/s]593182it [00:40, 18495.39it/s]595060it [00:40, 18578.07it/s]596936it [00:40, 18631.71it/s]598800it [00:40, 18484.63it/s]600661it [00:40, 18521.58it/s]602538it [00:41, 18594.13it/s]604398it [00:41, 18488.48it/s]606269it [00:41, 18552.32it/s]608151it [00:41, 18630.35it/s]610015it [00:41, 18503.68it/s]611882it [00:41, 18550.39it/s]613759it [00:41, 18614.20it/s]615621it [00:41, 18527.97it/s]617477it [00:41, 18536.15it/s]619342it [00:41, 18567.49it/s]621213it [00:42, 18608.35it/s]623074it [00:42, 18483.28it/s]624943it [00:42, 18543.93it/s]626820it [00:42, 18611.15it/s]628682it [00:42, 18408.34it/s]630542it [00:42, 18462.48it/s]632410it [00:42, 18527.16it/s]634264it [00:42, 18430.00it/s]636126it [00:42, 18484.67it/s]638001it [00:42, 18561.54it/s]639881it [00:43, 18631.41it/s]641745it [00:43, 18482.13it/s]643618it [00:43, 18552.68it/s]645494it [00:43, 18611.46it/s]647356it [00:43, 18495.95it/s]649227it [00:43, 18558.82it/s]651098it [00:43, 18600.68it/s]652959it [00:43, 18496.84it/s]654809it [00:43, 17857.50it/s]656600it [00:44, 14700.59it/s]658162it [00:44, 13197.75it/s]659565it [00:44, 12202.14it/s]660847it [00:44, 11656.49it/s]662053it [00:44, 11283.32it/s]663206it [00:44, 11011.16it/s]664322it [00:44, 10807.48it/s]665412it [00:44, 10549.64it/s]666472it [00:45, 10473.44it/s]667522it [00:45, 10427.36it/s]668567it [00:45, 10387.50it/s]669607it [00:45, 10359.51it/s]670644it [00:45, 10231.27it/s]671668it [00:45, 10229.44it/s]672697it [00:45, 10245.36it/s]673722it [00:45, 9963.55it/s] 674749it [00:45, 10051.11it/s]675777it [00:45, 10115.58it/s]676790it [00:46, 10057.78it/s]677815it [00:46, 10114.42it/s]678845it [00:46, 10166.90it/s]679874it [00:46, 10201.54it/s]680906it [00:46, 10235.85it/s]681938it [00:46, 10259.10it/s]682965it [00:46, 10164.66it/s]683987it [00:46, 10179.79it/s]685015it [00:46, 10209.41it/s]686045it [00:46, 10235.34it/s]687072it [00:47, 10244.74it/s]688097it [00:47, 10221.45it/s]689120it [00:47, 10125.95it/s]690133it [00:47, 10003.44it/s]691162it [00:47, 10086.13it/s]692185it [00:47, 10127.40it/s]693212it [00:47, 10168.81it/s]694234it [00:47, 10182.48it/s]695448it [00:47, 10764.90it/s]696525it [00:47, 10598.10it/s]697586it [00:48, 10505.03it/s]698638it [00:48, 10433.96it/s]699682it [00:48, 10400.77it/s]700723it [00:48, 10371.76it/s]701761it [00:48, 10230.14it/s]702785it [00:48, 10230.96it/s]703815it [00:48, 10249.46it/s]704844it [00:48, 10260.48it/s]705872it [00:48, 10263.98it/s]706903it [00:48, 10274.92it/s]707931it [00:49, 9936.54it/s] 708955it [00:49, 10023.78it/s]709982it [00:49, 10096.00it/s]711013it [00:49, 10156.27it/s]712043it [00:49, 10198.77it/s]713072it [00:49, 10225.46it/s]714096it [00:49, 10123.32it/s]715113it [00:49, 10135.79it/s]716139it [00:49, 10171.20it/s]717166it [00:50, 10199.13it/s]718196it [00:50, 10226.46it/s]719230it [00:50, 10259.36it/s]720257it [00:50, 10149.76it/s]721283it [00:50, 10180.48it/s]722313it [00:50, 10215.97it/s]723343it [00:50, 10240.04it/s]724372it [00:50, 10253.16it/s]725400it [00:50, 10259.83it/s]726427it [00:50, 10138.69it/s]727452it [00:51, 10171.10it/s]728483it [00:51, 10209.70it/s]729512it [00:51, 10230.83it/s]730542it [00:51, 10250.75it/s]731572it [00:51, 10263.97it/s]732599it [00:51, 10146.12it/s]733626it [00:51, 10180.71it/s]734656it [00:51, 10215.21it/s]735682it [00:51, 10227.51it/s]736949it [00:51, 10954.90it/s]738045it [00:52, 10640.54it/s]739112it [00:52, 10513.55it/s]740165it [00:52, 10448.54it/s]741211it [00:52, 10407.10it/s]742253it [00:52, 10319.52it/s]743286it [00:52, 10315.17it/s]744318it [00:52, 10064.05it/s]745326it [00:52, 9852.82it/s] 746347it [00:52, 9955.55it/s]747371it [00:52, 10038.63it/s]748398it [00:53, 10105.39it/s]749421it [00:53, 10141.06it/s]750436it [00:53, 10061.60it/s]751457it [00:53, 10103.30it/s]752486it [00:53, 10158.02it/s]753511it [00:53, 10184.21it/s]754530it [00:53, 10077.33it/s]755539it [00:53, 9872.10it/s] 756528it [00:53, 9853.99it/s]757542it [00:53, 9936.37it/s]758569it [00:54, 10034.08it/s]759590it [00:54, 10084.29it/s]760612it [00:54, 10123.09it/s]761637it [00:54, 10160.81it/s]762654it [00:54, 10066.00it/s]763672it [00:54, 10099.35it/s]764683it [00:54, 9944.51it/s] 765702it [00:54, 10014.52it/s]766723it [00:54, 10071.81it/s]767745it [00:54, 10113.55it/s]768757it [00:55, 10047.53it/s]769763it [00:55, 10026.63it/s]770785it [00:55, 10082.75it/s]771807it [00:55, 10122.42it/s]772827it [00:55, 10144.08it/s]773850it [00:55, 10167.91it/s]774867it [00:55, 9922.71it/s] 775861it [00:55, 9631.56it/s]777412it [00:55, 11333.24it/s]778553it [00:56, 10975.98it/s]779658it [00:56, 10743.22it/s]780738it [00:56, 10464.19it/s]781789it [00:56, 10351.57it/s]782827it [00:56, 10307.57it/s]783860it [00:56, 10234.42it/s]784885it [00:56, 10072.72it/s]785894it [00:56, 9967.90it/s] 786892it [00:56, 9912.77it/s]787901it [00:56, 9963.20it/s]788925it [00:57, 10042.41it/s]789930it [00:57, 10011.98it/s]790935it [00:57, 10021.67it/s]791938it [00:57, 9920.63it/s] 792931it [00:57, 9821.06it/s]793941it [00:57, 9902.69it/s]794932it [00:57, 9796.16it/s]795913it [00:57, 9702.81it/s]796898it [00:57, 9743.69it/s]797931it [00:57, 9914.84it/s]798963it [00:58, 10032.52it/s]799967it [00:58, 9998.05it/s] 801000it [00:58, 10095.21it/s]802034it [00:58, 10166.30it/s]803068it [00:58, 10217.01it/s]804101it [00:58, 10250.37it/s]805131it [00:58, 10265.05it/s]806158it [00:58, 10161.47it/s]807186it [00:58, 10195.73it/s]808213it [00:58, 10216.52it/s]809243it [00:59, 10240.23it/s]810268it [00:59, 9934.48it/s] 811264it [00:59, 9923.15it/s]812288it [00:59, 10015.81it/s]813317it [00:59, 10095.70it/s]814347it [00:59, 10154.26it/s]815373it [00:59, 10184.57it/s]816402it [00:59, 10213.83it/s]817724it [00:59, 11110.61it/s]819579it [00:59, 13334.83it/s]821448it [01:00, 14937.21it/s]823319it [01:00, 16064.18it/s]825145it [01:00, 16719.23it/s]827010it [01:00, 17297.06it/s]828883it [01:00, 17724.32it/s]830709it [01:00, 17882.82it/s]832513it [01:00, 17927.00it/s]834360it [01:00, 18088.07it/s]836184it [01:00, 18130.29it/s]838050it [01:00, 18286.49it/s]839925it [01:01, 18423.92it/s]841810it [01:01, 18549.54it/s]843665it [01:01, 18439.26it/s]845530it [01:01, 18499.79it/s]847410it [01:01, 18586.87it/s]849269it [01:01, 18494.03it/s]851133it [01:01, 18536.41it/s]853013it [01:01, 18614.83it/s]854875it [01:01, 18516.91it/s]856733it [01:01, 18532.62it/s]858612it [01:02, 18609.42it/s]860474it [01:02, 18521.65it/s]862338it [01:02, 18554.37it/s]864209it [01:02, 18600.11it/s]866070it [01:02, 18590.40it/s]867930it [01:02, 18483.73it/s]869782it [01:02, 18493.32it/s]871638it [01:02, 18512.51it/s]873490it [01:02, 18404.71it/s]875353it [01:02, 18469.78it/s]877230it [01:03, 18556.69it/s]879086it [01:03, 18421.12it/s]880957it [01:03, 18505.81it/s]882835it [01:03, 18585.76it/s]884694it [01:03, 18562.37it/s]886551it [01:03, 18486.22it/s]888433it [01:03, 18583.00it/s]890292it [01:03, 18541.12it/s]892147it [01:03, 18450.27it/s]894021it [01:03, 18534.62it/s]895902it [01:04, 18615.25it/s]897764it [01:04, 18531.90it/s]899636it [01:04, 18587.38it/s]901519it [01:04, 18657.36it/s]903385it [01:04, 18563.25it/s]905256it [01:04, 18606.07it/s]907117it [01:04, 18606.32it/s]908984it [01:04, 18623.84it/s]910847it [01:04, 18470.15it/s]912719it [01:05, 18544.34it/s]914593it [01:05, 18602.20it/s]916454it [01:05, 18478.42it/s]918317it [01:05, 18521.96it/s]920190it [01:05, 18583.46it/s]922049it [01:05, 18490.41it/s]923916it [01:05, 18543.37it/s]925790it [01:05, 18600.20it/s]927651it [01:05, 18070.55it/s]929510it [01:05, 18221.30it/s]931389it [01:06, 18386.45it/s]933267it [01:06, 18501.01it/s]935119it [01:06, 18394.67it/s]936989it [01:06, 18482.91it/s]938874it [01:06, 18590.48it/s]940734it [01:06, 18529.43it/s]942606it [01:06, 18584.82it/s]944483it [01:06, 18639.22it/s]946348it [01:06, 18553.73it/s]948217it [01:06, 18593.59it/s]950089it [01:07, 18629.32it/s]951967it [01:07, 18672.82it/s]953835it [01:07, 18556.74it/s]955691it [01:07, 18546.62it/s]957567it [01:07, 18609.64it/s]959429it [01:07, 18521.05it/s]961289it [01:07, 18543.69it/s]963163it [01:07, 18599.98it/s]965024it [01:07, 18510.43it/s]966876it [01:07, 16055.46it/s]968540it [01:08, 13917.90it/s]970014it [01:08, 12767.05it/s]971356it [01:08, 11946.42it/s]972597it [01:08, 11486.41it/s]973775it [01:08, 11166.63it/s]974909it [01:08, 10903.87it/s]976009it [01:08, 10736.25it/s]977088it [01:08, 10514.63it/s]978142it [01:09, 10452.02it/s]979189it [01:09, 10203.02it/s]980218it [01:09, 10227.12it/s]981250it [01:09, 10252.67it/s]982282it [01:09, 10271.83it/s]983310it [01:09, 10165.10it/s]984339it [01:09, 10199.63it/s]985368it [01:09, 10225.93it/s]986399it [01:09, 10248.69it/s]987431it [01:09, 10267.83it/s]988461it [01:10, 10276.60it/s]989489it [01:10, 10172.78it/s]990518it [01:10, 10207.18it/s]991548it [01:10, 10232.53it/s]992581it [01:10, 10259.42it/s]993613it [01:10, 10277.20it/s]994642it [01:10, 10279.95it/s]995671it [01:10, 10175.80it/s]996700it [01:10, 10207.62it/s]997730it [01:11, 10233.03it/s]998762it [01:11, 10257.87it/s]999795it [01:11, 10276.64it/s]1000826it [01:11, 10285.19it/s]1001855it [01:11, 10184.81it/s]1002885it [01:11, 10217.30it/s]1003914it [01:11, 10238.06it/s]1004947it [01:11, 10263.63it/s]1005978it [01:11, 10277.09it/s]1007198it [01:11, 10850.51it/s]1008284it [01:12, 10651.27it/s]1009351it [01:12, 10544.79it/s]1010407it [01:12, 10469.61it/s]1011455it [01:12, 10419.92it/s]1012498it [01:12, 10389.32it/s]1013538it [01:12, 10079.74it/s]1014558it [01:12, 10112.15it/s]1015589it [01:12, 10168.30it/s]1016615it [01:12, 10192.51it/s]1017636it [01:12, 10123.10it/s]1018659it [01:13, 10152.46it/s]1019675it [01:13, 10032.33it/s]1020696it [01:13, 10083.84it/s]1021705it [01:13, 10065.73it/s]1022723it [01:13, 10098.54it/s]1023747it [01:13, 10138.85it/s]1024773it [01:13, 10174.63it/s]1025791it [01:13, 9931.63it/s] 1026811it [01:13, 10007.96it/s]1027830it [01:13, 10060.86it/s]1028848it [01:14, 10095.24it/s]1029875it [01:14, 10145.68it/s]1030898it [01:14, 10169.02it/s]1031916it [01:14, 10087.71it/s]1032937it [01:14, 10123.62it/s]1033963it [01:14, 10163.94it/s]1034984it [01:14, 10176.72it/s]1036002it [01:14, 10122.13it/s]1037024it [01:14, 10149.07it/s]1038040it [01:14, 10077.62it/s]1039062it [01:15, 10119.08it/s]1040083it [01:15, 10144.82it/s]1041104it [01:15, 10163.71it/s]1042132it [01:15, 10197.16it/s]1043153it [01:15, 10198.85it/s]1044173it [01:15, 10109.94it/s]1045193it [01:15, 10135.29it/s]1046207it [01:15, 9975.81it/s] 1047662it [01:15, 11325.91it/s]1048797it [01:15, 11008.04it/s]1049902it [01:16, 10773.50it/s]1050983it [01:16, 10501.14it/s]1052036it [01:16, 10432.10it/s]1053081it [01:16, 10392.98it/s]1054122it [01:16, 10364.58it/s]1055160it [01:16, 10340.80it/s]1056195it [01:16, 10229.99it/s]1057219it [01:16, 10229.92it/s]1058248it [01:16, 10245.78it/s]1059273it [01:17, 10239.94it/s]1060302it [01:17, 10254.75it/s]1061332it [01:17, 10267.71it/s]1062359it [01:17, 10158.09it/s]1063386it [01:17, 10189.39it/s]1064419it [01:17, 10229.68it/s]1065448it [01:17, 10246.26it/s]1066477it [01:17, 10257.36it/s]1067505it [01:17, 10263.15it/s]1068532it [01:17, 10150.37it/s]1069557it [01:18, 10178.33it/s]1070587it [01:18, 10212.92it/s]1071617it [01:18, 10237.31it/s]1072647it [01:18, 10255.70it/s]1073677it [01:18, 10266.10it/s]1074704it [01:18, 10164.18it/s]1075730it [01:18, 10192.51it/s]1076761it [01:18, 10226.45it/s]1077790it [01:18, 10243.06it/s]1078819it [01:18, 10255.56it/s]1079850it [01:19, 10270.99it/s]1080878it [01:19, 10180.51it/s]1081897it [01:19, 9984.40it/s] 1082926it [01:19, 10072.23it/s]1083958it [01:19, 10144.56it/s]1084992it [01:19, 10200.53it/s]1086017it [01:19, 10212.33it/s]1087039it [01:19, 10117.60it/s]1088065it [01:19, 10158.25it/s]1089837it [01:19, 12410.04it/s]1091714it [01:20, 14308.18it/s]1093532it [01:20, 15464.80it/s]1095399it [01:20, 16423.67it/s]1097269it [01:20, 17104.57it/s]1099098it [01:20, 17458.02it/s]1100951it [01:20, 17777.45it/s]1102812it [01:20, 18026.61it/s]1104683it [01:20, 18229.47it/s]1106507it [01:20, 18223.61it/s]1108383it [01:20, 18383.60it/s]1110248it [01:21, 18462.57it/s]1112095it [01:21, 18398.82it/s]1113961it [01:21, 18475.42it/s]1115833it [01:21, 18547.96it/s]1117688it [01:21, 18422.39it/s]1119548it [01:21, 18473.42it/s]1121427it [01:21, 18565.41it/s]1123307it [01:21, 18635.49it/s]1125171it [01:21, 18493.44it/s]1127033it [01:21, 18528.08it/s]1128910it [01:22, 18598.51it/s]1130771it [01:22, 18496.71it/s]1132643it [01:22, 18560.17it/s]1134529it [01:22, 18646.60it/s]1136394it [01:22, 18548.42it/s]1138250it [01:22, 18491.39it/s]1140129it [01:22, 18578.61it/s]1141988it [01:22, 18409.62it/s]1143852it [01:22, 18475.79it/s]1145727it [01:22, 18555.27it/s]1147611it [01:23, 18637.53it/s]1149475it [01:23, 18511.60it/s]1151358it [01:23, 18605.81it/s]1153240it [01:23, 18667.98it/s]1155108it [01:23, 18574.46it/s]1156973it [01:23, 18595.08it/s]1158847it [01:23, 18636.79it/s]1160711it [01:23, 18521.66it/s]1162572it [01:23, 18545.52it/s]1164430it [01:23, 18555.17it/s]1166307it [01:24, 18618.69it/s]1168169it [01:24, 18478.56it/s]1170043it [01:24, 18554.12it/s]1171917it [01:24, 18608.66it/s]1173779it [01:24, 18488.51it/s]1175648it [01:24, 18548.06it/s]1177529it [01:24, 18624.36it/s]1179392it [01:24, 18549.43it/s]1181269it [01:24, 18612.49it/s]1183151it [01:24, 18674.02it/s]1185019it [01:25, 18534.04it/s]1186894it [01:25, 18597.95it/s]1188760it [01:25, 18615.34it/s]1190630it [01:25, 18638.09it/s]1192494it [01:25, 18552.73it/s]1194375it [01:25, 18626.83it/s]1196238it [01:25, 18589.65it/s]1198098it [01:25, 18513.19it/s]1199950it [01:25, 18173.14it/s]1201826it [01:25, 18343.56it/s]1203662it [01:26, 18337.73it/s]1205542it [01:26, 18474.66it/s]1207402it [01:26, 18511.07it/s]1209254it [01:26, 18480.59it/s]1211132it [01:26, 18567.87it/s]1213011it [01:26, 18633.25it/s]1214892it [01:26, 18684.31it/s]1216761it [01:26, 18538.79it/s]1218619it [01:26, 18549.94it/s]1220494it [01:26, 18608.56it/s]1222356it [01:27, 18540.72it/s]1224228it [01:27, 18592.12it/s]1226111it [01:27, 18661.52it/s]1227978it [01:27, 18533.89it/s]1229849it [01:27, 18585.82it/s]1231720it [01:27, 18620.22it/s]1233589it [01:27, 18639.19it/s]1235454it [01:27, 18526.46it/s]1237307it [01:27, 18062.83it/s]1239116it [01:28, 14811.89it/s]1240693it [01:28, 13169.78it/s]1242100it [01:28, 12295.03it/s]1243394it [01:28, 11747.39it/s]1244611it [01:28, 11362.14it/s]1245774it [01:28, 11078.95it/s]1246898it [01:28, 10773.14it/s]1247985it [01:28, 10659.48it/s]1249056it [01:29, 10570.18it/s]1250116it [01:29, 10511.37it/s]1251169it [01:29, 10254.35it/s]1252196it [01:29, 10168.13it/s]1253228it [01:29, 10210.61it/s]1254264it [01:29, 10252.45it/s]1255294it [01:29, 10264.97it/s]1256330it [01:29, 10291.23it/s]1257361it [01:29, 10296.13it/s]1258391it [01:29, 10194.62it/s]1259423it [01:30, 10231.52it/s]1260458it [01:30, 10264.90it/s]1261493it [01:30, 10289.55it/s]1262527it [01:30, 10304.48it/s]1263564it [01:30, 10323.34it/s]1264597it [01:30, 10218.57it/s]1265626it [01:30, 10237.70it/s]1266663it [01:30, 10275.47it/s]1267696it [01:30, 10290.69it/s]1268730it [01:30, 10304.68it/s]1269765it [01:31, 10316.33it/s]1270797it [01:31, 10076.40it/s]1271806it [01:31, 9966.90it/s] 1272804it [01:31, 9899.27it/s]1273795it [01:31, 9858.57it/s]1274782it [01:31, 9834.43it/s]1275766it [01:31, 9810.50it/s]1276748it [01:31, 9681.87it/s]1277930it [01:31, 10309.42it/s]1278963it [01:31, 10301.96it/s]1279997it [01:32, 10311.72it/s]1281032it [01:32, 10322.19it/s]1282065it [01:32, 10323.37it/s]1283098it [01:32, 10221.86it/s]1284129it [01:32, 10245.31it/s]1285154it [01:32, 10226.59it/s]1286189it [01:32, 10261.22it/s]1287222it [01:32, 10281.63it/s]1288256it [01:32, 10297.16it/s]1289286it [01:32, 10197.28it/s]1290316it [01:33, 10227.45it/s]1291348it [01:33, 10254.29it/s]1292383it [01:33, 10280.86it/s]1293418it [01:33, 10298.88it/s]1294452it [01:33, 10310.33it/s]1295484it [01:33, 10212.16it/s]1296515it [01:33, 10240.63it/s]1297550it [01:33, 10271.88it/s]1298584it [01:33, 10290.95it/s]1299619it [01:33, 10307.82it/s]1300653it [01:34, 10314.59it/s]1301685it [01:34, 10219.65it/s]1302719it [01:34, 10253.07it/s]1303755it [01:34, 10284.18it/s]1304790it [01:34, 10301.92it/s]1305825it [01:34, 10313.91it/s]1306858it [01:34, 10316.69it/s]1307890it [01:34, 10217.38it/s]1308912it [01:34, 10204.84it/s]1309944it [01:34, 10236.43it/s]1310978it [01:35, 10265.07it/s]1312013it [01:35, 10287.63it/s]1313047it [01:35, 10302.35it/s]1314078it [01:35, 10198.70it/s]1315110it [01:35, 10233.44it/s]1316144it [01:35, 10263.80it/s]1317178it [01:35, 10286.14it/s]1318212it [01:35, 10301.08it/s]1319895it [01:35, 12254.05it/s]1321772it [01:35, 14204.31it/s]1323657it [01:36, 15593.49it/s]1325545it [01:36, 16577.99it/s]1327377it [01:36, 17098.07it/s]1329231it [01:36, 17529.01it/s]1331123it [01:36, 17944.71it/s]1332962it [01:36, 18077.12it/s]1334770it [01:36, 18073.07it/s]1336592it [01:36, 18114.45it/s]1338433it [01:36, 18201.41it/s]1340318it [01:36, 18393.23it/s]1342158it [01:37, 18394.74it/s]1344019it [01:37, 18384.24it/s]1345899it [01:37, 18508.14it/s]1347783it [01:37, 18606.96it/s]1349673it [01:37, 18692.24it/s]1351543it [01:37, 18554.70it/s]1353416it [01:37, 18604.92it/s]1355282it [01:37, 18620.39it/s]1357145it [01:37, 18560.06it/s]1359027it [01:38, 18636.73it/s]1360914it [01:38, 18704.47it/s]1362785it [01:38, 18618.87it/s]1364664it [01:38, 18669.14it/s]1366532it [01:38, 18622.69it/s]1368419it [01:38, 18694.36it/s]1370289it [01:38, 18539.91it/s]1372177it [01:38, 18639.20it/s]1374042it [01:38, 18635.81it/s]1375906it [01:38, 18548.58it/s]1377762it [01:39, 18498.17it/s]1379612it [01:39, 18476.85it/s]1381460it [01:39, 18458.21it/s]1383306it [01:39, 18260.95it/s]1385187it [01:39, 18423.51it/s]1387030it [01:39, 18366.31it/s]1388871it [01:39, 18379.06it/s]1390747it [01:39, 18490.00it/s]1392637it [01:39, 18611.02it/s]1394499it [01:39, 18535.88it/s]1396382it [01:40, 18621.69it/s]1398245it [01:40, 18611.87it/s]1400107it [01:40, 18424.24it/s]1401989it [01:40, 18540.36it/s]1403865it [01:40, 18603.90it/s]1405726it [01:40, 18488.97it/s]1407601it [01:40, 18566.49it/s]1409487it [01:40, 18653.64it/s]1411371it [01:40, 18708.46it/s]1413243it [01:40, 18581.46it/s]1415124it [01:41, 18647.76it/s]1417003it [01:41, 18689.76it/s]1418873it [01:41, 18592.38it/s]1420742it [01:41, 18620.88it/s]1422615it [01:41, 18651.79it/s]1424481it [01:41, 18550.27it/s]1426355it [01:41, 18605.54it/s]1428237it [01:41, 18668.33it/s]1430104it [01:41, 18580.15it/s]1431975it [01:41, 18616.04it/s]1433856it [01:42, 18672.14it/s]1435735it [01:42, 18706.32it/s]1437606it [01:42, 18555.44it/s]1439479it [01:42, 18605.37it/s]1441358it [01:42, 18658.30it/s]1443225it [01:42, 18260.38it/s]1445053it [01:42, 18049.98it/s]1446860it [01:42, 17978.77it/s]1448659it [01:42, 17787.31it/s]1450439it [01:42, 17738.66it/s]1452222it [01:43, 17763.51it/s]1453999it [01:43, 17710.64it/s]1455818it [01:43, 17851.16it/s]1457706it [01:43, 18155.56it/s]1459599it [01:43, 18384.00it/s]1461438it [01:43, 18380.36it/s]1463293it [01:43, 18428.09it/s]1465179it [01:43, 18554.74it/s]1467035it [01:43, 18518.39it/s]1468905it [01:43, 18570.23it/s]1470784it [01:44, 18633.41it/s]1472670it [01:44, 18699.99it/s]1474541it [01:44, 18593.93it/s]1476406it [01:44, 18608.24it/s]1478300it [01:44, 18706.36it/s]1480171it [01:44, 18622.60it/s]1482061it [01:44, 18702.78it/s]1483953it [01:44, 18766.85it/s]1485830it [01:44, 18584.41it/s]1487704it [01:44, 18629.77it/s]1489594it [01:45, 18707.85it/s]1491466it [01:45, 18617.11it/s]1493348it [01:45, 18675.61it/s]1495216it [01:45, 18509.80it/s]1497081it [01:45, 18548.77it/s]1498937it [01:45, 18390.84it/s]1500797it [01:45, 18450.56it/s]1502682it [01:45, 18568.45it/s]1504540it [01:45, 18510.00it/s]1506392it [01:45, 18186.24it/s]1508276it [01:46, 18378.63it/s]1510116it [01:46, 18378.49it/s]1511996it [01:46, 18503.20it/s]1513880it [01:46, 18601.91it/s]1515741it [01:46, 18553.33it/s]1517625it [01:46, 18636.75it/s]1519510it [01:46, 18699.22it/s]1521400it [01:46, 18757.38it/s]1523276it [01:46, 18621.31it/s]1525153it [01:46, 18665.16it/s]1527036it [01:47, 18712.61it/s]1528908it [01:47, 18609.89it/s]1530788it [01:47, 18664.46it/s]1532655it [01:47, 18657.90it/s]1534521it [01:47, 18501.03it/s]1536372it [01:47, 18354.89it/s]1538260it [01:47, 18509.43it/s]1540112it [01:47, 18476.42it/s]1541960it [01:47, 17671.25it/s]1543735it [01:48, 14653.73it/s]1545288it [01:48, 13193.33it/s]1546685it [01:48, 12237.76it/s]1547966it [01:48, 11692.32it/s]1549173it [01:48, 11328.47it/s]1550329it [01:48, 11063.46it/s]1551449it [01:48, 10872.22it/s]1552544it [01:48, 10638.00it/s]1553612it [01:49, 10546.34it/s]1554669it [01:49, 10494.55it/s]1555720it [01:49, 10459.78it/s]1556767it [01:49, 10222.59it/s]1557800it [01:49, 10251.39it/s]1558826it [01:49, 10176.30it/s]1559856it [01:49, 10210.84it/s]1560892it [01:49, 10254.38it/s]1561929it [01:49, 10287.21it/s]1562965it [01:49, 10306.06it/s]1564003it [01:50, 10326.22it/s]1565036it [01:50, 10232.96it/s]1566070it [01:50, 10263.32it/s]1567105it [01:50, 10286.67it/s]1568143it [01:50, 10313.44it/s]1569181it [01:50, 10332.45it/s]1570218it [01:50, 10342.12it/s]1571253it [01:50, 10209.55it/s]1572286it [01:50, 10244.33it/s]1573322it [01:50, 10277.87it/s]1574360it [01:51, 10307.11it/s]1575396it [01:51, 10320.40it/s]1576434it [01:51, 10336.77it/s]1577468it [01:51, 10240.25it/s]1578502it [01:51, 10268.37it/s]1579540it [01:51, 10299.44it/s]1580577it [01:51, 10319.25it/s]1581615it [01:51, 10334.28it/s]1582855it [01:51, 10951.62it/s]1584692it [01:51, 13172.59it/s]1586557it [01:52, 14813.61it/s]1588412it [01:52, 15931.95it/s]1590191it [01:52, 16488.11it/s]1592062it [01:52, 17152.13it/s]1593902it [01:52, 17524.56it/s]1595749it [01:52, 17805.75it/s]1597610it [01:52, 18043.94it/s]1599496it [01:52, 18288.19it/s]1601333it [01:52, 18311.72it/s]1603210it [01:52, 18446.62it/s]1605055it [01:53, 18376.91it/s]1606936it [01:53, 18504.70it/s]1608787it [01:53, 18390.75it/s]1610627it [01:53, 18390.87it/s]1612522it [01:53, 18555.93it/s]1614378it [01:53, 18527.36it/s]1616258it [01:53, 18606.44it/s]1618149it [01:53, 18696.44it/s]1620019it [01:53, 18613.30it/s]1621881it [01:53, 18604.96it/s]1623774it [01:54, 18701.05it/s]1625667it [01:54, 18767.71it/s]1627544it [01:54, 18662.35it/s]1629415it [01:54, 18675.93it/s]1631295it [01:54, 18712.58it/s]1633167it [01:54, 18637.18it/s]1635042it [01:54, 18667.88it/s]1636909it [01:54, 18496.66it/s]1638760it [01:54, 18399.94it/s]1640622it [01:54, 18463.38it/s]1642513it [01:55, 18593.90it/s]1644373it [01:55, 18565.04it/s]1646257it [01:55, 18645.19it/s]1648122it [01:55, 18595.73it/s]1650013it [01:55, 18689.53it/s]1651883it [01:55, 18485.92it/s]1653767it [01:55, 18588.03it/s]1655627it [01:55, 18552.40it/s]1657483it [01:55, 17759.17it/s]1659266it [01:56, 14348.45it/s]1660808it [01:56, 13026.02it/s]1662198it [01:56, 12230.48it/s]1663482it [01:56, 11597.96it/s]1664683it [01:56, 11250.01it/s]1665833it [01:56, 11010.36it/s]1666949it [01:56, 10824.88it/s]1668041it [01:56, 10694.73it/s]1669116it [01:57, 10503.35it/s]1670169it [01:57, 10447.44it/s]1671216it [01:57, 10420.12it/s]1672259it [01:57, 10261.15it/s]1673286it [01:57, 10112.55it/s]1674298it [01:57, 9999.32it/s] 1675298it [01:57, 9826.17it/s]1676281it [01:57, 9800.00it/s]1677302it [01:57, 9919.13it/s]1678333it [01:57, 10032.64it/s]1679367it [01:58, 10120.63it/s]1680403it [01:58, 10189.72it/s]1681423it [01:58, 10134.44it/s]1682452it [01:58, 10177.73it/s]1683489it [01:58, 10233.41it/s]1684526it [01:58, 10274.08it/s]1685562it [01:58, 10298.97it/s]1686598it [01:58, 10314.70it/s]1687630it [01:58, 10210.52it/s]1688658it [01:58, 10228.70it/s]1689693it [01:59, 10263.18it/s]1690729it [01:59, 10291.00it/s]1691759it [01:59, 10292.47it/s]1692789it [01:59, 10087.69it/s]1693799it [01:59, 10049.25it/s]1694834it [01:59, 10135.39it/s]1695863it [01:59, 10181.23it/s]1696896it [01:59, 10223.29it/s]1698158it [01:59, 10937.67it/s]1699253it [01:59, 10750.70it/s]1700330it [02:00, 10519.55it/s]1701384it [02:00, 10432.85it/s]1702429it [02:00, 10411.98it/s]1703471it [02:00, 10396.40it/s]1704512it [02:00, 10390.35it/s]1705552it [02:00, 10283.30it/s]1706584it [02:00, 10293.69it/s]1707618it [02:00, 10306.65it/s]1708651it [02:00, 10312.51it/s]1709685it [02:00, 10319.05it/s]1710718it [02:01, 10316.80it/s]1711750it [02:01, 10229.35it/s]1712776it [02:01, 10237.19it/s]1713812it [02:01, 10273.13it/s]1714849it [02:01, 10299.78it/s]1715886it [02:01, 10317.77it/s]1716922it [02:01, 10328.97it/s]1717955it [02:01, 10227.68it/s]1718984it [02:01, 10244.07it/s]1720016it [02:02, 10265.15it/s]1721051it [02:02, 10290.33it/s]1722086it [02:02, 10305.83it/s]1723121it [02:02, 10317.03it/s]1724153it [02:02, 10225.90it/s]1725187it [02:02, 10258.24it/s]1726218it [02:02, 10270.91it/s]1727246it [02:02, 10244.22it/s]1728282it [02:02, 10276.14it/s]1729311it [02:02, 10277.29it/s]1730339it [02:03, 10192.09it/s]1731370it [02:03, 10224.86it/s]1732404it [02:03, 10258.78it/s]1733440it [02:03, 10288.14it/s]1734476it [02:03, 10308.84it/s]1735508it [02:03, 10309.74it/s]1736540it [02:03, 10219.46it/s]1737572it [02:03, 10248.44it/s]1738606it [02:03, 10273.51it/s]1739880it [02:03, 11010.03it/s]1740982it [02:04, 10806.12it/s]1742064it [02:04, 10671.61it/s]1743133it [02:04, 10468.99it/s]1744182it [02:04, 10433.24it/s]1745227it [02:04, 10415.18it/s]1746270it [02:04, 10399.59it/s]1747311it [02:04, 10387.01it/s]1748350it [02:04, 10267.81it/s]1749382it [02:04, 10280.91it/s]1750417it [02:04, 10300.74it/s]1751453it [02:05, 10316.48it/s]1752489it [02:05, 10328.37it/s]1753526it [02:05, 10339.54it/s]1754561it [02:05, 10247.36it/s]1755594it [02:05, 10270.30it/s]1756629it [02:05, 10293.86it/s]1757663it [02:05, 10305.93it/s]1758699it [02:05, 10320.10it/s]1759734it [02:05, 10326.76it/s]1760767it [02:05, 10227.71it/s]1761791it [02:06, 9938.37it/s] 1762827it [02:06, 10059.78it/s]1763861it [02:06, 10141.82it/s]1764898it [02:06, 10206.33it/s]1765934it [02:06, 10251.93it/s]1766960it [02:06, 10160.83it/s]1767992it [02:06, 10206.04it/s]1769029it [02:06, 10253.69it/s]1770065it [02:06, 10282.53it/s]1771101it [02:06, 10304.88it/s]1772136it [02:07, 10318.25it/s]1773168it [02:07, 10225.67it/s]1774201it [02:07, 10256.34it/s]1775236it [02:07, 10281.83it/s]1776274it [02:07, 10309.27it/s]1777312it [02:07, 10327.86it/s]1778349it [02:07, 10338.67it/s]1779383it [02:07, 10238.89it/s]1780655it [02:07, 10974.67it/s]1781754it [02:07, 10785.24it/s]1782834it [02:08, 10656.53it/s]1783901it [02:08, 10569.32it/s]1784959it [02:08, 10504.22it/s]1786010it [02:08, 10352.38it/s]1787046it [02:08, 10311.38it/s]1788085it [02:08, 10331.91it/s]1789124it [02:08, 10347.98it/s]1790162it [02:08, 10354.83it/s]1791198it [02:08, 10249.90it/s]1792230it [02:08, 10269.12it/s]1793265it [02:09, 10292.48it/s]1794301it [02:09, 10309.73it/s]1795339it [02:09, 10329.81it/s]1796373it [02:09, 10119.73it/s]1797386it [02:09, 10080.96it/s]1798419it [02:09, 10152.82it/s]1799454it [02:09, 10210.84it/s]1800490it [02:09, 10252.77it/s]1801527it [02:09, 10284.94it/s]1802565it [02:10, 10311.53it/s]1803597it [02:10, 10213.28it/s]1804629it [02:10, 10242.57it/s]1805665it [02:10, 10277.45it/s]1806702it [02:10, 10303.36it/s]1807739it [02:10, 10320.70it/s]1808777it [02:10, 10336.58it/s]1809811it [02:10, 10232.61it/s]1810845it [02:10, 10261.95it/s]1811881it [02:10, 10289.64it/s]1812914it [02:11, 10300.77it/s]1813951it [02:11, 10319.91it/s]1814989it [02:11, 10336.79it/s]1816023it [02:11, 10241.12it/s]1817055it [02:11, 10264.45it/s]1818092it [02:11, 10295.58it/s]1819129it [02:11, 10315.14it/s]1820166it [02:11, 10330.16it/s]1821204it [02:11, 10342.50it/s]1822824it [02:11, 12095.97it/s]1824702it [02:12, 14097.89it/s]1826580it [02:12, 15500.36it/s]1828415it [02:12, 16354.34it/s]1830289it [02:12, 17069.58it/s]1832155it [02:12, 17546.15it/s]1833987it [02:12, 17776.61it/s]1835765it [02:12, 17614.28it/s]1837527it [02:12, 17547.56it/s]1839292it [02:12, 17576.18it/s]1841050it [02:12, 17460.04it/s]1842813it [02:13, 17509.54it/s]1844574it [02:13, 17539.30it/s]1846367it [02:13, 17654.10it/s]1848241it [02:13, 17976.62it/s]1850131it [02:13, 18250.59it/s]1852020it [02:13, 18440.70it/s]1853865it [02:13, 18287.59it/s]1855745it [02:13, 18438.10it/s]1857631it [02:13, 18562.60it/s]1859488it [02:13, 18510.71it/s]1861350it [02:14, 18541.02it/s]1863205it [02:14, 18424.76it/s]1865048it [02:14, 18406.15it/s]1866921it [02:14, 18502.08it/s]1868809it [02:14, 18613.02it/s]1870671it [02:14, 18493.01it/s]1872521it [02:14, 18355.84it/s]1874395it [02:14, 18467.81it/s]1876273it [02:14, 18558.27it/s]1878130it [02:14, 18474.97it/s]1879982it [02:15, 18488.08it/s]1881831it [02:15, 18450.96it/s]1883677it [02:15, 18429.38it/s]1885547it [02:15, 18509.96it/s]1887434it [02:15, 18615.98it/s]1889296it [02:15, 18570.07it/s]1891164it [02:15, 18602.26it/s]1893025it [02:15, 18575.18it/s]1894899it [02:15, 18621.71it/s]1896762it [02:15, 18536.64it/s]1898616it [02:16, 18208.29it/s]1900495it [02:16, 18379.05it/s]1902335it [02:16, 18303.76it/s]1904192it [02:16, 18380.03it/s]1906033it [02:16, 18386.08it/s]1907878it [02:16, 18402.40it/s]1909764it [02:16, 18536.13it/s]1911650it [02:16, 18630.29it/s]1913536it [02:16, 18696.28it/s]1915406it [02:16, 18605.39it/s]1917280it [02:17, 18644.55it/s]1919164it [02:17, 18702.81it/s]1921035it [02:17, 18424.21it/s]1922892it [02:17, 18464.91it/s]1924770it [02:17, 18556.10it/s]1926627it [02:17, 18522.33it/s]1928480it [02:17, 18519.54it/s]1930371it [02:17, 18635.17it/s]1932235it [02:17, 18557.38it/s]1934094it [02:17, 18564.34it/s]1935972it [02:18, 18627.85it/s]1937835it [02:18, 18561.72it/s]1939692it [02:18, 18498.91it/s]1941573it [02:18, 18591.37it/s]1943460it [02:18, 18673.26it/s]1945328it [02:18, 18578.10it/s]1947205it [02:18, 18633.93it/s]1949092it [02:18, 18701.65it/s]1950963it [02:18, 18591.32it/s]1952836it [02:18, 18630.33it/s]1954717it [02:19, 18682.58it/s]1956600it [02:19, 18726.26it/s]1958473it [02:19, 18592.65it/s]1960333it [02:19, 18361.50it/s]1962190it [02:19, 18421.79it/s]1964033it [02:19, 18292.99it/s]1965911it [02:19, 18436.91it/s]1967798it [02:19, 18565.03it/s]1969655it [02:19, 18504.50it/s]1971522it [02:19, 18551.98it/s]1973413it [02:20, 18657.31it/s]1975279it [02:20, 18357.92it/s]1977151it [02:20, 18464.59it/s]1979035it [02:20, 18575.45it/s]1980921it [02:20, 18658.62it/s]1982788it [02:20, 18531.94it/s]1984667it [02:20, 18608.02it/s]1986529it [02:20, 18520.14it/s]1988382it [02:20, 18412.95it/s]1990261it [02:20, 18524.27it/s]1992149it [02:21, 18629.56it/s]1994013it [02:21, 18569.92it/s]1995871it [02:21, 18409.82it/s]1997759it [02:21, 18549.31it/s]1999615it [02:21, 18546.79it/s]2001470it [02:21, 18348.84it/s]2003306it [02:21, 18264.41it/s]2005189it [02:21, 18431.61it/s]2007033it [02:21, 18354.18it/s]2008869it [02:21, 18326.66it/s]2010753it [02:22, 18478.73it/s]2012602it [02:22, 18440.15it/s]2014485it [02:22, 18555.40it/s]2016352it [02:22, 18589.34it/s]2018212it [02:22, 18521.04it/s]2020074it [02:22, 18550.07it/s]2021930it [02:22, 18499.86it/s]2023818it [02:22, 18611.00it/s]2025680it [02:22, 18531.70it/s]2027568it [02:22, 18633.03it/s]2029458it [02:23, 18709.78it/s]2031330it [02:23, 18545.74it/s]2033185it [02:23, 18527.08it/s]2035038it [02:23, 18420.08it/s]2036881it [02:23, 18284.91it/s]2038751it [02:23, 18405.59it/s]2040642it [02:23, 18554.24it/s]2042534it [02:23, 18663.14it/s]2044401it [02:23, 16772.24it/s]2046115it [02:24, 14280.92it/s]2047625it [02:24, 13002.90it/s]2048994it [02:24, 12123.55it/s]2050256it [02:24, 11614.95it/s]2051449it [02:24, 11272.59it/s]2052595it [02:24, 11024.23it/s]2053708it [02:24, 10835.11it/s]2054798it [02:24, 10705.06it/s]2055872it [02:25, 10504.25it/s]2056924it [02:25, 10458.63it/s]2057971it [02:25, 10428.22it/s]2059015it [02:25, 10402.06it/s]2060056it [02:25, 10392.38it/s]2061096it [02:25, 10286.15it/s]2062129it [02:25, 10298.62it/s]2063165it [02:25, 10315.74it/s]2064200it [02:25, 10324.79it/s]2065237it [02:25, 10337.77it/s]2066271it [02:26, 10035.25it/s]2067277it [02:26, 10017.71it/s]2068307it [02:26, 10098.24it/s]2069343it [02:26, 10175.17it/s]2070380it [02:26, 10230.33it/s]2071416it [02:26, 10265.73it/s]2072452it [02:26, 10292.10it/s]2073482it [02:26, 10212.32it/s]2074510it [02:26, 10231.37it/s]2075546it [02:26, 10269.49it/s]2076583it [02:27, 10298.54it/s]2077615it [02:27, 10303.60it/s]2078646it [02:27, 10292.21it/s]2079676it [02:27, 10021.96it/s]2080680it [02:27, 9934.29it/s] 2081675it [02:27, 9883.21it/s]2082665it [02:27, 9834.27it/s]2083696it [02:27, 9974.44it/s]2084958it [02:27, 10757.92it/s]2086036it [02:28, 10517.58it/s]2087090it [02:28, 10446.31it/s]2088136it [02:28, 10415.52it/s]2089179it [02:28, 10393.21it/s]2090219it [02:28, 10383.35it/s]2091258it [02:28, 10377.91it/s]2092297it [02:28, 10254.24it/s]2093331it [02:28, 10277.43it/s]2094367it [02:28, 10299.58it/s]2095403it [02:28, 10317.22it/s]2096435it [02:29, 10317.13it/s]2097473it [02:29, 10333.20it/s]2098507it [02:29, 10227.07it/s]2099539it [02:29, 10252.90it/s]2100565it [02:29, 10066.32it/s]2101601it [02:29, 10151.35it/s]2102629it [02:29, 10189.19it/s]2103661it [02:29, 10227.49it/s]2104685it [02:29, 10136.41it/s]2105700it [02:29, 10040.89it/s]2106705it [02:30, 9959.95it/s] 2107702it [02:30, 9897.46it/s]2108692it [02:30, 9851.81it/s]2109694it [02:30, 9899.88it/s]2110694it [02:30, 9928.92it/s]2111728it [02:30, 10048.29it/s]2112761it [02:30, 10130.45it/s]2113796it [02:30, 10193.69it/s]2114827it [02:30, 10227.71it/s]2115860it [02:30, 10256.82it/s]2116886it [02:31, 10176.00it/s]2117919it [02:31, 10219.34it/s]2118955it [02:31, 10258.50it/s]2119991it [02:31, 10285.64it/s]2121028it [02:31, 10309.37it/s]2122064it [02:31, 10323.10it/s]2123097it [02:31, 10229.25it/s]2124124it [02:31, 10238.61it/s]2125231it [02:31, 10486.45it/s]2127107it [02:31, 12958.34it/s]2128933it [02:32, 14543.78it/s]2130776it [02:32, 15706.82it/s]2132656it [02:32, 16632.57it/s]2134470it [02:32, 17083.33it/s]2136283it [02:32, 17394.45it/s]2138114it [02:32, 17667.76it/s]2139921it [02:32, 17786.61it/s]2141727it [02:32, 17865.89it/s]2143606it [02:32, 18141.41it/s]2145470it [02:32, 18288.72it/s]2147299it [02:33, 18204.97it/s]2149182it [02:33, 18389.33it/s]2151063it [02:33, 18512.96it/s]2152949it [02:33, 18614.91it/s]2154811it [02:33, 18549.45it/s]2156695it [02:33, 18634.66it/s]2158589it [02:33, 18724.05it/s]2160462it [02:33, 18416.83it/s]2162347it [02:33, 18544.89it/s]2164238it [02:33, 18652.07it/s]2166104it [02:34, 18402.68it/s]2167988it [02:34, 18530.65it/s]2169853it [02:34, 18564.11it/s]2171711it [02:34, 18528.17it/s]2173574it [02:34, 18557.19it/s]2175464it [02:34, 18658.24it/s]2177357it [02:34, 18738.56it/s]2179232it [02:34, 18640.10it/s]2181120it [02:34, 18710.52it/s]2182992it [02:34, 18641.98it/s]2184857it [02:35, 18401.91it/s]2186737it [02:35, 18516.93it/s]2188623it [02:35, 18616.54it/s]2190506it [02:35, 18679.70it/s]2192385it [02:35, 18711.46it/s]2194270it [02:35, 18752.69it/s]2196017it [02:35, 14107.73it/s]
+153 / 154 tokens have corresponding word embedding vector
+Generating char embedding...
+61 / 61 tokens have corresponding char embedding vector
+Generating bpe embedding...
+0it [00:00, ?it/s]1051it [00:00, 10509.11it/s]2551it [00:00, 13146.13it/s]3866it [00:00, 12689.50it/s]5644it [00:00, 14653.46it/s]7646it [00:00, 16468.49it/s]9745it [00:00, 17984.62it/s]11983it [00:00, 19406.61it/s]14177it [00:00, 20205.78it/s]16356it [00:00, 20696.24it/s]18429it [00:01, 20673.16it/s]20665it [00:01, 21186.52it/s]22786it [00:01, 21124.28it/s]24957it [00:01, 21300.02it/s]27189it [00:01, 21605.03it/s]29434it [00:01, 21858.41it/s]31621it [00:01, 21797.25it/s]33859it [00:01, 21971.43it/s]36108it [00:01, 22124.11it/s]38321it [00:01, 22123.67it/s]40534it [00:02, 21284.89it/s]42670it [00:02, 21249.89it/s]44845it [00:02, 21395.17it/s]47085it [00:02, 21690.46it/s]49258it [00:02, 21602.51it/s]50001it [00:02, 20312.94it/s]
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/gensim/models/keyedvectors.py:850: RuntimeWarning: invalid value encountered in true_divide
+  dists = dot(self.vectors[clip_start:clip_end], mean) / self.norms[clip_start:clip_end]
+162 / 164 tokens have corresponding bpe embedding vector
+Generating pos embedding...
+34 / 34 tokens have corresponding pos embedding vector
+Generating ner embedding...
+13 / 13 tokens have corresponding ner embedding vector
+Generating iob embedding...
+7 / 7 tokens have corresponding iob embedding vector
+Generating dep embedding...
+38 / 38 tokens have corresponding dep embedding vector
+Generating is_lower embedding...
+6 / 6 tokens have corresponding is_lower embedding vector
+Generating is_stop embedding...
+6 / 6 tokens have corresponding is_stop embedding vector
+Generating is_punct embedding...
+6 / 6 tokens have corresponding is_punct embedding vector
+Generating is_digit embedding...
+6 / 6 tokens have corresponding is_digit embedding vector
+Generating like_num embedding...
+6 / 6 tokens have corresponding like_num embedding vector
+Generating is_bracket embedding...
+5 / 5 tokens have corresponding is_bracket embedding vector
+Generating is_overlap embedding...
+6 / 6 tokens have corresponding is_overlap embedding vector
+Generating answer_iob embedding...
+7 / 7 tokens have corresponding answer_iob embedding vector
+Generating is_clue embedding...
+6 / 6 tokens have corresponding is_clue embedding vector
+Generating is_clue_hard embedding...
+6 / 6 tokens have corresponding is_clue_hard embedding vector
+Generating is_content embedding...
+6 / 6 tokens have corresponding is_content embedding vector
+Saving embedding mats...
+Saving embedding dicts...
+Embedding dict length: word 153
+Embedding dict length: char 61
+Embedding dict length: bpe 162
+Embedding dict length: pos 34
+Embedding dict length: ner 13
+Embedding dict length: iob 7
+Embedding dict length: dep 38
+Embedding dict length: is_lower 6
+Embedding dict length: is_stop 6
+Embedding dict length: is_punct 6
+Embedding dict length: is_digit 6
+Embedding dict length: like_num 6
+Embedding dict length: is_bracket 5
+Embedding dict length: is_overlap 6
+Embedding dict length: answer_iob 7
+Embedding dict length: is_clue 6
+Embedding dict length: is_clue_hard 6
+Embedding dict length: is_content 6
+start get related words dict
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+end get related words dict
+Saving related words dict...
+Saving related words ids mat...
+Processing train examples...
+  0%|          | 0/10 [00:00<?, ?it/s]100%|██████████| 10/10 [00:00<00:00, 140.17it/s]
+Built 10 / 10 instances of features in total
+Processing dev examples...
+  0%|          | 0/10 [00:00<?, ?it/s]100%|██████████| 10/10 [00:00<00:00, 182.62it/s]
+Built 10 / 10 instances of features in total
+Processing test examples...
+  0%|          | 0/10 [00:00<?, ?it/s]100%|██████████| 10/10 [00:00<00:00, 164.38it/s]
+You're using a T5TokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/rnn.py:61: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+Built 10 / 10 instances of features in total
+Saving train examples...
+Saving dev examples...
+Saving test examples...
+Saving train meta...
+Saving dev meta...
+Saving test meta...
+Saving train eval...
+Saving dev eval...
+Saving test eval...
+-- data processed
+-- LOADING STARTED
+num_total_examples:  10
+Time of refine data: 0:00:02.270459
+num_total_examples:  10
+Time of refine data: 0:00:02.207331
+num_total_examples:  10
+Time of refine data: 0:00:02.530639
+-- LOADING COMPLETED
+-- Loading the model
+Loading the Embedder
+Loading the Encoder
+Loading the Decoder
+-- Model Summary
+style_emb_mat : torch.Size([9, 16]) 144
+enc_embedder.embs.word.weight : torch.Size([153, 300]) 45900
+enc_embedder.embs.answer_iob.weight : torch.Size([7, 16]) 112
+enc_embedder.embs.pos.weight : torch.Size([34, 16]) 544
+enc_embedder.embs.ner.weight : torch.Size([13, 16]) 208
+enc_embedder.embs.dep.weight : torch.Size([38, 16]) 608
+enc_embedder.embs.is_lower.weight : torch.Size([6, 16]) 96
+enc_embedder.embs.is_digit.weight : torch.Size([6, 16]) 96
+enc_embedder.embs.is_content.weight : torch.Size([6, 16]) 96
+clue_embedder.weight : torch.Size([3, 16]) 48
+encoder.rnn.weight_ih_l0 : torch.Size([768, 428]) 328704
+encoder.rnn.weight_hh_l0 : torch.Size([768, 256]) 196608
+encoder.rnn.bias_ih_l0 : torch.Size([768]) 768
+encoder.rnn.bias_hh_l0 : torch.Size([768]) 768
+encoder.rnn.weight_ih_l0_reverse : torch.Size([768, 428]) 328704
+encoder.rnn.weight_hh_l0_reverse : torch.Size([768, 256]) 196608
+encoder.rnn.bias_ih_l0_reverse : torch.Size([768]) 768
+encoder.rnn.bias_hh_l0_reverse : torch.Size([768]) 768
+decoder.rnn.layers.0.weight_ih : torch.Size([1536, 812]) 1247232
+decoder.rnn.layers.0.weight_hh : torch.Size([1536, 512]) 786432
+decoder.rnn.layers.0.bias_ih : torch.Size([1536]) 1536
+decoder.rnn.layers.0.bias_hh : torch.Size([1536]) 1536
+decoder.attn.linear_pre.weight : torch.Size([512, 512]) 262144
+decoder.attn.linear_pre.bias : torch.Size([512]) 512
+decoder.attn.linear_q.weight : torch.Size([512, 512]) 262144
+decoder.attn.linear_v.weight : torch.Size([1, 512]) 512
+decoder.readout.weight : torch.Size([512, 1324]) 677888
+decoder.readout.bias : torch.Size([512]) 512
+decoder.copySwitch.weight : torch.Size([1, 1024]) 1024
+decoder.copySwitch.bias : torch.Size([1]) 1
+decIniter.initer.weight : torch.Size([512, 272]) 139264
+decIniter.initer.bias : torch.Size([512]) 512
+generator.generator.0.weight : torch.Size([153, 256]) 39168
+generator.generator.0.bias : torch.Size([153]) 153
+Trainable trainable parameters: 4522118
+False, True, 0
+-- Porting model to cpu device
+0it [00:00, ?it/s]/storage/home/madhurjindal/ACS-QG/model/FQG_model.py:531: UserWarning: This overload of nonzero is deprecated:
+	nonzero()
+Consider using one of the following signatures instead:
+	nonzero(*, bool as_tuple) (Triggered internally at  /opt/conda/conda-bld/pytorch_1607370156314/work/torch/csrc/utils/python_arg_parser.cpp:882.)
+  src.data[:, b].ne(self.dicts["word"]["<pad>"]).nonzero().squeeze(1)
+1it [00:04,  4.93s/it]2it [00:07,  3.43s/it]3it [00:12,  4.24s/it]4it [00:13,  3.04s/it]5it [00:19,  3.89s/it]5it [00:19,  3.82s/it]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+Valid results:  {'rougeL': 0.11816846561109588, 'meteor': 0.030871776881248904, 'bleu1': 0.04602510460241417, 'bleu2': 3.1359885300051555e-10, 'bleu3': 5.988175008050744e-13, 'bleu4': 2.631184849446054e-14, 'clue_acc': -1, 'style_acc': -1, 'pred_style_acc': 0.5}
+0it [00:00, ?it/s]1it [00:04,  4.70s/it]2it [00:09,  4.83s/it]3it [00:13,  4.27s/it]4it [00:17,  4.35s/it]5it [00:22,  4.67s/it]5it [00:22,  4.59s/it]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+Valid results:  {'rougeL': 0.08157427772717232, 'meteor': 0.02811306340718105, 'bleu1': 0.03221288515401651, 'bleu2': 2.1390871683772732e-10, 'bleu3': 4.03985550248706e-13, 'bleu4': 1.76201803071534e-14, 'clue_acc': -1, 'style_acc': -1, 'pred_style_acc': 0.7}
+Bad_count: 0	Current lr: 0.001
+Best metric: 1.76201803071534e-14
+train_result: _bleu1_0.04603_bleu2_0.00000_bleu3_0.00000_bleu4_0.00000_rougeL_0.11817_meteor_0.03087dev_result: _bleu1_0.03221_bleu2_0.00000_bleu3_0.00000_bleu4_0.00000_rougeL_0.08157_meteor_0.02811
+Saving checkpoint: /scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/FQG_checkpoint_epoch01_bleu1_0.03221_bleu2_0.00000_bleu3_0.00000_bleu4_0.00000_rougeL_0.08157_meteor_0.02811.pth.tar ...
+step: 4/5 	 epoch: 2 	 lr: 0.001 	 loss: {'total': 4.074705600738525, 'qg': 4.074705600738525, 'clue': 0.0, 'style': 0.0} 	 speed: 3.1570907642970507 examples/sec
+0it [00:00, ?it/s]1it [00:00,  1.44it/s]2it [00:01,  1.22it/s]3it [00:02,  1.10it/s]4it [00:03,  1.29it/s]5it [00:04,  1.22it/s]5it [00:04,  1.22it/s]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+Valid results:  {'rougeL': 0.35998603838776255, 'meteor': 0.15855265740289912, 'bleu1': 0.3467741935455905, 'bleu2': 0.24665274742942195, 'bleu3': 0.16726671232566717, 'bleu4': 0.09962853361685846, 'clue_acc': -1, 'style_acc': -1, 'pred_style_acc': 0.6}
+0it [00:00, ?it/s]1it [00:05,  5.89s/it]2it [00:06,  2.95s/it]3it [00:08,  2.39s/it]4it [00:09,  1.69s/it]5it [00:10,  1.58s/it]5it [00:10,  2.10s/it]huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+Valid results:  {'rougeL': 0.1572081933346814, 'meteor': 0.0351756040636056, 'bleu1': 0.09543568464690691, 'bleu2': 0.020325882317286107, 'bleu3': 1.2318812544816413e-07, 'bleu4': 3.068004703880809e-10, 'clue_acc': -1, 'style_acc': -1, 'pred_style_acc': 0.7}
+Bad_count: 0	Current lr: 0.001
+Best metric: 3.068004703880809e-10
+train_result: _bleu1_0.34677_bleu2_0.24665_bleu3_0.16727_bleu4_0.09963_rougeL_0.35999_meteor_0.15855dev_result: _bleu1_0.09544_bleu2_0.02033_bleu3_0.00000_bleu4_0.00000_rougeL_0.15721_meteor_0.03518
+Saving checkpoint: /scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/FQG_checkpoint_epoch02_bleu1_0.09544_bleu2_0.02033_bleu3_0.00000_bleu4_0.00000_rougeL_0.15721_meteor_0.03518.pth.tar ...
+Time of train model: 0:01:50.090879
+*******STEP 2*******
+03/05/2023 12:51:48 - WARNING - __main__ -   Process rank: -1, device: cpu, n_gpu: 0, distributed training: False, 16-bits training: False
+03/05/2023 12:51:48 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/config.json
+03/05/2023 12:51:48 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": -1,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 12:51:48 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased' is a path or url to a directory containing tokenizer files.
+03/05/2023 12:51:48 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/added_tokens.json. We won't load it.
+03/05/2023 12:51:48 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/special_tokens_map.json. We won't load it.
+03/05/2023 12:51:48 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/spiece.model
+03/05/2023 12:51:48 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/05/2023 12:51:48 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/05/2023 12:51:48 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/pytorch_model.bin
+03/05/2023 12:51:55 - INFO - pytorch_transformers.modeling_utils -   Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+03/05/2023 12:51:55 - INFO - pytorch_transformers.modeling_utils -   Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+03/05/2023 12:51:55 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', context_question_answer_columns=[0, 1, 2], context_question_answer_file='', context_question_answer_score_file='', data_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC', debug_mode=True, device=device(type='cpu'), do_eval=True, do_lower_case=True, do_test=False, do_train=True, eval_all_checkpoints=False, evaluate_during_training=False, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=1, learning_rate=2e-05, local_rank=-1, logging_steps=50, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased', model_type='xlnet', n_gpu=0, no_cuda=False, num_train_epochs=1.0, output_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased', output_mode='classification', overwrite_cache=False, overwrite_output_dir=True, per_gpu_eval_batch_size=8, per_gpu_train_batch_size=8, save_steps=100, seed=42, server_ip='', server_port='', task_name='mrpc', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+03/05/2023 12:51:55 - INFO - __main__ -   Loading features from cached file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/cached_train_xlnet-base-cased_128_mrpc
+03/05/2023 12:51:56 - INFO - __main__ -   ***** Running training *****
+03/05/2023 12:51:56 - INFO - __main__ -     Num examples = 4076
+03/05/2023 12:51:56 - INFO - __main__ -     Num Epochs = 1
+03/05/2023 12:51:56 - INFO - __main__ -     Instantaneous batch size per GPU = 8
+03/05/2023 12:51:56 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 8
+03/05/2023 12:51:56 - INFO - __main__ -     Gradient Accumulation steps = 1
+03/05/2023 12:51:56 - INFO - __main__ -     Total optimization steps = 510
+Epoch:   0%|          | 0/1 [00:00<?, ?it/s]
+Iteration:   0%|          | 0/510 [00:00<?, ?it/s][A/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/optimization.py:166: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1607370156314/work/torch/csrc/utils/python_arg_parser.cpp:882.)
+  exp_avg.mul_(beta1).add_(1.0 - beta1, grad)
+
+Iteration:   0%|          | 1/510 [00:14<2:01:39, 14.34s/it][A
+Iteration:   0%|          | 2/510 [00:28<2:00:17, 14.21s/it][A
+Iteration:   1%|          | 3/510 [00:42<1:57:34, 13.91s/it][A
+Iteration:   1%|          | 4/510 [00:55<1:54:26, 13.57s/it][A
+Iteration:  69%|██████▊   | 350/510 [00:55<00:11, 14.39it/s][AIteration: 100%|██████████| 510/510 [00:55<00:00,  9.24it/s]
+Epoch: 100%|██████████| 1/1 [00:55<00:00, 55.20s/it]Epoch: 100%|██████████| 1/1 [00:55<00:00, 55.20s/it]
+03/05/2023 12:52:51 - INFO - __main__ -    global_step = 4, average loss = 0.5717971324920654
+03/05/2023 12:52:51 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased
+03/05/2023 12:53:04 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/05/2023 12:53:04 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 12:53:04 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/05/2023 12:53:08 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased' is a path or url to a directory containing tokenizer files.
+03/05/2023 12:53:08 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/spiece.model
+03/05/2023 12:53:08 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/added_tokens.json
+03/05/2023 12:53:08 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/special_tokens_map.json
+03/05/2023 12:53:08 - INFO - __main__ -   Evaluate the following checkpoints: ['/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased']
+03/05/2023 12:53:08 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/05/2023 12:53:08 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 12:53:08 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/05/2023 12:53:12 - INFO - __main__ -   Loading features from cached file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/cached_dev_xlnet-base-cased_128_mrpc
+03/05/2023 12:53:12 - INFO - __main__ -   ***** Running evaluation  *****
+03/05/2023 12:53:12 - INFO - __main__ -     Num examples = 1725
+03/05/2023 12:53:12 - INFO - __main__ -     Batch size = 8
+weihaojie debug	train success!
+Evaluating:   0%|          | 0/216 [00:00<?, ?it/s]Evaluating:   0%|          | 1/216 [00:03<11:32,  3.22s/it]Evaluating:   1%|          | 2/216 [00:06<10:48,  3.03s/it]Evaluating:   1%|▏         | 3/216 [00:08<10:13,  2.88s/it]Evaluating: 100%|██████████| 216/216 [00:08<00:00, 24.29it/s]
+03/05/2023 12:53:21 - INFO - __main__ -   ***** Eval results  *****
+03/05/2023 12:53:21 - INFO - __main__ -     acc = 0.75
+03/05/2023 12:53:21 - INFO - __main__ -     acc_and_f1 = 0.8035714285714286
+03/05/2023 12:53:21 - INFO - __main__ -     f1 = 0.8571428571428571
+weihaojie debug	evaluate success!
+*******STEP 3*******
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Datasets/processed/SQuAD1.1-Zhou/squad_sample_probs.pkl not exist.
+Now start generate these files.
+
+Start get SQuAD raw examples ...
+Traceback (most recent call last):
+  File "DA_main.py", line 273, in <module>
+    main(parser.parse_args())
+  File "DA_main.py", line 238, in main
+    clue_dep_dist_max_val=20,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 519, in get_sample_probs
+    debug_length,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 446, in get_dataset_info
+    raw_examples = FQG_data.get_raw_examples(filename, filetype, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 129, in get_raw_examples
+    return get_squad_raw_examples(filename, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 44, in get_squad_raw_examples
+    with codecs.open(filename, encoding="utf-8") as fh:
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/codecs.py", line 898, in open
+    file = builtins.open(filename, mode, buffering)
+FileNotFoundError: [Errno 2] No such file or directory: 'Datasets/original/SQuAD1.1-Zhou/train.txt'
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Datasets/processed/SQuAD1.1-Zhou/squad_sample_probs.pkl not exist.
+Now start generate these files.
+
+Start get SQuAD raw examples ...
+Traceback (most recent call last):
+  File "DA_main.py", line 273, in <module>
+    main(parser.parse_args())
+  File "DA_main.py", line 238, in main
+    clue_dep_dist_max_val=20,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 519, in get_sample_probs
+    debug_length,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 446, in get_dataset_info
+    raw_examples = FQG_data.get_raw_examples(filename, filetype, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 129, in get_raw_examples
+    return get_squad_raw_examples(filename, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 44, in get_squad_raw_examples
+    with codecs.open(filename, encoding="utf-8") as fh:
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/codecs.py", line 898, in open
+    file = builtins.open(filename, mode, buffering)
+FileNotFoundError: [Errno 2] No such file or directory: 'Datasets/original/SQuAD1.1-Zhou/train.txt'
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Datasets/processed/SQuAD1.1-Zhou/squad_sample_probs.pkl not exist.
+Now start generate these files.
+
+Start get SQuAD raw examples ...
+Traceback (most recent call last):
+  File "DA_main.py", line 273, in <module>
+    main(parser.parse_args())
+  File "DA_main.py", line 238, in main
+    clue_dep_dist_max_val=20,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 519, in get_sample_probs
+    debug_length,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 446, in get_dataset_info
+    raw_examples = FQG_data.get_raw_examples(filename, filetype, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 129, in get_raw_examples
+    return get_squad_raw_examples(filename, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 44, in get_squad_raw_examples
+    with codecs.open(filename, encoding="utf-8") as fh:
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/codecs.py", line 898, in open
+    file = builtins.open(filename, mode, buffering)
+FileNotFoundError: [Errno 2] No such file or directory: 'Datasets/original/SQuAD1.1-Zhou/train.txt'
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Datasets/processed/SQuAD1.1-Zhou/squad_sample_probs.pkl not exist.
+Now start generate these files.
+
+Start get SQuAD raw examples ...
+Traceback (most recent call last):
+  File "DA_main.py", line 273, in <module>
+    main(parser.parse_args())
+  File "DA_main.py", line 238, in main
+    clue_dep_dist_max_val=20,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 519, in get_sample_probs
+    debug_length,
+  File "/storage/home/madhurjindal/ACS-QG/data_augmentor/FQG_data_augmentor.py", line 446, in get_dataset_info
+    raw_examples = FQG_data.get_raw_examples(filename, filetype, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 129, in get_raw_examples
+    return get_squad_raw_examples(filename, debug, debug_length)
+  File "/storage/home/madhurjindal/ACS-QG/data_loader/FQG_data.py", line 44, in get_squad_raw_examples
+    with codecs.open(filename, encoding="utf-8") as fh:
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/codecs.py", line 898, in open
+    file = builtins.open(filename, mode, buffering)
+FileNotFoundError: [Errno 2] No such file or directory: 'Datasets/original/SQuAD1.1-Zhou/train.txt'
+*******STEP 4*******

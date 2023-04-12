@@ -1,0 +1,1753 @@
+*******STEP 2*******
+03/07/2023 09:13:28 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+03/07/2023 09:13:28 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/config.json
+03/07/2023 09:13:28 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": -1,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/07/2023 09:13:28 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased' is a path or url to a directory containing tokenizer files.
+03/07/2023 09:13:28 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/added_tokens.json. We won't load it.
+03/07/2023 09:13:28 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/special_tokens_map.json. We won't load it.
+03/07/2023 09:13:28 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/spiece.model
+03/07/2023 09:13:28 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/07/2023 09:13:28 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/07/2023 09:13:28 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/pytorch_model.bin
+03/07/2023 09:13:36 - INFO - pytorch_transformers.modeling_utils -   Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+03/07/2023 09:13:36 - INFO - pytorch_transformers.modeling_utils -   Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+03/07/2023 09:13:47 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', context_question_answer_columns=[0, 1, 2], context_question_answer_file='', context_question_answer_score_file='', data_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC', debug_mode=True, device=device(type='cuda'), do_eval=True, do_lower_case=True, do_test=False, do_train=True, eval_all_checkpoints=False, evaluate_during_training=False, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=1, learning_rate=2e-05, local_rank=-1, logging_steps=50, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased', model_type='xlnet', n_gpu=1, no_cuda=False, num_train_epochs=1.0, output_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased', output_mode='classification', overwrite_cache=False, overwrite_output_dir=True, per_gpu_eval_batch_size=8, per_gpu_train_batch_size=8, save_steps=100, seed=42, server_ip='', server_port='', task_name='mrpc', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+03/07/2023 09:13:47 - INFO - __main__ -   Loading features from cached file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/cached_train_xlnet-base-cased_128_mrpc
+03/07/2023 09:13:48 - INFO - __main__ -   ***** Running training *****
+03/07/2023 09:13:48 - INFO - __main__ -     Num examples = 4076
+03/07/2023 09:13:48 - INFO - __main__ -     Num Epochs = 1
+03/07/2023 09:13:48 - INFO - __main__ -     Instantaneous batch size per GPU = 8
+03/07/2023 09:13:48 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 8
+03/07/2023 09:13:48 - INFO - __main__ -     Gradient Accumulation steps = 1
+03/07/2023 09:13:48 - INFO - __main__ -     Total optimization steps = 510
+Epoch:   0%|          | 0/1 [00:00<?, ?it/s]
+Iteration:   0%|          | 0/510 [00:00<?, ?it/s][A/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/optimization.py:166: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1607370156314/work/torch/csrc/utils/python_arg_parser.cpp:882.)
+  exp_avg.mul_(beta1).add_(1.0 - beta1, grad)
+
+Iteration:   0%|          | 1/510 [00:02<22:37,  2.67s/it][A
+Iteration:   0%|          | 2/510 [00:03<11:22,  1.34s/it][A
+Iteration:   1%|          | 3/510 [00:03<07:44,  1.09it/s][A
+Iteration:   1%|          | 4/510 [00:03<06:03,  1.39it/s][A
+Iteration:  64%|██████▍   | 327/510 [00:04<00:00, 236.50it/s][AIteration: 100%|██████████| 510/510 [00:04<00:00, 125.68it/s]
+Epoch: 100%|██████████| 1/1 [00:04<00:00,  4.06s/it]Epoch: 100%|██████████| 1/1 [00:04<00:00,  4.06s/it]
+03/07/2023 09:13:52 - INFO - __main__ -    global_step = 4, average loss = 0.7029198706150055
+03/07/2023 09:13:52 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased
+03/07/2023 09:14:06 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/07/2023 09:14:06 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/07/2023 09:14:06 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/07/2023 09:14:09 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased' is a path or url to a directory containing tokenizer files.
+03/07/2023 09:14:09 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/spiece.model
+03/07/2023 09:14:09 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/added_tokens.json
+03/07/2023 09:14:09 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/special_tokens_map.json
+03/07/2023 09:14:09 - INFO - __main__ -   Evaluate the following checkpoints: ['/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased']
+03/07/2023 09:14:09 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/07/2023 09:14:09 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/07/2023 09:14:09 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/07/2023 09:14:13 - INFO - __main__ -   Loading features from cached file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/cached_dev_xlnet-base-cased_128_mrpc
+03/07/2023 09:14:13 - INFO - __main__ -   ***** Running evaluation  *****
+03/07/2023 09:14:13 - INFO - __main__ -     Num examples = 1725
+03/07/2023 09:14:13 - INFO - __main__ -     Batch size = 8
+------step-0------
+-- Forward Pass
+-- Loss-  tensor(0.6477, device='cuda:0', grad_fn=<NllLossBackward>)
+------step-1------
+-- Forward Pass
+-- Loss-  tensor(0.5082, device='cuda:0', grad_fn=<NllLossBackward>)
+------step-2------
+-- Forward Pass
+-- Loss-  tensor(0.8489, device='cuda:0', grad_fn=<NllLossBackward>)
+------step-3------
+-- Forward Pass
+-- Loss-  tensor(0.8069, device='cuda:0', grad_fn=<NllLossBackward>)
+------step-4------
+------step-5------
+------step-6------
+------step-7------
+------step-8------
+------step-9------
+------step-10------
+------step-11------
+------step-12------
+------step-13------
+------step-14------
+------step-15------
+------step-16------
+------step-17------
+------step-18------
+------step-19------
+------step-20------
+------step-21------
+------step-22------
+------step-23------
+------step-24------
+------step-25------
+------step-26------
+------step-27------
+------step-28------
+------step-29------
+------step-30------
+------step-31------
+------step-32------
+------step-33------
+------step-34------
+------step-35------
+------step-36------
+------step-37------
+------step-38------
+------step-39------
+------step-40------
+------step-41------
+------step-42------
+------step-43------
+------step-44------
+------step-45------
+------step-46------
+------step-47------
+------step-48------
+------step-49------
+------step-50------
+------step-51------
+------step-52------
+------step-53------
+------step-54------
+------step-55------
+------step-56------
+------step-57------
+------step-58------
+------step-59------
+------step-60------
+------step-61------
+------step-62------
+------step-63------
+------step-64------
+------step-65------
+------step-66------
+------step-67------
+------step-68------
+------step-69------
+------step-70------
+------step-71------
+------step-72------
+------step-73------
+------step-74------
+------step-75------
+------step-76------
+------step-77------
+------step-78------
+------step-79------
+------step-80------
+------step-81------
+------step-82------
+------step-83------
+------step-84------
+------step-85------
+------step-86------
+------step-87------
+------step-88------
+------step-89------
+------step-90------
+------step-91------
+------step-92------
+------step-93------
+------step-94------
+------step-95------
+------step-96------
+------step-97------
+------step-98------
+------step-99------
+------step-100------
+------step-101------
+------step-102------
+------step-103------
+------step-104------
+------step-105------
+------step-106------
+------step-107------
+------step-108------
+------step-109------
+------step-110------
+------step-111------
+------step-112------
+------step-113------
+------step-114------
+------step-115------
+------step-116------
+------step-117------
+------step-118------
+------step-119------
+------step-120------
+------step-121------
+------step-122------
+------step-123------
+------step-124------
+------step-125------
+------step-126------
+------step-127------
+------step-128------
+------step-129------
+------step-130------
+------step-131------
+------step-132------
+------step-133------
+------step-134------
+------step-135------
+------step-136------
+------step-137------
+------step-138------
+------step-139------
+------step-140------
+------step-141------
+------step-142------
+------step-143------
+------step-144------
+------step-145------
+------step-146------
+------step-147------
+------step-148------
+------step-149------
+------step-150------
+------step-151------
+------step-152------
+------step-153------
+------step-154------
+------step-155------
+------step-156------
+------step-157------
+------step-158------
+------step-159------
+------step-160------
+------step-161------
+------step-162------
+------step-163------
+------step-164------
+------step-165------
+------step-166------
+------step-167------
+------step-168------
+------step-169------
+------step-170------
+------step-171------
+------step-172------
+------step-173------
+------step-174------
+------step-175------
+------step-176------
+------step-177------
+------step-178------
+------step-179------
+------step-180------
+------step-181------
+------step-182------
+------step-183------
+------step-184------
+------step-185------
+------step-186------
+------step-187------
+------step-188------
+------step-189------
+------step-190------
+------step-191------
+------step-192------
+------step-193------
+------step-194------
+------step-195------
+------step-196------
+------step-197------
+------step-198------
+------step-199------
+------step-200------
+------step-201------
+------step-202------
+------step-203------
+------step-204------
+------step-205------
+------step-206------
+------step-207------
+------step-208------
+------step-209------
+------step-210------
+------step-211------
+------step-212------
+------step-213------
+------step-214------
+------step-215------
+------step-216------
+------step-217------
+------step-218------
+------step-219------
+------step-220------
+------step-221------
+------step-222------
+------step-223------
+------step-224------
+------step-225------
+------step-226------
+------step-227------
+------step-228------
+------step-229------
+------step-230------
+------step-231------
+------step-232------
+------step-233------
+------step-234------
+------step-235------
+------step-236------
+------step-237------
+------step-238------
+------step-239------
+------step-240------
+------step-241------
+------step-242------
+------step-243------
+------step-244------
+------step-245------
+------step-246------
+------step-247------
+------step-248------
+------step-249------
+------step-250------
+------step-251------
+------step-252------
+------step-253------
+------step-254------
+------step-255------
+------step-256------
+------step-257------
+------step-258------
+------step-259------
+------step-260------
+------step-261------
+------step-262------
+------step-263------
+------step-264------
+------step-265------
+------step-266------
+------step-267------
+------step-268------
+------step-269------
+------step-270------
+------step-271------
+------step-272------
+------step-273------
+------step-274------
+------step-275------
+------step-276------
+------step-277------
+------step-278------
+------step-279------
+------step-280------
+------step-281------
+------step-282------
+------step-283------
+------step-284------
+------step-285------
+------step-286------
+------step-287------
+------step-288------
+------step-289------
+------step-290------
+------step-291------
+------step-292------
+------step-293------
+------step-294------
+------step-295------
+------step-296------
+------step-297------
+------step-298------
+------step-299------
+------step-300------
+------step-301------
+------step-302------
+------step-303------
+------step-304------
+------step-305------
+------step-306------
+------step-307------
+------step-308------
+------step-309------
+------step-310------
+------step-311------
+------step-312------
+------step-313------
+------step-314------
+------step-315------
+------step-316------
+------step-317------
+------step-318------
+------step-319------
+------step-320------
+------step-321------
+------step-322------
+------step-323------
+------step-324------
+------step-325------
+------step-326------
+------step-327------
+------step-328------
+------step-329------
+------step-330------
+------step-331------
+------step-332------
+------step-333------
+------step-334------
+------step-335------
+------step-336------
+------step-337------
+------step-338------
+------step-339------
+------step-340------
+------step-341------
+------step-342------
+------step-343------
+------step-344------
+------step-345------
+------step-346------
+------step-347------
+------step-348------
+------step-349------
+------step-350------
+------step-351------
+------step-352------
+------step-353------
+------step-354------
+------step-355------
+------step-356------
+------step-357------
+------step-358------
+------step-359------
+------step-360------
+------step-361------
+------step-362------
+------step-363------
+------step-364------
+------step-365------
+------step-366------
+------step-367------
+------step-368------
+------step-369------
+------step-370------
+------step-371------
+------step-372------
+------step-373------
+------step-374------
+------step-375------
+------step-376------
+------step-377------
+------step-378------
+------step-379------
+------step-380------
+------step-381------
+------step-382------
+------step-383------
+------step-384------
+------step-385------
+------step-386------
+------step-387------
+------step-388------
+------step-389------
+------step-390------
+------step-391------
+------step-392------
+------step-393------
+------step-394------
+------step-395------
+------step-396------
+------step-397------
+------step-398------
+------step-399------
+------step-400------
+------step-401------
+------step-402------
+------step-403------
+------step-404------
+------step-405------
+------step-406------
+------step-407------
+------step-408------
+------step-409------
+------step-410------
+------step-411------
+------step-412------
+------step-413------
+------step-414------
+------step-415------
+------step-416------
+------step-417------
+------step-418------
+------step-419------
+------step-420------
+------step-421------
+------step-422------
+------step-423------
+------step-424------
+------step-425------
+------step-426------
+------step-427------
+------step-428------
+------step-429------
+------step-430------
+------step-431------
+------step-432------
+------step-433------
+------step-434------
+------step-435------
+------step-436------
+------step-437------
+------step-438------
+------step-439------
+------step-440------
+------step-441------
+------step-442------
+------step-443------
+------step-444------
+------step-445------
+------step-446------
+------step-447------
+------step-448------
+------step-449------
+------step-450------
+------step-451------
+------step-452------
+------step-453------
+------step-454------
+------step-455------
+------step-456------
+------step-457------
+------step-458------
+------step-459------
+------step-460------
+------step-461------
+------step-462------
+------step-463------
+------step-464------
+------step-465------
+------step-466------
+------step-467------
+------step-468------
+------step-469------
+------step-470------
+------step-471------
+------step-472------
+------step-473------
+------step-474------
+------step-475------
+------step-476------
+------step-477------
+------step-478------
+------step-479------
+------step-480------
+------step-481------
+------step-482------
+------step-483------
+------step-484------
+------step-485------
+------step-486------
+------step-487------
+------step-488------
+------step-489------
+------step-490------
+------step-491------
+------step-492------
+------step-493------
+------step-494------
+------step-495------
+------step-496------
+------step-497------
+------step-498------
+------step-499------
+------step-500------
+------step-501------
+------step-502------
+------step-503------
+------step-504------
+------step-505------
+------step-506------
+------step-507------
+------step-508------
+------step-509------
+weihaojie debug	train success!
+Evaluating:   0%|          | 0/216 [00:00<?, ?it/s]Evaluating:   0%|          | 1/216 [00:00<00:32,  6.62it/s]Evaluating:   1%|          | 2/216 [00:00<00:28,  7.56it/s]Evaluating:   1%|▏         | 3/216 [00:00<00:26,  8.12it/s]Evaluating: 100%|██████████| 216/216 [00:00<00:00, 506.52it/s]
+03/07/2023 09:14:14 - INFO - __main__ -   ***** Eval results  *****
+03/07/2023 09:14:14 - INFO - __main__ -     acc = 0.5416666666666666
+03/07/2023 09:14:14 - INFO - __main__ -     acc_and_f1 = 0.5934139784946236
+03/07/2023 09:14:14 - INFO - __main__ -     f1 = 0.6451612903225806
+weihaojie debug	evaluate success!
+*** Error in `python3': free(): invalid pointer: 0x00005612cc4fc700 ***
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x777e5)[0x7f92b56997e5]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8037a)[0x7f92b56a237a]
+/lib/x86_64-linux-gnu/libc.so.6(cfree+0x4c)[0x7f92b56a653c]
+/tools/cuda-11.0/lib64/libcublasLt.so.11(free_gemm_select+0x4d)[0x7f923577da3d]
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/../../../../libcublas.so.11(cublasDestroy_v2+0x165)[0x7f923ff04af5]
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cuda.so(+0x25a4345d)[0x7f91dc91845d]
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cuda.so(+0x25a43561)[0x7f91dc918561]
+/lib/x86_64-linux-gnu/libc.so.6(+0x39ff8)[0x7f92b565bff8]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3a045)[0x7f92b565c045]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf7)[0x7f92b5642837]
+python3(+0x1dfed2)[0x561277413ed2]
+======= Memory map: ========
+200000000-200200000 ---p 00000000 00:00 0 
+200200000-200400000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+200400000-202400000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+202400000-205400000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+205400000-205e00000 ---p 00000000 00:00 0 
+205e00000-206000000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+206000000-206200000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+206200000-206400000 rw-s 206200000 00:06 652                             /dev/nvidia-uvm
+206400000-206600000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+206600000-206800000 ---p 00000000 00:00 0 
+206800000-206a00000 rw-s 00000000 00:06 595                              /dev/nvidiactl
+206a00000-300200000 ---p 00000000 00:00 0 
+10000000000-10104000000 ---p 00000000 00:00 0 
+561277234000-56127728f000 r--p 00000000 00:67 39899818                   /scratch/scratch8/madhurjindal/acs-qg-env/bin/python3.7
+56127728f000-561277470000 r-xp 0005b000 00:67 39899818                   /scratch/scratch8/madhurjindal/acs-qg-env/bin/python3.7
+561277470000-561277516000 r--p 0023c000 00:67 39899818                   /scratch/scratch8/madhurjindal/acs-qg-env/bin/python3.7
+561277517000-56127751a000 r--p 002e2000 00:67 39899818                   /scratch/scratch8/madhurjindal/acs-qg-env/bin/python3.7
+56127751a000-561277583000 rw-p 002e5000 00:67 39899818                   /scratch/scratch8/madhurjindal/acs-qg-env/bin/python3.7
+561277583000-5612775a4000 rw-p 00000000 00:00 0 
+56127923e000-5612dd3b2000 rw-p 00000000 00:00 0                          [heap]
+7f8fbe000000-7f9024000000 ---p 00000000 00:00 0 
+7f9024000000-7f9024055000 rw-p 00000000 00:00 0 
+7f9024055000-7f9028000000 ---p 00000000 00:00 0 
+7f902a000000-7f9084000000 ---p 00000000 00:00 0 
+7f9084000000-7f9084021000 rw-p 00000000 00:00 0 
+7f9084021000-7f9088000000 ---p 00000000 00:00 0 
+7f9088000000-7f9088021000 rw-p 00000000 00:00 0 
+7f9088021000-7f908c000000 ---p 00000000 00:00 0 
+7f908c000000-7f908c021000 rw-p 00000000 00:00 0 
+7f908c021000-7f9090000000 ---p 00000000 00:00 0 
+7f9092000000-7f9094000000 ---p 00000000 00:00 0 
+7f9094000000-7f9094021000 rw-p 00000000 00:00 0 
+7f9094021000-7f9098000000 ---p 00000000 00:00 0 
+7f909a000000-7f909c000000 ---p 00000000 00:00 0 
+7f909c000000-7f909c021000 rw-p 00000000 00:00 0 
+7f909c021000-7f90a0000000 ---p 00000000 00:00 0 
+7f90a0000000-7f90a0021000 rw-p 00000000 00:00 0 
+7f90a0021000-7f90a4000000 ---p 00000000 00:00 0 
+7f90a4000000-7f90a4021000 rw-p 00000000 00:00 0 
+7f90a4021000-7f90a8000000 ---p 00000000 00:00 0 
+7f90aa000000-7f90c7000000 ---p 00000000 00:00 0 
+7f90c7000000-7f90c7200000 rw-s 00000000 00:05 2031375825                 /dev/zero (deleted)
+7f90c7200000-7f90d2400000 ---p 00000000 00:00 0 
+7f90d2400000-7f90d2600000 rw-s 00000000 00:05 2031365808                 /dev/zero (deleted)
+7f90d2600000-7f90d2800000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f90d2800000-7f90d2a00000 rw-s 00000000 00:05 2031380677                 /dev/zero (deleted)
+7f90d2a00000-7f90d2c00000 ---p 00000000 00:00 0 
+7f90d2c00000-7f90d2e00000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f90d2e00000-7f90d3000000 ---p 00000000 00:00 0 
+7f90d3000000-7f90d3200000 rw-s 00000000 00:05 2031380679                 /dev/zero (deleted)
+7f90d3200000-7f90d34d6000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f90d34d6000-7f90d4000000 ---p 00000000 00:00 0 
+7f90d4000000-7f90d4021000 rw-p 00000000 00:00 0 
+7f90d4021000-7f90d8000000 ---p 00000000 00:00 0 
+7f90d982f000-7f90d9a2f000 rw-s 00000000 00:05 2031380678                 /dev/zero (deleted)
+7f90d9a2f000-7f90d9a30000 ---p 00000000 00:00 0 
+7f90d9a30000-7f90da230000 rw-p 00000000 00:00 0 
+7f90da230000-7f90da231000 ---p 00000000 00:00 0 
+7f90da231000-7f90daa31000 rw-p 00000000 00:00 0 
+7f90dea39000-7f90dea3a000 ---p 00000000 00:00 0 
+7f90dea3a000-7f90df23a000 rw-p 00000000 00:00 0 
+7f90df23a000-7f90df23b000 ---p 00000000 00:00 0 
+7f90df23b000-7f90dfa3b000 rw-p 00000000 00:00 0 
+7f90dfa3b000-7f90dfa3c000 ---p 00000000 00:00 0 
+7f90dfa3c000-7f90e023c000 rw-p 00000000 00:00 0 
+7f90e023c000-7f90e023d000 ---p 00000000 00:00 0 
+7f90e023d000-7f90e0a3d000 rw-p 00000000 00:00 0 
+7f90e0a3d000-7f90e0a3e000 ---p 00000000 00:00 0 
+7f90e0a3e000-7f90e123e000 rw-p 00000000 00:00 0 
+7f90e123e000-7f90e123f000 ---p 00000000 00:00 0 
+7f90e123f000-7f90e1a3f000 rw-p 00000000 00:00 0 
+7f90e1a3f000-7f90e1a40000 ---p 00000000 00:00 0 
+7f90e1a40000-7f90e2240000 rw-p 00000000 00:00 0 
+7f90e2240000-7f90e2241000 ---p 00000000 00:00 0 
+7f90e2241000-7f90e2a41000 rw-p 00000000 00:00 0 
+7f90e4000000-7f90e4021000 rw-p 00000000 00:00 0 
+7f90e4021000-7f90e8000000 ---p 00000000 00:00 0 
+7f90e8000000-7f90e8021000 rw-p 00000000 00:00 0 
+7f90e8021000-7f90ec000000 ---p 00000000 00:00 0 
+7f90ec000000-7f90ec021000 rw-p 00000000 00:00 0 
+7f90ec021000-7f90f0000000 ---p 00000000 00:00 0 
+7f90f0000000-7f90f0021000 rw-p 00000000 00:00 0 
+7f90f0021000-7f90f4000000 ---p 00000000 00:00 0 
+7f90f4000000-7f90f4021000 rw-p 00000000 00:00 0 
+7f90f4021000-7f90f8000000 ---p 00000000 00:00 0 
+7f90f9144000-7f90f923c000 r--p 00000000 00:67 40153170                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_avx2.so.1
+7f90f923c000-7f90fbd95000 r-xp 000f8000 00:67 40153170                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_avx2.so.1
+7f90fbd95000-7f90fbfe9000 r--p 02c51000 00:67 40153170                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_avx2.so.1
+7f90fbfe9000-7f90fbff0000 r--p 02ea4000 00:67 40153170                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_avx2.so.1
+7f90fbff0000-7f90fbffe000 rw-p 02eab000 00:67 40153170                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_avx2.so.1
+7f90fbffe000-7f90fc000000 rw-p 00000000 00:00 0 
+7f90fc000000-7f90fc021000 rw-p 00000000 00:00 0 
+7f90fc021000-7f9100000000 ---p 00000000 00:00 0 
+7f9102000000-7f9110000000 ---p 00000000 00:00 0 
+7f9110000000-7f9110001000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110001000-7f9110002000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110002000-7f9110003000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110003000-7f9110004000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110004000-7f9110005000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110005000-7f9110006000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110006000-7f9110007000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110007000-7f9110008000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110008000-7f9110009000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110009000-7f911000a000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f911000a000-7f911000b000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f911000b000-7f911000c000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f911000c000-7f911000d000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f911000d000-7f911000e000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f911000e000-7f911000f000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f911000f000-7f9110010000 rw-s 00000000 00:06 596                        /dev/nvidia0
+7f9110010000-7f9120000000 ---p 00000000 00:00 0 
+7f9121ce9000-7f9121d29000 rw-p 00000000 00:00 0 
+7f9121d69000-7f9122629000 rw-p 00000000 00:00 0 
+7f9122629000-7f912264e000 r-xp 00000000 00:67 39915845                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0
+7f912264e000-7f912284d000 ---p 00025000 00:67 39915845                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0
+7f912284d000-7f912284e000 r--p 00024000 00:67 39915845                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0
+7f912284e000-7f9122853000 rw-p 00025000 00:67 39915845                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scikit_learn.libs/libgomp-a34b3233.so.1.0.0
+7f9122853000-7f9122893000 rw-p 00000000 00:00 0 
+7f9122893000-7f91228a6000 r-xp 00000000 00:67 40034997                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/mvn.cpython-37m-x86_64-linux-gnu.so
+7f91228a6000-7f9122aa5000 ---p 00013000 00:67 40034997                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/mvn.cpython-37m-x86_64-linux-gnu.so
+7f9122aa5000-7f9122aa7000 rw-p 00012000 00:67 40034997                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/mvn.cpython-37m-x86_64-linux-gnu.so
+7f9122aa7000-7f9122b9e000 rw-p 00000000 00:00 0 
+7f9122b9e000-7f9122ba0000 rw-p 00015000 00:67 40034997                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/mvn.cpython-37m-x86_64-linux-gnu.so
+7f9122ba0000-7f9122baa000 r-xp 00000000 00:67 40034993                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/statlib.cpython-37m-x86_64-linux-gnu.so
+7f9122baa000-7f9122da9000 ---p 0000a000 00:67 40034993                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/statlib.cpython-37m-x86_64-linux-gnu.so
+7f9122da9000-7f9122dab000 rw-p 00009000 00:67 40034993                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/statlib.cpython-37m-x86_64-linux-gnu.so
+7f9122dab000-7f9122dad000 rw-p 0000c000 00:67 40034993                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/statlib.cpython-37m-x86_64-linux-gnu.so
+7f9122dad000-7f9122e2d000 rw-p 00000000 00:00 0 
+7f9122e2d000-7f9122e8e000 r-xp 00000000 00:67 40034996                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/_stats.cpython-37m-x86_64-linux-gnu.so
+7f9122e8e000-7f912308d000 ---p 00061000 00:67 40034996                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/_stats.cpython-37m-x86_64-linux-gnu.so
+7f912308d000-7f9123092000 rw-p 00060000 00:67 40034996                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/stats/_stats.cpython-37m-x86_64-linux-gnu.so
+7f9123092000-7f9123094000 rw-p 00000000 00:00 0 
+7f9123094000-7f91230e8000 r-xp 00000000 00:67 40034215                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/interpnd.cpython-37m-x86_64-linux-gnu.so
+7f91230e8000-7f91232e7000 ---p 00054000 00:67 40034215                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/interpnd.cpython-37m-x86_64-linux-gnu.so
+7f91232e7000-7f91232ec000 rw-p 00053000 00:67 40034215                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/interpnd.cpython-37m-x86_64-linux-gnu.so
+7f91232ec000-7f91232ee000 rw-p 00000000 00:00 0 
+7f91232ee000-7f912333e000 r-xp 00000000 00:67 40034217                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_ppoly.cpython-37m-x86_64-linux-gnu.so
+7f912333e000-7f912353e000 ---p 00050000 00:67 40034217                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_ppoly.cpython-37m-x86_64-linux-gnu.so
+7f912353e000-7f9123544000 rw-p 00050000 00:67 40034217                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_ppoly.cpython-37m-x86_64-linux-gnu.so
+7f9123544000-7f9123545000 rw-p 00000000 00:00 0 
+7f9123545000-7f9123548000 rw-p 00056000 00:67 40034217                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_ppoly.cpython-37m-x86_64-linux-gnu.so
+7f9123548000-7f9123585000 r-xp 00000000 00:67 40034211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_bspl.cpython-37m-x86_64-linux-gnu.so
+7f9123585000-7f9123784000 ---p 0003d000 00:67 40034211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_bspl.cpython-37m-x86_64-linux-gnu.so
+7f9123784000-7f912378a000 rw-p 0003c000 00:67 40034211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_bspl.cpython-37m-x86_64-linux-gnu.so
+7f912378a000-7f912378b000 rw-p 00000000 00:00 0 
+7f912378b000-7f912378e000 rw-p 00043000 00:67 40034211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_bspl.cpython-37m-x86_64-linux-gnu.so
+7f912378e000-7f91237ec000 r-xp 00000000 00:67 40034212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/dfitpack.cpython-37m-x86_64-linux-gnu.so
+7f91237ec000-7f91239ec000 ---p 0005e000 00:67 40034212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/dfitpack.cpython-37m-x86_64-linux-gnu.so
+7f91239ec000-7f91239f3000 rw-p 0005e000 00:67 40034212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/dfitpack.cpython-37m-x86_64-linux-gnu.so
+7f91239f3000-7f91239f5000 rw-p 00066000 00:67 40034212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/dfitpack.cpython-37m-x86_64-linux-gnu.so
+7f91239f5000-7f9123a29000 r-xp 00000000 00:67 40034210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_fitpack.cpython-37m-x86_64-linux-gnu.so
+7f9123a29000-7f9123c29000 ---p 00034000 00:67 40034210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_fitpack.cpython-37m-x86_64-linux-gnu.so
+7f9123c29000-7f9123c2a000 rw-p 00034000 00:67 40034210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_fitpack.cpython-37m-x86_64-linux-gnu.so
+7f9123c2a000-7f9123c2c000 rw-p 00036000 00:67 40034210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/interpolate/_fitpack.cpython-37m-x86_64-linux-gnu.so
+7f9123c2c000-7f9123f6d000 rw-p 00000000 00:00 0 
+7f9123f6d000-7f9123f86000 r-xp 00000000 00:67 40035045                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/lsoda.cpython-37m-x86_64-linux-gnu.so
+7f9123f86000-7f9124186000 ---p 00019000 00:67 40035045                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/lsoda.cpython-37m-x86_64-linux-gnu.so
+7f9124186000-7f9124187000 rw-p 00019000 00:67 40035045                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/lsoda.cpython-37m-x86_64-linux-gnu.so
+7f9124187000-7f9124188000 rw-p 00000000 00:00 0 
+7f9124188000-7f912418b000 rw-p 0001b000 00:67 40035045                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/lsoda.cpython-37m-x86_64-linux-gnu.so
+7f912418b000-7f91241a6000 r-xp 00000000 00:67 40035050                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_dop.cpython-37m-x86_64-linux-gnu.so
+7f91241a6000-7f91243a5000 ---p 0001b000 00:67 40035050                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_dop.cpython-37m-x86_64-linux-gnu.so
+7f91243a5000-7f91243a7000 rw-p 0001a000 00:67 40035050                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_dop.cpython-37m-x86_64-linux-gnu.so
+7f91243a7000-7f91243aa000 rw-p 0001d000 00:67 40035050                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_dop.cpython-37m-x86_64-linux-gnu.so
+7f91243aa000-7f91243db000 r-xp 00000000 00:67 40035052                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/vode.cpython-37m-x86_64-linux-gnu.so
+7f91243db000-7f91245da000 ---p 00031000 00:67 40035052                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/vode.cpython-37m-x86_64-linux-gnu.so
+7f91245da000-7f91245dc000 rw-p 00030000 00:67 40035052                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/vode.cpython-37m-x86_64-linux-gnu.so
+7f91245dc000-7f91245dd000 rw-p 00000000 00:00 0 
+7f91245dd000-7f91245e1000 rw-p 00033000 00:67 40035052                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/vode.cpython-37m-x86_64-linux-gnu.so
+7f91245e1000-7f91245fb000 r-xp 00000000 00:67 40035053                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_quadpack.cpython-37m-x86_64-linux-gnu.so
+7f91245fb000-7f91247fb000 ---p 0001a000 00:67 40035053                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_quadpack.cpython-37m-x86_64-linux-gnu.so
+7f91247fb000-7f91247fc000 rw-p 0001a000 00:67 40035053                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_quadpack.cpython-37m-x86_64-linux-gnu.so
+7f91247fc000-7f91247ff000 rw-p 0001c000 00:67 40035053                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_quadpack.cpython-37m-x86_64-linux-gnu.so
+7f91247ff000-7f9124815000 r-xp 00000000 00:67 40035051                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_odepack.cpython-37m-x86_64-linux-gnu.so
+7f9124815000-7f9124a14000 ---p 00016000 00:67 40035051                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_odepack.cpython-37m-x86_64-linux-gnu.so
+7f9124a14000-7f9124a15000 rw-p 00015000 00:67 40035051                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_odepack.cpython-37m-x86_64-linux-gnu.so
+7f9124a15000-7f9124a16000 rw-p 00000000 00:00 0 
+7f9124a16000-7f9124a19000 rw-p 00017000 00:67 40035051                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/integrate/_odepack.cpython-37m-x86_64-linux-gnu.so
+7f9124a19000-7f9124a59000 rw-p 00000000 00:00 0 
+7f9124a59000-7f9124a83000 r-xp 00000000 00:67 40035234                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_hausdorff.cpython-37m-x86_64-linux-gnu.so
+7f9124a83000-7f9124c83000 ---p 0002a000 00:67 40035234                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_hausdorff.cpython-37m-x86_64-linux-gnu.so
+7f9124c83000-7f9124c86000 rw-p 0002a000 00:67 40035234                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_hausdorff.cpython-37m-x86_64-linux-gnu.so
+7f9124c86000-7f9124c87000 rw-p 00000000 00:00 0 
+7f9124c87000-7f9124c9e000 r-xp 00000000 00:67 40035242                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_distance_wrap.cpython-37m-x86_64-linux-gnu.so
+7f9124c9e000-7f9124e9e000 ---p 00017000 00:67 40035242                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_distance_wrap.cpython-37m-x86_64-linux-gnu.so
+7f9124e9e000-7f9124e9f000 rw-p 00017000 00:67 40035242                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_distance_wrap.cpython-37m-x86_64-linux-gnu.so
+7f9124e9f000-7f9124edf000 rw-p 00000000 00:00 0 
+7f9124edf000-7f9124f08000 r-xp 00000000 00:67 40035243                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_voronoi.cpython-37m-x86_64-linux-gnu.so
+7f9124f08000-7f9125108000 ---p 00029000 00:67 40035243                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_voronoi.cpython-37m-x86_64-linux-gnu.so
+7f9125108000-7f912510b000 rw-p 00029000 00:67 40035243                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/_voronoi.cpython-37m-x86_64-linux-gnu.so
+7f912510b000-7f912510c000 rw-p 00000000 00:00 0 
+7f912510c000-7f91251e2000 r-xp 00000000 00:67 40035236                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/qhull.cpython-37m-x86_64-linux-gnu.so
+7f91251e2000-7f91253e2000 ---p 000d6000 00:67 40035236                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/qhull.cpython-37m-x86_64-linux-gnu.so
+7f91253e2000-7f91253eb000 rw-p 000d6000 00:67 40035236                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/qhull.cpython-37m-x86_64-linux-gnu.so
+7f91253eb000-7f91253ee000 rw-p 00000000 00:00 0 
+7f91253ee000-7f91253f2000 rw-p 000e0000 00:67 40035236                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/qhull.cpython-37m-x86_64-linux-gnu.so
+7f91253f2000-7f91254a3000 r-xp 00000000 00:67 40035244                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/ckdtree.cpython-37m-x86_64-linux-gnu.so
+7f91254a3000-7f91256a3000 ---p 000b1000 00:67 40035244                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/ckdtree.cpython-37m-x86_64-linux-gnu.so
+7f91256a3000-7f91256ad000 rw-p 000b1000 00:67 40035244                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/spatial/ckdtree.cpython-37m-x86_64-linux-gnu.so
+7f91256ad000-7f91256ef000 rw-p 00000000 00:00 0 
+7f91256ef000-7f9125730000 r-xp 00000000 00:67 40034250                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_bglu_dense.cpython-37m-x86_64-linux-gnu.so
+7f9125730000-7f9125930000 ---p 00041000 00:67 40034250                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_bglu_dense.cpython-37m-x86_64-linux-gnu.so
+7f9125930000-7f9125935000 rw-p 00041000 00:67 40034250                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_bglu_dense.cpython-37m-x86_64-linux-gnu.so
+7f9125935000-7f9125936000 rw-p 00000000 00:00 0 
+7f9125936000-7f9125940000 r-xp 00000000 00:67 40034248                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_nnls.cpython-37m-x86_64-linux-gnu.so
+7f9125940000-7f9125b40000 ---p 0000a000 00:67 40034248                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_nnls.cpython-37m-x86_64-linux-gnu.so
+7f9125b40000-7f9125b41000 rw-p 0000a000 00:67 40034248                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_nnls.cpython-37m-x86_64-linux-gnu.so
+7f9125b41000-7f9125b43000 rw-p 0000c000 00:67 40034248                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_nnls.cpython-37m-x86_64-linux-gnu.so
+7f9125b43000-7f9125b46000 r-xp 00000000 00:67 40034258                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_zeros.cpython-37m-x86_64-linux-gnu.so
+7f9125b46000-7f9125d45000 ---p 00003000 00:67 40034258                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_zeros.cpython-37m-x86_64-linux-gnu.so
+7f9125d45000-7f9125d46000 rw-p 00002000 00:67 40034258                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_zeros.cpython-37m-x86_64-linux-gnu.so
+7f9125d46000-7f9125d86000 rw-p 00000000 00:00 0 
+7f9125d86000-7f9125dad000 r-xp 00000000 00:67 40034928                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-37m-x86_64-linux-gnu.so
+7f9125dad000-7f9125fac000 ---p 00027000 00:67 40034928                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-37m-x86_64-linux-gnu.so
+7f9125fac000-7f9125faf000 rw-p 00026000 00:67 40034928                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-37m-x86_64-linux-gnu.so
+7f9125faf000-7f9125ff0000 rw-p 00000000 00:00 0 
+7f9125ff0000-7f912600f000 r-xp 00000000 00:67 40034291                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_minpack.cpython-37m-x86_64-linux-gnu.so
+7f912600f000-7f912620f000 ---p 0001f000 00:67 40034291                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_minpack.cpython-37m-x86_64-linux-gnu.so
+7f912620f000-7f9126212000 rw-p 0001f000 00:67 40034291                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_minpack.cpython-37m-x86_64-linux-gnu.so
+7f9126212000-7f912622a000 r-xp 00000000 00:67 40034292                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_slsqp.cpython-37m-x86_64-linux-gnu.so
+7f912622a000-7f9126429000 ---p 00018000 00:67 40034292                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_slsqp.cpython-37m-x86_64-linux-gnu.so
+7f9126429000-7f912642d000 rw-p 00017000 00:67 40034292                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_slsqp.cpython-37m-x86_64-linux-gnu.so
+7f912642d000-7f912644a000 r-xp 00000000 00:67 40034265                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_cobyla.cpython-37m-x86_64-linux-gnu.so
+7f912644a000-7f912664a000 ---p 0001d000 00:67 40034265                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_cobyla.cpython-37m-x86_64-linux-gnu.so
+7f912664a000-7f912664b000 rw-p 0001d000 00:67 40034265                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_cobyla.cpython-37m-x86_64-linux-gnu.so
+7f912664b000-7f912664d000 rw-p 0001f000 00:67 40034265                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_cobyla.cpython-37m-x86_64-linux-gnu.so
+7f912664d000-7f9126659000 r-xp 00000000 00:67 40034286                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/moduleTNC.cpython-37m-x86_64-linux-gnu.so
+7f9126659000-7f9126858000 ---p 0000c000 00:67 40034286                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/moduleTNC.cpython-37m-x86_64-linux-gnu.so
+7f9126858000-7f9126859000 rw-p 0000b000 00:67 40034286                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/moduleTNC.cpython-37m-x86_64-linux-gnu.so
+7f9126859000-7f9126877000 r-xp 00000000 00:67 40034271                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lbfgsb.cpython-37m-x86_64-linux-gnu.so
+7f9126877000-7f9126a77000 ---p 0001e000 00:67 40034271                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lbfgsb.cpython-37m-x86_64-linux-gnu.so
+7f9126a77000-7f9126a78000 rw-p 0001e000 00:67 40034271                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lbfgsb.cpython-37m-x86_64-linux-gnu.so
+7f9126a78000-7f9126a7b000 rw-p 00020000 00:67 40034271                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_lbfgsb.cpython-37m-x86_64-linux-gnu.so
+7f9126a7b000-7f9126abb000 rw-p 00000000 00:00 0 
+7f9126abb000-7f9126ae7000 r-xp 00000000 00:67 40034263                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_group_columns.cpython-37m-x86_64-linux-gnu.so
+7f9126ae7000-7f9126ce6000 ---p 0002c000 00:67 40034263                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_group_columns.cpython-37m-x86_64-linux-gnu.so
+7f9126ce6000-7f9126ce9000 rw-p 0002b000 00:67 40034263                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_group_columns.cpython-37m-x86_64-linux-gnu.so
+7f9126ce9000-7f9126cea000 rw-p 00000000 00:00 0 
+7f9126cea000-7f9126d73000 r-xp 00000000 00:67 40035180                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-37m-x86_64-linux-gnu.so
+7f9126d73000-7f9126f72000 ---p 00089000 00:67 40035180                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-37m-x86_64-linux-gnu.so
+7f9126f72000-7f9126f7d000 rw-p 00088000 00:67 40035180                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-37m-x86_64-linux-gnu.so
+7f9126f7d000-7f9126f7f000 rw-p 00000000 00:00 0 
+7f9126f7f000-7f9126f83000 rw-p 00094000 00:67 40035180                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/eigen/arpack/_arpack.cpython-37m-x86_64-linux-gnu.so
+7f9126f83000-7f9126fc3000 rw-p 00000000 00:00 0 
+7f9126fc3000-7f9127010000 r-xp 00000000 00:67 40035192                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-37m-x86_64-linux-gnu.so
+7f9127010000-7f912720f000 ---p 0004d000 00:67 40035192                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-37m-x86_64-linux-gnu.so
+7f912720f000-7f9127211000 rw-p 0004c000 00:67 40035192                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-37m-x86_64-linux-gnu.so
+7f9127211000-7f9127214000 rw-p 0004f000 00:67 40035192                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/dsolve/_superlu.cpython-37m-x86_64-linux-gnu.so
+7f9127214000-7f9127245000 r-xp 00000000 00:67 40035161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-37m-x86_64-linux-gnu.so
+7f9127245000-7f9127445000 ---p 00031000 00:67 40035161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-37m-x86_64-linux-gnu.so
+7f9127445000-7f912744c000 rw-p 00031000 00:67 40035161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-37m-x86_64-linux-gnu.so
+7f912744c000-7f912744e000 rw-p 00000000 00:00 0 
+7f912744e000-7f9127451000 rw-p 00039000 00:67 40035161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/linalg/isolve/_iterative.cpython-37m-x86_64-linux-gnu.so
+7f9127451000-7f9127491000 rw-p 00000000 00:00 0 
+7f9127491000-7f912749a000 r-xp 00000000 00:67 40035109                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/_lib/messagestream.cpython-37m-x86_64-linux-gnu.so
+7f912749a000-7f9127699000 ---p 00009000 00:67 40035109                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/_lib/messagestream.cpython-37m-x86_64-linux-gnu.so
+7f9127699000-7f912769b000 rw-p 00008000 00:67 40035109                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/_lib/messagestream.cpython-37m-x86_64-linux-gnu.so
+7f912769b000-7f91276e4000 r-xp 00000000 00:67 40034298                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_trlib/_trlib.cpython-37m-x86_64-linux-gnu.so
+7f91276e4000-7f91278e4000 ---p 00049000 00:67 40034298                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_trlib/_trlib.cpython-37m-x86_64-linux-gnu.so
+7f91278e4000-7f91278e8000 rw-p 00049000 00:67 40034298                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_trlib/_trlib.cpython-37m-x86_64-linux-gnu.so
+7f91278e8000-7f91278e9000 rw-p 00000000 00:00 0 
+7f91278e9000-7f91278ed000 rw-p 0004e000 00:67 40034298                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/_trlib/_trlib.cpython-37m-x86_64-linux-gnu.so
+7f91278ed000-7f91278f6000 r-xp 00000000 00:67 40034277                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/minpack2.cpython-37m-x86_64-linux-gnu.so
+7f91278f6000-7f9127af6000 ---p 00009000 00:67 40034277                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/minpack2.cpython-37m-x86_64-linux-gnu.so
+7f9127af6000-7f9127af7000 rw-p 00009000 00:67 40034277                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/minpack2.cpython-37m-x86_64-linux-gnu.so
+7f9127af7000-7f9127af9000 rw-p 0000b000 00:67 40034277                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/optimize/minpack2.cpython-37m-x86_64-linux-gnu.so
+7f9127af9000-7f9127b39000 rw-p 00000000 00:00 0 
+7f9127b39000-7f9127b4b000 r-xp 00000000 00:67 40033903                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ellip_harm_2.cpython-37m-x86_64-linux-gnu.so
+7f9127b4b000-7f9127d4b000 ---p 00012000 00:67 40033903                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ellip_harm_2.cpython-37m-x86_64-linux-gnu.so
+7f9127d4b000-7f9127d50000 rw-p 00012000 00:67 40033903                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ellip_harm_2.cpython-37m-x86_64-linux-gnu.so
+7f9127d50000-7f9127d56000 r-xp 00000000 00:67 40033906                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_comb.cpython-37m-x86_64-linux-gnu.so
+7f9127d56000-7f9127f56000 ---p 00006000 00:67 40033906                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_comb.cpython-37m-x86_64-linux-gnu.so
+7f9127f56000-7f9127f57000 rw-p 00006000 00:67 40033906                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_comb.cpython-37m-x86_64-linux-gnu.so
+7f9127f57000-7f9127fa2000 r-xp 00000000 00:67 40035212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_reordering.cpython-37m-x86_64-linux-gnu.so
+7f9127fa2000-7f91281a1000 ---p 0004b000 00:67 40035212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_reordering.cpython-37m-x86_64-linux-gnu.so
+7f91281a1000-7f91281a7000 rw-p 0004a000 00:67 40035212                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_reordering.cpython-37m-x86_64-linux-gnu.so
+7f91281a7000-7f91281e8000 rw-p 00000000 00:00 0 
+7f91281e8000-7f9128213000 r-xp 00000000 00:67 40035207                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-37m-x86_64-linux-gnu.so
+7f9128213000-7f9128412000 ---p 0002b000 00:67 40035207                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-37m-x86_64-linux-gnu.so
+7f9128412000-7f9128417000 rw-p 0002a000 00:67 40035207                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-37m-x86_64-linux-gnu.so
+7f9128417000-7f9128437000 r-xp 00000000 00:67 40035210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_traversal.cpython-37m-x86_64-linux-gnu.so
+7f9128437000-7f9128637000 ---p 00020000 00:67 40035210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_traversal.cpython-37m-x86_64-linux-gnu.so
+7f9128637000-7f912863c000 rw-p 00020000 00:67 40035210                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_traversal.cpython-37m-x86_64-linux-gnu.so
+7f912863c000-7f912865e000 r-xp 00000000 00:67 40035211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_tools.cpython-37m-x86_64-linux-gnu.so
+7f912865e000-7f912885e000 ---p 00022000 00:67 40035211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_tools.cpython-37m-x86_64-linux-gnu.so
+7f912885e000-7f9128863000 rw-p 00022000 00:67 40035211                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_tools.cpython-37m-x86_64-linux-gnu.so
+7f9128863000-7f9128864000 rw-p 00000000 00:00 0 
+7f9128864000-7f91288c1000 r-xp 00000000 00:67 40035205                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-37m-x86_64-linux-gnu.so
+7f91288c1000-7f9128ac0000 ---p 0005d000 00:67 40035205                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-37m-x86_64-linux-gnu.so
+7f9128ac0000-7f9128ac9000 rw-p 0005c000 00:67 40035205                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-37m-x86_64-linux-gnu.so
+7f9128ac9000-7f9128acb000 rw-p 00000000 00:00 0 
+7f9128acb000-7f9128b36000 r-xp 00000000 00:67 40035132                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/_csparsetools.cpython-37m-x86_64-linux-gnu.so
+7f9128b36000-7f9128d36000 ---p 0006b000 00:67 40035132                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/_csparsetools.cpython-37m-x86_64-linux-gnu.so
+7f9128d36000-7f9128d3c000 rw-p 0006b000 00:67 40035132                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/_csparsetools.cpython-37m-x86_64-linux-gnu.so
+7f9128d3c000-7f9128d3e000 rw-p 00000000 00:00 0 
+7f9128d3e000-7f9129087000 r-xp 00000000 00:67 40035142                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/_sparsetools.cpython-37m-x86_64-linux-gnu.so
+7f9129087000-7f9129287000 ---p 00349000 00:67 40035142                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/_sparsetools.cpython-37m-x86_64-linux-gnu.so
+7f9129287000-7f9129288000 rw-p 00349000 00:67 40035142                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/sparse/_sparsetools.cpython-37m-x86_64-linux-gnu.so
+7f9129288000-7f9129322000 r-xp 00000000 00:67 40033855                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_lapack.cpython-37m-x86_64-linux-gnu.so
+7f9129322000-7f9129521000 ---p 0009a000 00:67 40033855                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_lapack.cpython-37m-x86_64-linux-gnu.so
+7f9129521000-7f9129525000 rw-p 00099000 00:67 40033855                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_lapack.cpython-37m-x86_64-linux-gnu.so
+7f9129525000-7f912953a000 rw-p 0009e000 00:67 40033855                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_lapack.cpython-37m-x86_64-linux-gnu.so
+7f912953a000-7f9129573000 r-xp 00000000 00:67 40033839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_blas.cpython-37m-x86_64-linux-gnu.so
+7f9129573000-7f9129773000 ---p 00039000 00:67 40033839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_blas.cpython-37m-x86_64-linux-gnu.so
+7f9129773000-7f912977d000 rw-p 00039000 00:67 40033839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/cython_blas.cpython-37m-x86_64-linux-gnu.so
+7f912977d000-7f91297c5000 r-xp 00000000 00:67 40033852                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_decomp_update.cpython-37m-x86_64-linux-gnu.so
+7f91297c5000-7f91299c5000 ---p 00048000 00:67 40033852                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_decomp_update.cpython-37m-x86_64-linux-gnu.so
+7f91299c5000-7f91299cb000 rw-p 00048000 00:67 40033852                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_decomp_update.cpython-37m-x86_64-linux-gnu.so
+7f91299cb000-7f91299cc000 rw-p 00000000 00:00 0 
+7f91299cc000-7f9129a00000 r-xp 00000000 00:67 40033840                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_solve_toeplitz.cpython-37m-x86_64-linux-gnu.so
+7f9129a00000-7f9129c00000 ---p 00034000 00:67 40033840                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_solve_toeplitz.cpython-37m-x86_64-linux-gnu.so
+7f9129c00000-7f9129c04000 rw-p 00034000 00:67 40033840                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_solve_toeplitz.cpython-37m-x86_64-linux-gnu.so
+7f9129c04000-7f9129c05000 rw-p 00000000 00:00 0 
+7f9129c05000-7f9129c12000 r-xp 00000000 00:67 40033847                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flinalg.cpython-37m-x86_64-linux-gnu.so
+7f9129c12000-7f9129e12000 ---p 0000d000 00:67 40033847                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flinalg.cpython-37m-x86_64-linux-gnu.so
+7f9129e12000-7f9129e15000 rw-p 0000d000 00:67 40033847                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flinalg.cpython-37m-x86_64-linux-gnu.so
+7f9129e15000-7f9129e18000 rw-p 00011000 00:67 40033847                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flinalg.cpython-37m-x86_64-linux-gnu.so
+7f9129e18000-7f9129f22000 r-xp 00000000 00:67 40033858                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flapack.cpython-37m-x86_64-linux-gnu.so
+7f9129f22000-7f912a121000 ---p 0010a000 00:67 40033858                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flapack.cpython-37m-x86_64-linux-gnu.so
+7f912a121000-7f912a183000 rw-p 00109000 00:67 40033858                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flapack.cpython-37m-x86_64-linux-gnu.so
+7f912a183000-7f912a184000 rw-p 00000000 00:00 0 
+7f912a184000-7f912a18c000 rw-p 0016c000 00:67 40033858                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_flapack.cpython-37m-x86_64-linux-gnu.so
+7f912a18c000-7f912a1f8000 r-xp 00000000 00:67 40033832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_fblas.cpython-37m-x86_64-linux-gnu.so
+7f912a1f8000-7f912a3f8000 ---p 0006c000 00:67 40033832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_fblas.cpython-37m-x86_64-linux-gnu.so
+7f912a3f8000-7f912a41e000 rw-p 0006c000 00:67 40033832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_fblas.cpython-37m-x86_64-linux-gnu.so
+7f912a41e000-7f912a422000 rw-p 00093000 00:67 40033832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/linalg/_fblas.cpython-37m-x86_64-linux-gnu.so
+7f912a422000-7f912a4d7000 r-xp 00000000 00:67 40033908                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/specfun.cpython-37m-x86_64-linux-gnu.so
+7f912a4d7000-7f912a6d7000 ---p 000b5000 00:67 40033908                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/specfun.cpython-37m-x86_64-linux-gnu.so
+7f912a6d7000-7f912a6e0000 rw-p 000b5000 00:67 40033908                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/specfun.cpython-37m-x86_64-linux-gnu.so
+7f912a6e0000-7f912a6fd000 r-xp 00000000 00:67 40033899                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs_cxx.cpython-37m-x86_64-linux-gnu.so
+7f912a6fd000-7f912a8fc000 ---p 0001d000 00:67 40033899                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs_cxx.cpython-37m-x86_64-linux-gnu.so
+7f912a8fc000-7f912a8fe000 rw-p 0001c000 00:67 40033899                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs_cxx.cpython-37m-x86_64-linux-gnu.so
+7f912a8fe000-7f912c8fe000 rw-p 00000000 00:00 0 
+7f912c8fe000-7f91368fe000 rw-p 00000000 00:00 0 
+7f91368fe000-7f91368ff000 ---p 00000000 00:00 0 
+7f91368ff000-7f91370ff000 rw-p 00000000 00:00 0 
+7f91370ff000-7f9137100000 ---p 00000000 00:00 0 
+7f9137100000-7f9137900000 rw-p 00000000 00:00 0 
+7f9137900000-7f9137901000 ---p 00000000 00:00 0 
+7f9137901000-7f9138101000 rw-p 00000000 00:00 0 
+7f9138101000-7f913e101000 rw-p 00000000 00:00 0 
+7f913e101000-7f9140101000 rw-p 00000000 00:00 0 
+7f9140101000-7f9140102000 ---p 00000000 00:00 0 
+7f9140102000-7f9140902000 rw-p 00000000 00:00 0 
+7f9140902000-7f9144902000 rw-p 00000000 00:00 0 
+7f9145103000-7f9147103000 rw-p 00000000 00:00 0 
+7f9149908000-7f914d908000 rw-p 00000000 00:00 0 
+7f914d908000-7f914d909000 ---p 00000000 00:00 0 
+7f914d909000-7f914e109000 rw-p 00000000 00:00 0 
+7f914e109000-7f9150109000 rw-p 00000000 00:00 0 
+7f9150109000-7f915010a000 ---p 00000000 00:00 0 
+7f915010a000-7f915090a000 rw-p 00000000 00:00 0 
+7f915090a000-7f915090b000 ---p 00000000 00:00 0 
+7f915090b000-7f915110b000 rw-p 00000000 00:00 0 
+7f915110b000-7f915510b000 rw-p 00000000 00:00 0 
+7f915510b000-7f915510c000 ---p 00000000 00:00 0 
+7f915510c000-7f915590c000 rw-p 00000000 00:00 0 
+7f915590c000-7f915790c000 rw-p 00000000 00:00 0 
+7f915790c000-7f915990c000 rw-p 00000000 00:00 0 
+7f915990c000-7f915b90c000 rw-p 00000000 00:00 0 
+7f915b90c000-7f915b90d000 ---p 00000000 00:00 0 
+7f915b90d000-7f915c10d000 rw-p 00000000 00:00 0 
+7f915c10d000-7f916210d000 rw-p 00000000 00:00 0 
+7f916210d000-7f916410d000 rw-p 00000000 00:00 0 
+7f916410d000-7f916610d000 rw-p 00000000 00:00 0 
+7f916610d000-7f916a10d000 rw-p 00000000 00:00 0 
+7f916a10d000-7f917010d000 rw-p 00000000 00:00 0 
+7f917010d000-7f917210d000 rw-p 00000000 00:00 0 
+7f917210d000-7f917210e000 ---p 00000000 00:00 0 
+7f917210e000-7f917290e000 rw-p 00000000 00:00 0 
+7f917290e000-7f917490e000 rw-p 00000000 00:00 0 
+7f917490e000-7f917490f000 ---p 00000000 00:00 0 
+7f917490f000-7f917510f000 rw-p 00000000 00:00 0 
+7f917510f000-7f917710f000 rw-p 00000000 00:00 0 
+7f9177332000-7f9177333000 ---p 00000000 00:00 0 
+7f9177333000-7f9177b33000 rw-p 00000000 00:00 0 
+7f9177b33000-7f9177b8f000 r--p 00000000 00:67 40153161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_vml_avx2.so.1
+7f9177b8f000-7f91783f0000 r-xp 0005c000 00:67 40153161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_vml_avx2.so.1
+7f91783f0000-7f9178900000 r--p 008bd000 00:67 40153161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_vml_avx2.so.1
+7f9178900000-7f9178904000 r--p 00dcc000 00:67 40153161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_vml_avx2.so.1
+7f9178904000-7f917891d000 rw-p 00dd0000 00:67 40153161                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_vml_avx2.so.1
+7f917891d000-7f917891e000 rw-p 00000000 00:00 0 
+7f917891e000-7f917e91e000 ---p 00000000 00:00 0 
+7f917e91e000-7f918291e000 rw-p 00000000 00:00 0 
+7f918291e000-7f918291f000 ---p 00000000 00:00 0 
+7f918291f000-7f918311f000 rw-p 00000000 00:00 0 
+7f918311f000-7f9183120000 ---p 00000000 00:00 0 
+7f9183120000-7f9183920000 rw-p 00000000 00:00 0 
+7f9183920000-7f9185920000 rw-p 00000000 00:00 0 
+7f9185a61000-7f9185aa1000 rw-p 00000000 00:00 0 
+7f9185b61000-7f9185be1000 rw-p 00000000 00:00 0 
+7f9185ca1000-7f9185ce1000 rw-p 00000000 00:00 0 
+7f9185de1000-7f9185e61000 rw-p 00000000 00:00 0 
+7f9185ee1000-7f9185fa1000 rw-p 00000000 00:00 0 
+7f9186061000-7f91860a1000 rw-p 00000000 00:00 0 
+7f9186121000-7f918a121000 rw-p 00000000 00:00 0 
+7f918a121000-7f918a211000 r-xp 00000000 00:67 40035101                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libgfortran-ed201abd.so.3.0.0
+7f918a211000-7f918a410000 ---p 000f0000 00:67 40035101                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libgfortran-ed201abd.so.3.0.0
+7f918a410000-7f918a412000 rw-p 000ef000 00:67 40035101                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libgfortran-ed201abd.so.3.0.0
+7f918a412000-7f918a413000 rw-p 00000000 00:00 0 
+7f918a413000-7f918a41b000 rw-p 000f2000 00:67 40035101                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libgfortran-ed201abd.so.3.0.0
+7f918a41b000-7f918bf16000 r-xp 00000000 00:67 40035100                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libopenblasp-r0-2ecf47d5.3.7.dev.so
+7f918bf16000-7f918c116000 ---p 01afb000 00:67 40035100                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libopenblasp-r0-2ecf47d5.3.7.dev.so
+7f918c116000-7f918c12f000 rw-p 01afb000 00:67 40035100                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libopenblasp-r0-2ecf47d5.3.7.dev.so
+7f918c12f000-7f918c13a000 rw-p 00000000 00:00 0 
+7f918c13a000-7f918c1b2000 rw-p 01be7000 00:67 40035100                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/.libs/libopenblasp-r0-2ecf47d5.3.7.dev.so
+7f918c1b2000-7f918c350000 r-xp 00000000 00:67 40033892                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs.cpython-37m-x86_64-linux-gnu.so
+7f918c350000-7f918c54f000 ---p 0019e000 00:67 40033892                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs.cpython-37m-x86_64-linux-gnu.so
+7f918c54f000-7f918c557000 rw-p 0019d000 00:67 40033892                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs.cpython-37m-x86_64-linux-gnu.so
+7f918c557000-7f918c560000 rw-p 00000000 00:00 0 
+7f918c560000-7f918c566000 rw-p 001a6000 00:67 40033892                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/special/_ufuncs.cpython-37m-x86_64-linux-gnu.so
+7f918c566000-7f91ab362000 r-xp 00000000 00:67 40049427                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusolver.so.10.6.0.245
+7f91ab362000-7f91ab562000 ---p 1edfc000 00:67 40049427                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusolver.so.10.6.0.245
+7f91ab562000-7f91acbbe000 rw-p 1edfc000 00:67 40049427                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusolver.so.10.6.0.245
+7f91acbbe000-7f91ad385000 rw-p 00000000 00:00 0 
+7f91ad385000-7f91ad38c000 rw-p 20459000 00:67 40049427                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusolver.so.10.6.0.245
+7f91ad38c000-7f91b6ccc000 r-xp 00000000 00:67 40049424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusparse.so.11.1.1.245
+7f91b6ccc000-7f91b6ecb000 ---p 09940000 00:67 40049424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusparse.so.11.1.1.245
+7f91b6ecb000-7f91b6ed0000 rw-p 0993f000 00:67 40049424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusparse.so.11.1.1.245
+7f91b6ed0000-7f91b6ed1000 rw-p 00000000 00:00 0 
+7f91b6ed1000-7f91b6ed5000 rw-p 09945000 00:67 40049424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcusparse.so.11.1.1.245
+7f91b6ed5000-7f9221a10000 r-xp 00000000 00:67 40151955                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cuda.so
+7f9221a10000-7f9221c10000 ---p 6ab3b000 00:67 40151955                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cuda.so
+7f9221c10000-7f9221d33000 r--p 6ab3b000 00:67 40151955                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cuda.so
+7f9221d33000-7f922e16d000 rw-p 6ac5e000 00:67 40151955                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cuda.so
+7f922e16d000-7f922e491000 rw-p 00000000 00:00 0 
+7f922e491000-7f9234f83000 r-xp 00000000 00:67 40151954                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so
+7f9234f83000-7f9235182000 ---p 06af2000 00:67 40151954                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so
+7f9235182000-7f9235293000 r--p 06af1000 00:67 40151954                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so
+7f9235293000-7f92352b2000 rw-p 06c02000 00:67 40151954                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_cpu.so
+7f92352b2000-7f923530e000 rw-p 00000000 00:00 0 
+7f923530e000-7f923dd51000 r-xp 00000000 00:63 36221082                   /tools/cuda-11.0/targets/x86_64-linux/lib/libcublasLt.so.11.1.0.229
+7f923dd51000-7f923df50000 ---p 08a43000 00:63 36221082                   /tools/cuda-11.0/targets/x86_64-linux/lib/libcublasLt.so.11.1.0.229
+7f923df50000-7f923f5a7000 rw-p 08a42000 00:63 36221082                   /tools/cuda-11.0/targets/x86_64-linux/lib/libcublasLt.so.11.1.0.229
+7f923f5a7000-7f923fd69000 rw-p 00000000 00:00 0 
+7f923fd69000-7f92459af000 r-xp 00000000 00:67 40049462                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcublas.so.11.2.0.252
+7f92459af000-7f9245baf000 ---p 05c46000 00:67 40049462                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcublas.so.11.2.0.252
+7f9245baf000-7f9245bb7000 rw-p 05c46000 00:67 40049462                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcublas.so.11.2.0.252
+7f9245bb7000-7f9245bb9000 rw-p 00000000 00:00 0 
+7f9245bb9000-7f9245bbc000 rw-p 05c4f000 00:67 40049462                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcublas.so.11.2.0.252
+7f9245bbc000-7f924f801000 r-xp 00000000 00:67 40049425                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcufft.so.10.2.1.245
+7f924f801000-7f924fa00000 ---p 09c45000 00:67 40049425                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcufft.so.10.2.1.245
+7f924fa00000-7f924fa09000 rw-p 09c44000 00:67 40049425                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcufft.so.10.2.1.245
+7f924fa09000-7f924fa80000 rw-p 00000000 00:00 0 
+7f924fa80000-7f924fa82000 rw-p 09c4d000 00:67 40049425                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcufft.so.10.2.1.245
+7f924fa82000-7f924fac2000 rw-p 00000000 00:00 0 
+7f924fac2000-7f924fae6000 r-xp 00000000 00:67 40013424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_tests.cpython-37m-x86_64-linux-gnu.so
+7f924fae6000-7f924fce5000 ---p 00024000 00:67 40013424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_tests.cpython-37m-x86_64-linux-gnu.so
+7f924fce5000-7f924fce6000 r--p 00023000 00:67 40013424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_tests.cpython-37m-x86_64-linux-gnu.so
+7f924fce6000-7f924fce8000 rw-p 00024000 00:67 40013424                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_tests.cpython-37m-x86_64-linux-gnu.so
+7f924fce8000-7f924fde8000 rw-p 00000000 00:00 0 
+7f924fde8000-7f924fded000 r--p 00000000 00:67 39905525                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_pickle.cpython-37m-x86_64-linux-gnu.so
+7f924fded000-7f924fe00000 r-xp 00005000 00:67 39905525                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_pickle.cpython-37m-x86_64-linux-gnu.so
+7f924fe00000-7f924fe04000 r--p 00018000 00:67 39905525                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_pickle.cpython-37m-x86_64-linux-gnu.so
+7f924fe04000-7f924fe05000 r--p 0001b000 00:67 39905525                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_pickle.cpython-37m-x86_64-linux-gnu.so
+7f924fe05000-7f924fe08000 rw-p 0001c000 00:67 39905525                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_pickle.cpython-37m-x86_64-linux-gnu.so
+7f924fe08000-7f924fe88000 rw-p 00000000 00:00 0 
+7f924fe88000-7f924fe8d000 r--p 00000000 00:67 39905515                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
+7f924fe8d000-7f924fe9d000 r-xp 00005000 00:67 39905515                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
+7f924fe9d000-7f924fea2000 r--p 00015000 00:67 39905515                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
+7f924fea2000-7f924fea3000 ---p 0001a000 00:67 39905515                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
+7f924fea3000-7f924fea4000 r--p 0001a000 00:67 39905515                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
+7f924fea4000-7f924fea6000 rw-p 0001b000 00:67 39905515                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
+7f924fea6000-7f9257ea6000 rw-p 00000000 00:00 0 
+7f9257ea6000-7f9259ea6000 rw-p 00000000 00:00 0 
+7f9259ea6000-7f925bea6000 rw-p 00000000 00:00 0 
+7f925bea6000-7f925dea6000 rw-p 00000000 00:00 0 
+7f925dea6000-7f925fea6000 rw-p 00000000 00:00 0 
+7f925fea6000-7f9265ea6000 rw-p 00000000 00:00 0 
+7f9265ea6000-7f9265ee6000 rw-p 00000000 00:00 0 
+7f9265ee6000-7f9281ee6000 rw-p 00000000 00:00 0 
+7f9281ee6000-7f9283ee6000 rw-p 00000000 00:00 0 
+7f9283f05000-7f9283f45000 rw-p 00000000 00:00 0 
+7f9283fc5000-7f9284085000 rw-p 00000000 00:00 0 
+7f9284085000-7f92840e0000 r--p 00000000 00:67 39906537                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sentencepiece/_sentencepiece.cpython-37m-x86_64-linux-gnu.so
+7f92840e0000-7f9284204000 r-xp 0005b000 00:67 39906537                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sentencepiece/_sentencepiece.cpython-37m-x86_64-linux-gnu.so
+7f9284204000-7f928433d000 r--p 0017f000 00:67 39906537                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sentencepiece/_sentencepiece.cpython-37m-x86_64-linux-gnu.so
+7f928433d000-7f928433e000 ---p 002b8000 00:67 39906537                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sentencepiece/_sentencepiece.cpython-37m-x86_64-linux-gnu.so
+7f928433e000-7f9284341000 r--p 002b8000 00:67 39906537                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sentencepiece/_sentencepiece.cpython-37m-x86_64-linux-gnu.so
+7f9284341000-7f9284345000 rw-p 002bb000 00:67 39906537                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sentencepiece/_sentencepiece.cpython-37m-x86_64-linux-gnu.so
+7f9284345000-7f9284386000 rw-p 00000000 00:00 0 
+7f9284386000-7f928566a000 r-xp 00000000 08:06 1579891                    /usr/lib/x86_64-linux-gnu/libcuda.so.460.73.01
+7f928566a000-7f928586a000 ---p 012e4000 08:06 1579891                    /usr/lib/x86_64-linux-gnu/libcuda.so.460.73.01
+7f928586a000-7f9285945000 r--p 012e4000 08:06 1579891                    /usr/lib/x86_64-linux-gnu/libcuda.so.460.73.01
+7f9285945000-7f9285a4f000 rw-p 013bf000 08:06 1579891                    /usr/lib/x86_64-linux-gnu/libcuda.so.460.73.01
+7f9285a4f000-7f9285a6c000 rw-p 00000000 00:00 0 
+7f9285a88000-7f9285ac8000 rw-p 00000000 00:00 0 
+7f9285ac8000-7f9285acf000 r--p 00000000 00:67 39915313                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_pairwise_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285acf000-7f9285af9000 r-xp 00007000 00:67 39915313                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_pairwise_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285af9000-7f9285b01000 r--p 00031000 00:67 39915313                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_pairwise_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b01000-7f9285b02000 r--p 00038000 00:67 39915313                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_pairwise_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b02000-7f9285b06000 rw-p 00039000 00:67 39915313                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_pairwise_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b06000-7f9285b09000 rw-p 0016c000 00:67 39915313                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_pairwise_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b09000-7f9285b0d000 r--p 00000000 00:67 39915324                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/cluster/_expected_mutual_info_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b0d000-7f9285b1e000 r-xp 00004000 00:67 39915324                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/cluster/_expected_mutual_info_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b1e000-7f9285b21000 r--p 00015000 00:67 39915324                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/cluster/_expected_mutual_info_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b21000-7f9285b22000 r--p 00017000 00:67 39915324                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/cluster/_expected_mutual_info_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b22000-7f9285b24000 rw-p 00018000 00:67 39915324                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/cluster/_expected_mutual_info_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b24000-7f9285b27000 rw-p 00080000 00:67 39915324                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/cluster/_expected_mutual_info_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285b27000-7f9285b67000 rw-p 00000000 00:00 0 
+7f9285b67000-7f9285b6d000 r--p 00000000 00:67 39915465                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_readonly_array_wrapper.cpython-37m-x86_64-linux-gnu.so
+7f9285b6d000-7f9285b91000 r-xp 00006000 00:67 39915465                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_readonly_array_wrapper.cpython-37m-x86_64-linux-gnu.so
+7f9285b91000-7f9285b99000 r--p 0002a000 00:67 39915465                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_readonly_array_wrapper.cpython-37m-x86_64-linux-gnu.so
+7f9285b99000-7f9285b9a000 r--p 00031000 00:67 39915465                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_readonly_array_wrapper.cpython-37m-x86_64-linux-gnu.so
+7f9285b9a000-7f9285b9e000 rw-p 00032000 00:67 39915465                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_readonly_array_wrapper.cpython-37m-x86_64-linux-gnu.so
+7f9285b9e000-7f9285ba1000 rw-p 00157000 00:67 39915465                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_readonly_array_wrapper.cpython-37m-x86_64-linux-gnu.so
+7f9285ba1000-7f9285ba3000 r--p 00000000 00:67 39915484                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_typedefs.cpython-37m-x86_64-linux-gnu.so
+7f9285ba3000-7f9285ba6000 r-xp 00002000 00:67 39915484                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_typedefs.cpython-37m-x86_64-linux-gnu.so
+7f9285ba6000-7f9285ba7000 r--p 00005000 00:67 39915484                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_typedefs.cpython-37m-x86_64-linux-gnu.so
+7f9285ba7000-7f9285ba8000 r--p 00005000 00:67 39915484                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_typedefs.cpython-37m-x86_64-linux-gnu.so
+7f9285ba8000-7f9285ba9000 rw-p 00006000 00:67 39915484                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_typedefs.cpython-37m-x86_64-linux-gnu.so
+7f9285ba9000-7f9285bab000 rw-p 0001b000 00:67 39915484                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_typedefs.cpython-37m-x86_64-linux-gnu.so
+7f9285bab000-7f9285bb3000 r--p 00000000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285bb3000-7f9285be6000 r-xp 00008000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285be6000-7f9285bf2000 r--p 0003b000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285bf2000-7f9285bf3000 ---p 00047000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285bf3000-7f9285bf4000 r--p 00047000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285bf4000-7f9285bfb000 rw-p 00048000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285bfb000-7f9285bfc000 rw-p 00000000 00:00 0 
+7f9285bfc000-7f9285bff000 rw-p 001d0000 00:67 39915323                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/metrics/_dist_metrics.cpython-37m-x86_64-linux-gnu.so
+7f9285bff000-7f9285c06000 r--p 00000000 00:67 39915670                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/preprocessing/_csr_polynomial_expansion.cpython-37m-x86_64-linux-gnu.so
+7f9285c06000-7f9285c34000 r-xp 00007000 00:67 39915670                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/preprocessing/_csr_polynomial_expansion.cpython-37m-x86_64-linux-gnu.so
+7f9285c34000-7f9285c3c000 r--p 00035000 00:67 39915670                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/preprocessing/_csr_polynomial_expansion.cpython-37m-x86_64-linux-gnu.so
+7f9285c3c000-7f9285c3d000 r--p 0003c000 00:67 39915670                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/preprocessing/_csr_polynomial_expansion.cpython-37m-x86_64-linux-gnu.so
+7f9285c3d000-7f9285c41000 rw-p 0003d000 00:67 39915670                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/preprocessing/_csr_polynomial_expansion.cpython-37m-x86_64-linux-gnu.so
+7f9285c41000-7f9285c42000 rw-p 00000000 00:00 0 
+7f9285c42000-7f9285c45000 rw-p 00194000 00:67 39915670                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/preprocessing/_csr_polynomial_expansion.cpython-37m-x86_64-linux-gnu.so
+7f9285c45000-7f9285c85000 rw-p 00000000 00:00 0 
+7f9285c85000-7f9285c8e000 r--p 00000000 00:67 39915487                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/sparsefuncs_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285c8e000-7f9285d29000 r-xp 00009000 00:67 39915487                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/sparsefuncs_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285d29000-7f9285d34000 r--p 000a4000 00:67 39915487                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/sparsefuncs_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285d34000-7f9285d35000 r--p 000ae000 00:67 39915487                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/sparsefuncs_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285d35000-7f9285d3b000 rw-p 000af000 00:67 39915487                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/sparsefuncs_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285d3b000-7f9285d3c000 rw-p 00000000 00:00 0 
+7f9285d3c000-7f9285d3f000 rw-p 00495000 00:67 39915487                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/sparsefuncs_fast.cpython-37m-x86_64-linux-gnu.so
+7f9285d3f000-7f9285d44000 r--p 00000000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d44000-7f9285d62000 r-xp 00005000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d62000-7f9285d68000 r--p 00023000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d68000-7f9285d69000 ---p 00029000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d69000-7f9285d6a000 r--p 00029000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d6a000-7f9285d6d000 rw-p 0002a000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d6d000-7f9285d70000 rw-p 00111000 00:67 39915457                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_logistic_sigmoid.cpython-37m-x86_64-linux-gnu.so
+7f9285d70000-7f9285db0000 rw-p 00000000 00:00 0 
+7f9285db0000-7f9285db2000 r--p 00000000 00:67 39915494                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_openmp_helpers.cpython-37m-x86_64-linux-gnu.so
+7f9285db2000-7f9285db6000 r-xp 00002000 00:67 39915494                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_openmp_helpers.cpython-37m-x86_64-linux-gnu.so
+7f9285db6000-7f9285db7000 r--p 00006000 00:67 39915494                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_openmp_helpers.cpython-37m-x86_64-linux-gnu.so
+7f9285db7000-7f9285db8000 r--p 00006000 00:67 39915494                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_openmp_helpers.cpython-37m-x86_64-linux-gnu.so
+7f9285db8000-7f9285db9000 rw-p 00007000 00:67 39915494                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_openmp_helpers.cpython-37m-x86_64-linux-gnu.so
+7f9285db9000-7f9285dbb000 rw-p 00028000 00:67 39915494                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/_openmp_helpers.cpython-37m-x86_64-linux-gnu.so
+7f9285dbb000-7f928607b000 rw-p 00000000 00:00 0 
+7f928607b000-7f928608a000 r-xp 00000000 00:67 40035112                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/_lib/_ccallback_c.cpython-37m-x86_64-linux-gnu.so
+7f928608a000-7f9286289000 ---p 0000f000 00:67 40035112                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/_lib/_ccallback_c.cpython-37m-x86_64-linux-gnu.so
+7f9286289000-7f928628b000 rw-p 0000e000 00:67 40035112                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/scipy/_lib/_ccallback_c.cpython-37m-x86_64-linux-gnu.so
+7f928628b000-7f92864d8000 r-xp 00000000 00:67 39907620                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/google/protobuf/pyext/_message.cpython-37m-x86_64-linux-gnu.so
+7f92864d8000-7f92866d7000 ---p 0024d000 00:67 39907620                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/google/protobuf/pyext/_message.cpython-37m-x86_64-linux-gnu.so
+7f92866d7000-7f92866e8000 rw-p 0024c000 00:67 39907620                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/google/protobuf/pyext/_message.cpython-37m-x86_64-linux-gnu.so
+7f92866e8000-7f92866eb000 rw-p 00000000 00:00 0 
+7f92866eb000-7f928a6eb000 rw-p 00000000 00:00 0 
+7f928a6eb000-7f928c6eb000 rw-p 00000000 00:00 0 
+7f928c6eb000-7f92906eb000 rw-p 00000000 00:00 0 
+7f92906eb000-7f92946eb000 rw-p 00000000 00:00 0 
+7f92946ec000-7f92946ed000 r--p 00000000 00:67 39905543                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/fcntl.cpython-37m-x86_64-linux-gnu.so
+7f92946ed000-7f92946ef000 r-xp 00001000 00:67 39905543                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/fcntl.cpython-37m-x86_64-linux-gnu.so
+7f92946ef000-7f92946f0000 r--p 00003000 00:67 39905543                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/fcntl.cpython-37m-x86_64-linux-gnu.so
+7f92946f0000-7f92946f1000 r--p 00003000 00:67 39905543                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/fcntl.cpython-37m-x86_64-linux-gnu.so
+7f92946f1000-7f92946f2000 rw-p 00004000 00:67 39905543                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/fcntl.cpython-37m-x86_64-linux-gnu.so
+7f92946f2000-7f92946f4000 r--p 00000000 00:67 40020536                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_posix.cpython-37m-x86_64-linux-gnu.so
+7f92946f4000-7f92946f5000 r-xp 00002000 00:67 40020536                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_posix.cpython-37m-x86_64-linux-gnu.so
+7f92946f5000-7f92946f6000 r--p 00003000 00:67 40020536                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_posix.cpython-37m-x86_64-linux-gnu.so
+7f92946f6000-7f92946f7000 r--p 00003000 00:67 40020536                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_posix.cpython-37m-x86_64-linux-gnu.so
+7f92946f7000-7f92946f8000 rw-p 00004000 00:67 40020536                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_posix.cpython-37m-x86_64-linux-gnu.so
+7f92946f8000-7f92946fa000 r--p 00000000 00:67 40020535                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
+7f92946fa000-7f92946fd000 r-xp 00002000 00:67 40020535                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
+7f92946fd000-7f92946fe000 r--p 00005000 00:67 40020535                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
+7f92946fe000-7f92946ff000 r--p 00005000 00:67 40020535                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
+7f92946ff000-7f9294700000 rw-p 00006000 00:67 40020535                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
+7f9294700000-7f9294702000 r--p 00000000 00:67 39905546                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
+7f9294702000-7f9294705000 r-xp 00002000 00:67 39905546                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
+7f9294705000-7f9294706000 r--p 00005000 00:67 39905546                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
+7f9294706000-7f9294707000 ---p 00006000 00:67 39905546                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
+7f9294707000-7f9294708000 r--p 00006000 00:67 39905546                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
+7f9294708000-7f9294709000 rw-p 00007000 00:67 39905546                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
+7f9294709000-7f929470c000 r--p 00000000 00:67 39915455                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/murmurhash.cpython-37m-x86_64-linux-gnu.so
+7f929470c000-7f9294719000 r-xp 00003000 00:67 39915455                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/murmurhash.cpython-37m-x86_64-linux-gnu.so
+7f9294719000-7f929471d000 r--p 00010000 00:67 39915455                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/murmurhash.cpython-37m-x86_64-linux-gnu.so
+7f929471d000-7f929471e000 r--p 00013000 00:67 39915455                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/murmurhash.cpython-37m-x86_64-linux-gnu.so
+7f929471e000-7f9294720000 rw-p 00014000 00:67 39915455                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/murmurhash.cpython-37m-x86_64-linux-gnu.so
+7f9294720000-7f9294723000 rw-p 0007f000 00:67 39915455                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/murmurhash.cpython-37m-x86_64-linux-gnu.so
+7f9294723000-7f9294823000 rw-p 00000000 00:00 0 
+7f9294823000-7f9294824000 r-xp 00000000 00:67 39907631                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/google/protobuf/internal/_api_implementation.cpython-37m-x86_64-linux-gnu.so
+7f9294824000-7f9294a23000 ---p 00001000 00:67 39907631                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/google/protobuf/internal/_api_implementation.cpython-37m-x86_64-linux-gnu.so
+7f9294a23000-7f9294a24000 rw-p 00000000 00:67 39907631                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/google/protobuf/internal/_api_implementation.cpython-37m-x86_64-linux-gnu.so
+7f9294a24000-7f9294b64000 rw-p 00000000 00:00 0 
+7f9294b64000-7f9294b73000 r--p 00000000 00:67 40032923                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/regex/_regex.cpython-37m-x86_64-linux-gnu.so
+7f9294b73000-7f9294ba3000 r-xp 0000f000 00:67 40032923                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/regex/_regex.cpython-37m-x86_64-linux-gnu.so
+7f9294ba3000-7f9294be0000 r--p 0003f000 00:67 40032923                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/regex/_regex.cpython-37m-x86_64-linux-gnu.so
+7f9294be0000-7f9294be1000 r--p 0007b000 00:67 40032923                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/regex/_regex.cpython-37m-x86_64-linux-gnu.so
+7f9294be1000-7f9294bec000 rw-p 0007c000 00:67 40032923                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/regex/_regex.cpython-37m-x86_64-linux-gnu.so
+7f9294bec000-7f9294cec000 rw-p 00000000 00:00 0 
+7f9294d6c000-7f9294eec000 rw-p 00000000 00:00 0 
+7f9294eec000-7f9296eec000 rw-p 00000000 00:00 0 
+7f9296eed000-7f9296eef000 r--p 00000000 00:67 39915759                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/__check_build/_check_build.cpython-37m-x86_64-linux-gnu.so
+7f9296eef000-7f9296ef0000 r-xp 00002000 00:67 39915759                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/__check_build/_check_build.cpython-37m-x86_64-linux-gnu.so
+7f9296ef0000-7f9296ef1000 r--p 00003000 00:67 39915759                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/__check_build/_check_build.cpython-37m-x86_64-linux-gnu.so
+7f9296ef1000-7f9296ef2000 r--p 00003000 00:67 39915759                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/__check_build/_check_build.cpython-37m-x86_64-linux-gnu.so
+7f9296ef2000-7f9296ef3000 rw-p 00004000 00:67 39915759                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/__check_build/_check_build.cpython-37m-x86_64-linux-gnu.so
+7f9296ef3000-7f9296ef5000 rw-p 0000f000 00:67 39915759                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/__check_build/_check_build.cpython-37m-x86_64-linux-gnu.so
+7f9296ef5000-7f9296ef7000 r--p 00000000 00:67 39905513                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_csv.cpython-37m-x86_64-linux-gnu.so
+7f9296ef7000-7f9296efb000 r-xp 00002000 00:67 39905513                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_csv.cpython-37m-x86_64-linux-gnu.so
+7f9296efb000-7f9296efc000 r--p 00006000 00:67 39905513                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_csv.cpython-37m-x86_64-linux-gnu.so
+7f9296efc000-7f9296efd000 ---p 00007000 00:67 39905513                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_csv.cpython-37m-x86_64-linux-gnu.so
+7f9296efd000-7f9296efe000 r--p 00007000 00:67 39905513                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_csv.cpython-37m-x86_64-linux-gnu.so
+7f9296efe000-7f9296f00000 rw-p 00008000 00:67 39905513                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_csv.cpython-37m-x86_64-linux-gnu.so
+7f9296f00000-7f9296fc0000 rw-p 00000000 00:00 0 
+7f9296fc0000-7f9296fc7000 r--p 00000000 00:67 39905516                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
+7f9296fc7000-7f9296ffc000 r-xp 00007000 00:67 39905516                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
+7f9296ffc000-7f9297006000 r--p 0003c000 00:67 39905516                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
+7f9297006000-7f9297007000 ---p 00046000 00:67 39905516                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
+7f9297007000-7f9297008000 r--p 00046000 00:67 39905516                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
+7f9297008000-7f9297010000 rw-p 00047000 00:67 39905516                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
+7f9297010000-7f9297050000 rw-p 00000000 00:00 0 
+7f9297050000-7f9297057000 r--p 00000000 00:67 39905550                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/pyexpat.cpython-37m-x86_64-linux-gnu.so
+7f9297057000-7f9297080000 r-xp 00007000 00:67 39905550                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/pyexpat.cpython-37m-x86_64-linux-gnu.so
+7f9297080000-7f929708a000 r--p 00030000 00:67 39905550                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/pyexpat.cpython-37m-x86_64-linux-gnu.so
+7f929708a000-7f929708d000 r--p 00039000 00:67 39905550                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/pyexpat.cpython-37m-x86_64-linux-gnu.so
+7f929708d000-7f929708f000 rw-p 0003c000 00:67 39905550                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/pyexpat.cpython-37m-x86_64-linux-gnu.so
+7f929708f000-7f9297093000 r--p 00000000 00:67 39905517                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_elementtree.cpython-37m-x86_64-linux-gnu.so
+7f9297093000-7f929709b000 r-xp 00004000 00:67 39905517                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_elementtree.cpython-37m-x86_64-linux-gnu.so
+7f929709b000-7f929709e000 r--p 0000c000 00:67 39905517                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_elementtree.cpython-37m-x86_64-linux-gnu.so
+7f929709e000-7f929709f000 r--p 0000e000 00:67 39905517                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_elementtree.cpython-37m-x86_64-linux-gnu.so
+7f929709f000-7f92970a1000 rw-p 0000f000 00:67 39905517                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_elementtree.cpython-37m-x86_64-linux-gnu.so
+7f92970a1000-7f9297521000 rw-p 00000000 00:00 0 
+7f9297521000-7f9297525000 r--p 00000000 00:67 39905502                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
+7f9297525000-7f929752f000 r-xp 00004000 00:67 39905502                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
+7f929752f000-7f9297532000 r--p 0000e000 00:67 39905502                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
+7f9297532000-7f9297533000 r--p 00010000 00:67 39905502                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
+7f9297533000-7f9297537000 rw-p 00011000 00:67 39905502                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
+7f9297538000-7f92976b8000 rw-p 00000000 00:00 0 
+7f92976b8000-7f92976bb000 r--p 00000000 00:67 39905556                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
+7f92976bb000-7f92976c1000 r-xp 00003000 00:67 39905556                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
+7f92976c1000-7f92977a2000 r--p 00009000 00:67 39905556                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
+7f92977a2000-7f92977a3000 r--p 000e9000 00:67 39905556                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
+7f92977a3000-7f92977c0000 rw-p 000ea000 00:67 39905556                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
+7f92977c0000-7f9297840000 rw-p 00000000 00:00 0 
+7f9297840000-7f929785f000 r--p 00000000 00:67 39902824                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libssl.so.1.1
+7f929785f000-7f92978aa000 r-xp 0001f000 00:67 39902824                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libssl.so.1.1
+7f92978aa000-7f92978c3000 r--p 0006a000 00:67 39902824                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libssl.so.1.1
+7f92978c3000-7f92978c4000 ---p 00083000 00:67 39902824                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libssl.so.1.1
+7f92978c4000-7f92978cd000 r--p 00083000 00:67 39902824                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libssl.so.1.1
+7f92978cd000-7f92978d1000 rw-p 0008c000 00:67 39902824                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libssl.so.1.1
+7f92978d1000-7f9297bd1000 rw-p 00000000 00:00 0 
+7f9297bd1000-7f9298908000 r-xp 00000000 00:67 40151952                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_python.so
+7f9298908000-7f9298b08000 ---p 00d37000 00:67 40151952                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_python.so
+7f9298b08000-7f9298b1f000 r--p 00d37000 00:67 40151952                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_python.so
+7f9298b1f000-7f9298b44000 rw-p 00d4e000 00:67 40151952                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_python.so
+7f9298b44000-7f9298b9f000 rw-p 00000000 00:00 0 
+7f9298b9f000-7f929bbe7000 r-xp 00000000 00:67 40049423                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcurand.so.10.2.1.245
+7f929bbe7000-7f929bde7000 ---p 03048000 00:67 40049423                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcurand.so.10.2.1.245
+7f929bde7000-7f929d1b5000 rw-p 03048000 00:67 40049423                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcurand.so.10.2.1.245
+7f929d1b5000-7f929d70b000 rw-p 00000000 00:00 0 
+7f929d70b000-7f929d70c000 rw-p 04417000 00:67 40049423                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcurand.so.10.2.1.245
+7f929d70c000-7f929d8f7000 r--p 00000000 00:67 40153176                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_core.so.1
+7f929d8f7000-7f92a1063000 r-xp 001eb000 00:67 40153176                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_core.so.1
+7f92a1063000-7f92a1b19000 r--p 03957000 00:67 40153176                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_core.so.1
+7f92a1b19000-7f92a1b1a000 ---p 0440d000 00:67 40153176                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_core.so.1
+7f92a1b1a000-7f92a1b21000 r--p 0440d000 00:67 40153176                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_core.so.1
+7f92a1b21000-7f92a1b51000 rw-p 04414000 00:67 40153176                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_core.so.1
+7f92a1b51000-7f92a1b7a000 rw-p 00000000 00:00 0 
+7f92a1b7a000-7f92a1d4a000 r--p 00000000 00:67 40153165                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_gnu_thread.so.1
+7f92a1d4a000-7f92a3514000 r-xp 001d0000 00:67 40153165                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_gnu_thread.so.1
+7f92a3514000-7f92a36b4000 r--p 0199a000 00:67 40153165                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_gnu_thread.so.1
+7f92a36b4000-7f92a36b8000 r--p 01b39000 00:67 40153165                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_gnu_thread.so.1
+7f92a36b8000-7f92a3705000 rw-p 01b3d000 00:67 40153165                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_gnu_thread.so.1
+7f92a3705000-7f92a5705000 rw-p 00000000 00:00 0 
+7f92a5707000-7f92a5708000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92a5708000-7f92a5709000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92a5709000-7f92a570c000 r--p 00000000 00:67 39905555                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
+7f92a570c000-7f92a570d000 r-xp 00003000 00:67 39905555                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
+7f92a570d000-7f92a570e000 r--p 00004000 00:67 39905555                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
+7f92a570e000-7f92a570f000 r--p 00004000 00:67 39905555                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
+7f92a570f000-7f92a5711000 rw-p 00005000 00:67 39905555                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
+7f92a5711000-7f92a5712000 r--p 00000000 00:67 39905511                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_contextvars.cpython-37m-x86_64-linux-gnu.so
+7f92a5712000-7f92a5713000 r-xp 00001000 00:67 39905511                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_contextvars.cpython-37m-x86_64-linux-gnu.so
+7f92a5713000-7f92a5714000 r--p 00002000 00:67 39905511                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_contextvars.cpython-37m-x86_64-linux-gnu.so
+7f92a5714000-7f92a5715000 r--p 00002000 00:67 39905511                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_contextvars.cpython-37m-x86_64-linux-gnu.so
+7f92a5715000-7f92a5716000 rw-p 00003000 00:67 39905511                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_contextvars.cpython-37m-x86_64-linux-gnu.so
+7f92a5716000-7f92a5720000 r--p 00000000 00:67 39899839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
+7f92a5720000-7f92a572b000 r-xp 0000a000 00:67 39899839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
+7f92a572b000-7f92a5731000 r--p 00015000 00:67 39899839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
+7f92a5731000-7f92a5732000 ---p 0001b000 00:67 39899839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
+7f92a5732000-7f92a5733000 r--p 0001b000 00:67 39899839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
+7f92a5733000-7f92a5738000 rw-p 0001c000 00:67 39899839                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
+7f92a5738000-7f92a5838000 rw-p 00000000 00:00 0 
+7f92a5838000-7f92a58ae000 r-xp 00000000 00:67 40151951                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10.so
+7f92a58ae000-7f92a5aad000 ---p 00076000 00:67 40151951                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10.so
+7f92a5aad000-7f92a5aaf000 r--p 00075000 00:67 40151951                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10.so
+7f92a5aaf000-7f92a5ab1000 rw-p 00077000 00:67 40151951                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10.so
+7f92a5ab1000-7f92a5ab2000 rw-p 00000000 00:00 0 
+7f92a5ab2000-7f92a5ac3000 rw-p 0009e000 00:67 40151951                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10.so
+7f92a5ac3000-7f92a5aed000 r-xp 00000000 00:67 40151949                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10_cuda.so
+7f92a5aed000-7f92a5cec000 ---p 0002a000 00:67 40151949                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10_cuda.so
+7f92a5cec000-7f92a5ced000 r--p 00029000 00:67 40151949                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10_cuda.so
+7f92a5ced000-7f92a5cf2000 rw-p 0002a000 00:67 40151949                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libc10_cuda.so
+7f92a5cf2000-7f92a5d05000 r-xp 00000000 00:67 40151948                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch.so
+7f92a5d05000-7f92a5f04000 ---p 00013000 00:67 40151948                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch.so
+7f92a5f04000-7f92a5f05000 r--p 00012000 00:67 40151948                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch.so
+7f92a5f05000-7f92a5f06000 rw-p 00013000 00:67 40151948                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch.so
+7f92a5f06000-7f92a7f06000 rw-p 00000000 00:00 0 
+7f92a7f06000-7f92a7f07000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92a7f07000-7f92a7f08000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92a7f08000-7f92a7f09000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92a7f09000-7f92a7f0a000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92a7f0a000-7f92a7f0c000 r--p 00000000 00:67 39905523                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
+7f92a7f0c000-7f92a7f0d000 r-xp 00002000 00:67 39905523                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
+7f92a7f0d000-7f92a7f0e000 r--p 00003000 00:67 39905523                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
+7f92a7f0e000-7f92a7f0f000 r--p 00003000 00:67 39905523                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
+7f92a7f0f000-7f92a7f10000 rw-p 00004000 00:67 39905523                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
+7f92a7f10000-7f92a7f14000 r--p 00000000 00:67 39905540                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
+7f92a7f14000-7f92a7f1b000 r-xp 00004000 00:67 39905540                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
+7f92a7f1b000-7f92a7f1e000 r--p 0000b000 00:67 39905540                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
+7f92a7f1e000-7f92a7f1f000 ---p 0000e000 00:67 39905540                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
+7f92a7f1f000-7f92a7f20000 r--p 0000e000 00:67 39905540                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
+7f92a7f20000-7f92a7f23000 rw-p 0000f000 00:67 39905540                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
+7f92a7f23000-7f92a7f28000 r--p 00000000 00:67 39905533                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_socket.cpython-37m-x86_64-linux-gnu.so
+7f92a7f28000-7f92a7f36000 r-xp 00005000 00:67 39905533                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_socket.cpython-37m-x86_64-linux-gnu.so
+7f92a7f36000-7f92a7f3b000 r--p 00013000 00:67 39905533                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_socket.cpython-37m-x86_64-linux-gnu.so
+7f92a7f3b000-7f92a7f3c000 r--p 00017000 00:67 39905533                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_socket.cpython-37m-x86_64-linux-gnu.so
+7f92a7f3c000-7f92a7f41000 rw-p 00018000 00:67 39905533                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_socket.cpython-37m-x86_64-linux-gnu.so
+7f92a7f41000-7f92a80c1000 rw-p 00000000 00:00 0 
+7f92a80c1000-7f92a80c8000 r-xp 00000000 00:67 40151946                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libshm.so
+7f92a80c8000-7f92a82c7000 ---p 00007000 00:67 40151946                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libshm.so
+7f92a82c7000-7f92a82c8000 r--p 00006000 00:67 40151946                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libshm.so
+7f92a82c8000-7f92a82c9000 rw-p 00007000 00:67 40151946                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libshm.so
+7f92a82c9000-7f92a836a000 r--p 00000000 00:67 39899854                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libstdc++.so.6.0.29
+7f92a836a000-7f92a845f000 r-xp 000a1000 00:67 39899854                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libstdc++.so.6.0.29
+7f92a845f000-7f92a84cb000 r--p 00196000 00:67 39899854                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libstdc++.so.6.0.29
+7f92a84cb000-7f92a84cc000 ---p 00202000 00:67 39899854                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libstdc++.so.6.0.29
+7f92a84cc000-7f92a84d7000 r--p 00202000 00:67 39899854                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libstdc++.so.6.0.29
+7f92a84d7000-7f92a84da000 rw-p 0020d000 00:67 39899854                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libstdc++.so.6.0.29
+7f92a84da000-7f92a84dd000 rw-p 00000000 00:00 0 
+7f92a84dd000-7f92a84e5000 r-xp 00000000 00:67 40049375                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libnvToolsExt.so.1.0.0
+7f92a84e5000-7f92a86e5000 ---p 00008000 00:67 40049375                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libnvToolsExt.so.1.0.0
+7f92a86e5000-7f92a86e7000 rw-p 00008000 00:67 40049375                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libnvToolsExt.so.1.0.0
+7f92a86e7000-7f92a8761000 r-xp 00000000 00:67 40049363                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcudart.so.11.0.221
+7f92a8761000-7f92a8961000 ---p 0007a000 00:67 40049363                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcudart.so.11.0.221
+7f92a8961000-7f92a8968000 rw-p 0007a000 00:67 40049363                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcudart.so.11.0.221
+7f92a8968000-7f92a8acb000 r--p 00000000 00:67 40153156                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_intel_lp64.so.1
+7f92a8acb000-7f92a91cc000 r-xp 00163000 00:67 40153156                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_intel_lp64.so.1
+7f92a91cc000-7f92a94eb000 r--p 00864000 00:67 40153156                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_intel_lp64.so.1
+7f92a94eb000-7f92a94ed000 r--p 00b82000 00:67 40153156                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_intel_lp64.so.1
+7f92a94ed000-7f92a9500000 rw-p 00b84000 00:67 40153156                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libmkl_intel_lp64.so.1
+7f92a9500000-7f92a9507000 rw-p 00000000 00:00 0 
+7f92a9507000-7f92a9508000 r-xp 00000000 00:67 40151944                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_global_deps.so
+7f92a9508000-7f92a9707000 ---p 00001000 00:67 40151944                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_global_deps.so
+7f92a9707000-7f92a9708000 r--p 00000000 00:67 40151944                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_global_deps.so
+7f92a9708000-7f92a9709000 rw-p 00001000 00:67 40151944                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/lib/libtorch_global_deps.so
+7f92a9709000-7f92ab709000 rw-p 00000000 00:00 0 
+7f92ab709000-7f92ab70a000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92ab70a000-7f92ab70b000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92ab70b000-7f92ab70c000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92ab70c000-7f92ab70d000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92ab70d000-7f92ab84d000 rw-p 00000000 00:00 0 
+7f92ab84d000-7f92ab84e000 r--p 00000000 00:67 40055162                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/_C.cpython-37m-x86_64-linux-gnu.so
+7f92ab84e000-7f92ab84f000 r-xp 00001000 00:67 40055162                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/_C.cpython-37m-x86_64-linux-gnu.so
+7f92ab84f000-7f92ab850000 r--p 00002000 00:67 40055162                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/_C.cpython-37m-x86_64-linux-gnu.so
+7f92ab850000-7f92ab851000 r--p 00002000 00:67 40055162                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/_C.cpython-37m-x86_64-linux-gnu.so
+7f92ab851000-7f92ab852000 rw-p 00003000 00:67 40055162                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/_C.cpython-37m-x86_64-linux-gnu.so
+7f92ab852000-7f92ab85d000 r--p 00000000 00:67 39899857                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgomp.so.1.0.0
+7f92ab85d000-7f92ab888000 r-xp 0000b000 00:67 39899857                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgomp.so.1.0.0
+7f92ab888000-7f92ab894000 r--p 00036000 00:67 39899857                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgomp.so.1.0.0
+7f92ab894000-7f92ab895000 r--p 00041000 00:67 39899857                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgomp.so.1.0.0
+7f92ab895000-7f92ab896000 rw-p 00042000 00:67 39899857                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgomp.so.1.0.0
+7f92ab896000-7f92ab89a000 r--p 00000000 00:67 39902871                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/liblzma.so.5.2.10
+7f92ab89a000-7f92ab8b1000 r-xp 00004000 00:67 39902871                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/liblzma.so.5.2.10
+7f92ab8b1000-7f92ab8bc000 r--p 0001b000 00:67 39902871                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/liblzma.so.5.2.10
+7f92ab8bc000-7f92ab8bd000 ---p 00026000 00:67 39902871                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/liblzma.so.5.2.10
+7f92ab8bd000-7f92ab8be000 r--p 00026000 00:67 39902871                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/liblzma.so.5.2.10
+7f92ab8be000-7f92ab8bf000 rw-p 00027000 00:67 39902871                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/liblzma.so.5.2.10
+7f92ab8bf000-7f92ab8c2000 r--p 00000000 00:67 39899837                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_lzma.cpython-37m-x86_64-linux-gnu.so
+7f92ab8c2000-7f92ab8c6000 r-xp 00003000 00:67 39899837                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_lzma.cpython-37m-x86_64-linux-gnu.so
+7f92ab8c6000-7f92ab8c8000 r--p 00007000 00:67 39899837                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_lzma.cpython-37m-x86_64-linux-gnu.so
+7f92ab8c8000-7f92ab8c9000 r--p 00008000 00:67 39899837                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_lzma.cpython-37m-x86_64-linux-gnu.so
+7f92ab8c9000-7f92ab8cb000 rw-p 00009000 00:67 39899837                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_lzma.cpython-37m-x86_64-linux-gnu.so
+7f92ab8cb000-7f92ab8ce000 r--p 00000000 00:67 39899832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
+7f92ab8ce000-7f92ab8dd000 r-xp 00003000 00:67 39899832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
+7f92ab8dd000-7f92ab8df000 r--p 00012000 00:67 39899832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
+7f92ab8df000-7f92ab8e0000 ---p 00014000 00:67 39899832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
+7f92ab8e0000-7f92ab8e1000 r--p 00014000 00:67 39899832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
+7f92ab8e1000-7f92ab8e3000 rw-p 00015000 00:67 39899832                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
+7f92ab8e3000-7f92ab8e5000 r--p 00000000 00:67 39899843                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
+7f92ab8e5000-7f92ab8e9000 r-xp 00002000 00:67 39899843                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
+7f92ab8e9000-7f92ab8ea000 r--p 00006000 00:67 39899843                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
+7f92ab8ea000-7f92ab8eb000 ---p 00007000 00:67 39899843                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
+7f92ab8eb000-7f92ab8ec000 r--p 00007000 00:67 39899843                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
+7f92ab8ec000-7f92ab8ee000 rw-p 00008000 00:67 39899843                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
+7f92ab8ee000-7f92aba2e000 rw-p 00000000 00:00 0 
+7f92aba2e000-7f92abad4000 r-xp 00000000 00:67 40013133                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_generator.cpython-37m-x86_64-linux-gnu.so
+7f92abad4000-7f92abcd4000 ---p 000a6000 00:67 40013133                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_generator.cpython-37m-x86_64-linux-gnu.so
+7f92abcd4000-7f92abcd5000 r--p 000a6000 00:67 40013133                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_generator.cpython-37m-x86_64-linux-gnu.so
+7f92abcd5000-7f92abcfb000 rw-p 000a7000 00:67 40013133                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_generator.cpython-37m-x86_64-linux-gnu.so
+7f92abcfb000-7f92abcfd000 rw-p 00000000 00:00 0 
+7f92abcfd000-7f92abd09000 r-xp 00000000 00:67 40013117                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_sfc64.cpython-37m-x86_64-linux-gnu.so
+7f92abd09000-7f92abf08000 ---p 0000c000 00:67 40013117                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_sfc64.cpython-37m-x86_64-linux-gnu.so
+7f92abf08000-7f92abf09000 r--p 0000b000 00:67 40013117                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_sfc64.cpython-37m-x86_64-linux-gnu.so
+7f92abf09000-7f92abf0a000 rw-p 0000c000 00:67 40013117                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_sfc64.cpython-37m-x86_64-linux-gnu.so
+7f92abf0a000-7f92aff0a000 rw-p 00000000 00:00 0 
+7f92aff0a000-7f92aff0b000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92aff0b000-7f92aff0d000 r--p 00000000 00:67 39905544                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/grp.cpython-37m-x86_64-linux-gnu.so
+7f92aff0d000-7f92aff0e000 r-xp 00002000 00:67 39905544                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/grp.cpython-37m-x86_64-linux-gnu.so
+7f92aff0e000-7f92aff0f000 r--p 00003000 00:67 39905544                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/grp.cpython-37m-x86_64-linux-gnu.so
+7f92aff0f000-7f92aff10000 r--p 00003000 00:67 39905544                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/grp.cpython-37m-x86_64-linux-gnu.so
+7f92aff10000-7f92aff11000 rw-p 00004000 00:67 39905544                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/grp.cpython-37m-x86_64-linux-gnu.so
+7f92aff11000-7f92aff13000 r--p 00000000 00:67 39905527                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_queue.cpython-37m-x86_64-linux-gnu.so
+7f92aff13000-7f92aff14000 r-xp 00002000 00:67 39905527                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_queue.cpython-37m-x86_64-linux-gnu.so
+7f92aff14000-7f92aff15000 r--p 00003000 00:67 39905527                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_queue.cpython-37m-x86_64-linux-gnu.so
+7f92aff15000-7f92aff16000 r--p 00003000 00:67 39905527                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_queue.cpython-37m-x86_64-linux-gnu.so
+7f92aff16000-7f92aff17000 rw-p 00004000 00:67 39905527                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_queue.cpython-37m-x86_64-linux-gnu.so
+7f92aff17000-7f92aff18000 r--p 00000000 00:67 39905524                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_opcode.cpython-37m-x86_64-linux-gnu.so
+7f92aff18000-7f92aff19000 r-xp 00001000 00:67 39905524                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_opcode.cpython-37m-x86_64-linux-gnu.so
+7f92aff19000-7f92aff1a000 r--p 00002000 00:67 39905524                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_opcode.cpython-37m-x86_64-linux-gnu.so
+7f92aff1a000-7f92aff1b000 r--p 00002000 00:67 39905524                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_opcode.cpython-37m-x86_64-linux-gnu.so
+7f92aff1b000-7f92aff1c000 rw-p 00003000 00:67 39905524                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_opcode.cpython-37m-x86_64-linux-gnu.so
+7f92aff1c000-7f92aff31000 r-xp 00000000 00:67 40013129                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_pcg64.cpython-37m-x86_64-linux-gnu.so
+7f92aff31000-7f92b0130000 ---p 00015000 00:67 40013129                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_pcg64.cpython-37m-x86_64-linux-gnu.so
+7f92b0130000-7f92b0131000 r--p 00014000 00:67 40013129                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_pcg64.cpython-37m-x86_64-linux-gnu.so
+7f92b0131000-7f92b0134000 rw-p 00015000 00:67 40013129                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_pcg64.cpython-37m-x86_64-linux-gnu.so
+7f92b0134000-7f92b0146000 r-xp 00000000 00:67 40013131                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_philox.cpython-37m-x86_64-linux-gnu.so
+7f92b0146000-7f92b0346000 ---p 00012000 00:67 40013131                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_philox.cpython-37m-x86_64-linux-gnu.so
+7f92b0346000-7f92b0347000 r--p 00012000 00:67 40013131                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_philox.cpython-37m-x86_64-linux-gnu.so
+7f92b0347000-7f92b0349000 rw-p 00013000 00:67 40013131                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_philox.cpython-37m-x86_64-linux-gnu.so
+7f92b0349000-7f92b035f000 r-xp 00000000 00:67 40013114                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_mt19937.cpython-37m-x86_64-linux-gnu.so
+7f92b035f000-7f92b055e000 ---p 00016000 00:67 40013114                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_mt19937.cpython-37m-x86_64-linux-gnu.so
+7f92b055e000-7f92b055f000 r--p 00015000 00:67 40013114                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_mt19937.cpython-37m-x86_64-linux-gnu.so
+7f92b055f000-7f92b0561000 rw-p 00016000 00:67 40013114                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_mt19937.cpython-37m-x86_64-linux-gnu.so
+7f92b0561000-7f92b05b5000 r-xp 00000000 00:67 40013111                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_bounded_integers.cpython-37m-x86_64-linux-gnu.so
+7f92b05b5000-7f92b07b5000 ---p 00054000 00:67 40013111                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_bounded_integers.cpython-37m-x86_64-linux-gnu.so
+7f92b07b5000-7f92b07b6000 r--p 00054000 00:67 40013111                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_bounded_integers.cpython-37m-x86_64-linux-gnu.so
+7f92b07b6000-7f92b07b8000 rw-p 00055000 00:67 40013111                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_bounded_integers.cpython-37m-x86_64-linux-gnu.so
+7f92b07b8000-7f92b07b9000 rw-p 00000000 00:00 0 
+7f92b07b9000-7f92b07bb000 r--p 00000000 00:67 39899841                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/binascii.cpython-37m-x86_64-linux-gnu.so
+7f92b07bb000-7f92b07be000 r-xp 00002000 00:67 39899841                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/binascii.cpython-37m-x86_64-linux-gnu.so
+7f92b07be000-7f92b07c0000 r--p 00005000 00:67 39899841                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/binascii.cpython-37m-x86_64-linux-gnu.so
+7f92b07c0000-7f92b07c1000 r--p 00006000 00:67 39899841                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/binascii.cpython-37m-x86_64-linux-gnu.so
+7f92b07c1000-7f92b07c2000 rw-p 00007000 00:67 39899841                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/binascii.cpython-37m-x86_64-linux-gnu.so
+7f92b07c2000-7f92b07fa000 r-xp 00000000 00:67 40013123                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_common.cpython-37m-x86_64-linux-gnu.so
+7f92b07fa000-7f92b09f9000 ---p 00038000 00:67 40013123                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_common.cpython-37m-x86_64-linux-gnu.so
+7f92b09f9000-7f92b09fa000 r--p 00037000 00:67 40013123                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_common.cpython-37m-x86_64-linux-gnu.so
+7f92b09fa000-7f92b09fc000 rw-p 00038000 00:67 40013123                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/_common.cpython-37m-x86_64-linux-gnu.so
+7f92b09fc000-7f92b0a3d000 rw-p 00000000 00:00 0 
+7f92b0a3d000-7f92b0a62000 r-xp 00000000 00:67 40013126                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/bit_generator.cpython-37m-x86_64-linux-gnu.so
+7f92b0a62000-7f92b0c62000 ---p 00025000 00:67 40013126                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/bit_generator.cpython-37m-x86_64-linux-gnu.so
+7f92b0c62000-7f92b0c63000 r--p 00025000 00:67 40013126                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/bit_generator.cpython-37m-x86_64-linux-gnu.so
+7f92b0c63000-7f92b0c68000 rw-p 00026000 00:67 40013126                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/bit_generator.cpython-37m-x86_64-linux-gnu.so
+7f92b0c68000-7f92b0cea000 r-xp 00000000 00:67 40013115                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/mtrand.cpython-37m-x86_64-linux-gnu.so
+7f92b0cea000-7f92b0ee9000 ---p 00082000 00:67 40013115                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/mtrand.cpython-37m-x86_64-linux-gnu.so
+7f92b0ee9000-7f92b0eea000 r--p 00081000 00:67 40013115                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/mtrand.cpython-37m-x86_64-linux-gnu.so
+7f92b0eea000-7f92b0f11000 rw-p 00082000 00:67 40013115                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/random/mtrand.cpython-37m-x86_64-linux-gnu.so
+7f92b0f11000-7f92b0f52000 rw-p 00000000 00:00 0 
+7f92b0f52000-7f92b0f67000 r-xp 00000000 00:67 40013383                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/fft/_pocketfft_internal.cpython-37m-x86_64-linux-gnu.so
+7f92b0f67000-7f92b1166000 ---p 00015000 00:67 40013383                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/fft/_pocketfft_internal.cpython-37m-x86_64-linux-gnu.so
+7f92b1166000-7f92b1167000 r--p 00014000 00:67 40013383                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/fft/_pocketfft_internal.cpython-37m-x86_64-linux-gnu.so
+7f92b1167000-7f92b1168000 rw-p 00015000 00:67 40013383                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/fft/_pocketfft_internal.cpython-37m-x86_64-linux-gnu.so
+7f92b1168000-7f92b1228000 rw-p 00000000 00:00 0 
+7f92b1228000-7f92b1252000 r-xp 00000000 00:67 40027172                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/_umath_linalg.cpython-37m-x86_64-linux-gnu.so
+7f92b1252000-7f92b1451000 ---p 0002a000 00:67 40027172                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/_umath_linalg.cpython-37m-x86_64-linux-gnu.so
+7f92b1451000-7f92b1452000 r--p 00029000 00:67 40027172                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/_umath_linalg.cpython-37m-x86_64-linux-gnu.so
+7f92b1452000-7f92b1453000 rw-p 0002a000 00:67 40027172                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/_umath_linalg.cpython-37m-x86_64-linux-gnu.so
+7f92b1453000-7f92b1454000 rw-p 00000000 00:00 0 
+7f92b1454000-7f92b1458000 rw-p 00031000 00:67 40027172                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/_umath_linalg.cpython-37m-x86_64-linux-gnu.so
+7f92b1458000-7f92b145b000 r-xp 00000000 00:67 40027173                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/lapack_lite.cpython-37m-x86_64-linux-gnu.so
+7f92b145b000-7f92b165a000 ---p 00003000 00:67 40027173                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/lapack_lite.cpython-37m-x86_64-linux-gnu.so
+7f92b165a000-7f92b165b000 r--p 00002000 00:67 40027173                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/lapack_lite.cpython-37m-x86_64-linux-gnu.so
+7f92b165b000-7f92b165c000 rw-p 00003000 00:67 40027173                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/lapack_lite.cpython-37m-x86_64-linux-gnu.so
+7f92b165c000-7f92b165e000 rw-p 00005000 00:67 40027173                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/linalg/lapack_lite.cpython-37m-x86_64-linux-gnu.so
+7f92b165e000-7f92b16de000 rw-p 00000000 00:00 0 
+7f92b16de000-7f92b16e0000 r--p 00000000 00:67 39899891                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libffi.so.6.0.4
+7f92b16e0000-7f92b16e5000 r-xp 00002000 00:67 39899891                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libffi.so.6.0.4
+7f92b16e5000-7f92b16e6000 r--p 00007000 00:67 39899891                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libffi.so.6.0.4
+7f92b16e6000-7f92b16e7000 r--p 00007000 00:67 39899891                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libffi.so.6.0.4
+7f92b16e7000-7f92b16e8000 rw-p 00008000 00:67 39899891                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libffi.so.6.0.4
+7f92b16e8000-7f92b16f0000 r--p 00000000 00:67 39899833                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ctypes.cpython-37m-x86_64-linux-gnu.so
+7f92b16f0000-7f92b1701000 r-xp 00008000 00:67 39899833                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ctypes.cpython-37m-x86_64-linux-gnu.so
+7f92b1701000-7f92b1708000 r--p 00019000 00:67 39899833                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ctypes.cpython-37m-x86_64-linux-gnu.so
+7f92b1708000-7f92b1709000 r--p 0001f000 00:67 39899833                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ctypes.cpython-37m-x86_64-linux-gnu.so
+7f92b1709000-7f92b170d000 rw-p 00020000 00:67 39899833                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_ctypes.cpython-37m-x86_64-linux-gnu.so
+7f92b170d000-7f92b1710000 r--p 00000000 00:67 39899867                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgcc_s.so.1
+7f92b1710000-7f92b1722000 r-xp 00003000 00:67 39899867                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgcc_s.so.1
+7f92b1722000-7f92b1725000 r--p 00015000 00:67 39899867                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgcc_s.so.1
+7f92b1725000-7f92b1726000 r--p 00017000 00:67 39899867                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgcc_s.so.1
+7f92b1726000-7f92b1727000 rw-p 00018000 00:67 39899867                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libgcc_s.so.1
+7f92b1727000-7f92b172a000 r--p 00000000 00:67 39902974                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libz.so.1.2.13
+7f92b172a000-7f92b173c000 r-xp 00003000 00:67 39902974                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libz.so.1.2.13
+7f92b173c000-7f92b1743000 r--p 00015000 00:67 39902974                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libz.so.1.2.13
+7f92b1743000-7f92b1744000 r--p 0001b000 00:67 39902974                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libz.so.1.2.13
+7f92b1744000-7f92b1745000 rw-p 0001c000 00:67 39902974                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libz.so.1.2.13
+7f92b1745000-7f92b1784000 r-xp 00000000 00:67 39911028                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f92b1784000-7f92b1983000 ---p 0003f000 00:67 39911028                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f92b1983000-7f92b1984000 rw-p 0003e000 00:67 39911028                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f92b1984000-7f92b1985000 rw-p 00040000 00:67 39911028                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libquadmath-2d0c479f.so.0.0.0
+7f92b1985000-7f92b1b8d000 r-xp 00000000 00:67 39907583                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libgfortran-2e0d59d6.so.5.0.0
+7f92b1b8d000-7f92b1d8c000 ---p 00208000 00:67 39907583                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libgfortran-2e0d59d6.so.5.0.0
+7f92b1d8c000-7f92b1da4000 rw-p 00207000 00:67 39907583                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libgfortran-2e0d59d6.so.5.0.0
+7f92b1da4000-7f92b3a51000 r-xp 00000000 00:67 39911029                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libopenblasp-r0-2d23e62b.3.17.so
+7f92b3a51000-7f92b3c51000 ---p 01cad000 00:67 39911029                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libopenblasp-r0-2d23e62b.3.17.so
+7f92b3c51000-7f92b3c57000 r--p 01cad000 00:67 39911029                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libopenblasp-r0-2d23e62b.3.17.so
+7f92b3c57000-7f92b3c6d000 rw-p 01cb3000 00:67 39911029                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libopenblasp-r0-2d23e62b.3.17.so
+7f92b3c6d000-7f92b3c79000 rw-p 00000000 00:00 0 
+7f92b3c79000-7f92b3d01000 rw-p 01db2000 00:67 39911029                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy.libs/libopenblasp-r0-2d23e62b.3.17.so
+7f92b3d01000-7f92b40d7000 r-xp 00000000 00:67 40013434                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_umath.cpython-37m-x86_64-linux-gnu.so
+7f92b40d7000-7f92b42d7000 ---p 003d6000 00:67 40013434                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_umath.cpython-37m-x86_64-linux-gnu.so
+7f92b42d7000-7f92b42d9000 r--p 003d6000 00:67 40013434                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_umath.cpython-37m-x86_64-linux-gnu.so
+7f92b42d9000-7f92b42f9000 rw-p 003d8000 00:67 40013434                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_umath.cpython-37m-x86_64-linux-gnu.so
+7f92b42f9000-7f92b431a000 rw-p 00000000 00:00 0 
+7f92b431a000-7f92b4321000 rw-p 00447000 00:67 40013434                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/numpy/core/_multiarray_umath.cpython-37m-x86_64-linux-gnu.so
+7f92b4321000-7f92b4361000 rw-p 00000000 00:00 0 
+7f92b4361000-7f92b43dc000 r--p 00000000 00:67 39899798                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcrypto.so.1.1
+7f92b43dc000-7f92b4571000 r-xp 0007b000 00:67 39899798                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcrypto.so.1.1
+7f92b4571000-7f92b45fe000 r--p 00210000 00:67 39899798                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcrypto.so.1.1
+7f92b45fe000-7f92b45ff000 ---p 0029d000 00:67 39899798                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcrypto.so.1.1
+7f92b45ff000-7f92b462a000 r--p 0029d000 00:67 39899798                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcrypto.so.1.1
+7f92b462a000-7f92b462c000 rw-p 002c8000 00:67 39899798                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/libcrypto.so.1.1
+7f92b462c000-7f92b4670000 rw-p 00000000 00:00 0 
+7f92b4670000-7f92b4672000 r--p 00000000 00:67 39905552                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/select.cpython-37m-x86_64-linux-gnu.so
+7f92b4672000-7f92b4676000 r-xp 00002000 00:67 39905552                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/select.cpython-37m-x86_64-linux-gnu.so
+7f92b4676000-7f92b4677000 r--p 00006000 00:67 39905552                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/select.cpython-37m-x86_64-linux-gnu.so
+7f92b4677000-7f92b4678000 r--p 00006000 00:67 39905552                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/select.cpython-37m-x86_64-linux-gnu.so
+7f92b4678000-7f92b467a000 rw-p 00007000 00:67 39905552                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/select.cpython-37m-x86_64-linux-gnu.so
+7f92b467a000-7f92b467c000 r--p 00000000 00:67 39905526                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
+7f92b467c000-7f92b467e000 r-xp 00002000 00:67 39905526                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
+7f92b467e000-7f92b467f000 r--p 00004000 00:67 39905526                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
+7f92b467f000-7f92b4680000 r--p 00004000 00:67 39905526                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
+7f92b4680000-7f92b4681000 rw-p 00005000 00:67 39905526                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
+7f92b4681000-7f92b4683000 r--p 00000000 00:67 39905519                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_json.cpython-37m-x86_64-linux-gnu.so
+7f92b4683000-7f92b4691000 r-xp 00002000 00:67 39905519                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_json.cpython-37m-x86_64-linux-gnu.so
+7f92b4691000-7f92b4693000 r--p 00010000 00:67 39905519                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_json.cpython-37m-x86_64-linux-gnu.so
+7f92b4693000-7f92b4694000 r--p 00011000 00:67 39905519                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_json.cpython-37m-x86_64-linux-gnu.so
+7f92b4694000-7f92b4695000 rw-p 00012000 00:67 39905519                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_json.cpython-37m-x86_64-linux-gnu.so
+7f92b4695000-7f92b4698000 r--p 00000000 00:67 39905531                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
+7f92b4698000-7f92b46ab000 r-xp 00003000 00:67 39905531                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
+7f92b46ab000-7f92b46ac000 r--p 00016000 00:67 39905531                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
+7f92b46ac000-7f92b46ad000 ---p 00017000 00:67 39905531                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
+7f92b46ad000-7f92b46ae000 r--p 00017000 00:67 39905531                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
+7f92b46ae000-7f92b46b0000 rw-p 00018000 00:67 39905531                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
+7f92b46b0000-7f92b4931000 rw-p 00000000 00:00 0 
+7f92b4a31000-7f92b4a32000 rw-p 00000000 00:00 0 
+7f92b4a32000-7f92b4d0a000 r--p 00000000 08:06 1578612                    /usr/lib/locale/locale-archive
+7f92b4d0a000-7f92b4e12000 r-xp 00000000 08:06 4723176                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f92b4e12000-7f92b5011000 ---p 00108000 08:06 4723176                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f92b5011000-7f92b5012000 r--p 00107000 08:06 4723176                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f92b5012000-7f92b5013000 rw-p 00108000 08:06 4723176                    /lib/x86_64-linux-gnu/libm-2.23.so
+7f92b5013000-7f92b501a000 r-xp 00000000 08:06 4723363                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f92b501a000-7f92b5219000 ---p 00007000 08:06 4723363                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f92b5219000-7f92b521a000 r--p 00006000 08:06 4723363                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f92b521a000-7f92b521b000 rw-p 00007000 08:06 4723363                    /lib/x86_64-linux-gnu/librt-2.23.so
+7f92b521b000-7f92b521d000 r-xp 00000000 08:06 4723249                    /lib/x86_64-linux-gnu/libutil-2.23.so
+7f92b521d000-7f92b541c000 ---p 00002000 08:06 4723249                    /lib/x86_64-linux-gnu/libutil-2.23.so
+7f92b541c000-7f92b541d000 r--p 00001000 08:06 4723249                    /lib/x86_64-linux-gnu/libutil-2.23.so
+7f92b541d000-7f92b541e000 rw-p 00002000 08:06 4723249                    /lib/x86_64-linux-gnu/libutil-2.23.so
+7f92b541e000-7f92b5421000 r-xp 00000000 08:06 4723202                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f92b5421000-7f92b5620000 ---p 00003000 08:06 4723202                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f92b5620000-7f92b5621000 r--p 00002000 08:06 4723202                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f92b5621000-7f92b5622000 rw-p 00003000 08:06 4723202                    /lib/x86_64-linux-gnu/libdl-2.23.so
+7f92b5622000-7f92b57e2000 r-xp 00000000 08:06 4723200                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f92b57e2000-7f92b59e2000 ---p 001c0000 08:06 4723200                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f92b59e2000-7f92b59e6000 r--p 001c0000 08:06 4723200                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f92b59e6000-7f92b59e8000 rw-p 001c4000 08:06 4723200                    /lib/x86_64-linux-gnu/libc-2.23.so
+7f92b59e8000-7f92b59ec000 rw-p 00000000 00:00 0 
+7f92b59ec000-7f92b5a04000 r-xp 00000000 08:06 4723181                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f92b5a04000-7f92b5c03000 ---p 00018000 08:06 4723181                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f92b5c03000-7f92b5c04000 r--p 00017000 08:06 4723181                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f92b5c04000-7f92b5c05000 rw-p 00018000 08:06 4723181                    /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f92b5c05000-7f92b5c09000 rw-p 00000000 00:00 0 
+7f92b5c09000-7f92b5c2f000 r-xp 00000000 08:06 4723180                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f92b5c2f000-7f92b5c30000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92b5c30000-7f92b5c31000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92b5c31000-7f92b5c32000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92b5c32000-7f92b5c33000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92b5c33000-7f92b5c36000 r--p 00000000 00:67 39905534                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
+7f92b5c36000-7f92b5c3b000 r-xp 00003000 00:67 39905534                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
+7f92b5c3b000-7f92b5c3d000 r--p 00008000 00:67 39905534                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
+7f92b5c3d000-7f92b5c3e000 ---p 0000a000 00:67 39905534                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
+7f92b5c3e000-7f92b5c3f000 r--p 0000a000 00:67 39905534                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
+7f92b5c3f000-7f92b5c41000 rw-p 0000b000 00:67 39905534                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
+7f92b5c41000-7f92b5c81000 rw-p 00000000 00:00 0 
+7f92b5c81000-7f92b5c82000 rw-s 00000000 00:06 595                        /dev/nvidiactl
+7f92b5c82000-7f92b5c83000 rwxp 00000000 00:00 0 
+7f92b5c83000-7f92b5c85000 r--p 00000000 00:67 39905528                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_random.cpython-37m-x86_64-linux-gnu.so
+7f92b5c85000-7f92b5c87000 r-xp 00002000 00:67 39905528                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_random.cpython-37m-x86_64-linux-gnu.so
+7f92b5c87000-7f92b5c88000 r--p 00004000 00:67 39905528                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_random.cpython-37m-x86_64-linux-gnu.so
+7f92b5c88000-7f92b5c89000 r--p 00004000 00:67 39905528                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_random.cpython-37m-x86_64-linux-gnu.so
+7f92b5c89000-7f92b5c8a000 rw-p 00005000 00:67 39905528                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_random.cpython-37m-x86_64-linux-gnu.so
+7f92b5c8a000-7f92b5c8b000 r--p 00000000 00:67 39905503                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
+7f92b5c8b000-7f92b5c8c000 r-xp 00001000 00:67 39905503                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
+7f92b5c8c000-7f92b5c8d000 r--p 00002000 00:67 39905503                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
+7f92b5c8d000-7f92b5c8e000 r--p 00002000 00:67 39905503                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
+7f92b5c8e000-7f92b5c8f000 rw-p 00003000 00:67 39905503                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
+7f92b5c8f000-7f92b5c91000 r--p 00000000 00:67 39905504                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
+7f92b5c91000-7f92b5c99000 r-xp 00002000 00:67 39905504                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
+7f92b5c99000-7f92b5c9a000 r--p 0000a000 00:67 39905504                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
+7f92b5c9a000-7f92b5c9b000 ---p 0000b000 00:67 39905504                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
+7f92b5c9b000-7f92b5c9c000 r--p 0000b000 00:67 39905504                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
+7f92b5c9c000-7f92b5c9d000 rw-p 0000c000 00:67 39905504                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
+7f92b5c9d000-7f92b5c9f000 r--p 00000000 00:67 39899836                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_hashlib.cpython-37m-x86_64-linux-gnu.so
+7f92b5c9f000-7f92b5ca2000 r-xp 00002000 00:67 39899836                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_hashlib.cpython-37m-x86_64-linux-gnu.so
+7f92b5ca2000-7f92b5ca4000 r--p 00005000 00:67 39899836                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_hashlib.cpython-37m-x86_64-linux-gnu.so
+7f92b5ca4000-7f92b5ca5000 r--p 00006000 00:67 39899836                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_hashlib.cpython-37m-x86_64-linux-gnu.so
+7f92b5ca5000-7f92b5ca6000 rw-p 00007000 00:67 39899836                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_hashlib.cpython-37m-x86_64-linux-gnu.so
+7f92b5ca6000-7f92b5de6000 rw-p 00000000 00:00 0 
+7f92b5de6000-7f92b5e0d000 r--p 00000000 08:06 1703956                    /usr/lib/locale/C.UTF-8/LC_CTYPE
+7f92b5e0d000-7f92b5e11000 rw-p 00000000 00:00 0 
+7f92b5e11000-7f92b5e14000 r--p 00000000 00:67 39905545                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/math.cpython-37m-x86_64-linux-gnu.so
+7f92b5e14000-7f92b5e1a000 r-xp 00003000 00:67 39905545                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/math.cpython-37m-x86_64-linux-gnu.so
+7f92b5e1a000-7f92b5e1c000 r--p 00009000 00:67 39905545                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/math.cpython-37m-x86_64-linux-gnu.so
+7f92b5e1c000-7f92b5e1d000 r--p 0000a000 00:67 39905545                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/math.cpython-37m-x86_64-linux-gnu.so
+7f92b5e1d000-7f92b5e1f000 rw-p 0000b000 00:67 39905545                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/math.cpython-37m-x86_64-linux-gnu.so
+7f92b5e1f000-7f92b5e20000 r--p 00000000 00:67 39905518                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_heapq.cpython-37m-x86_64-linux-gnu.so
+7f92b5e20000-7f92b5e22000 r-xp 00001000 00:67 39905518                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_heapq.cpython-37m-x86_64-linux-gnu.so
+7f92b5e22000-7f92b5e23000 r--p 00003000 00:67 39905518                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_heapq.cpython-37m-x86_64-linux-gnu.so
+7f92b5e23000-7f92b5e24000 r--p 00003000 00:67 39905518                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_heapq.cpython-37m-x86_64-linux-gnu.so
+7f92b5e24000-7f92b5e26000 rw-p 00004000 00:67 39905518                   /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/lib-dynload/_heapq.cpython-37m-x86_64-linux-gnu.so
+7f92b5e26000-7f92b5e2d000 r--s 00000000 08:06 1838957                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f92b5e2d000-7f92b5e2e000 rw-p 00000000 00:00 0 
+7f92b5e2e000-7f92b5e2f000 r--p 00025000 08:06 4723180                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f92b5e2f000-7f92b5e30000 rw-p 00026000 08:06 4723180                    /lib/x86_64-linux-gnu/ld-2.23.so
+7f92b5e30000-7f92b5e31000 rw-p 00000000 00:00 0 
+7ffd6e29e000-7ffd6e2c8000 rw-p 00000000 00:00 0                          [stack]
+7ffd6e380000-7ffd6e383000 r--p 00000000 00:00 0                          [vvar]
+7ffd6e383000-7ffd6e385000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Aborted (core dumped)

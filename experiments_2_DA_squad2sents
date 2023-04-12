@@ -1,0 +1,47 @@
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/feature_extraction/image.py:167: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.int):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:35: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:597: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:836: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:862: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1097: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1344: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1480: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:152: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  precompute=False, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:320: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, random_state=None,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:580: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=4 * np.finfo(np.float).eps, n_jobs=None,
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/squad_sample_probs.pkl loaded.
+
+  0%|          | 0/442 [00:00<?, ?it/s]  2%|▏         | 8/442 [00:00<00:06, 68.83it/s]  3%|▎         | 15/442 [00:00<00:06, 64.79it/s]  7%|▋         | 33/442 [00:00<00:03, 110.73it/s] 11%|█         | 48/442 [00:00<00:03, 122.64it/s] 14%|█▍        | 64/442 [00:00<00:02, 132.93it/s] 18%|█▊        | 78/442 [00:00<00:02, 125.04it/s] 21%|██        | 91/442 [00:00<00:02, 120.61it/s] 24%|██▎       | 104/442 [00:00<00:03, 111.72it/s] 28%|██▊       | 124/442 [00:01<00:02, 135.18it/s] 32%|███▏      | 141/442 [00:01<00:02, 143.53it/s] 35%|███▌      | 156/442 [00:01<00:02, 123.09it/s] 38%|███▊      | 170/442 [00:01<00:02, 114.42it/s] 41%|████▏     | 183/442 [00:01<00:02, 109.14it/s] 44%|████▍     | 195/442 [00:01<00:02, 101.37it/s] 47%|████▋     | 208/442 [00:01<00:02, 105.28it/s] 50%|████▉     | 219/442 [00:01<00:02, 104.31it/s] 52%|█████▏    | 232/442 [00:02<00:01, 109.56it/s] 55%|█████▌    | 244/442 [00:02<00:01, 107.05it/s] 58%|█████▊    | 255/442 [00:02<00:01, 107.70it/s] 60%|██████    | 267/442 [00:02<00:01, 109.95it/s] 63%|██████▎   | 279/442 [00:02<00:01, 110.29it/s] 66%|██████▌   | 291/442 [00:02<00:01, 107.06it/s] 69%|██████▉   | 305/442 [00:02<00:01, 113.84it/s] 72%|███████▏  | 317/442 [00:02<00:01, 108.37it/s] 75%|███████▌  | 333/442 [00:02<00:00, 120.21it/s] 78%|███████▊  | 346/442 [00:03<00:00, 121.45it/s] 81%|████████  | 359/442 [00:03<00:00, 109.84it/s] 84%|████████▍ | 371/442 [00:03<00:00, 108.95it/s] 87%|████████▋ | 383/442 [00:03<00:00, 105.55it/s] 90%|████████▉ | 397/442 [00:03<00:00, 113.61it/s] 93%|█████████▎| 409/442 [00:03<00:00, 110.68it/s] 95%|█████████▌| 421/442 [00:03<00:00, 107.10it/s] 98%|█████████▊| 432/442 [00:03<00:00, 102.91it/s]100%|██████████| 442/442 [00:03<00:00, 111.54it/s]

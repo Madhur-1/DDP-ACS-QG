@@ -1,0 +1,481 @@
+*******STEP 4*******
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Namespace(ablation_no_answer=False, ablation_no_cfseparate=False, ablation_no_clue=False, ablation_no_softcopy=False, ablation_no_style=False, ans_limit=30, att_vec_size=512, batch_size=2, beam_size=20, beta1=0.8, beta2=0.999, bpe_limit=6, brnn=True, brnn_merge='concat', char_limit=16, checkpoint_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/', clue_coef=1.0, copy_loss_type=1, copy_type='hard-oov', counters_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/counters.pkl', curriculum=0, d_model=128, da_augmented_sentences_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.pkl', da_end_index=10000, da_input_file='', da_input_type='', da_max_num=100000, da_paragraphs_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.paragraphs.txt', da_sentences_file='', da_start_index=0, da_task='', data_type='squad', debug=True, debug_batchnum=5, dec_rnn_size=512, dev_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-eval.pkl', dev_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-examples.pkl', dev_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/dev.txt', dev_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-meta.pkl', dev_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-spacy-processed-examples.pkl', dropout=0.5, early_stop=20, ema_decay=0.9999, emb_config={'word': {'emb_file': '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Glove/glove.840B.300d.txt', 'emb_size': 20000, 'emb_dim': 300, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'char': {'emb_file': None, 'emb_size': None, 'emb_dim': 64, 'trainable': True, 'need_conv': True, 'need_emb': True, 'is_feature': False}, 'bpe': {'emb_file': '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/BPE/en.wiki.bpe.vs50000.d100.w2v.txt', 'emb_size': 50509, 'emb_dim': 100, 'trainable': False, 'need_conv': True, 'need_emb': True, 'is_feature': False}, 'pos': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'ner': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'iob': {'emb_file': None, 'emb_size': None, 'emb_dim': 3, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'dep': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'is_lower': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_stop': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_punct': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_digit': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'like_num': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_bracket': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_overlap': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'answer_iob': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'is_clue': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_clue_hard': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_content': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}}, emb_dicts_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/emb_dicts.pkl', emb_mats_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/emb_mats.pkl', emb_not_count_tags={'is_overlap': [0.0, 1.0], 'answer_iob': ['B', 'I', 'O'], 'is_clue': [0.0, 1.0], 'is_clue_hard': [0.0, 1.0], 'is_clue_soft': [0.0, 1.0], 'is_content': [0.0, 1.0]}, emb_tags=['word', 'answer_iob', 'pos', 'ner', 'dep', 'is_lower', 'is_digit', 'is_content'], enc_rnn_size=512, epochs=2, eval_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/eval_output.txt', eval_per_batch=500, experiment=False, extra_shuffle=False, halve_lr_bad_count=1, input_feed=1, is_clue_topN=20, layers=1, learning_rate=0.001, learning_rate_decay=0.5, log_file='log.txt', lower=True, lr=0.001, lr_warm_up_num=1000, max_grad_norm=5.0, max_sample_times=20, max_topN=128, max_weight_value=15, maxout_pool_size=2, mode='train', net='FQG', no_cuda=False, no_grad_clip=False, not_processed_data=True, not_processed_sample_probs_file=False, num_head=8, num_question_style=9, num_sample_answer=5, num_sample_clue=2, num_sample_style=2, only_copy_content=False, optim='adam', para_limit=400, print_freq=10, processed_by_spacy=False, processed_emb=False, processed_example_features=False, processed_related_words=False, qa_data_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.txt', qg_augmented_sentences_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.processed.pkl', qg_result_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.processed.output.txt', ques_limit=50, refined_copy_vocab_limit=2000, refined_src_vocab_limit=2000, refined_tgt_vocab_limit=2000, related_words_dict_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/related_words_dict.pkl', related_words_ids_mat_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/related_words_ids_mat.pkl', resume='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/model_best.pth.tar', resume_partial=False, save_freq=1, seed=12345, sent_limit=100, share_embedder=True, soft_copy_topN=128, start_decay_at=8, start_eval_batch=1000, style_coef=1.0, style_emb_dim=16, test_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-eval.pkl', test_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-examples.pkl', test_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/test.txt', test_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-meta.pkl', test_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test_output.txt', test_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-spacy-processed-examples.pkl', tgt_vocab_limit=20000, train_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-eval.pkl', train_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-examples.pkl', train_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/train.txt', train_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-meta.pkl', train_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train_output.txt', train_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-spacy-processed-examples.pkl', use_answer_separate=False, use_clue_info=True, use_content_separator=False, use_early_stop=True, use_ema=False, use_multi_gpu=False, use_refine_copy=False, use_refine_copy_src=False, use_refine_copy_tgt=False, use_refine_copy_tgt_src=True, use_soft_copy=False, use_style_info=True, use_vocab_mask=False, val_num_examples=10000, visualizer=False)
+device is cpu
+Start transform augmented sentences to spaCy processed examples...
+  0%|          | 0/10 [00:00<?, ?it/s] 90%|█████████ | 9/10 [00:00<00:00, 23102.04it/s]
+Time of get spaCy processed examples: 0:00:00.001595
+Number of spaCy processed examples:  10
+  0%|          | 0/10 [00:00<?, ?it/s]100%|██████████| 10/10 [00:00<00:00, 137.95it/s]
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/rnn.py:61: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+len examples_with_features:   1
+len examples_with_features:   2
+len examples_with_features:   3
+len examples_with_features:   4
+len examples_with_features:   5
+len examples_with_features:   6
+len examples_with_features:   7
+len examples_with_features:   8
+len examples_with_features:   9
+len examples_with_features:   10
+Built 43 / 10 instances of features in total
+Saving processed_augmented_sentences_pkl_file...
+Loading the Embedder
+Loading the Encoder
+Loading the Decoder
+style_emb_mat : torch.Size([9, 16]) 144
+enc_embedder.embs.word.weight : torch.Size([153, 300]) 45900
+enc_embedder.embs.answer_iob.weight : torch.Size([7, 16]) 112
+enc_embedder.embs.pos.weight : torch.Size([34, 16]) 544
+enc_embedder.embs.ner.weight : torch.Size([13, 16]) 208
+enc_embedder.embs.dep.weight : torch.Size([38, 16]) 608
+enc_embedder.embs.is_lower.weight : torch.Size([6, 16]) 96
+enc_embedder.embs.is_digit.weight : torch.Size([6, 16]) 96
+enc_embedder.embs.is_content.weight : torch.Size([6, 16]) 96
+clue_embedder.weight : torch.Size([3, 16]) 48
+encoder.rnn.weight_ih_l0 : torch.Size([768, 428]) 328704
+encoder.rnn.weight_hh_l0 : torch.Size([768, 256]) 196608
+encoder.rnn.bias_ih_l0 : torch.Size([768]) 768
+encoder.rnn.bias_hh_l0 : torch.Size([768]) 768
+encoder.rnn.weight_ih_l0_reverse : torch.Size([768, 428]) 328704
+encoder.rnn.weight_hh_l0_reverse : torch.Size([768, 256]) 196608
+encoder.rnn.bias_ih_l0_reverse : torch.Size([768]) 768
+encoder.rnn.bias_hh_l0_reverse : torch.Size([768]) 768
+decoder.rnn.layers.0.weight_ih : torch.Size([1536, 812]) 1247232
+decoder.rnn.layers.0.weight_hh : torch.Size([1536, 512]) 786432
+decoder.rnn.layers.0.bias_ih : torch.Size([1536]) 1536
+decoder.rnn.layers.0.bias_hh : torch.Size([1536]) 1536
+decoder.attn.linear_pre.weight : torch.Size([512, 512]) 262144
+decoder.attn.linear_pre.bias : torch.Size([512]) 512
+decoder.attn.linear_q.weight : torch.Size([512, 512]) 262144
+decoder.attn.linear_v.weight : torch.Size([1, 512]) 512
+decoder.readout.weight : torch.Size([512, 1324]) 677888
+decoder.readout.bias : torch.Size([512]) 512
+decoder.copySwitch.weight : torch.Size([1, 1024]) 1024
+decoder.copySwitch.bias : torch.Size([1]) 1
+decIniter.initer.weight : torch.Size([512, 272]) 139264
+decIniter.initer.bias : torch.Size([512]) 512
+generator.generator.0.weight : torch.Size([153, 256]) 39168
+generator.generator.0.bias : torch.Size([153]) 153
+Trainable trainable parameters: 4522118
+Loading checkpoint: /scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/model_best.pth.tar ...
+Checkpoint '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/model_best.pth.tar' (epoch 3) loaded
+0it [00:00, ?it/s]/storage/home/madhurjindal/ACS-QG/model/FQG_model.py:531: UserWarning: This overload of nonzero is deprecated:
+	nonzero()
+Consider using one of the following signatures instead:
+	nonzero(*, bool as_tuple) (Triggered internally at  /opt/conda/conda-bld/pytorch_1607370156314/work/torch/csrc/utils/python_arg_parser.cpp:882.)
+  src.data[:, b].ne(self.dicts["word"]["<pad>"]).nonzero().squeeze(1)
+1it [00:00,  2.19it/s]2it [00:01,  1.87it/s]3it [00:01,  1.38it/s]4it [00:02,  1.45it/s]5it [00:03,  1.56it/s]5it [00:03,  1.32it/s]
+Time of train model: 0:00:04.186186
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Namespace(ablation_no_answer=False, ablation_no_cfseparate=False, ablation_no_clue=False, ablation_no_softcopy=False, ablation_no_style=False, ans_limit=30, att_vec_size=512, batch_size=2, beam_size=20, beta1=0.8, beta2=0.999, bpe_limit=6, brnn=True, brnn_merge='concat', char_limit=16, checkpoint_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/', clue_coef=1.0, copy_loss_type=1, copy_type='hard-oov', counters_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/counters.pkl', curriculum=0, d_model=128, da_augmented_sentences_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.pkl', da_end_index=10000, da_input_file='', da_input_type='', da_max_num=100000, da_paragraphs_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.paragraphs.txt', da_sentences_file='', da_start_index=0, da_task='', data_type='squad', debug=True, debug_batchnum=5, dec_rnn_size=512, dev_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-eval.pkl', dev_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-examples.pkl', dev_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/dev.txt', dev_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-meta.pkl', dev_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-spacy-processed-examples.pkl', dropout=0.5, early_stop=20, ema_decay=0.9999, emb_config={'word': {'emb_file': '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Glove/glove.840B.300d.txt', 'emb_size': 20000, 'emb_dim': 300, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'char': {'emb_file': None, 'emb_size': None, 'emb_dim': 64, 'trainable': True, 'need_conv': True, 'need_emb': True, 'is_feature': False}, 'bpe': {'emb_file': '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/BPE/en.wiki.bpe.vs50000.d100.w2v.txt', 'emb_size': 50509, 'emb_dim': 100, 'trainable': False, 'need_conv': True, 'need_emb': True, 'is_feature': False}, 'pos': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'ner': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'iob': {'emb_file': None, 'emb_size': None, 'emb_dim': 3, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'dep': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'is_lower': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_stop': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_punct': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_digit': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'like_num': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_bracket': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_overlap': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'answer_iob': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': False}, 'is_clue': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_clue_hard': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}, 'is_content': {'emb_file': None, 'emb_size': None, 'emb_dim': 16, 'trainable': True, 'need_conv': False, 'need_emb': True, 'is_feature': True}}, emb_dicts_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/emb_dicts.pkl', emb_mats_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/emb_mats.pkl', emb_not_count_tags={'is_overlap': [0.0, 1.0], 'answer_iob': ['B', 'I', 'O'], 'is_clue': [0.0, 1.0], 'is_clue_hard': [0.0, 1.0], 'is_clue_soft': [0.0, 1.0], 'is_content': [0.0, 1.0]}, emb_tags=['word', 'answer_iob', 'pos', 'ner', 'dep', 'is_lower', 'is_digit', 'is_content'], enc_rnn_size=512, epochs=2, eval_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/eval_output.txt', eval_per_batch=500, experiment=False, extra_shuffle=False, halve_lr_bad_count=1, input_feed=1, is_clue_topN=20, layers=1, learning_rate=0.001, learning_rate_decay=0.5, log_file='log.txt', lower=True, lr=0.001, lr_warm_up_num=1000, max_grad_norm=5.0, max_sample_times=20, max_topN=128, max_weight_value=15, maxout_pool_size=2, mode='train', net='FQG', no_cuda=False, no_grad_clip=False, not_processed_data=True, not_processed_sample_probs_file=False, num_head=8, num_question_style=9, num_sample_answer=5, num_sample_clue=2, num_sample_style=2, only_copy_content=False, optim='adam', para_limit=400, print_freq=10, processed_by_spacy=False, processed_emb=False, processed_example_features=False, processed_related_words=False, qa_data_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.txt', qg_augmented_sentences_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.processed.pkl', qg_result_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.processed.output.txt', ques_limit=50, refined_copy_vocab_limit=2000, refined_src_vocab_limit=2000, refined_tgt_vocab_limit=2000, related_words_dict_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/related_words_dict.pkl', related_words_ids_mat_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/related_words_ids_mat.pkl', resume='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/model_best.pth.tar', resume_partial=False, save_freq=1, seed=12345, sent_limit=100, share_embedder=True, soft_copy_topN=128, start_decay_at=8, start_eval_batch=1000, style_coef=1.0, style_emb_dim=16, test_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-eval.pkl', test_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-examples.pkl', test_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/test.txt', test_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-meta.pkl', test_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test_output.txt', test_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/test-spacy-processed-examples.pkl', tgt_vocab_limit=20000, train_eval_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-eval.pkl', train_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-examples.pkl', train_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1-Zhou/train.txt', train_meta_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-meta.pkl', train_output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train_output.txt', train_spacy_processed_examples_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/train-spacy-processed-examples.pkl', use_answer_separate=False, use_clue_info=True, use_content_separator=False, use_early_stop=True, use_ema=False, use_multi_gpu=False, use_refine_copy=False, use_refine_copy_src=False, use_refine_copy_tgt=False, use_refine_copy_tgt_src=True, use_soft_copy=False, use_style_info=True, use_vocab_mask=False, val_num_examples=10000, visualizer=False)
+device is cpu
+Start transform augmented sentences to spaCy processed examples...
+  0%|          | 0/10 [00:00<?, ?it/s] 90%|█████████ | 9/10 [00:00<00:00, 22310.13it/s]
+Time of get spaCy processed examples: 0:00:00.001478
+Number of spaCy processed examples:  10
+  0%|          | 0/10 [00:00<?, ?it/s] 90%|█████████ | 9/10 [00:00<00:00, 87.34it/s]100%|██████████| 10/10 [00:00<00:00, 92.18it/s]
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/rnn.py:61: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+len examples_with_features:   1
+len examples_with_features:   2
+len examples_with_features:   3
+len examples_with_features:   4
+len examples_with_features:   5
+len examples_with_features:   6
+len examples_with_features:   7
+len examples_with_features:   8
+len examples_with_features:   9
+len examples_with_features:   10
+Built 46 / 10 instances of features in total
+Saving processed_augmented_sentences_pkl_file...
+Loading the Embedder
+Loading the Encoder
+Loading the Decoder
+style_emb_mat : torch.Size([9, 16]) 144
+enc_embedder.embs.word.weight : torch.Size([153, 300]) 45900
+enc_embedder.embs.answer_iob.weight : torch.Size([7, 16]) 112
+enc_embedder.embs.pos.weight : torch.Size([34, 16]) 544
+enc_embedder.embs.ner.weight : torch.Size([13, 16]) 208
+enc_embedder.embs.dep.weight : torch.Size([38, 16]) 608
+enc_embedder.embs.is_lower.weight : torch.Size([6, 16]) 96
+enc_embedder.embs.is_digit.weight : torch.Size([6, 16]) 96
+enc_embedder.embs.is_content.weight : torch.Size([6, 16]) 96
+clue_embedder.weight : torch.Size([3, 16]) 48
+encoder.rnn.weight_ih_l0 : torch.Size([768, 428]) 328704
+encoder.rnn.weight_hh_l0 : torch.Size([768, 256]) 196608
+encoder.rnn.bias_ih_l0 : torch.Size([768]) 768
+encoder.rnn.bias_hh_l0 : torch.Size([768]) 768
+encoder.rnn.weight_ih_l0_reverse : torch.Size([768, 428]) 328704
+encoder.rnn.weight_hh_l0_reverse : torch.Size([768, 256]) 196608
+encoder.rnn.bias_ih_l0_reverse : torch.Size([768]) 768
+encoder.rnn.bias_hh_l0_reverse : torch.Size([768]) 768
+decoder.rnn.layers.0.weight_ih : torch.Size([1536, 812]) 1247232
+decoder.rnn.layers.0.weight_hh : torch.Size([1536, 512]) 786432
+decoder.rnn.layers.0.bias_ih : torch.Size([1536]) 1536
+decoder.rnn.layers.0.bias_hh : torch.Size([1536]) 1536
+decoder.attn.linear_pre.weight : torch.Size([512, 512]) 262144
+decoder.attn.linear_pre.bias : torch.Size([512]) 512
+decoder.attn.linear_q.weight : torch.Size([512, 512]) 262144
+decoder.attn.linear_v.weight : torch.Size([1, 512]) 512
+decoder.readout.weight : torch.Size([512, 1324]) 677888
+decoder.readout.bias : torch.Size([512]) 512
+decoder.copySwitch.weight : torch.Size([1, 1024]) 1024
+decoder.copySwitch.bias : torch.Size([1]) 1
+decIniter.initer.weight : torch.Size([512, 272]) 139264
+decIniter.initer.bias : torch.Size([512]) 512
+generator.generator.0.weight : torch.Size([153, 256]) 39168
+generator.generator.0.bias : torch.Size([153]) 153
+Trainable trainable parameters: 4522118
+Loading checkpoint: /scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/model_best.pth.tar ...
+Checkpoint '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/output/checkpoint/FQG_squad_hard-oov_1_128_False_False_True_True_False_False_True_20/model_best.pth.tar' (epoch 3) loaded
+0it [00:00, ?it/s]/storage/home/madhurjindal/ACS-QG/model/FQG_model.py:531: UserWarning: This overload of nonzero is deprecated:
+	nonzero()
+Consider using one of the following signatures instead:
+	nonzero(*, bool as_tuple) (Triggered internally at  /opt/conda/conda-bld/pytorch_1607370156314/work/torch/csrc/utils/python_arg_parser.cpp:882.)
+  src.data[:, b].ne(self.dicts["word"]["<pad>"]).nonzero().squeeze(1)
+1it [00:00,  1.14it/s]2it [00:01,  1.31it/s]3it [00:02,  1.54it/s]4it [00:02,  1.60it/s]5it [00:03,  1.69it/s]5it [00:03,  1.33it/s]
+Time of train model: 0:00:07.538295
+*******STEP 5*******
+03/05/2023 13:43:52 - WARNING - __main__ -   Process rank: -1, device: cpu, n_gpu: 0, distributed training: False, 16-bits training: False
+03/05/2023 13:43:52 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/config.json
+03/05/2023 13:43:52 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": -1,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 13:43:52 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/' is a path or url to a directory containing tokenizer files.
+03/05/2023 13:43:52 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/added_tokens.json. We won't load it.
+03/05/2023 13:43:52 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/special_tokens_map.json. We won't load it.
+03/05/2023 13:43:52 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/spiece.model
+03/05/2023 13:43:52 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/05/2023 13:43:52 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/05/2023 13:43:52 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/pytorch_model.bin
+03/05/2023 13:44:00 - INFO - pytorch_transformers.modeling_utils -   Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+03/05/2023 13:44:00 - INFO - pytorch_transformers.modeling_utils -   Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+03/05/2023 13:44:00 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', context_question_answer_columns=[3, 2, 4], context_question_answer_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.uniq.txt', context_question_answer_score_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.qa.0_10000.entail.txt', data_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/', debug_mode=True, device=device(type='cpu'), do_eval=False, do_lower_case=True, do_test=True, do_train=False, eval_all_checkpoints=False, evaluate_during_training=False, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=1, learning_rate=2e-05, local_rank=-1, logging_steps=50, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/', model_type='xlnet', n_gpu=0, no_cuda=False, num_train_epochs=1.0, output_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/', output_mode='classification', overwrite_cache=False, overwrite_output_dir=True, per_gpu_eval_batch_size=8, per_gpu_train_batch_size=8, save_steps=100, seed=42, server_ip='', server_port='', task_name='mrpc', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+03/05/2023 13:44:00 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/05/2023 13:44:00 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 13:44:00 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/05/2023 13:44:07 - INFO - __main__ -   Creating features from dataset file at /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/
+03/05/2023 13:44:07 - INFO - utils_glue -   Writing example 0 of 8
+03/05/2023 13:44:07 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:07 - INFO - utils_glue -   guid: dev-1
+03/05/2023 13:44:07 - INFO - utils_glue -   tokens: ▁how ▁how ▁student ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁ ? ▁1981 <sep> ▁be y once ▁ gi s elle ▁know les - car ter ▁ ( / bi ːˈ j ɒ n se ɪ / ▁be e - yon - say ) ▁ ( born ▁sept ember ▁4 , ▁1981 ) ▁is ▁an ▁ american ▁singer , ▁ songwriter , ▁record ▁producer ▁and ▁actress . <sep> <cls>
+03/05/2023 13:44:07 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 160 160 1190 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 17 82 6375 4 39 117 18977 17 3141 23 5292 175 1890 13 2098 1158 17 10 167 2731 0 1315 0 180 1022 0 167 39 93 13 12635 13 8357 11 17 10 1249 28815 22216 268 19 6375 11 27 48 17 15916 3592 19 17 10943 19 598 3324 21 5911 9 4 3
+03/05/2023 13:44:07 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:07 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:07 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:07 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:07 - INFO - utils_glue -   guid: dev-2
+03/05/2023 13:44:07 - INFO - utils_glue -   tokens: ▁how ▁how ▁student ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁dam e ▁ ? ▁1981 <sep> ▁be y once ▁ gi s elle ▁know les - car ter ▁ ( / bi ːˈ j ɒ n se ɪ / ▁be e - yon - say ) ▁ ( born ▁sept ember ▁4 , ▁1981 ) ▁is ▁an ▁ american ▁singer , ▁ songwriter , ▁record ▁producer ▁and ▁actress . <sep> <cls>
+03/05/2023 13:44:07 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 160 160 1190 38 50 88 7678 93 38 50 88 7678 93 7678 93 17 82 6375 4 39 117 18977 17 3141 23 5292 175 1890 13 2098 1158 17 10 167 2731 0 1315 0 180 1022 0 167 39 93 13 12635 13 8357 11 17 10 1249 28815 22216 268 19 6375 11 27 48 17 15916 3592 19 17 10943 19 598 3324 21 5911 9 4 3
+03/05/2023 13:44:07 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:07 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:07 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:07 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:07 - INFO - utils_glue -   guid: dev-3
+03/05/2023 13:44:07 - INFO - utils_glue -   tokens: ▁what ▁is ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁ ? ▁1981 <sep> ▁be y once ▁ gi s elle ▁know les - car ter ▁ ( / bi ːˈ j ɒ n se ɪ / ▁be e - yon - say ) ▁ ( born ▁sept ember ▁4 , ▁1981 ) ▁is ▁an ▁ american ▁singer , ▁ songwriter , ▁record ▁producer ▁and ▁actress . <sep> <cls>
+03/05/2023 13:44:07 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 17 82 6375 4 39 117 18977 17 3141 23 5292 175 1890 13 2098 1158 17 10 167 2731 0 1315 0 180 1022 0 167 39 93 13 12635 13 8357 11 17 10 1249 28815 22216 268 19 6375 11 27 48 17 15916 3592 19 17 10943 19 598 3324 21 5911 9 4 3
+03/05/2023 13:44:07 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:07 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:07 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:07 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:07 - INFO - utils_glue -   guid: dev-4
+03/05/2023 13:44:07 - INFO - utils_glue -   tokens: ▁what ▁is ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁ ? ▁sept ember <sep> ▁be y once ▁ gi s elle ▁know les - car ter ▁ ( / bi ːˈ j ɒ n se ɪ / ▁be e - yon - say ) ▁ ( born ▁sept ember ▁4 , ▁1981 ) ▁is ▁an ▁ american ▁singer , ▁ songwriter , ▁record ▁producer ▁and ▁actress . <sep> <cls>
+03/05/2023 13:44:07 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 17 82 28815 22216 4 39 117 18977 17 3141 23 5292 175 1890 13 2098 1158 17 10 167 2731 0 1315 0 180 1022 0 167 39 93 13 12635 13 8357 11 17 10 1249 28815 22216 268 19 6375 11 27 48 17 15916 3592 19 17 10943 19 598 3324 21 5911 9 4 3
+03/05/2023 13:44:07 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:07 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:07 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:07 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:07 - INFO - utils_glue -   guid: dev-5
+03/05/2023 13:44:07 - INFO - utils_glue -   tokens: ▁what ▁is ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁ ? ▁an <sep> ▁be y once ▁ gi s elle ▁know les - car ter ▁ ( / bi ːˈ j ɒ n se ɪ / ▁be e - yon - say ) ▁ ( born ▁sept ember ▁4 , ▁1981 ) ▁is ▁an ▁ american ▁singer , ▁ songwriter , ▁record ▁producer ▁and ▁actress . <sep> <cls>
+03/05/2023 13:44:07 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 17 82 48 4 39 117 18977 17 3141 23 5292 175 1890 13 2098 1158 17 10 167 2731 0 1315 0 180 1022 0 167 39 93 13 12635 13 8357 11 17 10 1249 28815 22216 268 19 6375 11 27 48 17 15916 3592 19 17 10943 19 598 3324 21 5911 9 4 3
+03/05/2023 13:44:07 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:07 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:07 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:07 - INFO - __main__ -   ***** Running evaluation  *****
+03/05/2023 13:44:07 - INFO - __main__ -     Num examples = 8
+03/05/2023 13:44:07 - INFO - __main__ -     Batch size = 8
+context_question_answer_columns is:    [3, 2, 4]
+Evaluating:   0%|          | 0/1 [00:00<?, ?it/s]Evaluating: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]Evaluating: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]
+03/05/2023 13:44:14 - WARNING - __main__ -   Process rank: -1, device: cpu, n_gpu: 0, distributed training: False, 16-bits training: False
+03/05/2023 13:44:14 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/config.json
+03/05/2023 13:44:14 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": -1,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 13:44:14 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/' is a path or url to a directory containing tokenizer files.
+03/05/2023 13:44:14 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/added_tokens.json. We won't load it.
+03/05/2023 13:44:14 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/special_tokens_map.json. We won't load it.
+03/05/2023 13:44:14 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/spiece.model
+03/05/2023 13:44:14 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/05/2023 13:44:14 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/05/2023 13:44:14 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/pytorch_model.bin
+03/05/2023 13:44:19 - INFO - pytorch_transformers.modeling_utils -   Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+03/05/2023 13:44:19 - INFO - pytorch_transformers.modeling_utils -   Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+03/05/2023 13:44:19 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', context_question_answer_columns=[3, 2, 4], context_question_answer_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.uniq.txt', context_question_answer_score_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.qa.0_10000.entail.txt', data_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/', debug_mode=True, device=device(type='cpu'), do_eval=False, do_lower_case=True, do_test=True, do_train=False, eval_all_checkpoints=False, evaluate_during_training=False, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=1, learning_rate=2e-05, local_rank=-1, logging_steps=50, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/', model_type='xlnet', n_gpu=0, no_cuda=False, num_train_epochs=1.0, output_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/', output_mode='classification', overwrite_cache=False, overwrite_output_dir=True, per_gpu_eval_batch_size=8, per_gpu_train_batch_size=8, save_steps=100, seed=42, server_ip='', server_port='', task_name='mrpc', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+03/05/2023 13:44:19 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/05/2023 13:44:19 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/05/2023 13:44:19 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/05/2023 13:44:23 - INFO - __main__ -   Creating features from dataset file at /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/
+03/05/2023 13:44:23 - INFO - utils_glue -   Writing example 0 of 7
+03/05/2023 13:44:23 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:23 - INFO - utils_glue -   guid: dev-1
+03/05/2023 13:44:23 - INFO - utils_glue -   tokens: ▁what ▁is ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁ ? ▁philosophy p = 59 <sep> ▁an arch ism ▁ ( or ▁anti - hier arch ical ism ) ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy . <sep> <cls>
+03/05/2023 13:44:23 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 17 82 5641 450 5383 4321 4 48 6641 949 17 10 218 932 13 17569 6641 4140 949 11 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 9 4 3
+03/05/2023 13:44:23 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:23 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:23 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:23 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:23 - INFO - utils_glue -   guid: dev-2
+03/05/2023 13:44:23 - INFO - utils_glue -   tokens: ▁what ▁is ▁the ▁at ▁at ▁at ▁at ▁not re ▁dam e ▁at ▁at ▁not re ▁dam e ▁at ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy <sep> ▁an arch ism ▁ ( or ▁anti - hier arch ical ism ) ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy . <sep> <cls>
+03/05/2023 13:44:23 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 18 38 38 38 38 50 88 7678 93 38 38 50 88 7678 93 38 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 4 48 6641 949 17 10 218 932 13 17569 6641 4140 949 11 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 9 4 3
+03/05/2023 13:44:23 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:23 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:23 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:23 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:23 - INFO - utils_glue -   guid: dev-3
+03/05/2023 13:44:23 - INFO - utils_glue -   tokens: ▁what ▁is ▁the ▁at ▁at ▁at ▁at ▁not re ▁dam e ▁at ▁at ▁not re ▁dam e ▁at ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy <sep> ▁an arch ism ▁ ( or ▁anti - hier arch ical ism ) ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy . <sep> <cls>
+03/05/2023 13:44:23 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 18 38 38 38 38 50 88 7678 93 38 38 50 88 7678 93 38 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 4 48 6641 949 17 10 218 932 13 17569 6641 4140 949 11 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 9 4 3
+03/05/2023 13:44:23 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:23 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:23 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:23 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:23 - INFO - utils_glue -   guid: dev-4
+03/05/2023 13:44:23 - INFO - utils_glue -   tokens: ▁what ▁is ▁the ▁at ▁at ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy <sep> ▁an arch ism ▁ ( or ▁anti - hier arch ical ism ) ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy . <sep> <cls>
+03/05/2023 13:44:23 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 18 38 38 38 50 88 7678 93 38 50 88 7678 93 38 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 4 48 6641 949 17 10 218 932 13 17569 6641 4140 949 11 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 9 4 3
+03/05/2023 13:44:23 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:23 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:23 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:23 - INFO - utils_glue -   *** Example ***
+03/05/2023 13:44:23 - INFO - utils_glue -   guid: dev-5
+03/05/2023 13:44:23 - INFO - utils_glue -   tokens: ▁what ▁is ▁the ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁at ▁not re ▁dam e ▁ ? ▁philosophy p = 59 <sep> ▁an arch ism ▁ ( or ▁anti - hier arch ical ism ) ▁is ▁a ▁political ▁philosophy p = 59 ▁that ▁advocates ▁self - go vern ed ▁societies ▁based ▁on ▁voluntary , ▁cooperative ▁institutions , ▁rejecting ▁unjust ▁hierarchy . <sep> <cls>
+03/05/2023 13:44:23 - INFO - utils_glue -   input_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 113 27 18 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 38 50 88 7678 93 17 82 5641 450 5383 4321 4 48 6641 949 17 10 218 932 13 17569 6641 4140 949 11 27 24 413 5641 450 5383 4321 29 8592 1080 13 1187 16421 68 11009 515 31 10286 19 10431 2638 19 19901 19864 18303 9 4 3
+03/05/2023 13:44:23 - INFO - utils_glue -   input_mask: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+03/05/2023 13:44:23 - INFO - utils_glue -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2
+03/05/2023 13:44:23 - INFO - utils_glue -   label: 1 (id = 1)
+03/05/2023 13:44:23 - INFO - __main__ -   ***** Running evaluation  *****
+03/05/2023 13:44:23 - INFO - __main__ -     Num examples = 7
+03/05/2023 13:44:23 - INFO - __main__ -     Batch size = 8
+context_question_answer_columns is:    [3, 2, 4]
+Evaluating:   0%|          | 0/1 [00:00<?, ?it/s]Evaluating: 100%|██████████| 1/1 [00:02<00:00,  2.66s/it]Evaluating: 100%|██████████| 1/1 [00:02<00:00,  2.66s/it]
+*******STEP 6*******
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Couldn't reach server at 'https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-config.json' to download pretrained model configuration file.
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Traceback (most recent call last):
+  File "DE_main.py", line 38, in <module>
+    model = GPT2LMHeadModel.from_pretrained('gpt2')
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/modeling_utils.py", line 430, in from_pretrained
+    **kwargs
+TypeError: cannot unpack non-iterable NoneType object
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Couldn't reach server at 'https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-config.json' to download pretrained model configuration file.
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+Traceback (most recent call last):
+  File "DE_main.py", line 38, in <module>
+    model = GPT2LMHeadModel.from_pretrained('gpt2')
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/modeling_utils.py", line 430, in from_pretrained
+    **kwargs
+TypeError: cannot unpack non-iterable NoneType object

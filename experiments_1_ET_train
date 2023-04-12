@@ -1,0 +1,2257 @@
+03/10/2023 07:56:19 - WARNING - __main__ -   Process rank: -1, device: cuda, n_gpu: 1, distributed training: False, 16-bits training: False
+03/10/2023 07:56:19 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/config.json
+03/10/2023 07:56:19 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": -1,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/10/2023 07:56:19 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased' is a path or url to a directory containing tokenizer files.
+03/10/2023 07:56:19 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/added_tokens.json. We won't load it.
+03/10/2023 07:56:19 - INFO - pytorch_transformers.tokenization_utils -   Didn't find file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/special_tokens_map.json. We won't load it.
+03/10/2023 07:56:19 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/spiece.model
+03/10/2023 07:56:19 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/10/2023 07:56:19 - INFO - pytorch_transformers.tokenization_utils -   loading file None
+03/10/2023 07:56:19 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased/pytorch_model.bin
+03/10/2023 07:56:28 - INFO - pytorch_transformers.modeling_utils -   Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+03/10/2023 07:56:28 - INFO - pytorch_transformers.modeling_utils -   Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+03/10/2023 07:56:47 - INFO - __main__ -   Training/evaluation parameters Namespace(adam_epsilon=1e-08, cache_dir='', config_name='', context_question_answer_columns=[0, 1, 2], context_question_answer_file='', context_question_answer_score_file='', data_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC', debug_mode=False, device=device(type='cuda'), do_eval=True, do_lower_case=True, do_test=False, do_train=True, eval_all_checkpoints=False, evaluate_during_training=False, fp16=False, fp16_opt_level='O1', gradient_accumulation_steps=1, learning_rate=2e-05, local_rank=-1, logging_steps=50, max_grad_norm=1.0, max_seq_length=128, max_steps=-1, model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/models/xlnet-base-cased', model_type='xlnet', n_gpu=1, no_cuda=False, num_train_epochs=1.0, output_dir='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased', output_mode='classification', overwrite_cache=False, overwrite_output_dir=True, per_gpu_eval_batch_size=8, per_gpu_train_batch_size=8, save_steps=100, seed=42, server_ip='', server_port='', task_name='mrpc', tokenizer_name='', warmup_steps=0, weight_decay=0.0)
+03/10/2023 07:56:47 - INFO - __main__ -   Loading features from cached file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/cached_train_xlnet-base-cased_128_mrpc
+03/10/2023 07:56:47 - INFO - __main__ -   ***** Running training *****
+03/10/2023 07:56:47 - INFO - __main__ -     Num examples = 4076
+03/10/2023 07:56:47 - INFO - __main__ -     Num Epochs = 1
+03/10/2023 07:56:47 - INFO - __main__ -     Instantaneous batch size per GPU = 8
+03/10/2023 07:56:47 - INFO - __main__ -     Total train batch size (w. parallel, distributed & accumulation) = 8
+03/10/2023 07:56:47 - INFO - __main__ -     Gradient Accumulation steps = 1
+03/10/2023 07:56:47 - INFO - __main__ -     Total optimization steps = 510
+Epoch:   0%|          | 0/1 [00:00<?, ?it/s]
+Iteration:   0%|          | 0/510 [00:00<?, ?it/s][A------step-0------
+-- Forward Pass
+-- Loss-  tensor(0.6214, device='cuda:0', grad_fn=<NllLossBackward>)
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/optimization.py:166: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1614378098133/work/torch/csrc/utils/python_arg_parser.cpp:1005.)
+  exp_avg.mul_(beta1).add_(1.0 - beta1, grad)
+
+Iteration:   0%|          | 1/510 [00:02<25:25,  3.00s/it][A------step-1------
+-- Forward Pass
+-- Loss-  tensor(0.5000, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   0%|          | 2/510 [00:03<12:32,  1.48s/it][A------step-2------
+-- Forward Pass
+-- Loss-  tensor(0.4748, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   1%|          | 3/510 [00:03<08:04,  1.05it/s][A------step-3------
+-- Forward Pass
+-- Loss-  tensor(0.6478, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   1%|          | 4/510 [00:04<06:00,  1.40it/s][A------step-4------
+-- Forward Pass
+-- Loss-  tensor(0.8482, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   1%|          | 5/510 [00:04<04:52,  1.73it/s][A------step-5------
+-- Forward Pass
+-- Loss-  tensor(0.6029, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   1%|          | 6/510 [00:04<04:07,  2.04it/s][A------step-6------
+-- Forward Pass
+-- Loss-  tensor(0.4604, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   1%|▏         | 7/510 [00:05<03:40,  2.28it/s][A------step-7------
+-- Forward Pass
+-- Loss-  tensor(0.7099, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   2%|▏         | 8/510 [00:05<03:26,  2.44it/s][A------step-8------
+-- Forward Pass
+-- Loss-  tensor(0.5600, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   2%|▏         | 9/510 [00:05<03:10,  2.63it/s][A------step-9------
+-- Forward Pass
+-- Loss-  tensor(0.6730, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   2%|▏         | 10/510 [00:06<03:05,  2.70it/s][A------step-10------
+-- Forward Pass
+-- Loss-  tensor(0.6602, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   2%|▏         | 11/510 [00:06<03:05,  2.69it/s][A------step-11------
+-- Forward Pass
+-- Loss-  tensor(0.7245, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   2%|▏         | 12/510 [00:06<03:02,  2.73it/s][A------step-12------
+-- Forward Pass
+-- Loss-  tensor(0.6568, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   3%|▎         | 13/510 [00:07<02:57,  2.80it/s][A------step-13------
+-- Forward Pass
+-- Loss-  tensor(0.6022, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   3%|▎         | 14/510 [00:07<02:55,  2.82it/s][A------step-14------
+-- Forward Pass
+-- Loss-  tensor(0.5709, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   3%|▎         | 15/510 [00:07<02:55,  2.83it/s][A------step-15------
+-- Forward Pass
+-- Loss-  tensor(0.7518, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   3%|▎         | 16/510 [00:08<02:54,  2.83it/s][A------step-16------
+-- Forward Pass
+-- Loss-  tensor(0.7066, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   3%|▎         | 17/510 [00:08<02:52,  2.86it/s][A------step-17------
+-- Forward Pass
+-- Loss-  tensor(0.7230, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   4%|▎         | 18/510 [00:08<02:50,  2.89it/s][A------step-18------
+-- Forward Pass
+-- Loss-  tensor(0.5234, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   4%|▎         | 19/510 [00:09<02:50,  2.88it/s][A------step-19------
+-- Forward Pass
+-- Loss-  tensor(0.8006, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   4%|▍         | 20/510 [00:09<02:50,  2.87it/s][A------step-20------
+-- Forward Pass
+-- Loss-  tensor(0.5309, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   4%|▍         | 21/510 [00:09<02:49,  2.89it/s][A------step-21------
+-- Forward Pass
+-- Loss-  tensor(0.6133, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   4%|▍         | 22/510 [00:10<02:45,  2.94it/s][A------step-22------
+-- Forward Pass
+-- Loss-  tensor(0.5373, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   5%|▍         | 23/510 [00:10<02:42,  2.99it/s][A------step-23------
+-- Forward Pass
+-- Loss-  tensor(0.5989, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   5%|▍         | 24/510 [00:10<02:41,  3.01it/s][A------step-24------
+-- Forward Pass
+-- Loss-  tensor(0.5058, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   5%|▍         | 25/510 [00:11<02:38,  3.06it/s][A------step-25------
+-- Forward Pass
+-- Loss-  tensor(0.7535, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   5%|▌         | 26/510 [00:11<02:32,  3.17it/s][A------step-26------
+-- Forward Pass
+-- Loss-  tensor(0.5887, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   5%|▌         | 27/510 [00:11<02:30,  3.20it/s][A------step-27------
+-- Forward Pass
+-- Loss-  tensor(0.5934, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   5%|▌         | 28/510 [00:12<02:28,  3.25it/s][A------step-28------
+-- Forward Pass
+-- Loss-  tensor(0.6401, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   6%|▌         | 29/510 [00:12<02:26,  3.28it/s][A------step-29------
+-- Forward Pass
+-- Loss-  tensor(0.5337, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   6%|▌         | 30/510 [00:12<02:28,  3.24it/s][A------step-30------
+-- Forward Pass
+-- Loss-  tensor(0.4556, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   6%|▌         | 31/510 [00:13<02:23,  3.33it/s][A------step-31------
+-- Forward Pass
+-- Loss-  tensor(0.6949, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   6%|▋         | 32/510 [00:13<02:20,  3.41it/s][A------step-32------
+-- Forward Pass
+-- Loss-  tensor(0.5651, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   6%|▋         | 33/510 [00:13<02:26,  3.26it/s][A------step-33------
+-- Forward Pass
+-- Loss-  tensor(0.6399, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   7%|▋         | 34/510 [00:13<02:23,  3.31it/s][A------step-34------
+-- Forward Pass
+-- Loss-  tensor(0.7886, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   7%|▋         | 35/510 [00:14<02:23,  3.31it/s][A------step-35------
+-- Forward Pass
+-- Loss-  tensor(0.7890, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   7%|▋         | 36/510 [00:14<02:21,  3.35it/s][A------step-36------
+-- Forward Pass
+-- Loss-  tensor(0.9481, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   7%|▋         | 37/510 [00:14<02:23,  3.30it/s][A------step-37------
+-- Forward Pass
+-- Loss-  tensor(0.7293, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   7%|▋         | 38/510 [00:15<02:21,  3.34it/s][A------step-38------
+-- Forward Pass
+-- Loss-  tensor(0.7104, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   8%|▊         | 39/510 [00:15<02:19,  3.38it/s][A------step-39------
+-- Forward Pass
+-- Loss-  tensor(0.6728, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   8%|▊         | 40/510 [00:15<02:21,  3.31it/s][A------step-40------
+-- Forward Pass
+-- Loss-  tensor(0.6036, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   8%|▊         | 41/510 [00:16<02:21,  3.32it/s][A------step-41------
+-- Forward Pass
+-- Loss-  tensor(0.6381, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   8%|▊         | 42/510 [00:16<02:20,  3.32it/s][A------step-42------
+-- Forward Pass
+-- Loss-  tensor(0.4350, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   8%|▊         | 43/510 [00:16<02:19,  3.34it/s][A------step-43------
+-- Forward Pass
+-- Loss-  tensor(0.5789, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   9%|▊         | 44/510 [00:16<02:21,  3.30it/s][A------step-44------
+-- Forward Pass
+-- Loss-  tensor(0.6221, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   9%|▉         | 45/510 [00:17<02:18,  3.35it/s][A------step-45------
+-- Forward Pass
+-- Loss-  tensor(0.7865, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   9%|▉         | 46/510 [00:17<02:17,  3.39it/s][A------step-46------
+-- Forward Pass
+-- Loss-  tensor(0.7659, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   9%|▉         | 47/510 [00:17<02:16,  3.40it/s][A------step-47------
+-- Forward Pass
+-- Loss-  tensor(0.7455, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:   9%|▉         | 48/510 [00:18<02:20,  3.30it/s][A------step-48------
+-- Forward Pass
+-- Loss-  tensor(0.5467, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  10%|▉         | 49/510 [00:18<02:18,  3.34it/s][A------step-49------
+-- Forward Pass
+-- Loss-  tensor(0.4462, device='cuda:0', grad_fn=<NllLossBackward>)
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/optim/lr_scheduler.py:247: UserWarning: To get the last learning rate computed by the scheduler, please use `get_last_lr()`.
+  warnings.warn("To get the last learning rate computed by the scheduler, "
+
+Iteration:  10%|▉         | 50/510 [00:18<02:18,  3.31it/s][A------step-50------
+-- Forward Pass
+-- Loss-  tensor(0.3896, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  10%|█         | 51/510 [00:19<02:23,  3.21it/s][A------step-51------
+-- Forward Pass
+-- Loss-  tensor(0.7053, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  10%|█         | 52/510 [00:19<02:24,  3.17it/s][A------step-52------
+-- Forward Pass
+-- Loss-  tensor(0.5917, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  10%|█         | 53/510 [00:19<02:27,  3.11it/s][A------step-53------
+-- Forward Pass
+-- Loss-  tensor(0.4337, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  11%|█         | 54/510 [00:20<02:24,  3.15it/s][A------step-54------
+-- Forward Pass
+-- Loss-  tensor(0.7385, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  11%|█         | 55/510 [00:20<02:22,  3.19it/s][A------step-55------
+-- Forward Pass
+-- Loss-  tensor(0.8202, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  11%|█         | 56/510 [00:20<02:20,  3.24it/s][A------step-56------
+-- Forward Pass
+-- Loss-  tensor(0.6035, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  11%|█         | 57/510 [00:20<02:19,  3.26it/s][A------step-57------
+-- Forward Pass
+-- Loss-  tensor(0.4831, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  11%|█▏        | 58/510 [00:21<02:18,  3.27it/s][A------step-58------
+-- Forward Pass
+-- Loss-  tensor(0.4035, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  12%|█▏        | 59/510 [00:21<02:15,  3.33it/s][A------step-59------
+-- Forward Pass
+-- Loss-  tensor(0.3794, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  12%|█▏        | 60/510 [00:21<02:12,  3.40it/s][A------step-60------
+-- Forward Pass
+-- Loss-  tensor(0.3488, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  12%|█▏        | 61/510 [00:22<02:14,  3.34it/s][A------step-61------
+-- Forward Pass
+-- Loss-  tensor(0.6675, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  12%|█▏        | 62/510 [00:22<02:17,  3.25it/s][A------step-62------
+-- Forward Pass
+-- Loss-  tensor(0.5353, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  12%|█▏        | 63/510 [00:22<02:16,  3.28it/s][A------step-63------
+-- Forward Pass
+-- Loss-  tensor(0.6755, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  13%|█▎        | 64/510 [00:23<02:15,  3.28it/s][A------step-64------
+-- Forward Pass
+-- Loss-  tensor(0.6860, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  13%|█▎        | 65/510 [00:23<02:17,  3.23it/s][A------step-65------
+-- Forward Pass
+-- Loss-  tensor(0.8300, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  13%|█▎        | 66/510 [00:23<02:19,  3.18it/s][A------step-66------
+-- Forward Pass
+-- Loss-  tensor(0.3632, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  13%|█▎        | 67/510 [00:24<02:24,  3.07it/s][A------step-67------
+-- Forward Pass
+-- Loss-  tensor(0.5693, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  13%|█▎        | 68/510 [00:24<02:25,  3.03it/s][A------step-68------
+-- Forward Pass
+-- Loss-  tensor(0.6378, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  14%|█▎        | 69/510 [00:24<02:29,  2.95it/s][A------step-69------
+-- Forward Pass
+-- Loss-  tensor(0.5784, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  14%|█▎        | 70/510 [00:25<02:23,  3.06it/s][A------step-70------
+-- Forward Pass
+-- Loss-  tensor(0.5422, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  14%|█▍        | 71/510 [00:25<02:22,  3.07it/s][A------step-71------
+-- Forward Pass
+-- Loss-  tensor(0.6749, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  14%|█▍        | 72/510 [00:25<02:24,  3.03it/s][A------step-72------
+-- Forward Pass
+-- Loss-  tensor(0.6887, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  14%|█▍        | 73/510 [00:26<02:24,  3.03it/s][A------step-73------
+-- Forward Pass
+-- Loss-  tensor(0.2610, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  15%|█▍        | 74/510 [00:26<02:23,  3.04it/s][A------step-74------
+-- Forward Pass
+-- Loss-  tensor(0.6480, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  15%|█▍        | 75/510 [00:26<02:24,  3.00it/s][A------step-75------
+-- Forward Pass
+-- Loss-  tensor(0.5468, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  15%|█▍        | 76/510 [00:27<02:25,  2.98it/s][A------step-76------
+-- Forward Pass
+-- Loss-  tensor(0.3135, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  15%|█▌        | 77/510 [00:27<02:28,  2.92it/s][A------step-77------
+-- Forward Pass
+-- Loss-  tensor(0.4037, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  15%|█▌        | 78/510 [00:27<02:27,  2.93it/s][A------step-78------
+-- Forward Pass
+-- Loss-  tensor(0.6640, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  15%|█▌        | 79/510 [00:28<02:23,  3.01it/s][A------step-79------
+-- Forward Pass
+-- Loss-  tensor(0.2256, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  16%|█▌        | 80/510 [00:28<02:27,  2.91it/s][A------step-80------
+-- Forward Pass
+-- Loss-  tensor(0.8975, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  16%|█▌        | 81/510 [00:28<02:24,  2.98it/s][A------step-81------
+-- Forward Pass
+-- Loss-  tensor(0.6258, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  16%|█▌        | 82/510 [00:29<02:21,  3.03it/s][A------step-82------
+-- Forward Pass
+-- Loss-  tensor(0.6459, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  16%|█▋        | 83/510 [00:29<02:21,  3.03it/s][A------step-83------
+-- Forward Pass
+-- Loss-  tensor(0.4337, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  16%|█▋        | 84/510 [00:29<02:22,  2.99it/s][A------step-84------
+-- Forward Pass
+-- Loss-  tensor(0.6496, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  17%|█▋        | 85/510 [00:30<02:20,  3.03it/s][A------step-85------
+-- Forward Pass
+-- Loss-  tensor(0.6231, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  17%|█▋        | 86/510 [00:30<02:20,  3.02it/s][A------step-86------
+-- Forward Pass
+-- Loss-  tensor(1.0965, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  17%|█▋        | 87/510 [00:30<02:21,  2.99it/s][A------step-87------
+-- Forward Pass
+-- Loss-  tensor(0.8701, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  17%|█▋        | 88/510 [00:31<02:18,  3.04it/s][A------step-88------
+-- Forward Pass
+-- Loss-  tensor(0.4016, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  17%|█▋        | 89/510 [00:31<02:18,  3.05it/s][A------step-89------
+-- Forward Pass
+-- Loss-  tensor(0.3025, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  18%|█▊        | 90/510 [00:31<02:16,  3.09it/s][A------step-90------
+-- Forward Pass
+-- Loss-  tensor(0.4670, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  18%|█▊        | 91/510 [00:32<02:17,  3.04it/s][A------step-91------
+-- Forward Pass
+-- Loss-  tensor(0.5247, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  18%|█▊        | 92/510 [00:32<02:16,  3.07it/s][A------step-92------
+-- Forward Pass
+-- Loss-  tensor(0.3939, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  18%|█▊        | 93/510 [00:32<02:12,  3.15it/s][A------step-93------
+-- Forward Pass
+-- Loss-  tensor(0.6348, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  18%|█▊        | 94/510 [00:32<02:11,  3.16it/s][A------step-94------
+-- Forward Pass
+-- Loss-  tensor(0.5057, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  19%|█▊        | 95/510 [00:33<02:12,  3.13it/s][A------step-95------
+-- Forward Pass
+-- Loss-  tensor(0.4880, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  19%|█▉        | 96/510 [00:33<02:13,  3.09it/s][A------step-96------
+-- Forward Pass
+-- Loss-  tensor(0.6374, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  19%|█▉        | 97/510 [00:33<02:13,  3.10it/s][A------step-97------
+-- Forward Pass
+-- Loss-  tensor(0.6081, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  19%|█▉        | 98/510 [00:34<02:08,  3.22it/s][A------step-98------
+-- Forward Pass
+-- Loss-  tensor(0.4928, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  19%|█▉        | 99/510 [00:34<02:04,  3.31it/s][A------step-99------
+-- Forward Pass
+-- Loss-  tensor(0.5739, device='cuda:0', grad_fn=<NllLossBackward>)
+03/10/2023 07:57:35 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/checkpoint-100
+
+Iteration:  20%|█▉        | 100/510 [00:47<28:57,  4.24s/it][A------step-100------
+-- Forward Pass
+-- Loss-  tensor(0.4587, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  20%|█▉        | 101/510 [00:48<20:54,  3.07s/it][A------step-101------
+-- Forward Pass
+-- Loss-  tensor(0.7610, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  20%|██        | 102/510 [00:48<15:20,  2.26s/it][A------step-102------
+-- Forward Pass
+-- Loss-  tensor(0.5653, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  20%|██        | 103/510 [00:48<11:22,  1.68s/it][A------step-103------
+-- Forward Pass
+-- Loss-  tensor(0.4822, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  20%|██        | 104/510 [00:49<08:37,  1.28s/it][A------step-104------
+-- Forward Pass
+-- Loss-  tensor(0.5283, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  21%|██        | 105/510 [00:49<06:43,  1.00it/s][A------step-105------
+-- Forward Pass
+-- Loss-  tensor(0.6905, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  21%|██        | 106/510 [00:49<05:18,  1.27it/s][A------step-106------
+-- Forward Pass
+-- Loss-  tensor(0.5780, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  21%|██        | 107/510 [00:50<04:17,  1.56it/s][A------step-107------
+-- Forward Pass
+-- Loss-  tensor(0.4690, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  21%|██        | 108/510 [00:50<03:38,  1.84it/s][A------step-108------
+-- Forward Pass
+-- Loss-  tensor(0.4497, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  21%|██▏       | 109/510 [00:50<03:12,  2.09it/s][A------step-109------
+-- Forward Pass
+-- Loss-  tensor(0.6704, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  22%|██▏       | 110/510 [00:51<02:51,  2.33it/s][A------step-110------
+-- Forward Pass
+-- Loss-  tensor(0.3907, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  22%|██▏       | 111/510 [00:51<02:41,  2.46it/s][A------step-111------
+-- Forward Pass
+-- Loss-  tensor(0.7089, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  22%|██▏       | 112/510 [00:51<02:30,  2.64it/s][A------step-112------
+-- Forward Pass
+-- Loss-  tensor(0.7703, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  22%|██▏       | 113/510 [00:52<02:25,  2.74it/s][A------step-113------
+-- Forward Pass
+-- Loss-  tensor(0.4994, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  22%|██▏       | 114/510 [00:52<02:24,  2.75it/s][A------step-114------
+-- Forward Pass
+-- Loss-  tensor(0.9196, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  23%|██▎       | 115/510 [00:52<02:24,  2.74it/s][A------step-115------
+-- Forward Pass
+-- Loss-  tensor(0.7537, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  23%|██▎       | 116/510 [00:53<02:19,  2.83it/s][A------step-116------
+-- Forward Pass
+-- Loss-  tensor(0.6487, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  23%|██▎       | 117/510 [00:53<02:14,  2.92it/s][A------step-117------
+-- Forward Pass
+-- Loss-  tensor(0.6696, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  23%|██▎       | 118/510 [00:53<02:10,  3.01it/s][A------step-118------
+-- Forward Pass
+-- Loss-  tensor(0.5290, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  23%|██▎       | 119/510 [00:54<02:09,  3.02it/s][A------step-119------
+-- Forward Pass
+-- Loss-  tensor(0.7239, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  24%|██▎       | 120/510 [00:54<02:07,  3.05it/s][A------step-120------
+-- Forward Pass
+-- Loss-  tensor(0.4319, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  24%|██▎       | 121/510 [00:54<02:07,  3.05it/s][A------step-121------
+-- Forward Pass
+-- Loss-  tensor(0.6285, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  24%|██▍       | 122/510 [00:55<02:06,  3.07it/s][A------step-122------
+-- Forward Pass
+-- Loss-  tensor(0.4262, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  24%|██▍       | 123/510 [00:55<02:03,  3.14it/s][A------step-123------
+-- Forward Pass
+-- Loss-  tensor(0.6513, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  24%|██▍       | 124/510 [00:55<02:07,  3.02it/s][A------step-124------
+-- Forward Pass
+-- Loss-  tensor(0.4954, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  25%|██▍       | 125/510 [00:56<02:15,  2.84it/s][A------step-125------
+-- Forward Pass
+-- Loss-  tensor(0.8201, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  25%|██▍       | 126/510 [00:56<02:11,  2.93it/s][A------step-126------
+-- Forward Pass
+-- Loss-  tensor(0.3425, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  25%|██▍       | 127/510 [00:56<02:13,  2.87it/s][A------step-127------
+-- Forward Pass
+-- Loss-  tensor(0.5989, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  25%|██▌       | 128/510 [00:57<02:15,  2.83it/s][A------step-128------
+-- Forward Pass
+-- Loss-  tensor(0.4528, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  25%|██▌       | 129/510 [00:57<02:15,  2.81it/s][A------step-129------
+-- Forward Pass
+-- Loss-  tensor(0.4760, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  25%|██▌       | 130/510 [00:57<02:12,  2.88it/s][A------step-130------
+-- Forward Pass
+-- Loss-  tensor(0.5527, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  26%|██▌       | 131/510 [00:58<02:12,  2.86it/s][A------step-131------
+-- Forward Pass
+-- Loss-  tensor(0.2890, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  26%|██▌       | 132/510 [00:58<02:11,  2.89it/s][A------step-132------
+-- Forward Pass
+-- Loss-  tensor(1.1980, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  26%|██▌       | 133/510 [00:59<02:12,  2.85it/s][A------step-133------
+-- Forward Pass
+-- Loss-  tensor(0.3731, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  26%|██▋       | 134/510 [00:59<02:11,  2.86it/s][A------step-134------
+-- Forward Pass
+-- Loss-  tensor(0.5868, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  26%|██▋       | 135/510 [00:59<02:11,  2.86it/s][A------step-135------
+-- Forward Pass
+-- Loss-  tensor(0.7740, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  27%|██▋       | 136/510 [01:00<02:11,  2.84it/s][A------step-136------
+-- Forward Pass
+-- Loss-  tensor(0.5323, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  27%|██▋       | 137/510 [01:00<02:11,  2.83it/s][A------step-137------
+-- Forward Pass
+-- Loss-  tensor(0.6831, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  27%|██▋       | 138/510 [01:00<02:09,  2.88it/s][A------step-138------
+-- Forward Pass
+-- Loss-  tensor(0.7272, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  27%|██▋       | 139/510 [01:01<02:07,  2.91it/s][A------step-139------
+-- Forward Pass
+-- Loss-  tensor(0.4346, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  27%|██▋       | 140/510 [01:01<02:06,  2.93it/s][A------step-140------
+-- Forward Pass
+-- Loss-  tensor(0.4960, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  28%|██▊       | 141/510 [01:01<01:58,  3.11it/s][A------step-141------
+-- Forward Pass
+-- Loss-  tensor(0.6727, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  28%|██▊       | 142/510 [01:02<02:00,  3.06it/s][A------step-142------
+-- Forward Pass
+-- Loss-  tensor(0.5312, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  28%|██▊       | 143/510 [01:02<02:01,  3.02it/s][A------step-143------
+-- Forward Pass
+-- Loss-  tensor(0.4661, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  28%|██▊       | 144/510 [01:02<02:01,  3.00it/s][A------step-144------
+-- Forward Pass
+-- Loss-  tensor(0.3736, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  28%|██▊       | 145/510 [01:03<01:58,  3.07it/s][A------step-145------
+-- Forward Pass
+-- Loss-  tensor(0.4951, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  29%|██▊       | 146/510 [01:03<01:55,  3.14it/s][A------step-146------
+-- Forward Pass
+-- Loss-  tensor(0.6523, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  29%|██▉       | 147/510 [01:03<01:51,  3.24it/s][A------step-147------
+-- Forward Pass
+-- Loss-  tensor(0.5370, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  29%|██▉       | 148/510 [01:03<01:50,  3.28it/s][A------step-148------
+-- Forward Pass
+-- Loss-  tensor(0.6178, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  29%|██▉       | 149/510 [01:04<01:48,  3.31it/s][A------step-149------
+-- Forward Pass
+-- Loss-  tensor(0.8581, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  29%|██▉       | 150/510 [01:04<01:47,  3.35it/s][A------step-150------
+-- Forward Pass
+-- Loss-  tensor(0.3845, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  30%|██▉       | 151/510 [01:04<01:53,  3.16it/s][A------step-151------
+-- Forward Pass
+-- Loss-  tensor(1.0149, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  30%|██▉       | 152/510 [01:05<01:55,  3.11it/s][A------step-152------
+-- Forward Pass
+-- Loss-  tensor(0.6871, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  30%|███       | 153/510 [01:05<01:58,  3.00it/s][A------step-153------
+-- Forward Pass
+-- Loss-  tensor(0.7206, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  30%|███       | 154/510 [01:05<02:01,  2.94it/s][A------step-154------
+-- Forward Pass
+-- Loss-  tensor(0.8695, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  30%|███       | 155/510 [01:06<02:01,  2.92it/s][A------step-155------
+-- Forward Pass
+-- Loss-  tensor(0.7002, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  31%|███       | 156/510 [01:06<02:02,  2.89it/s][A------step-156------
+-- Forward Pass
+-- Loss-  tensor(0.5271, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  31%|███       | 157/510 [01:06<02:01,  2.90it/s][A------step-157------
+-- Forward Pass
+-- Loss-  tensor(0.5621, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  31%|███       | 158/510 [01:07<02:03,  2.85it/s][A------step-158------
+-- Forward Pass
+-- Loss-  tensor(0.5643, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  31%|███       | 159/510 [01:07<02:01,  2.90it/s][A------step-159------
+-- Forward Pass
+-- Loss-  tensor(0.6131, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  31%|███▏      | 160/510 [01:07<01:58,  2.94it/s][A------step-160------
+-- Forward Pass
+-- Loss-  tensor(0.7134, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  32%|███▏      | 161/510 [01:08<01:57,  2.97it/s][A------step-161------
+-- Forward Pass
+-- Loss-  tensor(0.4536, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  32%|███▏      | 162/510 [01:08<01:58,  2.94it/s][A------step-162------
+-- Forward Pass
+-- Loss-  tensor(0.7036, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  32%|███▏      | 163/510 [01:08<01:55,  2.99it/s][A------step-163------
+-- Forward Pass
+-- Loss-  tensor(0.5496, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  32%|███▏      | 164/510 [01:09<01:56,  2.96it/s][A------step-164------
+-- Forward Pass
+-- Loss-  tensor(0.5967, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  32%|███▏      | 165/510 [01:09<01:57,  2.95it/s][A------step-165------
+-- Forward Pass
+-- Loss-  tensor(0.6026, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  33%|███▎      | 166/510 [01:10<01:57,  2.93it/s][A------step-166------
+-- Forward Pass
+-- Loss-  tensor(0.5885, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  33%|███▎      | 167/510 [01:10<01:59,  2.87it/s][A------step-167------
+-- Forward Pass
+-- Loss-  tensor(0.5087, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  33%|███▎      | 168/510 [01:10<01:58,  2.88it/s][A------step-168------
+-- Forward Pass
+-- Loss-  tensor(0.4734, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  33%|███▎      | 169/510 [01:11<01:57,  2.89it/s][A------step-169------
+-- Forward Pass
+-- Loss-  tensor(0.4499, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  33%|███▎      | 170/510 [01:11<01:58,  2.88it/s][A------step-170------
+-- Forward Pass
+-- Loss-  tensor(0.3824, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  34%|███▎      | 171/510 [01:11<01:58,  2.85it/s][A------step-171------
+-- Forward Pass
+-- Loss-  tensor(0.5123, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  34%|███▎      | 172/510 [01:12<01:58,  2.86it/s][A------step-172------
+-- Forward Pass
+-- Loss-  tensor(1.1560, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  34%|███▍      | 173/510 [01:12<01:55,  2.92it/s][A------step-173------
+-- Forward Pass
+-- Loss-  tensor(0.7299, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  34%|███▍      | 174/510 [01:12<01:57,  2.86it/s][A------step-174------
+-- Forward Pass
+-- Loss-  tensor(1.2393, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  34%|███▍      | 175/510 [01:13<01:55,  2.90it/s][A------step-175------
+-- Forward Pass
+-- Loss-  tensor(0.3753, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  35%|███▍      | 176/510 [01:13<01:54,  2.93it/s][A------step-176------
+-- Forward Pass
+-- Loss-  tensor(0.2973, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  35%|███▍      | 177/510 [01:13<01:55,  2.87it/s][A------step-177------
+-- Forward Pass
+-- Loss-  tensor(0.5567, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  35%|███▍      | 178/510 [01:14<01:54,  2.89it/s][A------step-178------
+-- Forward Pass
+-- Loss-  tensor(0.7463, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  35%|███▌      | 179/510 [01:14<01:56,  2.84it/s][A------step-179------
+-- Forward Pass
+-- Loss-  tensor(0.2293, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  35%|███▌      | 180/510 [01:14<01:55,  2.85it/s][A------step-180------
+-- Forward Pass
+-- Loss-  tensor(0.4828, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  35%|███▌      | 181/510 [01:15<01:56,  2.83it/s][A------step-181------
+-- Forward Pass
+-- Loss-  tensor(0.2988, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  36%|███▌      | 182/510 [01:15<01:56,  2.81it/s][A------step-182------
+-- Forward Pass
+-- Loss-  tensor(0.5015, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  36%|███▌      | 183/510 [01:15<01:56,  2.82it/s][A------step-183------
+-- Forward Pass
+-- Loss-  tensor(0.6570, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  36%|███▌      | 184/510 [01:16<01:56,  2.80it/s][A------step-184------
+-- Forward Pass
+-- Loss-  tensor(0.2821, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  36%|███▋      | 185/510 [01:16<01:53,  2.86it/s][A------step-185------
+-- Forward Pass
+-- Loss-  tensor(0.4221, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  36%|███▋      | 186/510 [01:17<01:53,  2.84it/s][A------step-186------
+-- Forward Pass
+-- Loss-  tensor(0.3366, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  37%|███▋      | 187/510 [01:17<01:51,  2.90it/s][A------step-187------
+-- Forward Pass
+-- Loss-  tensor(0.3163, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  37%|███▋      | 188/510 [01:17<01:49,  2.95it/s][A------step-188------
+-- Forward Pass
+-- Loss-  tensor(0.4038, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  37%|███▋      | 189/510 [01:18<01:51,  2.88it/s][A------step-189------
+-- Forward Pass
+-- Loss-  tensor(0.2484, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  37%|███▋      | 190/510 [01:18<01:51,  2.87it/s][A------step-190------
+-- Forward Pass
+-- Loss-  tensor(0.9223, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  37%|███▋      | 191/510 [01:18<01:52,  2.85it/s][A------step-191------
+-- Forward Pass
+-- Loss-  tensor(0.7596, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  38%|███▊      | 192/510 [01:19<01:51,  2.86it/s][A------step-192------
+-- Forward Pass
+-- Loss-  tensor(0.9073, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  38%|███▊      | 193/510 [01:19<01:49,  2.90it/s][A------step-193------
+-- Forward Pass
+-- Loss-  tensor(0.5026, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  38%|███▊      | 194/510 [01:19<01:45,  3.00it/s][A------step-194------
+-- Forward Pass
+-- Loss-  tensor(0.2664, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  38%|███▊      | 195/510 [01:20<01:46,  2.95it/s][A------step-195------
+-- Forward Pass
+-- Loss-  tensor(0.5766, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  38%|███▊      | 196/510 [01:20<01:48,  2.90it/s][A------step-196------
+-- Forward Pass
+-- Loss-  tensor(0.4545, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  39%|███▊      | 197/510 [01:20<01:48,  2.89it/s][A------step-197------
+-- Forward Pass
+-- Loss-  tensor(0.4514, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  39%|███▉      | 198/510 [01:21<01:49,  2.86it/s][A------step-198------
+-- Forward Pass
+-- Loss-  tensor(0.4004, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  39%|███▉      | 199/510 [01:21<01:48,  2.87it/s][A------step-199------
+-- Forward Pass
+-- Loss-  tensor(0.2988, device='cuda:0', grad_fn=<NllLossBackward>)
+03/10/2023 07:58:22 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/checkpoint-200
+
+Iteration:  39%|███▉      | 200/510 [01:34<21:41,  4.20s/it][A------step-200------
+-- Forward Pass
+-- Loss-  tensor(0.4029, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  39%|███▉      | 201/510 [01:35<15:43,  3.05s/it][A------step-201------
+-- Forward Pass
+-- Loss-  tensor(0.1763, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  40%|███▉      | 202/510 [01:35<11:30,  2.24s/it][A------step-202------
+-- Forward Pass
+-- Loss-  tensor(0.4048, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  40%|███▉      | 203/510 [01:35<08:31,  1.67s/it][A------step-203------
+-- Forward Pass
+-- Loss-  tensor(0.5139, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  40%|████      | 204/510 [01:36<06:23,  1.25s/it][A------step-204------
+-- Forward Pass
+-- Loss-  tensor(0.1097, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  40%|████      | 205/510 [01:36<04:58,  1.02it/s][A------step-205------
+-- Forward Pass
+-- Loss-  tensor(0.7145, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  40%|████      | 206/510 [01:36<04:00,  1.26it/s][A------step-206------
+-- Forward Pass
+-- Loss-  tensor(0.7465, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  41%|████      | 207/510 [01:37<03:20,  1.51it/s][A------step-207------
+-- Forward Pass
+-- Loss-  tensor(0.4710, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  41%|████      | 208/510 [01:37<02:52,  1.75it/s][A------step-208------
+-- Forward Pass
+-- Loss-  tensor(0.5176, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  41%|████      | 209/510 [01:37<02:27,  2.04it/s][A------step-209------
+-- Forward Pass
+-- Loss-  tensor(0.7103, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  41%|████      | 210/510 [01:38<02:17,  2.18it/s][A------step-210------
+-- Forward Pass
+-- Loss-  tensor(0.5999, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  41%|████▏     | 211/510 [01:38<02:05,  2.39it/s][A------step-211------
+-- Forward Pass
+-- Loss-  tensor(0.6889, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  42%|████▏     | 212/510 [01:38<01:57,  2.53it/s][A------step-212------
+-- Forward Pass
+-- Loss-  tensor(0.5387, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  42%|████▏     | 213/510 [01:39<01:48,  2.73it/s][A------step-213------
+-- Forward Pass
+-- Loss-  tensor(0.4821, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  42%|████▏     | 214/510 [01:39<01:44,  2.82it/s][A------step-214------
+-- Forward Pass
+-- Loss-  tensor(0.5333, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  42%|████▏     | 215/510 [01:39<01:41,  2.90it/s][A------step-215------
+-- Forward Pass
+-- Loss-  tensor(0.7264, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  42%|████▏     | 216/510 [01:40<01:37,  3.02it/s][A------step-216------
+-- Forward Pass
+-- Loss-  tensor(0.5025, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  43%|████▎     | 217/510 [01:40<01:34,  3.09it/s][A------step-217------
+-- Forward Pass
+-- Loss-  tensor(1.1348, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  43%|████▎     | 218/510 [01:40<01:35,  3.05it/s][A------step-218------
+-- Forward Pass
+-- Loss-  tensor(0.6656, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  43%|████▎     | 219/510 [01:40<01:35,  3.05it/s][A------step-219------
+-- Forward Pass
+-- Loss-  tensor(0.6325, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  43%|████▎     | 220/510 [01:41<01:35,  3.04it/s][A------step-220------
+-- Forward Pass
+-- Loss-  tensor(0.7927, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  43%|████▎     | 221/510 [01:41<01:34,  3.06it/s][A------step-221------
+-- Forward Pass
+-- Loss-  tensor(0.3864, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  44%|████▎     | 222/510 [01:41<01:34,  3.06it/s][A------step-222------
+-- Forward Pass
+-- Loss-  tensor(0.7750, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  44%|████▎     | 223/510 [01:42<01:35,  3.01it/s][A------step-223------
+-- Forward Pass
+-- Loss-  tensor(0.3663, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  44%|████▍     | 224/510 [01:42<01:32,  3.11it/s][A------step-224------
+-- Forward Pass
+-- Loss-  tensor(0.5705, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  44%|████▍     | 225/510 [01:42<01:29,  3.17it/s][A------step-225------
+-- Forward Pass
+-- Loss-  tensor(0.3493, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  44%|████▍     | 226/510 [01:43<01:28,  3.21it/s][A------step-226------
+-- Forward Pass
+-- Loss-  tensor(0.7811, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  45%|████▍     | 227/510 [01:43<01:27,  3.24it/s][A------step-227------
+-- Forward Pass
+-- Loss-  tensor(0.4558, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  45%|████▍     | 228/510 [01:43<01:26,  3.27it/s][A------step-228------
+-- Forward Pass
+-- Loss-  tensor(0.5997, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  45%|████▍     | 229/510 [01:44<01:25,  3.29it/s][A------step-229------
+-- Forward Pass
+-- Loss-  tensor(0.4878, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  45%|████▌     | 230/510 [01:44<01:24,  3.31it/s][A------step-230------
+-- Forward Pass
+-- Loss-  tensor(0.5073, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  45%|████▌     | 231/510 [01:44<01:23,  3.33it/s][A------step-231------
+-- Forward Pass
+-- Loss-  tensor(0.6581, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  45%|████▌     | 232/510 [01:45<01:23,  3.31it/s][A------step-232------
+-- Forward Pass
+-- Loss-  tensor(0.4941, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  46%|████▌     | 233/510 [01:45<01:23,  3.32it/s][A------step-233------
+-- Forward Pass
+-- Loss-  tensor(0.3057, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  46%|████▌     | 234/510 [01:45<01:23,  3.31it/s][A------step-234------
+-- Forward Pass
+-- Loss-  tensor(0.4976, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  46%|████▌     | 235/510 [01:45<01:22,  3.32it/s][A------step-235------
+-- Forward Pass
+-- Loss-  tensor(0.4188, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  46%|████▋     | 236/510 [01:46<01:22,  3.33it/s][A------step-236------
+-- Forward Pass
+-- Loss-  tensor(0.4305, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  46%|████▋     | 237/510 [01:46<01:21,  3.37it/s][A------step-237------
+-- Forward Pass
+-- Loss-  tensor(0.6923, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  47%|████▋     | 238/510 [01:46<01:20,  3.36it/s][A------step-238------
+-- Forward Pass
+-- Loss-  tensor(0.8643, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  47%|████▋     | 239/510 [01:47<01:20,  3.37it/s][A------step-239------
+-- Forward Pass
+-- Loss-  tensor(0.5376, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  47%|████▋     | 240/510 [01:47<01:18,  3.45it/s][A------step-240------
+-- Forward Pass
+-- Loss-  tensor(0.3331, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  47%|████▋     | 241/510 [01:47<01:18,  3.43it/s][A------step-241------
+-- Forward Pass
+-- Loss-  tensor(0.2784, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  47%|████▋     | 242/510 [01:48<01:20,  3.32it/s][A------step-242------
+-- Forward Pass
+-- Loss-  tensor(0.4959, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  48%|████▊     | 243/510 [01:48<01:21,  3.28it/s][A------step-243------
+-- Forward Pass
+-- Loss-  tensor(0.5319, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  48%|████▊     | 244/510 [01:48<01:20,  3.30it/s][A------step-244------
+-- Forward Pass
+-- Loss-  tensor(1.0453, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  48%|████▊     | 245/510 [01:48<01:20,  3.31it/s][A------step-245------
+-- Forward Pass
+-- Loss-  tensor(0.7991, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  48%|████▊     | 246/510 [01:49<01:17,  3.41it/s][A------step-246------
+-- Forward Pass
+-- Loss-  tensor(0.5036, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  48%|████▊     | 247/510 [01:49<01:19,  3.30it/s][A------step-247------
+-- Forward Pass
+-- Loss-  tensor(0.7238, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  49%|████▊     | 248/510 [01:49<01:18,  3.32it/s][A------step-248------
+-- Forward Pass
+-- Loss-  tensor(0.3712, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  49%|████▉     | 249/510 [01:50<01:18,  3.30it/s][A------step-249------
+-- Forward Pass
+-- Loss-  tensor(0.3838, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  49%|████▉     | 250/510 [01:50<01:17,  3.33it/s][A------step-250------
+-- Forward Pass
+-- Loss-  tensor(0.5168, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  49%|████▉     | 251/510 [01:50<01:19,  3.27it/s][A------step-251------
+-- Forward Pass
+-- Loss-  tensor(0.3839, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  49%|████▉     | 252/510 [01:51<01:18,  3.30it/s][A------step-252------
+-- Forward Pass
+-- Loss-  tensor(0.3276, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  50%|████▉     | 253/510 [01:51<01:17,  3.32it/s][A------step-253------
+-- Forward Pass
+-- Loss-  tensor(0.5537, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  50%|████▉     | 254/510 [01:51<01:16,  3.33it/s][A------step-254------
+-- Forward Pass
+-- Loss-  tensor(0.7188, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  50%|█████     | 255/510 [01:51<01:16,  3.31it/s][A------step-255------
+-- Forward Pass
+-- Loss-  tensor(0.7962, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  50%|█████     | 256/510 [01:52<01:16,  3.30it/s][A------step-256------
+-- Forward Pass
+-- Loss-  tensor(0.5290, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  50%|█████     | 257/510 [01:52<01:15,  3.33it/s][A------step-257------
+-- Forward Pass
+-- Loss-  tensor(0.8853, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  51%|█████     | 258/510 [01:52<01:12,  3.49it/s][A------step-258------
+-- Forward Pass
+-- Loss-  tensor(0.5005, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  51%|█████     | 259/510 [01:53<01:15,  3.34it/s][A------step-259------
+-- Forward Pass
+-- Loss-  tensor(0.4224, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  51%|█████     | 260/510 [01:53<01:14,  3.35it/s][A------step-260------
+-- Forward Pass
+-- Loss-  tensor(0.3208, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  51%|█████     | 261/510 [01:53<01:14,  3.34it/s][A------step-261------
+-- Forward Pass
+-- Loss-  tensor(0.3003, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  51%|█████▏    | 262/510 [01:54<01:15,  3.27it/s][A------step-262------
+-- Forward Pass
+-- Loss-  tensor(0.2668, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  52%|█████▏    | 263/510 [01:54<01:15,  3.28it/s][A------step-263------
+-- Forward Pass
+-- Loss-  tensor(0.6587, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  52%|█████▏    | 264/510 [01:54<01:16,  3.22it/s][A------step-264------
+-- Forward Pass
+-- Loss-  tensor(0.7055, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  52%|█████▏    | 265/510 [01:54<01:18,  3.13it/s][A------step-265------
+-- Forward Pass
+-- Loss-  tensor(0.7306, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  52%|█████▏    | 266/510 [01:55<01:18,  3.09it/s][A------step-266------
+-- Forward Pass
+-- Loss-  tensor(0.6095, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  52%|█████▏    | 267/510 [01:55<01:17,  3.14it/s][A------step-267------
+-- Forward Pass
+-- Loss-  tensor(0.5365, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  53%|█████▎    | 268/510 [01:55<01:19,  3.06it/s][A------step-268------
+-- Forward Pass
+-- Loss-  tensor(0.3000, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  53%|█████▎    | 269/510 [01:56<01:19,  3.02it/s][A------step-269------
+-- Forward Pass
+-- Loss-  tensor(0.4602, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  53%|█████▎    | 270/510 [01:56<01:15,  3.19it/s][A------step-270------
+-- Forward Pass
+-- Loss-  tensor(0.3186, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  53%|█████▎    | 271/510 [01:56<01:16,  3.12it/s][A------step-271------
+-- Forward Pass
+-- Loss-  tensor(0.7335, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  53%|█████▎    | 272/510 [01:57<01:13,  3.24it/s][A------step-272------
+-- Forward Pass
+-- Loss-  tensor(0.4307, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  54%|█████▎    | 273/510 [01:57<01:14,  3.17it/s][A------step-273------
+-- Forward Pass
+-- Loss-  tensor(0.3136, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  54%|█████▎    | 274/510 [01:57<01:15,  3.13it/s][A------step-274------
+-- Forward Pass
+-- Loss-  tensor(0.6595, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  54%|█████▍    | 275/510 [01:58<01:14,  3.14it/s][A------step-275------
+-- Forward Pass
+-- Loss-  tensor(0.3425, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  54%|█████▍    | 276/510 [01:58<01:14,  3.14it/s][A------step-276------
+-- Forward Pass
+-- Loss-  tensor(0.7140, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  54%|█████▍    | 277/510 [01:58<01:12,  3.22it/s][A------step-277------
+-- Forward Pass
+-- Loss-  tensor(0.4287, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  55%|█████▍    | 278/510 [01:59<01:12,  3.22it/s][A------step-278------
+-- Forward Pass
+-- Loss-  tensor(0.7720, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  55%|█████▍    | 279/510 [01:59<01:11,  3.23it/s][A------step-279------
+-- Forward Pass
+-- Loss-  tensor(0.6991, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  55%|█████▍    | 280/510 [01:59<01:11,  3.23it/s][A------step-280------
+-- Forward Pass
+-- Loss-  tensor(0.3958, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  55%|█████▌    | 281/510 [02:00<01:10,  3.25it/s][A------step-281------
+-- Forward Pass
+-- Loss-  tensor(0.2458, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  55%|█████▌    | 282/510 [02:00<01:09,  3.26it/s][A------step-282------
+-- Forward Pass
+-- Loss-  tensor(0.3667, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  55%|█████▌    | 283/510 [02:00<01:09,  3.27it/s][A------step-283------
+-- Forward Pass
+-- Loss-  tensor(0.3162, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  56%|█████▌    | 284/510 [02:00<01:10,  3.21it/s][A------step-284------
+-- Forward Pass
+-- Loss-  tensor(0.4711, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  56%|█████▌    | 285/510 [02:01<01:09,  3.22it/s][A------step-285------
+-- Forward Pass
+-- Loss-  tensor(0.4588, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  56%|█████▌    | 286/510 [02:01<01:11,  3.14it/s][A------step-286------
+-- Forward Pass
+-- Loss-  tensor(0.6016, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  56%|█████▋    | 287/510 [02:01<01:10,  3.19it/s][A------step-287------
+-- Forward Pass
+-- Loss-  tensor(0.5612, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  56%|█████▋    | 288/510 [02:02<01:09,  3.20it/s][A------step-288------
+-- Forward Pass
+-- Loss-  tensor(0.1766, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  57%|█████▋    | 289/510 [02:02<01:08,  3.24it/s][A------step-289------
+-- Forward Pass
+-- Loss-  tensor(0.9402, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  57%|█████▋    | 290/510 [02:02<01:07,  3.27it/s][A------step-290------
+-- Forward Pass
+-- Loss-  tensor(0.8998, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  57%|█████▋    | 291/510 [02:03<01:07,  3.26it/s][A------step-291------
+-- Forward Pass
+-- Loss-  tensor(0.6120, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  57%|█████▋    | 292/510 [02:03<01:06,  3.27it/s][A------step-292------
+-- Forward Pass
+-- Loss-  tensor(0.4116, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  57%|█████▋    | 293/510 [02:03<01:04,  3.34it/s][A------step-293------
+-- Forward Pass
+-- Loss-  tensor(0.4335, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  58%|█████▊    | 294/510 [02:04<01:05,  3.32it/s][A------step-294------
+-- Forward Pass
+-- Loss-  tensor(0.3296, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  58%|█████▊    | 295/510 [02:04<01:06,  3.25it/s][A------step-295------
+-- Forward Pass
+-- Loss-  tensor(0.6789, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  58%|█████▊    | 296/510 [02:04<01:08,  3.11it/s][A------step-296------
+-- Forward Pass
+-- Loss-  tensor(0.6194, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  58%|█████▊    | 297/510 [02:05<01:09,  3.07it/s][A------step-297------
+-- Forward Pass
+-- Loss-  tensor(0.3968, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  58%|█████▊    | 298/510 [02:05<01:06,  3.21it/s][A------step-298------
+-- Forward Pass
+-- Loss-  tensor(0.3541, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  59%|█████▊    | 299/510 [02:05<01:06,  3.16it/s][A------step-299------
+-- Forward Pass
+-- Loss-  tensor(0.6151, device='cuda:0', grad_fn=<NllLossBackward>)
+03/10/2023 07:59:06 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/checkpoint-300
+
+Iteration:  59%|█████▉    | 300/510 [02:18<14:31,  4.15s/it][A------step-300------
+-- Forward Pass
+-- Loss-  tensor(0.5019, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  59%|█████▉    | 301/510 [02:19<10:32,  3.02s/it][A------step-301------
+-- Forward Pass
+-- Loss-  tensor(0.3757, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  59%|█████▉    | 302/510 [02:19<07:42,  2.22s/it][A------step-302------
+-- Forward Pass
+-- Loss-  tensor(0.4929, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  59%|█████▉    | 303/510 [02:19<05:43,  1.66s/it][A------step-303------
+-- Forward Pass
+-- Loss-  tensor(0.5459, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  60%|█████▉    | 304/510 [02:20<04:21,  1.27s/it][A------step-304------
+-- Forward Pass
+-- Loss-  tensor(0.3939, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  60%|█████▉    | 305/510 [02:20<03:24,  1.00it/s][A------step-305------
+-- Forward Pass
+-- Loss-  tensor(0.4000, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  60%|██████    | 306/510 [02:20<02:45,  1.23it/s][A------step-306------
+-- Forward Pass
+-- Loss-  tensor(0.4395, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  60%|██████    | 307/510 [02:21<02:15,  1.49it/s][A------step-307------
+-- Forward Pass
+-- Loss-  tensor(0.5697, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  60%|██████    | 308/510 [02:21<01:55,  1.76it/s][A------step-308------
+-- Forward Pass
+-- Loss-  tensor(0.3477, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  61%|██████    | 309/510 [02:21<01:42,  1.96it/s][A------step-309------
+-- Forward Pass
+-- Loss-  tensor(0.2833, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  61%|██████    | 310/510 [02:22<01:33,  2.15it/s][A------step-310------
+-- Forward Pass
+-- Loss-  tensor(0.4782, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  61%|██████    | 311/510 [02:22<01:27,  2.27it/s][A------step-311------
+-- Forward Pass
+-- Loss-  tensor(0.2249, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  61%|██████    | 312/510 [02:23<01:22,  2.41it/s][A------step-312------
+-- Forward Pass
+-- Loss-  tensor(0.4963, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  61%|██████▏   | 313/510 [02:23<01:18,  2.51it/s][A------step-313------
+-- Forward Pass
+-- Loss-  tensor(0.6257, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  62%|██████▏   | 314/510 [02:23<01:16,  2.55it/s][A------step-314------
+-- Forward Pass
+-- Loss-  tensor(0.8120, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  62%|██████▏   | 315/510 [02:24<01:12,  2.68it/s][A------step-315------
+-- Forward Pass
+-- Loss-  tensor(0.4653, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  62%|██████▏   | 316/510 [02:24<01:11,  2.71it/s][A------step-316------
+-- Forward Pass
+-- Loss-  tensor(0.2860, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  62%|██████▏   | 317/510 [02:24<01:11,  2.71it/s][A------step-317------
+-- Forward Pass
+-- Loss-  tensor(0.5660, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  62%|██████▏   | 318/510 [02:25<01:08,  2.81it/s][A------step-318------
+-- Forward Pass
+-- Loss-  tensor(0.3399, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  63%|██████▎   | 319/510 [02:25<01:08,  2.77it/s][A------step-319------
+-- Forward Pass
+-- Loss-  tensor(0.1364, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  63%|██████▎   | 320/510 [02:25<01:09,  2.75it/s][A------step-320------
+-- Forward Pass
+-- Loss-  tensor(0.3572, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  63%|██████▎   | 321/510 [02:26<01:07,  2.79it/s][A------step-321------
+-- Forward Pass
+-- Loss-  tensor(0.5656, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  63%|██████▎   | 322/510 [02:26<01:06,  2.83it/s][A------step-322------
+-- Forward Pass
+-- Loss-  tensor(1.1344, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  63%|██████▎   | 323/510 [02:26<01:04,  2.91it/s][A------step-323------
+-- Forward Pass
+-- Loss-  tensor(0.4412, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  64%|██████▎   | 324/510 [02:27<01:04,  2.87it/s][A------step-324------
+-- Forward Pass
+-- Loss-  tensor(0.3772, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  64%|██████▎   | 325/510 [02:27<01:05,  2.84it/s][A------step-325------
+-- Forward Pass
+-- Loss-  tensor(0.4678, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  64%|██████▍   | 326/510 [02:28<01:05,  2.82it/s][A------step-326------
+-- Forward Pass
+-- Loss-  tensor(0.5273, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  64%|██████▍   | 327/510 [02:28<01:04,  2.85it/s][A------step-327------
+-- Forward Pass
+-- Loss-  tensor(0.1561, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  64%|██████▍   | 328/510 [02:28<01:04,  2.81it/s][A------step-328------
+-- Forward Pass
+-- Loss-  tensor(0.5544, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  65%|██████▍   | 329/510 [02:29<01:05,  2.77it/s][A------step-329------
+-- Forward Pass
+-- Loss-  tensor(0.3871, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  65%|██████▍   | 330/510 [02:29<01:04,  2.81it/s][A------step-330------
+-- Forward Pass
+-- Loss-  tensor(0.3090, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  65%|██████▍   | 331/510 [02:29<01:04,  2.78it/s][A------step-331------
+-- Forward Pass
+-- Loss-  tensor(0.3381, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  65%|██████▌   | 332/510 [02:30<01:03,  2.81it/s][A------step-332------
+-- Forward Pass
+-- Loss-  tensor(0.7588, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  65%|██████▌   | 333/510 [02:30<01:03,  2.78it/s][A------step-333------
+-- Forward Pass
+-- Loss-  tensor(0.7421, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  65%|██████▌   | 334/510 [02:30<01:03,  2.76it/s][A------step-334------
+-- Forward Pass
+-- Loss-  tensor(0.4686, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  66%|██████▌   | 335/510 [02:31<01:03,  2.77it/s][A------step-335------
+-- Forward Pass
+-- Loss-  tensor(0.1796, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  66%|██████▌   | 336/510 [02:31<01:01,  2.82it/s][A------step-336------
+-- Forward Pass
+-- Loss-  tensor(0.6055, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  66%|██████▌   | 337/510 [02:31<01:01,  2.82it/s][A------step-337------
+-- Forward Pass
+-- Loss-  tensor(0.1252, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  66%|██████▋   | 338/510 [02:32<01:00,  2.84it/s][A------step-338------
+-- Forward Pass
+-- Loss-  tensor(0.5338, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  66%|██████▋   | 339/510 [02:32<00:59,  2.90it/s][A------step-339------
+-- Forward Pass
+-- Loss-  tensor(0.6198, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  67%|██████▋   | 340/510 [02:32<00:58,  2.88it/s][A------step-340------
+-- Forward Pass
+-- Loss-  tensor(0.8094, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  67%|██████▋   | 341/510 [02:33<00:59,  2.86it/s][A------step-341------
+-- Forward Pass
+-- Loss-  tensor(0.1854, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  67%|██████▋   | 342/510 [02:33<00:57,  2.93it/s][A------step-342------
+-- Forward Pass
+-- Loss-  tensor(0.6293, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  67%|██████▋   | 343/510 [02:34<00:58,  2.85it/s][A------step-343------
+-- Forward Pass
+-- Loss-  tensor(0.2777, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  67%|██████▋   | 344/510 [02:34<00:57,  2.88it/s][A------step-344------
+-- Forward Pass
+-- Loss-  tensor(0.2396, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  68%|██████▊   | 345/510 [02:34<00:58,  2.83it/s][A------step-345------
+-- Forward Pass
+-- Loss-  tensor(0.6462, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  68%|██████▊   | 346/510 [02:35<00:57,  2.86it/s][A------step-346------
+-- Forward Pass
+-- Loss-  tensor(0.4814, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  68%|██████▊   | 347/510 [02:35<00:57,  2.85it/s][A------step-347------
+-- Forward Pass
+-- Loss-  tensor(0.3549, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  68%|██████▊   | 348/510 [02:35<00:57,  2.81it/s][A------step-348------
+-- Forward Pass
+-- Loss-  tensor(0.3685, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  68%|██████▊   | 349/510 [02:36<00:57,  2.79it/s][A------step-349------
+-- Forward Pass
+-- Loss-  tensor(0.4408, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  69%|██████▊   | 350/510 [02:36<00:57,  2.77it/s][A------step-350------
+-- Forward Pass
+-- Loss-  tensor(0.7629, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  69%|██████▉   | 351/510 [02:36<00:57,  2.77it/s][A------step-351------
+-- Forward Pass
+-- Loss-  tensor(0.4696, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  69%|██████▉   | 352/510 [02:37<00:57,  2.77it/s][A------step-352------
+-- Forward Pass
+-- Loss-  tensor(0.4206, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  69%|██████▉   | 353/510 [02:37<00:55,  2.81it/s][A------step-353------
+-- Forward Pass
+-- Loss-  tensor(0.7171, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  69%|██████▉   | 354/510 [02:37<00:55,  2.81it/s][A------step-354------
+-- Forward Pass
+-- Loss-  tensor(0.5675, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  70%|██████▉   | 355/510 [02:38<00:55,  2.82it/s][A------step-355------
+-- Forward Pass
+-- Loss-  tensor(0.2336, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  70%|██████▉   | 356/510 [02:38<00:53,  2.87it/s][A------step-356------
+-- Forward Pass
+-- Loss-  tensor(0.4370, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  70%|███████   | 357/510 [02:38<00:53,  2.86it/s][A------step-357------
+-- Forward Pass
+-- Loss-  tensor(0.1780, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  70%|███████   | 358/510 [02:39<00:53,  2.82it/s][A------step-358------
+-- Forward Pass
+-- Loss-  tensor(0.5150, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  70%|███████   | 359/510 [02:39<00:52,  2.89it/s][A------step-359------
+-- Forward Pass
+-- Loss-  tensor(0.7450, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  71%|███████   | 360/510 [02:40<00:52,  2.85it/s][A------step-360------
+-- Forward Pass
+-- Loss-  tensor(0.2644, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  71%|███████   | 361/510 [02:40<00:53,  2.81it/s][A------step-361------
+-- Forward Pass
+-- Loss-  tensor(0.5112, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  71%|███████   | 362/510 [02:40<00:52,  2.82it/s][A------step-362------
+-- Forward Pass
+-- Loss-  tensor(0.2455, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  71%|███████   | 363/510 [02:41<00:52,  2.81it/s][A------step-363------
+-- Forward Pass
+-- Loss-  tensor(0.6973, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  71%|███████▏  | 364/510 [02:41<00:50,  2.87it/s][A------step-364------
+-- Forward Pass
+-- Loss-  tensor(0.2368, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  72%|███████▏  | 365/510 [02:41<00:50,  2.87it/s][A------step-365------
+-- Forward Pass
+-- Loss-  tensor(0.2933, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  72%|███████▏  | 366/510 [02:42<00:50,  2.85it/s][A------step-366------
+-- Forward Pass
+-- Loss-  tensor(0.3733, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  72%|███████▏  | 367/510 [02:42<00:48,  2.96it/s][A------step-367------
+-- Forward Pass
+-- Loss-  tensor(0.4118, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  72%|███████▏  | 368/510 [02:42<00:48,  2.91it/s][A------step-368------
+-- Forward Pass
+-- Loss-  tensor(0.6888, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  72%|███████▏  | 369/510 [02:43<00:48,  2.88it/s][A------step-369------
+-- Forward Pass
+-- Loss-  tensor(0.8498, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  73%|███████▎  | 370/510 [02:43<00:49,  2.85it/s][A------step-370------
+-- Forward Pass
+-- Loss-  tensor(0.1866, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  73%|███████▎  | 371/510 [02:43<00:48,  2.87it/s][A------step-371------
+-- Forward Pass
+-- Loss-  tensor(0.4652, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  73%|███████▎  | 372/510 [02:44<00:48,  2.82it/s][A------step-372------
+-- Forward Pass
+-- Loss-  tensor(0.5668, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  73%|███████▎  | 373/510 [02:44<00:48,  2.80it/s][A------step-373------
+-- Forward Pass
+-- Loss-  tensor(0.5825, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  73%|███████▎  | 374/510 [02:44<00:48,  2.81it/s][A------step-374------
+-- Forward Pass
+-- Loss-  tensor(0.5761, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  74%|███████▎  | 375/510 [02:45<00:48,  2.78it/s][A------step-375------
+-- Forward Pass
+-- Loss-  tensor(1.0128, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  74%|███████▎  | 376/510 [02:45<00:47,  2.81it/s][A------step-376------
+-- Forward Pass
+-- Loss-  tensor(0.1423, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  74%|███████▍  | 377/510 [02:46<00:47,  2.82it/s][A------step-377------
+-- Forward Pass
+-- Loss-  tensor(0.0748, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  74%|███████▍  | 378/510 [02:46<00:46,  2.82it/s][A------step-378------
+-- Forward Pass
+-- Loss-  tensor(0.8504, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  74%|███████▍  | 379/510 [02:46<00:47,  2.78it/s][A------step-379------
+-- Forward Pass
+-- Loss-  tensor(0.3078, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  75%|███████▍  | 380/510 [02:47<00:47,  2.76it/s][A------step-380------
+-- Forward Pass
+-- Loss-  tensor(0.5598, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  75%|███████▍  | 381/510 [02:47<00:46,  2.78it/s][A------step-381------
+-- Forward Pass
+-- Loss-  tensor(0.6187, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  75%|███████▍  | 382/510 [02:47<00:46,  2.78it/s][A------step-382------
+-- Forward Pass
+-- Loss-  tensor(0.8290, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  75%|███████▌  | 383/510 [02:48<00:45,  2.78it/s][A------step-383------
+-- Forward Pass
+-- Loss-  tensor(0.6150, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  75%|███████▌  | 384/510 [02:48<00:45,  2.76it/s][A------step-384------
+-- Forward Pass
+-- Loss-  tensor(0.5033, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  75%|███████▌  | 385/510 [02:48<00:46,  2.72it/s][A------step-385------
+-- Forward Pass
+-- Loss-  tensor(0.1666, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  76%|███████▌  | 386/510 [02:49<00:45,  2.73it/s][A------step-386------
+-- Forward Pass
+-- Loss-  tensor(0.7212, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  76%|███████▌  | 387/510 [02:49<00:44,  2.79it/s][A------step-387------
+-- Forward Pass
+-- Loss-  tensor(0.9456, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  76%|███████▌  | 388/510 [02:49<00:42,  2.85it/s][A------step-388------
+-- Forward Pass
+-- Loss-  tensor(0.5524, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  76%|███████▋  | 389/510 [02:50<00:40,  2.98it/s][A------step-389------
+-- Forward Pass
+-- Loss-  tensor(0.5543, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  76%|███████▋  | 390/510 [02:50<00:39,  3.03it/s][A------step-390------
+-- Forward Pass
+-- Loss-  tensor(0.2865, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  77%|███████▋  | 391/510 [02:50<00:38,  3.06it/s][A------step-391------
+-- Forward Pass
+-- Loss-  tensor(0.1666, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  77%|███████▋  | 392/510 [02:51<00:37,  3.16it/s][A------step-392------
+-- Forward Pass
+-- Loss-  tensor(0.4902, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  77%|███████▋  | 393/510 [02:51<00:36,  3.17it/s][A------step-393------
+-- Forward Pass
+-- Loss-  tensor(0.4781, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  77%|███████▋  | 394/510 [02:51<00:37,  3.06it/s][A------step-394------
+-- Forward Pass
+-- Loss-  tensor(0.4275, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  77%|███████▋  | 395/510 [02:52<00:38,  3.00it/s][A------step-395------
+-- Forward Pass
+-- Loss-  tensor(0.1519, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  78%|███████▊  | 396/510 [02:52<00:38,  2.93it/s][A------step-396------
+-- Forward Pass
+-- Loss-  tensor(0.6051, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  78%|███████▊  | 397/510 [02:52<00:37,  2.98it/s][A------step-397------
+-- Forward Pass
+-- Loss-  tensor(0.4962, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  78%|███████▊  | 398/510 [02:53<00:35,  3.13it/s][A------step-398------
+-- Forward Pass
+-- Loss-  tensor(0.4923, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  78%|███████▊  | 399/510 [02:53<00:35,  3.11it/s][A------step-399------
+-- Forward Pass
+-- Loss-  tensor(0.3820, device='cuda:0', grad_fn=<NllLossBackward>)
+03/10/2023 07:59:54 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/checkpoint-400
+
+Iteration:  78%|███████▊  | 400/510 [03:06<07:40,  4.19s/it][A------step-400------
+-- Forward Pass
+-- Loss-  tensor(0.4116, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  79%|███████▊  | 401/510 [03:07<05:32,  3.05s/it][A------step-401------
+-- Forward Pass
+-- Loss-  tensor(0.4196, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  79%|███████▉  | 402/510 [03:07<04:01,  2.24s/it][A------step-402------
+-- Forward Pass
+-- Loss-  tensor(0.2661, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  79%|███████▉  | 403/510 [03:07<02:58,  1.67s/it][A------step-403------
+-- Forward Pass
+-- Loss-  tensor(0.6534, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  79%|███████▉  | 404/510 [03:08<02:13,  1.26s/it][A------step-404------
+-- Forward Pass
+-- Loss-  tensor(0.2499, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  79%|███████▉  | 405/510 [03:08<01:41,  1.04it/s][A------step-405------
+-- Forward Pass
+-- Loss-  tensor(0.3077, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  80%|███████▉  | 406/510 [03:08<01:20,  1.29it/s][A------step-406------
+-- Forward Pass
+-- Loss-  tensor(0.4802, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  80%|███████▉  | 407/510 [03:09<01:07,  1.52it/s][A------step-407------
+-- Forward Pass
+-- Loss-  tensor(0.7376, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  80%|████████  | 408/510 [03:09<00:57,  1.77it/s][A------step-408------
+-- Forward Pass
+-- Loss-  tensor(0.4901, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  80%|████████  | 409/510 [03:09<00:49,  2.04it/s][A------step-409------
+-- Forward Pass
+-- Loss-  tensor(0.2517, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  80%|████████  | 410/510 [03:10<00:44,  2.26it/s][A------step-410------
+-- Forward Pass
+-- Loss-  tensor(0.2111, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  81%|████████  | 411/510 [03:10<00:40,  2.45it/s][A------step-411------
+-- Forward Pass
+-- Loss-  tensor(0.7311, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  81%|████████  | 412/510 [03:10<00:38,  2.53it/s][A------step-412------
+-- Forward Pass
+-- Loss-  tensor(0.8763, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  81%|████████  | 413/510 [03:11<00:36,  2.67it/s][A------step-413------
+-- Forward Pass
+-- Loss-  tensor(0.3214, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  81%|████████  | 414/510 [03:11<00:34,  2.80it/s][A------step-414------
+-- Forward Pass
+-- Loss-  tensor(0.9071, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  81%|████████▏ | 415/510 [03:11<00:33,  2.85it/s][A------step-415------
+-- Forward Pass
+-- Loss-  tensor(0.6617, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  82%|████████▏ | 416/510 [03:12<00:32,  2.86it/s][A------step-416------
+-- Forward Pass
+-- Loss-  tensor(0.1276, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  82%|████████▏ | 417/510 [03:12<00:31,  3.00it/s][A------step-417------
+-- Forward Pass
+-- Loss-  tensor(0.4087, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  82%|████████▏ | 418/510 [03:12<00:30,  2.98it/s][A------step-418------
+-- Forward Pass
+-- Loss-  tensor(1.0325, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  82%|████████▏ | 419/510 [03:13<00:30,  3.02it/s][A------step-419------
+-- Forward Pass
+-- Loss-  tensor(0.5689, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  82%|████████▏ | 420/510 [03:13<00:28,  3.13it/s][A------step-420------
+-- Forward Pass
+-- Loss-  tensor(0.3876, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  83%|████████▎ | 421/510 [03:13<00:28,  3.17it/s][A------step-421------
+-- Forward Pass
+-- Loss-  tensor(0.2412, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  83%|████████▎ | 422/510 [03:14<00:28,  3.05it/s][A------step-422------
+-- Forward Pass
+-- Loss-  tensor(0.2507, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  83%|████████▎ | 423/510 [03:14<00:29,  2.98it/s][A------step-423------
+-- Forward Pass
+-- Loss-  tensor(0.5160, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  83%|████████▎ | 424/510 [03:14<00:29,  2.89it/s][A------step-424------
+-- Forward Pass
+-- Loss-  tensor(0.8630, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  83%|████████▎ | 425/510 [03:15<00:30,  2.83it/s][A------step-425------
+-- Forward Pass
+-- Loss-  tensor(0.0936, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  84%|████████▎ | 426/510 [03:15<00:29,  2.85it/s][A------step-426------
+-- Forward Pass
+-- Loss-  tensor(0.3337, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  84%|████████▎ | 427/510 [03:15<00:29,  2.81it/s][A------step-427------
+-- Forward Pass
+-- Loss-  tensor(0.3344, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  84%|████████▍ | 428/510 [03:16<00:29,  2.80it/s][A------step-428------
+-- Forward Pass
+-- Loss-  tensor(0.1846, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  84%|████████▍ | 429/510 [03:16<00:28,  2.80it/s][A------step-429------
+-- Forward Pass
+-- Loss-  tensor(0.8759, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  84%|████████▍ | 430/510 [03:16<00:28,  2.79it/s][A------step-430------
+-- Forward Pass
+-- Loss-  tensor(0.3505, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  85%|████████▍ | 431/510 [03:17<00:27,  2.86it/s][A------step-431------
+-- Forward Pass
+-- Loss-  tensor(0.2113, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  85%|████████▍ | 432/510 [03:17<00:27,  2.85it/s][A------step-432------
+-- Forward Pass
+-- Loss-  tensor(0.2835, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  85%|████████▍ | 433/510 [03:17<00:26,  2.89it/s][A------step-433------
+-- Forward Pass
+-- Loss-  tensor(0.2763, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  85%|████████▌ | 434/510 [03:18<00:26,  2.90it/s][A------step-434------
+-- Forward Pass
+-- Loss-  tensor(0.6810, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  85%|████████▌ | 435/510 [03:18<00:26,  2.84it/s][A------step-435------
+-- Forward Pass
+-- Loss-  tensor(0.3233, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  85%|████████▌ | 436/510 [03:19<00:25,  2.85it/s][A------step-436------
+-- Forward Pass
+-- Loss-  tensor(0.4887, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  86%|████████▌ | 437/510 [03:19<00:25,  2.83it/s][A------step-437------
+-- Forward Pass
+-- Loss-  tensor(0.6974, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  86%|████████▌ | 438/510 [03:19<00:25,  2.82it/s][A------step-438------
+-- Forward Pass
+-- Loss-  tensor(0.4931, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  86%|████████▌ | 439/510 [03:20<00:25,  2.84it/s][A------step-439------
+-- Forward Pass
+-- Loss-  tensor(0.3956, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  86%|████████▋ | 440/510 [03:20<00:24,  2.81it/s][A------step-440------
+-- Forward Pass
+-- Loss-  tensor(0.5510, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  86%|████████▋ | 441/510 [03:20<00:23,  2.88it/s][A------step-441------
+-- Forward Pass
+-- Loss-  tensor(0.9163, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  87%|████████▋ | 442/510 [03:21<00:23,  2.85it/s][A------step-442------
+-- Forward Pass
+-- Loss-  tensor(0.3824, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  87%|████████▋ | 443/510 [03:21<00:23,  2.89it/s][A------step-443------
+-- Forward Pass
+-- Loss-  tensor(0.4371, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  87%|████████▋ | 444/510 [03:21<00:22,  2.87it/s][A------step-444------
+-- Forward Pass
+-- Loss-  tensor(0.4666, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  87%|████████▋ | 445/510 [03:22<00:22,  2.90it/s][A------step-445------
+-- Forward Pass
+-- Loss-  tensor(0.2598, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  87%|████████▋ | 446/510 [03:22<00:21,  2.92it/s][A------step-446------
+-- Forward Pass
+-- Loss-  tensor(0.2933, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  88%|████████▊ | 447/510 [03:22<00:21,  2.91it/s][A------step-447------
+-- Forward Pass
+-- Loss-  tensor(0.5028, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  88%|████████▊ | 448/510 [03:23<00:20,  2.98it/s][A------step-448------
+-- Forward Pass
+-- Loss-  tensor(0.7994, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  88%|████████▊ | 449/510 [03:23<00:20,  2.95it/s][A------step-449------
+-- Forward Pass
+-- Loss-  tensor(0.2635, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  88%|████████▊ | 450/510 [03:23<00:20,  2.97it/s][A------step-450------
+-- Forward Pass
+-- Loss-  tensor(0.6732, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  88%|████████▊ | 451/510 [03:24<00:19,  3.00it/s][A------step-451------
+-- Forward Pass
+-- Loss-  tensor(0.4102, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  89%|████████▊ | 452/510 [03:24<00:19,  2.99it/s][A------step-452------
+-- Forward Pass
+-- Loss-  tensor(0.2514, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  89%|████████▉ | 453/510 [03:24<00:19,  2.98it/s][A------step-453------
+-- Forward Pass
+-- Loss-  tensor(0.4453, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  89%|████████▉ | 454/510 [03:25<00:18,  3.07it/s][A------step-454------
+-- Forward Pass
+-- Loss-  tensor(0.3669, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  89%|████████▉ | 455/510 [03:25<00:17,  3.13it/s][A------step-455------
+-- Forward Pass
+-- Loss-  tensor(0.5677, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  89%|████████▉ | 456/510 [03:25<00:16,  3.20it/s][A------step-456------
+-- Forward Pass
+-- Loss-  tensor(0.2319, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  90%|████████▉ | 457/510 [03:26<00:16,  3.23it/s][A------step-457------
+-- Forward Pass
+-- Loss-  tensor(0.6844, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  90%|████████▉ | 458/510 [03:26<00:16,  3.23it/s][A------step-458------
+-- Forward Pass
+-- Loss-  tensor(0.5177, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  90%|█████████ | 459/510 [03:26<00:16,  3.16it/s][A------step-459------
+-- Forward Pass
+-- Loss-  tensor(0.1514, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  90%|█████████ | 460/510 [03:27<00:16,  3.08it/s][A------step-460------
+-- Forward Pass
+-- Loss-  tensor(0.3344, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  90%|█████████ | 461/510 [03:27<00:15,  3.08it/s][A------step-461------
+-- Forward Pass
+-- Loss-  tensor(0.0844, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  91%|█████████ | 462/510 [03:27<00:16,  3.00it/s][A------step-462------
+-- Forward Pass
+-- Loss-  tensor(0.4272, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  91%|█████████ | 463/510 [03:28<00:15,  2.99it/s][A------step-463------
+-- Forward Pass
+-- Loss-  tensor(0.1843, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  91%|█████████ | 464/510 [03:28<00:14,  3.08it/s][A------step-464------
+-- Forward Pass
+-- Loss-  tensor(0.5479, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  91%|█████████ | 465/510 [03:28<00:14,  3.13it/s][A------step-465------
+-- Forward Pass
+-- Loss-  tensor(0.2819, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  91%|█████████▏| 466/510 [03:28<00:13,  3.18it/s][A------step-466------
+-- Forward Pass
+-- Loss-  tensor(0.2287, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  92%|█████████▏| 467/510 [03:29<00:13,  3.12it/s][A------step-467------
+-- Forward Pass
+-- Loss-  tensor(0.6202, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  92%|█████████▏| 468/510 [03:29<00:13,  3.11it/s][A------step-468------
+-- Forward Pass
+-- Loss-  tensor(0.9232, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  92%|█████████▏| 469/510 [03:29<00:13,  3.15it/s][A------step-469------
+-- Forward Pass
+-- Loss-  tensor(0.4006, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  92%|█████████▏| 470/510 [03:30<00:13,  3.08it/s][A------step-470------
+-- Forward Pass
+-- Loss-  tensor(0.3367, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  92%|█████████▏| 471/510 [03:30<00:12,  3.01it/s][A------step-471------
+-- Forward Pass
+-- Loss-  tensor(0.1203, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  93%|█████████▎| 472/510 [03:30<00:12,  2.98it/s][A------step-472------
+-- Forward Pass
+-- Loss-  tensor(0.0834, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  93%|█████████▎| 473/510 [03:31<00:12,  2.93it/s][A------step-473------
+-- Forward Pass
+-- Loss-  tensor(0.4246, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  93%|█████████▎| 474/510 [03:31<00:12,  2.94it/s][A------step-474------
+-- Forward Pass
+-- Loss-  tensor(0.3110, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  93%|█████████▎| 475/510 [03:31<00:11,  3.00it/s][A------step-475------
+-- Forward Pass
+-- Loss-  tensor(0.3396, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  93%|█████████▎| 476/510 [03:32<00:11,  3.08it/s][A------step-476------
+-- Forward Pass
+-- Loss-  tensor(0.3507, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  94%|█████████▎| 477/510 [03:32<00:10,  3.10it/s][A------step-477------
+-- Forward Pass
+-- Loss-  tensor(0.4245, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  94%|█████████▎| 478/510 [03:32<00:10,  3.08it/s][A------step-478------
+-- Forward Pass
+-- Loss-  tensor(0.8093, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  94%|█████████▍| 479/510 [03:33<00:09,  3.15it/s][A------step-479------
+-- Forward Pass
+-- Loss-  tensor(0.2357, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  94%|█████████▍| 480/510 [03:33<00:09,  3.16it/s][A------step-480------
+-- Forward Pass
+-- Loss-  tensor(0.5142, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  94%|█████████▍| 481/510 [03:33<00:08,  3.23it/s][A------step-481------
+-- Forward Pass
+-- Loss-  tensor(0.3080, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  95%|█████████▍| 482/510 [03:34<00:08,  3.14it/s][A------step-482------
+-- Forward Pass
+-- Loss-  tensor(0.5059, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  95%|█████████▍| 483/510 [03:34<00:08,  3.11it/s][A------step-483------
+-- Forward Pass
+-- Loss-  tensor(0.7284, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  95%|█████████▍| 484/510 [03:34<00:08,  3.02it/s][A------step-484------
+-- Forward Pass
+-- Loss-  tensor(1.1345, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  95%|█████████▌| 485/510 [03:35<00:08,  3.03it/s][A------step-485------
+-- Forward Pass
+-- Loss-  tensor(0.6090, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  95%|█████████▌| 486/510 [03:35<00:07,  3.08it/s][A------step-486------
+-- Forward Pass
+-- Loss-  tensor(0.7563, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  95%|█████████▌| 487/510 [03:35<00:07,  3.11it/s][A------step-487------
+-- Forward Pass
+-- Loss-  tensor(0.2448, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  96%|█████████▌| 488/510 [03:36<00:07,  3.11it/s][A------step-488------
+-- Forward Pass
+-- Loss-  tensor(0.7150, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  96%|█████████▌| 489/510 [03:36<00:06,  3.07it/s][A------step-489------
+-- Forward Pass
+-- Loss-  tensor(0.6376, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  96%|█████████▌| 490/510 [03:36<00:06,  3.05it/s][A------step-490------
+-- Forward Pass
+-- Loss-  tensor(0.9747, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  96%|█████████▋| 491/510 [03:37<00:06,  2.99it/s][A------step-491------
+-- Forward Pass
+-- Loss-  tensor(0.3279, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  96%|█████████▋| 492/510 [03:37<00:05,  3.01it/s][A------step-492------
+-- Forward Pass
+-- Loss-  tensor(0.1450, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  97%|█████████▋| 493/510 [03:37<00:05,  3.05it/s][A------step-493------
+-- Forward Pass
+-- Loss-  tensor(0.7008, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  97%|█████████▋| 494/510 [03:38<00:05,  3.04it/s][A------step-494------
+-- Forward Pass
+-- Loss-  tensor(0.3867, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  97%|█████████▋| 495/510 [03:38<00:04,  3.02it/s][A------step-495------
+-- Forward Pass
+-- Loss-  tensor(0.3541, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  97%|█████████▋| 496/510 [03:38<00:04,  2.99it/s][A------step-496------
+-- Forward Pass
+-- Loss-  tensor(0.4282, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  97%|█████████▋| 497/510 [03:39<00:04,  2.99it/s][A------step-497------
+-- Forward Pass
+-- Loss-  tensor(0.7309, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  98%|█████████▊| 498/510 [03:39<00:03,  3.08it/s][A------step-498------
+-- Forward Pass
+-- Loss-  tensor(0.2889, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  98%|█████████▊| 499/510 [03:39<00:03,  3.14it/s][A------step-499------
+-- Forward Pass
+-- Loss-  tensor(0.6360, device='cuda:0', grad_fn=<NllLossBackward>)
+03/10/2023 08:00:40 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/checkpoint-500
+
+Iteration:  98%|█████████▊| 500/510 [03:53<00:42,  4.22s/it][A------step-500------
+-- Forward Pass
+-- Loss-  tensor(0.4123, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  98%|█████████▊| 501/510 [03:53<00:27,  3.06s/it][A------step-501------
+-- Forward Pass
+-- Loss-  tensor(0.1942, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  98%|█████████▊| 502/510 [03:53<00:17,  2.24s/it][A------step-502------
+-- Forward Pass
+-- Loss-  tensor(0.2124, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  99%|█████████▊| 503/510 [03:54<00:11,  1.66s/it][A------step-503------
+-- Forward Pass
+-- Loss-  tensor(0.6575, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  99%|█████████▉| 504/510 [03:54<00:07,  1.26s/it][A------step-504------
+-- Forward Pass
+-- Loss-  tensor(0.9891, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  99%|█████████▉| 505/510 [03:54<00:04,  1.02it/s][A------step-505------
+-- Forward Pass
+-- Loss-  tensor(0.3184, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  99%|█████████▉| 506/510 [03:55<00:03,  1.27it/s][A------step-506------
+-- Forward Pass
+-- Loss-  tensor(0.1379, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration:  99%|█████████▉| 507/510 [03:55<00:01,  1.56it/s][A------step-507------
+-- Forward Pass
+-- Loss-  tensor(0.2122, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration: 100%|█████████▉| 508/510 [03:55<00:01,  1.84it/s][A------step-508------
+-- Forward Pass
+-- Loss-  tensor(0.2676, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration: 100%|█████████▉| 509/510 [03:55<00:00,  2.13it/s][A------step-509------
+-- Forward Pass
+-- Loss-  tensor(0.2402, device='cuda:0', grad_fn=<NllLossBackward>)
+
+Iteration: 100%|██████████| 510/510 [03:56<00:00,  2.46it/s][AIteration: 100%|██████████| 510/510 [03:56<00:00,  2.16it/s]
+Epoch: 100%|██████████| 1/1 [03:56<00:00, 236.18s/it]Epoch: 100%|██████████| 1/1 [03:56<00:00, 236.18s/it]
+weihaojie debug	train success!
+03/10/2023 08:00:44 - INFO - __main__ -    global_step = 510, average loss = 0.5259228429373572
+03/10/2023 08:00:44 - INFO - __main__ -   Saving model checkpoint to /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased
+03/10/2023 08:00:57 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/10/2023 08:00:57 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/10/2023 08:00:57 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/10/2023 08:01:00 - INFO - pytorch_transformers.tokenization_utils -   Model name '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased' not found in model shortcut name list (xlnet-base-cased, xlnet-large-cased). Assuming '/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased' is a path or url to a directory containing tokenizer files.
+03/10/2023 08:01:00 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/spiece.model
+03/10/2023 08:01:00 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/added_tokens.json
+03/10/2023 08:01:00 - INFO - pytorch_transformers.tokenization_utils -   loading file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/special_tokens_map.json
+03/10/2023 08:01:00 - INFO - __main__ -   Evaluate the following checkpoints: ['/scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased']
+03/10/2023 08:01:00 - INFO - pytorch_transformers.modeling_utils -   loading configuration file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/config.json
+03/10/2023 08:01:00 - INFO - pytorch_transformers.modeling_utils -   Model config {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "finetuning_task": "mrpc",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "n_token": 32000,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "torchscript": false,
+  "untie_r": true,
+  "vocab_size": 32000
+}
+
+03/10/2023 08:01:00 - INFO - pytorch_transformers.modeling_utils -   loading weights file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/et_outdir/xlnet-base-cased/pytorch_model.bin
+03/10/2023 08:01:04 - INFO - __main__ -   Loading features from cached file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/ET/glue_data/squad-rte/MRPC/cached_dev_xlnet-base-cased_128_mrpc
+03/10/2023 08:01:04 - INFO - __main__ -   ***** Running evaluation  *****
+03/10/2023 08:01:04 - INFO - __main__ -     Num examples = 1725
+03/10/2023 08:01:04 - INFO - __main__ -     Batch size = 8
+Evaluating:   0%|          | 0/216 [00:00<?, ?it/s]Evaluating:   0%|          | 1/216 [00:00<00:22,  9.53it/s]Evaluating:   1%|          | 2/216 [00:00<00:24,  8.87it/s]Evaluating:   1%|▏         | 3/216 [00:00<00:30,  6.90it/s]Evaluating:   2%|▏         | 4/216 [00:00<00:28,  7.38it/s]Evaluating:   2%|▏         | 5/216 [00:00<00:32,  6.46it/s]Evaluating:   3%|▎         | 6/216 [00:00<00:30,  6.96it/s]Evaluating:   3%|▎         | 7/216 [00:01<00:33,  6.31it/s]Evaluating:   4%|▎         | 8/216 [00:01<00:34,  6.07it/s]Evaluating:   4%|▍         | 9/216 [00:01<00:31,  6.49it/s]Evaluating:   5%|▍         | 10/216 [00:01<00:32,  6.24it/s]Evaluating:   5%|▌         | 11/216 [00:01<00:30,  6.78it/s]Evaluating:   6%|▌         | 12/216 [00:01<00:32,  6.34it/s]Evaluating:   6%|▌         | 13/216 [00:01<00:29,  6.81it/s]Evaluating:   6%|▋         | 14/216 [00:02<00:32,  6.28it/s]Evaluating:   7%|▋         | 15/216 [00:02<00:29,  6.89it/s]Evaluating:   7%|▋         | 16/216 [00:02<00:30,  6.45it/s]Evaluating:   8%|▊         | 17/216 [00:02<00:28,  6.90it/s]Evaluating:   8%|▊         | 18/216 [00:02<00:30,  6.44it/s]Evaluating:   9%|▉         | 19/216 [00:02<00:28,  6.85it/s]Evaluating:   9%|▉         | 20/216 [00:03<00:30,  6.43it/s]Evaluating:  10%|▉         | 21/216 [00:03<00:28,  6.88it/s]Evaluating:  10%|█         | 22/216 [00:03<00:30,  6.44it/s]Evaluating:  11%|█         | 23/216 [00:03<00:32,  5.98it/s]Evaluating:  11%|█         | 24/216 [00:03<00:34,  5.59it/s]Evaluating:  12%|█▏        | 25/216 [00:03<00:30,  6.35it/s]Evaluating:  12%|█▏        | 26/216 [00:03<00:27,  6.87it/s]Evaluating:  12%|█▎        | 27/216 [00:04<00:29,  6.37it/s]Evaluating:  13%|█▎        | 28/216 [00:04<00:27,  6.88it/s]Evaluating:  13%|█▎        | 29/216 [00:04<00:29,  6.32it/s]Evaluating:  14%|█▍        | 30/216 [00:04<00:30,  6.11it/s]Evaluating:  14%|█▍        | 31/216 [00:04<00:27,  6.67it/s]Evaluating:  15%|█▍        | 32/216 [00:04<00:30,  6.06it/s]Evaluating:  15%|█▌        | 33/216 [00:05<00:31,  5.89it/s]Evaluating:  16%|█▌        | 34/216 [00:05<00:28,  6.36it/s]Evaluating:  16%|█▌        | 35/216 [00:05<00:30,  5.98it/s]Evaluating:  17%|█▋        | 36/216 [00:05<00:27,  6.50it/s]Evaluating:  17%|█▋        | 37/216 [00:05<00:29,  6.17it/s]Evaluating:  18%|█▊        | 38/216 [00:05<00:30,  5.87it/s]Evaluating:  18%|█▊        | 39/216 [00:06<00:27,  6.37it/s]Evaluating:  19%|█▊        | 40/216 [00:06<00:29,  6.04it/s]Evaluating:  19%|█▉        | 41/216 [00:06<00:29,  5.91it/s]Evaluating:  19%|█▉        | 42/216 [00:06<00:27,  6.43it/s]Evaluating:  20%|█▉        | 43/216 [00:06<00:28,  6.13it/s]Evaluating:  20%|██        | 44/216 [00:06<00:26,  6.51it/s]Evaluating:  21%|██        | 45/216 [00:07<00:28,  6.02it/s]Evaluating:  21%|██▏       | 46/216 [00:07<00:29,  5.84it/s]Evaluating:  22%|██▏       | 47/216 [00:07<00:25,  6.59it/s]Evaluating:  22%|██▏       | 48/216 [00:07<00:23,  7.12it/s]Evaluating:  23%|██▎       | 49/216 [00:07<00:24,  6.74it/s]Evaluating:  23%|██▎       | 50/216 [00:07<00:22,  7.31it/s]Evaluating:  24%|██▎       | 51/216 [00:07<00:21,  7.76it/s]Evaluating:  24%|██▍       | 52/216 [00:08<00:23,  6.98it/s]Evaluating:  25%|██▍       | 53/216 [00:08<00:21,  7.45it/s]Evaluating:  25%|██▌       | 54/216 [00:08<00:20,  7.82it/s]Evaluating:  25%|██▌       | 55/216 [00:08<00:22,  7.06it/s]Evaluating:  26%|██▌       | 56/216 [00:08<00:21,  7.48it/s]Evaluating:  26%|██▋       | 57/216 [00:08<00:20,  7.83it/s]Evaluating:  27%|██▋       | 58/216 [00:08<00:22,  7.11it/s]Evaluating:  27%|██▋       | 59/216 [00:08<00:20,  7.62it/s]Evaluating:  27%|██▋       | 59/216 [00:09<00:24,  6.47it/s]
+Traceback (most recent call last):
+  File "run_glue.py", line 994, in <module>
+    main(parser.parse_args())
+  File "run_glue.py", line 972, in main
+    result = evaluate(args, model, tokenizer, prefix=global_step)
+  File "run_glue.py", line 551, in evaluate
+    outputs = model(**inputs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/modeling_xlnet.py", line 1125, in forward
+    head_mask=head_mask)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/modeling_xlnet.py", line 964, in forward
+    head_mask=head_mask[i])
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/modeling_xlnet.py", line 584, in forward
+    output_h = self.ff(output_h)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/pytorch_transformers/modeling_xlnet.py", line 562, in forward
+    output = self.layer_2(output)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/modules/linear.py", line 94, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/torch/nn/functional.py", line 1753, in linear
+    return torch._C._nn.linear(input, weight, bias)
+RuntimeError: CUDA error: CUBLAS_STATUS_INTERNAL_ERROR when calling `cublasSgemm( handle, opa, opb, m, n, k, &alpha, a, lda, b, ldb, &beta, c, ldc)`
