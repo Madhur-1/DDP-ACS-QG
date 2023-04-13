@@ -103,7 +103,7 @@ def pad_dataset(dataset, padding=0):
     return dataset
 
 
-def build_input_from_segments(data_point, tokenizer, with_eos=True):
+def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True):
     """Build a sequence of input.
     `<sos> .. paragraph text ..
      <clue> .. clue span ..
@@ -136,40 +136,61 @@ def build_input_from_segments(data_point, tokenizer, with_eos=True):
     else:
         curr_clue = []
 
-    # <sos> paragraph
-    sequence = [sos] + curr_para
-    # This segmentation will encode positional information
-    token_types = [paragraph for i in range(len(curr_para) + 1)]
-    # if clue_exist:
-    #     token_types[clue_start + 1 : clue_end + 1] = [clue] * (clue_end - clue_start)
-    # token_types[ans_start + 1 : ans_end + 1] = [answer] * (ans_end - ans_start)
-    lm_labels = [-100 for _ in range(len(curr_para) + 1)]
+    if train_target == "ans":
+        # <sos> paragraph
+        sequence = [sos] + curr_para
+        # This segmentation will encode positional information
+        token_types = [paragraph for i in range(len(curr_para) + 1)]
+        lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
-    # <sos> paragraph <answer> answer
-    sequence.extend([answer] + curr_ans)
-    token_types.extend([answer for _ in range(len(curr_ans) + 1)])
-    lm_labels.extend([-100] + curr_ans)
+        # <sos> paragraph <answer> answer
+        sequence.extend([answer] + curr_ans + [eos])
+        token_types.extend([answer for _ in range(len(curr_ans) + 2)])
+        lm_labels.extend([-100] + curr_ans + [eos])
 
-    # <sos> paragraph <answer> answer <clue> clue
-    sequence.extend([clue] + curr_clue)
-    token_types.extend([clue for _ in range(len(curr_clue) + 1)])
-    lm_labels.extend([clue] + curr_clue)
+    elif train_target == "clue":
+        # <sos> paragraph
+        sequence = [sos] + curr_para
+        # This segmentation will encode positional information
+        token_types = [paragraph for i in range(len(curr_para) + 1)]
+        lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
-    # <sos> paragraph <answer> answer <clue> clue <style> style
-    sequence.extend([style] + curr_style)
-    token_types.extend([style for _ in range(len(curr_style) + 1)])
-    lm_labels.extend([style] + curr_style)
+        # <sos> paragraph <answer> answer
+        sequence.extend([answer] + curr_ans)
+        token_types.extend([answer for _ in range(len(curr_ans) + 1)])
+        lm_labels.extend([-100 for _ in range(len(curr_ans) + 1)])
 
-    # <sos> paragraph <answer> answer <clue> clue <style> style <question> question [<eos>]
-    if with_eos is True:
-        sequence.extend([question] + curr_ques + [eos])
-        token_types.extend([question for _ in range(len(curr_ques) + 2)])
-        lm_labels.extend([question] + curr_ques + [eos])
-    else:
-        sequence.extend([question] + curr_ques)
-        token_types.extend([question for _ in range(len(curr_ques) + 1)])
-        lm_labels.extend([question] + curr_ques)
+        # <sos> paragraph <answer> answer <clue> clue
+        sequence.extend([clue] + curr_clue + [eos])
+        token_types.extend([clue for _ in range(len(curr_clue) + 2)])
+        lm_labels.extend([-100] + curr_clue + [eos])
 
+    elif train_target == "style":
+         # <sos> paragraph
+        sequence = [sos] + curr_para
+        # This segmentation will encode positional information
+        token_types = [paragraph for i in range(len(curr_para) + 1)]
+        lm_labels = [-100 for _ in range(len(curr_para) + 1)]
+
+        # <sos> paragraph <answer> answer
+        sequence.extend([answer] + curr_ans)
+        token_types.extend([answer for _ in range(len(curr_ans) + 1)])
+        lm_labels.extend([-100 for _ in range(len(curr_ans) + 1)])
+
+        # <sos> paragraph <answer> answer <clue> clue
+        sequence.extend([clue] + curr_clue)
+        token_types.extend([clue for _ in range(len(curr_clue) + 1)])
+        lm_labels.extend([-100 for _ in range(len(curr_clue) + 1)])   
+
+        # <sos> paragraph <answer> answer <clue> clue <style> style
+        sequence.extend([style] + curr_style + [eos])
+        token_types.extend([style for _ in range(len(curr_style) + 2)])
+        lm_labels.extend([-100] + curr_style + [eos])
+
+    if not with_eos:
+        sequence = sequence[:-1]
+        token_types = token_types[:-1]
+        lm_labels = lm_labels[:-1]
 
     assert len(sequence) == len(token_types)
     assert len(token_types) == len(lm_labels)
@@ -295,7 +316,7 @@ def get_data_loaders(args, tokenizer):
 
     for dataset_name, dataset in datasets_raw.items():
         for data_point in dataset:
-            instance, _ = build_input_from_segments(data_point, tokenizer)
+            instance, _ = build_input_from_segments(data_point, tokenizer, args.train_target)
             for input_name, input_array in instance.items():
                 datasets[dataset_name][input_name].append(input_array)
 

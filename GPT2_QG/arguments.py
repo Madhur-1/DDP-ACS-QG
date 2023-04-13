@@ -103,3 +103,10 @@ parser.add_argument(
     default=1,
     help="Number of GPUs",
 )
+
+parser.add_argument(
+    "--train_target",
+    type=str,
+    default="",
+    help="ans or clue or style"
+)
