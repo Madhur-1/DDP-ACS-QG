@@ -56,3 +56,4 @@ coverage.xml
 docs/_build/
 file/QG/gpt2_question_generation/tmp35wx9yg4
 file/QG/gpt2_question_generationgpt_checkpoint/tmp2gty8ck0
+file/QG/gpt2_question_generation/checkpoint_mymodel_0.pth
