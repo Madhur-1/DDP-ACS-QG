@@ -31,7 +31,7 @@ from ignite.contrib.handlers.tensorboard_logger import (OptimizerParamsHandler,
                                                         OutputHandler,
                                                         TensorboardLogger)
 from ignite.engine import Engine, Events
-from ignite.handlers import ModelCheckpoint
+from ignite.handlers import EarlyStopping, ModelCheckpoint
 from ignite.metrics import Loss, MetricsLambda, RunningAverage
 
 from transformers import (CONFIG_NAME, WEIGHTS_NAME, AdamW, GPT2Config,
@@ -144,15 +144,16 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
         lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
         # <sos> paragraph <answer> answer
-        sequence.extend([answer] + curr_ans + [eos])
-        token_types.extend([answer for _ in range(len(curr_ans) + 2)])
-        lm_labels.extend([-100] + curr_ans + [eos])
+        sequence.extend([answer] + curr_ans + [clue])
+        token_types.extend([answer for _ in range(len(curr_ans) + 1)] + [clue])
+        lm_labels.extend([-100] + curr_ans + [clue])
 
     elif train_target == "clue":
         # <sos> paragraph
         sequence = [sos] + curr_para
         # This segmentation will encode positional information
         token_types = [paragraph for i in range(len(curr_para) + 1)]
+        token_types[ans_start + 1:ans_end + 1] = [answer] * (ans_end - ans_start)        
         lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
         # <sos> paragraph <answer> answer
@@ -161,15 +162,18 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
         lm_labels.extend([-100 for _ in range(len(curr_ans) + 1)])
 
         # <sos> paragraph <answer> answer <clue> clue
-        sequence.extend([clue] + curr_clue + [eos])
-        token_types.extend([clue for _ in range(len(curr_clue) + 2)])
-        lm_labels.extend([-100] + curr_clue + [eos])
+        sequence.extend([clue] + curr_clue + [style])
+        token_types.extend([clue for _ in range(len(curr_clue) + 1)] + [style])
+        lm_labels.extend([-100] + curr_clue + [style])
 
     elif train_target == "style":
          # <sos> paragraph
         sequence = [sos] + curr_para
         # This segmentation will encode positional information
         token_types = [paragraph for i in range(len(curr_para) + 1)]
+        token_types[ans_start + 1:ans_end + 1] = [answer] * (ans_end - ans_start)
+        if clue_exist:
+            token_types[clue_start + 1:clue_end + 1] = [clue] * (clue_end - clue_start)
         lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
         # <sos> paragraph <answer> answer
@@ -183,9 +187,9 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
         lm_labels.extend([-100 for _ in range(len(curr_clue) + 1)])   
 
         # <sos> paragraph <answer> answer <clue> clue <style> style
-        sequence.extend([style] + curr_style + [eos])
-        token_types.extend([style for _ in range(len(curr_style) + 2)])
-        lm_labels.extend([-100] + curr_style + [eos])
+        sequence.extend([style] + curr_style + [question])
+        token_types.extend([style for _ in range(len(curr_style) + 1)] + [question])
+        lm_labels.extend([-100] + curr_style + [question])
 
     if not with_eos:
         sequence = sequence[:-1]
@@ -490,6 +494,7 @@ def train():
         trainer.add_event_handler(Events.COMPLETED, lambda _: evaluator.run(val_loader))
     if args.eval_before_start:
         trainer.add_event_handler(Events.STARTED, lambda _: evaluator.run(val_loader))
+    trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), lambda _: evaluator.run(val_loader))
 
     # Make sure distributed data samplers split the dataset nicely between the distributed processes
     if args.distributed:
@@ -528,6 +533,14 @@ def train():
                 "Validation: %s" % pformat(evaluator.state.metrics)
             ),
         )
+        
+        def score_function(engine):
+            pbar.log_message("Validation: %s" % pformat(evaluator.state.metrics))
+            val_loss = evaluator.state.metrics['nll']
+            return -val_loss
+
+        early_stopping_handler = EarlyStopping(patience=4, score_function=score_function, trainer=trainer, min_delta=0.01)
+        trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), early_stopping_handler)
 
         # tb_logger = TensorboardLogger(log_dir=args.output_dir)
         # tb_logger.attach(trainer, log_handler=OutputHandler(tag="training", metric_names=["loss"]), event_name=Events.ITERATION_COMPLETED)

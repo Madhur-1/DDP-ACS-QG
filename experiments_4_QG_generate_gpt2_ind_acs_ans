@@ -1,0 +1,525 @@
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/feature_extraction/image.py:167: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.int):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:35: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:597: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:836: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:862: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1097: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1344: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1480: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:152: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  precompute=False, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:320: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, random_state=None,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:580: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=4 * np.finfo(np.float).eps, n_jobs=None,
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=200, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.txt', save_freq=20, seed=42, temperature=0.7, top_k=0, top_p=0.0)
+Get pretrained model and tokenizer
+Load tokenized dataset from cache at %s /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth
+Time of get_positional_dataset_from_file: 0:00:03.979164
+starting generation !
+Processed -  1
+saved generated questions - 1
+Processed -  2
+Processed -  3
+Processed -  4
+Processed -  5
+Processed -  6
+Processed -  7
+Processed -  8
+Processed -  9
+Processed -  10
+Processed -  11
+Processed -  12
+Processed -  13
+Processed -  14
+Processed -  15
+Processed -  16
+Processed -  17
+Processed -  18
+Processed -  19
+Processed -  20
+Processed -  21
+saved generated questions - 21
+Processed -  22
+Processed -  23
+Processed -  24
+Processed -  25
+Processed -  26
+Processed -  27
+Processed -  28
+Processed -  29
+Processed -  30
+Processed -  31
+Processed -  32
+Processed -  33
+Processed -  34
+Processed -  35
+Processed -  36
+Processed -  37
+Processed -  38
+Processed -  39
+Processed -  40
+Processed -  41
+saved generated questions - 41
+Processed -  42
+Processed -  43
+Processed -  44
+Processed -  45
+Processed -  46
+Processed -  47
+Processed -  48
+Processed -  49
+Processed -  50
+Processed -  51
+Processed -  52
+Processed -  53
+Processed -  54
+Processed -  55
+Processed -  56
+Processed -  57
+Processed -  58
+Processed -  59
+Processed -  60
+Processed -  61
+saved generated questions - 61
+Processed -  62
+Processed -  63
+Processed -  64
+Processed -  65
+Processed -  66
+Processed -  67
+Processed -  68
+Processed -  69
+Processed -  70
+Processed -  71
+Processed -  72
+Processed -  73
+Processed -  74
+Processed -  75
+Processed -  76
+Processed -  77
+Processed -  78
+Processed -  79
+Processed -  80
+Processed -  81
+saved generated questions - 81
+Processed -  82
+Processed -  83
+Processed -  84
+Processed -  85
+Processed -  86
+Processed -  87
+Processed -  88
+Processed -  89
+Processed -  90
+Processed -  91
+Processed -  92
+Processed -  93
+Processed -  94
+Processed -  95
+Processed -  96
+Processed -  97
+Processed -  98
+Processed -  99
+Processed -  100
+Processed -  101
+saved generated questions - 101
+Processed -  102
+Processed -  103
+Processed -  104
+Processed -  105
+Processed -  106
+Processed -  107
+Processed -  108
+Processed -  109
+Processed -  110
+Processed -  111
+Processed -  112
+Processed -  113
+Processed -  114
+Processed -  115
+Processed -  116
+Processed -  117
+Processed -  118
+Processed -  119
+Processed -  120
+saved generated questions - 120
+Processed -  121
+Processed -  122
+Processed -  123
+Processed -  124
+Processed -  125
+Processed -  126
+Processed -  127
+Processed -  128
+Processed -  129
+Processed -  130
+Processed -  131
+Processed -  132
+Processed -  133
+Processed -  134
+Processed -  135
+Processed -  136
+Processed -  137
+Processed -  138
+Processed -  139
+Processed -  140
+saved generated questions - 140
+Processed -  141
+Processed -  142
+Processed -  143
+Processed -  144
+Processed -  145
+Processed -  146
+Processed -  147
+Processed -  148
+Processed -  149
+Processed -  150
+Processed -  151
+Processed -  152
+Processed -  153
+Processed -  154
+Processed -  155
+Processed -  156
+Processed -  157
+Processed -  158
+Processed -  159
+Processed -  160
+saved generated questions - 160
+Processed -  161
+Processed -  162
+Processed -  163
+Processed -  164
+Processed -  165
+Processed -  166
+Processed -  167
+Processed -  168
+Processed -  169
+Processed -  170
+Processed -  171
+Processed -  172
+Processed -  173
+Processed -  174
+Processed -  175
+Processed -  176
+Processed -  177
+Processed -  178
+Processed -  179
+Processed -  180
+saved generated questions - 180
+Processed -  181
+Processed -  182
+Processed -  183
+Processed -  184
+Processed -  185
+Processed -  186
+Processed -  187
+Processed -  188
+Processed -  189
+Processed -  190
+Processed -  191
+Processed -  192
+Processed -  193
+Processed -  194
+Processed -  195
+Processed -  196
+Processed -  197
+Processed -  198
+Processed -  199
+Processed -  200
+saved generated questions - 200
+Time of generate 200 beam_samples: 0:47:58.384241
++++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.txt!
++++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.pkl!
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/feature_extraction/image.py:167: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.int):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:35: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:597: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:836: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:862: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1097: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1344: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1480: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:152: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  precompute=False, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:320: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, random_state=None,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:580: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=4 * np.finfo(np.float).eps, n_jobs=None,
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=200, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.txt', save_freq=20, seed=42, temperature=0.7, top_k=0, top_p=0.0)
+Get pretrained model and tokenizer
+Load tokenized dataset from cache at %s /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth
+Time of get_positional_dataset_from_file: 0:00:04.349545
+starting generation !
+Processed -  1
+saved generated questions - 1
+Processed -  2
+Processed -  3
+Processed -  4
+Processed -  5
+Processed -  6
+Processed -  7
+Processed -  8
+Processed -  9
+Processed -  10
+Processed -  11
+Processed -  12
+Processed -  13
+Processed -  14
+Processed -  15
+Processed -  16
+Processed -  17
+Processed -  18
+Processed -  19
+Processed -  20
+Processed -  21
+saved generated questions - 21
+Processed -  22
+Processed -  23
+Processed -  24
+Processed -  25
+Processed -  26
+Processed -  27
+Processed -  28
+Processed -  29
+Processed -  30
+Processed -  31
+Processed -  32
+Processed -  33
+Processed -  34
+Processed -  35
+Processed -  36
+Processed -  37
+Processed -  38
+Processed -  39
+Processed -  40
+Processed -  41
+saved generated questions - 41
+Processed -  42
+Processed -  43
+Processed -  44
+Processed -  45
+Processed -  46
+Processed -  47
+Processed -  48
+Processed -  49
+Processed -  50
+Processed -  51
+Processed -  52
+Processed -  53
+Processed -  54
+Processed -  55
+Processed -  56
+Processed -  57
+Processed -  58
+Processed -  59
+Processed -  60
+Processed -  61
+saved generated questions - 61
+Processed -  62
+Processed -  63
+Processed -  64
+Processed -  65
+Processed -  66
+Processed -  67
+Processed -  68
+Processed -  69
+Processed -  70
+Processed -  71
+Processed -  72
+Processed -  73
+Processed -  74
+Processed -  75
+Processed -  76
+Processed -  77
+Processed -  78
+Processed -  79
+Processed -  80
+Processed -  81
+saved generated questions - 81
+Processed -  82
+Processed -  83
+Processed -  84
+Processed -  85
+Processed -  86
+Processed -  87
+Processed -  88
+Processed -  89
+Processed -  90
+Processed -  91
+Processed -  92
+Processed -  93
+Processed -  94
+Processed -  95
+Processed -  96
+Processed -  97
+Processed -  98
+Processed -  99
+Processed -  100
+Processed -  101
+saved generated questions - 101
+Processed -  102
+Processed -  103
+Processed -  104
+Processed -  105
+Processed -  106
+Processed -  107
+Processed -  108
+Processed -  109
+Processed -  110
+Processed -  111
+Processed -  112
+Processed -  113
+Processed -  114
+Processed -  115
+Processed -  116
+Processed -  117
+Processed -  118
+Processed -  119
+Processed -  120
+Processed -  121
+saved generated questions - 121
+Processed -  122
+Processed -  123
+Processed -  124
+Processed -  125
+Processed -  126
+Processed -  127
+Processed -  128
+Processed -  129
+Processed -  130
+Processed -  131
+Processed -  132
+Processed -  133
+Processed -  134
+Processed -  135
+Processed -  136
+Processed -  137
+Processed -  138
+Processed -  139
+Processed -  140
+Processed -  141
+saved generated questions - 141
+Processed -  142
+Processed -  143
+Processed -  144
+Processed -  145
+Processed -  146
+Processed -  147
+Processed -  148
+Processed -  149
+Processed -  150
+Processed -  151
+Processed -  152
+Processed -  153
+Processed -  154
+Processed -  155
+Processed -  156
+Processed -  157
+Processed -  158
+Processed -  159
+Processed -  160
+Processed -  161
+saved generated questions - 161
+Processed -  162
+Processed -  163
+Processed -  164
+Processed -  165
+Processed -  166
+Processed -  167
+Processed -  168
+Processed -  169
+Processed -  170
+Processed -  171
+Processed -  172
+Processed -  173
+Processed -  174
+Processed -  175
+Processed -  176
+Processed -  177
+Processed -  178
+Processed -  179
+Processed -  180
+Processed -  181
+saved generated questions - 181
+Processed -  182
+Processed -  183
+Processed -  184
+Processed -  185
+Processed -  186
+Processed -  187
+Processed -  188
+Processed -  189
+Processed -  190
+Processed -  191
+Processed -  192
+Processed -  193
+Processed -  194
+Processed -  195
+Processed -  196
+Processed -  197
+Processed -  198
+Processed -  199
+Processed -  200
+Time of generate 200 beam_samples: 1:03:08.137719
++++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.txt!
++++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.pkl!

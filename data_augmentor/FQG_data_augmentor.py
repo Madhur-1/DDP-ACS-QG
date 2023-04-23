@@ -466,7 +466,7 @@ def get_dataset_info(
         if debug and i >= debug_length:
             break
     if save_file is None:
-        save_file = file_type + "_answer_clue_style_info.pkl"
+        save_file = filetype + "_answer_clue_style_info.pkl"
     save(save_file, examples_with_info)
     return examples_with_info
 
