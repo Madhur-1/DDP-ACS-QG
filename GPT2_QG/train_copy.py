@@ -31,7 +31,7 @@ from ignite.contrib.handlers.tensorboard_logger import (OptimizerParamsHandler,
                                                         OutputHandler,
                                                         TensorboardLogger)
 from ignite.engine import Engine, Events
-from ignite.handlers import ModelCheckpoint
+from ignite.handlers import EarlyStopping, ModelCheckpoint
 from ignite.metrics import Loss, MetricsLambda, RunningAverage
 
 from transformers import (CONFIG_NAME, WEIGHTS_NAME, AdamW, GPT2Config,
@@ -402,7 +402,7 @@ def train():
     model.resize_token_embeddings(len(tokenizer))
     model.to(args.device)
     ## Epoch starting from 1+(6/27)
-    model.load_state_dict(torch.load("/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_question_generation/checkpoint_mymodel_6000.pth", map_location=args.device))
+    # model.load_state_dict(torch.load("/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_question_generation/checkpoint_mymodel_6000.pth", map_location=args.device))
 
     # Prepare optimizer and schedule (linear warmup and decay)
     # optimizer = OpenAIAdam(model.parameters(), lr=args.lr)
@@ -480,6 +480,9 @@ def train():
     if args.eval_before_start:
         trainer.add_event_handler(Events.STARTED, lambda _: evaluator.run(val_loader))
 
+    trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), lambda _: evaluator.run(val_loader))
+
+
     # Make sure distributed data samplers split the dataset nicely between the distributed processes
     if args.distributed:
         trainer.add_event_handler(
@@ -517,6 +520,14 @@ def train():
                 "Validation: %s" % pformat(evaluator.state.metrics)
             ),
         )
+
+        def score_function(engine):
+            pbar.log_message("Validation: %s" % pformat(evaluator.state.metrics))
+            val_loss = evaluator.state.metrics['nll']
+            return -val_loss
+
+        early_stopping_handler = EarlyStopping(patience=4, score_function=score_function, trainer=trainer, min_delta=0.01)
+        trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500),  early_stopping_handler)
 
         # tb_logger = TensorboardLogger(log_dir=args.output_dir)
         # tb_logger.attach(trainer, log_handler=OutputHandler(tag="training", metric_names=["loss"]), event_name=Events.ITERATION_COMPLETED)

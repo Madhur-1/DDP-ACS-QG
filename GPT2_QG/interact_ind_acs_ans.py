@@ -89,11 +89,14 @@ from common.constants import EXP_PLATFORM
 if EXP_PLATFORM.lower() == "venus":
     from pip._internal import main as pipmain
     pipmain(["install", "transformers"])
+import difflib
+
 from GPT2_QG.dataloader import get_dataset
 from metric.text_generation_metrics import compute_metrics_by_file
 
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
+from .dataloader import get_position
 from .train_ind_acs import (SPECIAL_TOKENS, SPECIAL_TOKENS_WO_CSQ,
                             build_acsq_only_input_from_segments,
                             build_para_only_input_from_segments)
@@ -305,6 +308,33 @@ def sample_sequence(inst, tokenizer, model, args, para_cache):
 
     return inst
 
+def get_closest_match(phrase, paragraph):
+    len_phrase = len(phrase.split())
+    para_list = [" ".join(paragraph.split()[i:i+len_phrase]) for i in range(len(paragraph.split())-len_phrase+1)]
+    return difflib.get_close_matches(phrase, para_list, n=1)[0]
+
+def get_positional_dataset_from_beam_output(tokenizer, generation, original_paragraph):
+    curr_inst = {}
+    beam_gen_position = original_paragraph.find(generation)
+    # Handle -1 later for the cases the string does not exactly match. When giving token_types check for -1
+    # and look for individual tokens 
+
+    exact_match_generation = None
+    if beam_gen_position == -1:
+        exact_match_generation = get_closest_match(generation, original_paragraph)
+        print(f"+++ Got closest match: {exact_match_generation} for {generation} in {original_paragraph}")
+        generation = exact_match_generation
+        beam_gen_position = original_paragraph.find(exact_match_generation)
+
+    tokenized_para = tokenizer.tokenize(original_paragraph)
+    tokenized_generation_prefix = tokenizer.tokenize(original_paragraph[:beam_gen_position])
+    generation_prefix_ids = tokenizer.convert_tokens_to_ids(tokenized_generation_prefix)
+
+    curr_inst['answer'] = tokenizer.encode(generation)
+
+    curr_inst['paragraph'] = tokenizer.convert_tokens_to_ids(tokenized_para)
+    curr_inst['answer_position_tokenized'] = get_position(curr_inst['paragraph'], curr_inst['answer'], generation_prefix_ids)
+    return curr_inst, generation
 
 def run():
     parser = ArgumentParser()
@@ -356,12 +386,13 @@ def run():
     data = get_dataset(tokenizer, args.filecache, args.filename, filetype=args.data_type, debug=args.debug)
     print(("Time of get_positional_dataset_from_file: {}").format(datetime.now() - start))
 
-    final_output_dict = {'pid':[], 'sid':[], "beam_ans":[], "beam_ans_position":[], "answer":[], "paragraph":[],
+    final_output_dict = {'pid':[], 'sid':[], "beam_ans":[], "answer":[], "paragraph":[],
                      "clue":[], 'clue_start':[], 'ques_type':[]}
     para_cache = {
         "index": None,
         "hidden_states": None
     }
+    generated_inst = {'para_id':[], 'sid':[], 'paragraph':[], 'answer':[], 'answer_position_tokenized':[]}
 
     print("starting generation !")
     # process each instance
@@ -412,37 +443,39 @@ def run():
                 para_cache["index"] = inst['para_index']
 
                 # get the answer positions for the beam generations
-                output['beam_ans_position'] = []
-                for generation in beam_generations:
-                    output['beam_ans_position'].append(original_paragraph.find(generation))
-                # Handle -1 later for the cases the string does not exactly match. When giving token_types check for -1
-                # and look for individual tokens 
+                for ind, generation in enumerate(beam_generations):
+                    
+                    curr_inst, generation = get_positional_dataset_from_beam_output(tokenizer, generation, original_paragraph)
+                    generated_inst['paragraph'].append(curr_inst['paragraph'])
+                    generated_inst['answer'].append(curr_inst['answer'])
+                    generated_inst['answer_position_tokenized'].append(curr_inst['answer_position_tokenized'])
+                    generated_inst['para_id'].append(para_index)
+                    generated_inst['sid'].append(question_number)
 
-            
-                final_output_dict['pid'].append(para_index)
-                final_output_dict['sid'].append(question_number)
-                final_output_dict['beam_ans'].append(beam_generations)
-                final_output_dict['beam_ans_position'].append(output['beam_ans_position'])
-                final_output_dict['answer'].append(original_answer)
-                final_output_dict['paragraph'].append(original_paragraph)
-                final_output_dict['clue'].append(tokenizer.decode(inst["clue"]))
-                final_output_dict['clue_start'].append(inst["clue_start"])
-                final_output_dict['ques_type'].append(inst['ques_type'])
+                    
+                    final_output_dict['pid'].append(para_index)
+                    final_output_dict['sid'].append(question_number)
+                    final_output_dict['beam_ans'].append(generation)
+                    final_output_dict['answer'].append(original_answer)
+                    final_output_dict['paragraph'].append(original_paragraph)
+                    final_output_dict['clue'].append(tokenizer.decode(inst["clue"]))
+                    final_output_dict['clue_start'].append(inst["clue_start"])
+                    final_output_dict['ques_type'].append(inst['ques_type'])
 
 
-                question_number += 1
-                print("Processed - ", question_number)
-                if int(para_index) % args.save_freq == 0:
-                    # if os.path.isfile(args.output_file):
-                    #     move(args.output_file, args.output_file + ".copy.txt")
-                    pd.DataFrame(final_output_dict).to_csv(args.output_file, sep='\t')
-                    print("saved generated questions -", question_number)
+                    question_number += 1
+                    print("Processed - ", question_number)
+                    if int(question_number) % args.save_freq == 0:
+                        # if os.path.isfile(args.output_file):
+                        #     move(args.output_file, args.output_file + ".copy.txt")
+                        pd.DataFrame(final_output_dict).to_csv(args.output_file, sep='\t')
+                        print("saved generation -", question_number)
 
                 if args.debug and question_number >= args.debug_num:
                     break
         except Exception as e:
             print("Exception occured")
-            print(set(e))
+            print(str(e))
             continue
 
     print(("Time of generate {} beam_samples: {}").format(question_number, datetime.now() - start))
@@ -451,7 +484,7 @@ def run():
         move(args.output_file, args.output_file + ".copy.txt")
     pd.DataFrame(final_output_dict).to_csv(args.output_file, sep='\t')
     print(f"+++ Saved to csv format {args.output_file}!")
-    pd.DataFrame(final_output_dict).to_pickle(args.output_file.split(".txt")[0] + ".pkl")
+    pd.DataFrame(generated_inst).to_pickle(args.output_file.split(".txt")[0] + ".pkl")
     print(f"+++ Saved to pickle format {args.output_file.split('.txt')[0]}.pkl!")
 
     #!!! calc bleu, etc. if original question is not empty

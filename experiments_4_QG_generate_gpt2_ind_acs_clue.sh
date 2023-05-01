@@ -24,17 +24,16 @@ data_type="squad"
 data_file_prefix="train"
 st_idx=0
 ed_idx=10000
-CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_acs.py  \
+CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_acs_clue.py  \
     --model_type gpt2 \
-    --model_name_or_path /scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/ \
-    --filename "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
-    --filecache "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.cache.qg.gpt2.pth" \
+    --model_name_or_path /scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_clue/ \
+    --filename "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ans.pkl" \
     --data_type augmented_sents \
-    --output_file "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ans.debug.txt" \
+    --output_file "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_clue.txt" \
     --top_p 0.0 \
-    --save_freq 20 \
+    --save_freq 100 \
     --debug \
-    --debug_num 200 &> experiments_4_QG_generate_gpt2_ind_acs_ans
+    --debug_num 100 &> experiments_4_QG_generate_gpt2_ind_acs_clue
 
 
 
@@ -45,15 +44,14 @@ CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_ac
 # data_file_prefix="train"
 # st_idx=0
 # ed_idx=10000
-# CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_acs.py  \
+# CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_acs_clue.py  \
 #     --model_type gpt2 \
-#     --model_name_or_path /scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/ \
-#     --filename "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
-#     --filecache "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.cache.qg.gpt2.pth" \
+#     --model_name_or_path /scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_clue/ \
+#     --filename "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ans.debug.pkl" \
 #     --data_type augmented_sents \
 #     --output_file "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ans.txt" \
 #     --top_p 0.0 \
-#     &>> experiments_4_QG_generate_gpt2_ind_acs_ans
+#     &>> experiments_4_QG_generate_gpt2_ind_acs_clue
 
 
 # wiki data
@@ -63,14 +61,13 @@ data_type="wiki10000"
 data_file_prefix="wiki10000"
 st_idx=0
 ed_idx=10000
-CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_acs.py  \
+CUDA_VISIBLE_DEVICES=0 PYTHONIOENCODING=utf-8 python3 -u QG_gpt2_generate_ind_acs_clue.py  \
     --model_type gpt2 \
-    --model_name_or_path /scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/ \
-    --filename "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
-    --filecache "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.cache.qg.gpt2.pth" \
+    --model_name_or_path /scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_clue/ \
+    --filename "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ans.pkl" \
     --data_type augmented_sents \
-    --output_file "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ans.debug.txt" \
+    --output_file "$output_path${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_clue.txt" \
     --top_p 0.0 \
-    --save_freq 20 \
+    --save_freq 100 \
     --debug \
-    --debug_num 200 &>> experiments_4_QG_generate_gpt2_ind_acs_ans
+    --debug_num 500 &>> experiments_4_QG_generate_gpt2_ind_acs_clue

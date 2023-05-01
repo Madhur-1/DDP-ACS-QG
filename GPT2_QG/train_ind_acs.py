@@ -206,6 +206,83 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
     }
     return instance, sequence
 
+def build_para_only_input_from_segments_clue(data_point, tokenizer):
+    """A paragraph-only version of build_input_from_segments().
+    `<sos> .. paragraph text ..`
+    """
+    (
+        sos,
+        eos,
+        paragraph,
+        clue,
+        answer,
+        style,
+        question,
+    ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
+
+    curr_para = data_point["paragraph"]
+    ans_start = data_point["answer_position_tokenized"][0]
+    ans_end = data_point["answer_position_tokenized"][1]
+
+
+    # <sos> paragraph
+    sequence = [sos] + curr_para
+    # This segmentation will encode positional information
+    token_types = [paragraph for i in range(len(curr_para) + 1)]
+    # if clue_exist:
+    #     token_types[clue_start + 1 : clue_end + 1] = [clue] * (clue_end - clue_start)
+    token_types[ans_start + 1 : ans_end + 1] = [answer] * (ans_end - ans_start)
+    lm_labels = [-100 for _ in range(len(curr_para) + 1)]
+
+    assert len(sequence) == len(token_types)
+    assert len(token_types) == len(lm_labels)
+
+    instance = {
+        "input_ids": sequence,
+        "token_type_ids": token_types,
+        "lm_labels": lm_labels,
+    }
+    return instance, sequence
+
+def build_para_only_input_from_segments_style(data_point, tokenizer):
+    """A paragraph-only version of build_input_from_segments().
+    `<sos> .. paragraph text ..`
+    """
+    (
+        sos,
+        eos,
+        paragraph,
+        clue,
+        answer,
+        style,
+        question,
+    ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
+
+    curr_para = data_point["paragraph"]
+    ans_start = data_point["answer_position_tokenized"][0]
+    ans_end = data_point["answer_position_tokenized"][1]
+    clue_start = data_point["clue_position_tokenized"][0]
+    clue_end = data_point["clue_position_tokenized"][1]
+
+
+    # <sos> paragraph
+    sequence = [sos] + curr_para
+    # This segmentation will encode positional information
+    token_types = [paragraph for i in range(len(curr_para) + 1)]
+
+    token_types[clue_start + 1 : clue_end + 1] = [clue] * (clue_end - clue_start)
+    token_types[ans_start + 1 : ans_end + 1] = [answer] * (ans_end - ans_start)
+    lm_labels = [-100 for _ in range(len(curr_para) + 1)]
+
+    assert len(sequence) == len(token_types)
+    assert len(token_types) == len(lm_labels)
+
+    instance = {
+        "input_ids": sequence,
+        "token_type_ids": token_types,
+        "lm_labels": lm_labels,
+    }
+    return instance, sequence
 
 def build_para_only_input_from_segments(data_point, tokenizer):
     """A paragraph-only version of build_input_from_segments().
@@ -249,6 +326,47 @@ def build_para_only_input_from_segments(data_point, tokenizer):
     }
     return instance, sequence
 
+def build_para_only_input_from_segments_ques(data_point, tokenizer):
+    """A paragraph-only version of build_input_from_segments().
+    `<sos> .. paragraph text ..`
+    """
+    (
+        sos,
+        eos,
+        paragraph,
+        clue,
+        answer,
+        style,
+        question,
+    ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
+
+    curr_para = data_point["paragraph"]
+    ans_start = data_point["answer_position_tokenized"][0]
+    ans_end = data_point["answer_position_tokenized"][1]
+
+
+
+    clue_start = data_point["clue_position_tokenized"][0]
+    clue_end = data_point["clue_position_tokenized"][1]
+
+    # <sos> paragraph
+    sequence = [sos] + curr_para
+    # This segmentation will encode positional information
+    token_types = [paragraph for i in range(len(curr_para) + 1)]
+
+    token_types[clue_start + 1 : clue_end + 1] = [clue] * (clue_end - clue_start)
+    token_types[ans_start + 1 : ans_end + 1] = [answer] * (ans_end - ans_start)
+    lm_labels = [-100 for _ in range(len(curr_para) + 1)]
+
+    assert len(sequence) == len(token_types)
+    assert len(token_types) == len(lm_labels)
+
+    instance = {
+        "input_ids": sequence,
+        "token_type_ids": token_types,
+        "lm_labels": lm_labels,
+    }
+    return instance, sequence
 
 def build_acsq_only_input_from_segments(data_point, tokenizer, with_eos=True):
     """A answer-clue-style-question-only version of build_input_from_segments()."""
@@ -292,6 +410,144 @@ def build_acsq_only_input_from_segments(data_point, tokenizer, with_eos=True):
     }
     return instance, sequence
 
+def build_acsq_only_input_from_segments_clue(data_point, tokenizer, with_eos=True):
+    """A answer-clue-style-question-only version of build_input_from_segments()."""
+    (
+        sos,
+        eos,
+        paragraph,
+        clue,
+        answer,
+        style,
+        question,
+    ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
+
+    curr_ans = data_point["answer"]
+    
+
+    sequence = []
+    token_types = []
+    lm_labels = []
+
+    # <sos> paragraph <answer> answer
+    sequence.extend([answer] + curr_ans)
+    token_types.extend([answer for _ in range(len(curr_ans) + 1)])
+    lm_labels.extend([-100 for _ in range(len(curr_ans) + 1)])
+
+    # <sos> paragraph <answer> answer <clue>
+    sequence.extend([clue])
+    token_types.extend([clue])
+    lm_labels.extend([-100])
+
+
+
+    assert len(sequence) == len(token_types)
+    assert len(token_types) == len(lm_labels)
+
+    instance = {
+        "input_ids": sequence,
+        "token_type_ids": token_types,
+        "lm_labels": lm_labels,
+    }
+    return instance, sequence
+
+def build_acsq_only_input_from_segments_style(data_point, tokenizer, with_eos=True):
+    """A answer-clue-style-question-only version of build_input_from_segments()."""
+    (
+        sos,
+        eos,
+        paragraph,
+        clue,
+        answer,
+        style,
+        question,
+    ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
+
+    curr_ans = data_point["answer"]
+    curr_clue = data_point["clue"]
+
+    sequence = []
+    token_types = []
+    lm_labels = []
+
+    # <sos> paragraph <answer> answer
+    sequence.extend([answer] + curr_ans)
+    token_types.extend([answer for _ in range(len(curr_ans) + 1)])
+    lm_labels.extend([-100 for _ in range(len(curr_ans) + 1)])
+
+    # <sos> paragraph <answer> answer <clue> clue
+    sequence.extend([clue] + curr_clue)
+    token_types.extend([clue for _ in range(len(curr_clue) + 1)])
+    lm_labels.extend([-100 for _ in range(len(curr_clue) + 1)])
+
+    # <sos> paragraph <answer> answer <clue> clue <style>
+    sequence.extend([style])
+    token_types.extend([style]) 
+    lm_labels.extend([-100])
+
+
+
+    assert len(sequence) == len(token_types)
+    assert len(token_types) == len(lm_labels)
+
+    instance = {
+        "input_ids": sequence,
+        "token_type_ids": token_types,
+        "lm_labels": lm_labels,
+    }
+    return instance, sequence
+
+def build_acsq_only_input_from_segments_ques(data_point, tokenizer, with_eos=True):
+    """A answer-clue-style-question-only version of build_input_from_segments()."""
+    (
+        sos,
+        eos,
+        paragraph,
+        clue,
+        answer,
+        style,
+        question,
+    ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
+
+    curr_ans = data_point["answer"]
+    curr_clue = data_point["clue"]
+    curr_style = data_point["style"]
+
+    sequence = []
+    token_types = []
+    lm_labels = []
+
+    # <sos> paragraph <answer> answer
+    sequence.extend([answer] + curr_ans)
+    token_types.extend([answer for _ in range(len(curr_ans) + 1)])
+    lm_labels.extend([-100 for _ in range(len(curr_ans) + 1)])
+
+    # <sos> paragraph <answer> answer <clue> clue
+    sequence.extend([clue] + curr_clue)
+    token_types.extend([clue for _ in range(len(curr_clue) + 1)])
+    lm_labels.extend([-100 for _ in range(len(curr_clue) + 1)])
+
+    # <sos> paragraph <answer> answer <clue> clue <style> style
+    sequence.extend([style] + curr_style)
+    token_types.extend([style for _ in range(len(curr_style) + 1)])
+    lm_labels.extend([-100 for _ in range(len(curr_style) + 1)])
+
+    # <sos> paragraph <answer> answer <clue> clue <style> style <question>
+    sequence.extend([question])
+    token_types.extend([question])
+    lm_labels.extend([-100])
+
+
+
+    assert len(sequence) == len(token_types)
+    assert len(token_types) == len(lm_labels)
+
+    instance = {
+        "input_ids": sequence,
+        "token_type_ids": token_types,
+        "lm_labels": lm_labels,
+    }
+    return instance, sequence
 
 def get_data_loaders(args, tokenizer):
     """Prepare the dataset for training and evaluation"""

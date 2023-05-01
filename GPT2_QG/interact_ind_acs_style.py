@@ -83,7 +83,7 @@ import pandas as pd
 import torch
 import torch.nn.functional as F
 import tqdm
-from common.constants import EXP_PLATFORM
+from common.constants import EXP_PLATFORM, QUESTION_TYPES
 
 # !!! for running experiments on Venus
 if EXP_PLATFORM.lower() == "venus":
@@ -98,8 +98,8 @@ from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 from .dataloader import get_position
 from .train_ind_acs import (SPECIAL_TOKENS, SPECIAL_TOKENS_WO_CSQ,
-                            build_acsq_only_input_from_segments_clue,
-                            build_para_only_input_from_segments_clue)
+                            build_acsq_only_input_from_segments_style,
+                            build_para_only_input_from_segments_style)
 
 
 def check_presence(child, parent):
@@ -203,7 +203,7 @@ def sample_sequence_beam_search(inst, tokenizer, model, args, para_cache, beam_s
     special_tokens_ids_wo_csq = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS_WO_CSQ)
     
     # Ignore the paragraph while building the input instance and token type ids
-    instance, _ = build_acsq_only_input_from_segments_clue(inst, tokenizer, with_eos=False)  # as this is used for generate, with_eos is False.
+    instance, _ = build_acsq_only_input_from_segments_style(inst, tokenizer, with_eos=False)  # as this is used for generate, with_eos is False.
     input_ids = torch.tensor(instance['input_ids'], device=args.device).unsqueeze(0)
     token_type_ids = torch.tensor(instance['token_type_ids'], device=args.device).unsqueeze(0)
     # above we get `<answer> answer <clue> clue <style> style <question>`, this is start point to generate question
@@ -281,7 +281,7 @@ def get_positional_dataset_from_beam_output(tokenizer, generation, original_para
     tokenized_generation_prefix = tokenizer.tokenize(original_paragraph[:beam_gen_position])
     generation_prefix_ids = tokenizer.convert_tokens_to_ids(tokenized_generation_prefix)
     
-    curr_inst['clue'] = tokenizer.encode(generation)
+    curr_inst['style'] = tokenizer.encode(generation)
 
     curr_inst['paragraph'] = tokenizer.convert_tokens_to_ids(tokenized_para)
     curr_inst['clue_position_tokenized'] = get_position(curr_inst['paragraph'], curr_inst['clue'], generation_prefix_ids)
@@ -337,13 +337,12 @@ def run():
     data = pd.read_pickle(args.filename)
     print(("Time of get_positional_dataset_from_file: {}").format(datetime.now() - start))
 
-    final_output_dict = {'pid':[], 'sid':[], "beam_gen":[], "answer":[], "paragraph":[]}
+    final_output_dict = {'pid':[], 'sid':[], "beam_gen":[], "paragraph":[], "answer":[], 'clue': []}
     para_cache = {
         "index": None,
         "hidden_states": None
     }
-    generated_inst = {'para_id':[], 'sid':[], 'paragraph':[], 'answer':[], 'answer_position_tokenized':[], 'clue':[], 'clue_position_tokenized':[]}
-
+    generated_inst = {'para_id':[], 'sid':[], 'paragraph':[], 'answer':[], 'answer_position_tokenized':[], 'clue':[], 'clue_position_tokenized':[], 'style': []}
     print("starting generation !")
     # process each instance
     question_number = 0
@@ -366,7 +365,7 @@ def run():
 
                     
                     # Ignore the answer and question while building the input
-                    instance, _ = build_para_only_input_from_segments_clue(inst, tokenizer)  # !!!! this is designed to re-use paragraph.
+                    instance, _ = build_para_only_input_from_segments_style(inst, tokenizer)  # !!!! this is designed to re-use paragraph.
                     input_ids = torch.tensor(instance['input_ids'], device=args.device).unsqueeze(0)
                     token_type_ids = torch.tensor(instance['token_type_ids'], device=args.device).unsqueeze(0)
                     
@@ -379,7 +378,7 @@ def run():
                 try:
                     # output = sample_sequence(inst, tokenizer, model, args, para_cache)
                     
-                    output = sample_sequence_beam_search(inst, tokenizer, model, args, para_cache, beam_size=3)
+                    output = sample_sequence_beam_search(inst, tokenizer, model, args, para_cache, beam_size=2)
                     
                 except Exception as e:  # !!! NOTICE: sometimes (very rare case) the sample_sequence got size mismatch in modeling_gpt2
                     print(traceback.format_exc())
@@ -388,28 +387,30 @@ def run():
 
                 original_paragraph = tokenizer.decode(output['paragraph'])
                 beam_generations = tokenizer.batch_decode(output['beam_gen'], skip_special_tokens=True)
-                beam_generations = [generation for generation in beam_generations if (check_presence(generation, original_paragraph) or set(generation.split()).issubset(set(original_paragraph.split())))]
+                beam_generations = [generation for generation in beam_generations if generation in QUESTION_TYPES]
                 original_answer = tokenizer.decode(output['answer'], skip_special_tokens=True)
+                original_clue = tokenizer.decode(output['clue'], skip_special_tokens=True)
                 para_index = inst['para_index']
                 para_cache["index"] = inst['para_index']
 
                 # get the answer positions for the beam generations
                 for ind, generation in enumerate(beam_generations):
-                    
-                    curr_inst, generation = get_positional_dataset_from_beam_output(tokenizer, generation, original_paragraph)
-                    generated_inst['paragraph'].append(curr_inst['paragraph'])
+                    curr_inst = {}
+                    generated_inst['paragraph'].append(inst['paragraph'])
                     generated_inst['answer'].append(inst['answer'])
                     generated_inst['answer_position_tokenized'].append(inst['answer_position_tokenized'])
                     generated_inst['para_id'].append(para_index)
                     generated_inst['sid'].append(question_number)
-                    generated_inst['clue'].append(curr_inst['clue'])
-                    generated_inst['clue_position_tokenized'].append(curr_inst['clue_position_tokenized'])
+                    generated_inst['clue'].append(inst['clue'])
+                    generated_inst['clue_position_tokenized'].append(inst['clue_position_tokenized'])
+                    generated_inst['style'].append(tokenizer.encode(generation))
                     
                     final_output_dict['pid'].append(para_index)
                     final_output_dict['sid'].append(question_number)
                     final_output_dict['beam_gen'].append(generation)
                     final_output_dict['answer'].append(original_answer)
                     final_output_dict['paragraph'].append(original_paragraph)
+                    final_output_dict['clue'].append(original_clue)
 
 
                     question_number += 1

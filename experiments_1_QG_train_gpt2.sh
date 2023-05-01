@@ -25,4 +25,4 @@ python3 -u QG_gpt2_train.py \
     --dev_dataset_cache /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1-Zhou/dev-gpt2.pt \
     --local_rank -1 \
     --train_batch_size 4 \
-    &> experiments_1_QG_gpt2.txt
+    &> experiments_1_QG_gpt2

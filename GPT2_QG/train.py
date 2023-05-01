@@ -193,7 +193,6 @@ def build_para_only_input_from_segments(data_point, tokenizer):
     ans_start = data_point["answer_position_tokenized"][0]
     ans_end = data_point["answer_position_tokenized"][1]
 
-    clue_exist = data_point["clue_start"] is not None
     if clue_exist:
         clue_start = data_point["clue_position_tokenized"][0]
         clue_end = data_point["clue_position_tokenized"][1]
