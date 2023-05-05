@@ -42,10 +42,10 @@ Better speed can be achieved with apex installed from https://www.github.com/nvi
 [nltk_data] Downloading package punkt to
 [nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
-Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=100, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.txt', save_freq=100, seed=42, temperature=0.7, top_k=0, top_p=0.0)
+Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=100, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.txt', save_freq=100, seed=42, temperature=0.7, top_k=0, top_p=0.0)
 Get pretrained model and tokenizer
 Load tokenized dataset from cache at %s /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth
-Time of get_positional_dataset_from_file: 0:00:04.071389
+Time of get_positional_dataset_from_file: 0:00:04.152350
 starting generation !
 Processed -  1
 Processed -  2
@@ -147,12 +147,12 @@ Processed -  97
 Processed -  98
 Processed -  99
 Processed -  100
-saved generated questions - 100
+saved generation - 100
 Processed -  101
 Processed -  102
-Time of generate 102 beam_samples: 0:06:57.780318
-+++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.txt!
-+++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.pkl!
+Time of generate 102 beam_samples: 0:05:14.872062
++++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.txt!
++++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.pkl!
 /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
 /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/feature_extraction/image.py:167: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
@@ -197,10 +197,10 @@ Better speed can be achieved with apex installed from https://www.github.com/nvi
 [nltk_data] Downloading package punkt to
 [nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
 [nltk_data]   Package punkt is already up-to-date!
-Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=500, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.txt', save_freq=100, seed=42, temperature=0.7, top_k=0, top_p=0.0)
+Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=500, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.txt', save_freq=100, seed=42, temperature=0.7, top_k=0, top_p=0.0)
 Get pretrained model and tokenizer
 Load tokenized dataset from cache at %s /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth
-Time of get_positional_dataset_from_file: 0:00:04.177143
+Time of get_positional_dataset_from_file: 0:00:04.262668
 starting generation !
 Processed -  1
 Processed -  2
@@ -260,7 +260,6 @@ Processed -  55
 Processed -  56
 Processed -  57
 Processed -  58
-+++ Got closest match: "anarchist" or "anarchism" for "anarchism" or "anarchism" in There would be many revolutionaries of the early nineteenth century who contributed to the anarchist doctrines of the next generation, such as William Godwin and Wilhelm Weitling, but they did not use the word "anarchist" or "anarchism" in describing themselves or their beliefs.p=27-37
 Processed -  59
 Processed -  60
 Processed -  61
@@ -303,7 +302,7 @@ Processed -  97
 Processed -  98
 Processed -  99
 Processed -  100
-saved generated questions - 100
+saved generation - 100
 Processed -  101
 Processed -  102
 Processed -  103
@@ -404,13 +403,12 @@ Processed -  197
 Processed -  198
 Processed -  199
 Processed -  200
-saved generated questions - 200
+saved generation - 200
 Processed -  201
 Processed -  202
 Processed -  203
 Processed -  204
 Processed -  205
-+++ Got closest match: The anarcho-communist Joseph Déjacque for the anarcho-communist Joseph Déjacque in The anarcho-communist Joseph Déjacque was the first person to describe himself as "libertarian".
 Processed -  206
 Processed -  207
 Processed -  208
@@ -425,6 +423,7 @@ Processed -  216
 Processed -  217
 Processed -  218
 Processed -  219
++++ Got closest match: The anarcho-communist Joseph Déjacque for the anarcho-communist Joseph Déjacque in The anarcho-communist Joseph Déjacque was the first person to describe himself as "libertarian".
 Processed -  220
 Processed -  221
 Processed -  222
@@ -506,7 +505,7 @@ Processed -  297
 Processed -  298
 Processed -  299
 Processed -  300
-saved generated questions - 300
+saved generation - 300
 Processed -  301
 Processed -  302
 Processed -  303
@@ -568,7 +567,6 @@ Processed -  358
 Processed -  359
 Processed -  360
 Processed -  361
-+++ Got closest match: sections of the First International were for the precursors of the First International in The anti-authoritarian sections of the First International were the precursors of the anarcho-syndicalists, seeking to "replace the privilege and authority of the State" with the "free and spontaneous organization of labour".
 Processed -  362
 Processed -  363
 Processed -  364
@@ -608,7 +606,7 @@ Processed -  397
 Processed -  398
 Processed -  399
 Processed -  400
-saved generated questions - 400
+saved generation - 400
 Processed -  401
 Processed -  402
 Processed -  403
@@ -668,7 +666,6 @@ Processed -  456
 Processed -  457
 Processed -  458
 Processed -  459
-+++ Got closest match: 1.58 million for 1.58 million in Before the 1940s, the CNT was the major force in Spanish working class politics, attracting 1.58 million members at one point and playing a major role in the Spanish Civil War.
 Processed -  460
 Processed -  461
 Processed -  462
@@ -692,6 +689,7 @@ Processed -  479
 Processed -  480
 Processed -  481
 Processed -  482
++++ Got closest match: 1.58 million for 1.58 million in Before the 1940s, the CNT was the major force in Spanish working class politics, attracting 1.58 million members at one point and playing a major role in the Spanish Civil War.
 Processed -  483
 Processed -  484
 Processed -  485
@@ -710,9 +708,10 @@ Processed -  497
 Processed -  498
 Processed -  499
 Processed -  500
-saved generated questions - 500
+saved generation - 500
 Processed -  501
 Processed -  502
-Time of generate 502 beam_samples: 0:36:18.064455
-+++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.txt!
-+++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.pkl!
+Processed -  503
+Time of generate 503 beam_samples: 0:26:10.713468
++++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.txt!
++++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.pkl!

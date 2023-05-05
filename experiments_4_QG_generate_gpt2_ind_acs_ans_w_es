@@ -1,0 +1,718 @@
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/feature_extraction/image.py:167: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.int):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:35: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:597: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:836: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:862: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1097: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1344: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1480: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:152: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  precompute=False, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:320: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, random_state=None,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:580: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=4 * np.finfo(np.float).eps, n_jobs=None,
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=100, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.txt', save_freq=100, seed=42, temperature=0.7, top_k=0, top_p=0.0)
+Get pretrained model and tokenizer
+Load tokenized dataset from cache at %s /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.augmented.0_10000.cache.qg.gpt2.pth
+Time of get_positional_dataset_from_file: 0:00:04.071389
+starting generation !
+Processed -  1
+Processed -  2
+Processed -  3
+Processed -  4
+Processed -  5
+Processed -  6
+Processed -  7
+Processed -  8
+Processed -  9
+Processed -  10
+Processed -  11
+Processed -  12
+Processed -  13
+Processed -  14
+Processed -  15
+Processed -  16
+Processed -  17
+Processed -  18
+Processed -  19
+Processed -  20
+Processed -  21
+Processed -  22
+Processed -  23
+Processed -  24
+Processed -  25
+Processed -  26
+Processed -  27
+Processed -  28
+Processed -  29
+Processed -  30
+Processed -  31
+Processed -  32
+Processed -  33
+Processed -  34
+Processed -  35
+Processed -  36
+Processed -  37
+Processed -  38
+Processed -  39
+Processed -  40
+Processed -  41
+Processed -  42
+Processed -  43
+Processed -  44
+Processed -  45
+Processed -  46
+Processed -  47
+Processed -  48
+Processed -  49
+Processed -  50
+Processed -  51
+Processed -  52
+Processed -  53
+Processed -  54
+Processed -  55
+Processed -  56
+Processed -  57
+Processed -  58
+Processed -  59
+Processed -  60
+Processed -  61
+Processed -  62
+Processed -  63
+Processed -  64
+Processed -  65
+Processed -  66
+Processed -  67
+Processed -  68
+Processed -  69
+Processed -  70
+Processed -  71
+Processed -  72
+Processed -  73
+Processed -  74
+Processed -  75
+Processed -  76
+Processed -  77
+Processed -  78
+Processed -  79
+Processed -  80
+Processed -  81
+Processed -  82
+Processed -  83
+Processed -  84
+Processed -  85
+Processed -  86
+Processed -  87
+Processed -  88
+Processed -  89
+Processed -  90
+Processed -  91
+Processed -  92
+Processed -  93
+Processed -  94
+Processed -  95
+Processed -  96
+Processed -  97
+Processed -  98
+Processed -  99
+Processed -  100
+saved generated questions - 100
+Processed -  101
+Processed -  102
+Time of generate 102 beam_samples: 0:06:57.780318
++++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.txt!
++++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ans.debug.pkl!
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/feature_extraction/image.py:167: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  dtype=np.int):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:35: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:597: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:836: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:862: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1097: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1344: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1480: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, positive=False):
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:152: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  precompute=False, eps=np.finfo(np.float).eps,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:320: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, random_state=None,
+/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:580: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=4 * np.finfo(np.float).eps, n_jobs=None,
+[nltk_data] Downloading package benepar_en3 to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package benepar_en3 is already up-to-date!
+Start loading constants ...
+Finished loading constants ...
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+[nltk_data] Downloading package punkt to
+[nltk_data]     /scratch/scratch8/madhurjindal/acs-qg-env/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+Namespace(calc_tg_metrics=False, data_type='augmented_sents', debug=True, debug_num=500, device='cuda', filecache='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth', filename='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.pkl', max_length=20, min_length=1, model_name='', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs/train_ans/', model_type='gpt2', no_sample=False, output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.txt', save_freq=100, seed=42, temperature=0.7, top_k=0, top_p=0.0)
+Get pretrained model and tokenizer
+Load tokenized dataset from cache at %s /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.augmented.0_10000.cache.qg.gpt2.pth
+Time of get_positional_dataset_from_file: 0:00:04.177143
+starting generation !
+Processed -  1
+Processed -  2
+Processed -  3
+Processed -  4
+Processed -  5
+Processed -  6
+Processed -  7
+Processed -  8
+Processed -  9
+Processed -  10
+Processed -  11
+Processed -  12
+Processed -  13
+Processed -  14
+Processed -  15
+Processed -  16
+Processed -  17
+Processed -  18
+Processed -  19
+Processed -  20
+Processed -  21
+Processed -  22
+Processed -  23
+Processed -  24
+Processed -  25
+Processed -  26
+Processed -  27
+Processed -  28
+Processed -  29
+Processed -  30
+Processed -  31
+Processed -  32
+Processed -  33
+Processed -  34
+Processed -  35
+Processed -  36
+Processed -  37
+Processed -  38
+Processed -  39
+Processed -  40
+Processed -  41
+Processed -  42
+Processed -  43
+Processed -  44
+Processed -  45
+Processed -  46
+Processed -  47
+Processed -  48
+Processed -  49
+Processed -  50
+Processed -  51
+Processed -  52
+Processed -  53
+Processed -  54
+Processed -  55
+Processed -  56
+Processed -  57
+Processed -  58
++++ Got closest match: "anarchist" or "anarchism" for "anarchism" or "anarchism" in There would be many revolutionaries of the early nineteenth century who contributed to the anarchist doctrines of the next generation, such as William Godwin and Wilhelm Weitling, but they did not use the word "anarchist" or "anarchism" in describing themselves or their beliefs.p=27-37
+Processed -  59
+Processed -  60
+Processed -  61
+Processed -  62
+Processed -  63
+Processed -  64
+Processed -  65
+Processed -  66
+Processed -  67
+Processed -  68
+Processed -  69
+Processed -  70
+Processed -  71
+Processed -  72
+Processed -  73
+Processed -  74
+Processed -  75
+Processed -  76
+Processed -  77
+Processed -  78
+Processed -  79
+Processed -  80
+Processed -  81
+Processed -  82
+Processed -  83
+Processed -  84
+Processed -  85
+Processed -  86
+Processed -  87
+Processed -  88
+Processed -  89
+Processed -  90
+Processed -  91
+Processed -  92
+Processed -  93
+Processed -  94
+Processed -  95
+Processed -  96
+Processed -  97
+Processed -  98
+Processed -  99
+Processed -  100
+saved generated questions - 100
+Processed -  101
+Processed -  102
+Processed -  103
+Processed -  104
+Processed -  105
+Processed -  106
+Processed -  107
+Processed -  108
+Processed -  109
+Processed -  110
+Processed -  111
+Processed -  112
+Processed -  113
+Processed -  114
+Processed -  115
+Processed -  116
+Processed -  117
+Processed -  118
+Processed -  119
+Processed -  120
+Processed -  121
+Processed -  122
+Processed -  123
+Processed -  124
+Processed -  125
+Processed -  126
+Processed -  127
+Processed -  128
+Processed -  129
+Processed -  130
+Processed -  131
+Processed -  132
+Processed -  133
+Processed -  134
+Processed -  135
+Processed -  136
+Processed -  137
+Processed -  138
+Processed -  139
+Processed -  140
+Processed -  141
+Processed -  142
+Processed -  143
+Processed -  144
+Processed -  145
+Processed -  146
+Processed -  147
+Processed -  148
+Processed -  149
+Processed -  150
+Processed -  151
+Processed -  152
+Processed -  153
+Processed -  154
+Processed -  155
+Processed -  156
+Processed -  157
+Processed -  158
+Processed -  159
+Processed -  160
+Processed -  161
+Processed -  162
+Processed -  163
+Processed -  164
+Processed -  165
+Processed -  166
+Processed -  167
+Processed -  168
+Processed -  169
+Processed -  170
+Processed -  171
+Processed -  172
+Processed -  173
+Processed -  174
+Processed -  175
+Processed -  176
+Processed -  177
+Processed -  178
+Processed -  179
+Processed -  180
+Processed -  181
+Processed -  182
+Processed -  183
+Processed -  184
+Processed -  185
+Processed -  186
+Processed -  187
+Processed -  188
+Processed -  189
+Processed -  190
+Processed -  191
+Processed -  192
+Processed -  193
+Processed -  194
+Processed -  195
+Processed -  196
+Processed -  197
+Processed -  198
+Processed -  199
+Processed -  200
+saved generated questions - 200
+Processed -  201
+Processed -  202
+Processed -  203
+Processed -  204
+Processed -  205
++++ Got closest match: The anarcho-communist Joseph Déjacque for the anarcho-communist Joseph Déjacque in The anarcho-communist Joseph Déjacque was the first person to describe himself as "libertarian".
+Processed -  206
+Processed -  207
+Processed -  208
+Processed -  209
+Processed -  210
+Processed -  211
+Processed -  212
+Processed -  213
+Processed -  214
+Processed -  215
+Processed -  216
+Processed -  217
+Processed -  218
+Processed -  219
+Processed -  220
+Processed -  221
+Processed -  222
+Processed -  223
+Processed -  224
+Processed -  225
+Processed -  226
+Processed -  227
+Processed -  228
+Processed -  229
+Processed -  230
+Processed -  231
+Processed -  232
+Processed -  233
+Processed -  234
+Processed -  235
+Processed -  236
+Processed -  237
+Processed -  238
+Processed -  239
+Processed -  240
+Processed -  241
+Processed -  242
+Processed -  243
+Processed -  244
+Processed -  245
+Processed -  246
+Processed -  247
+Processed -  248
+Processed -  249
+Processed -  250
+Processed -  251
+Processed -  252
+Processed -  253
+Processed -  254
+Processed -  255
+Processed -  256
+Processed -  257
+Processed -  258
+Processed -  259
+Processed -  260
+Processed -  261
+Processed -  262
+Processed -  263
+Processed -  264
+Processed -  265
+Processed -  266
+Processed -  267
+Processed -  268
+Processed -  269
+Processed -  270
+Processed -  271
+Processed -  272
+Processed -  273
+Processed -  274
+Processed -  275
+Processed -  276
+Processed -  277
+Processed -  278
+Processed -  279
+Processed -  280
+Processed -  281
+Processed -  282
+Processed -  283
+Processed -  284
+Processed -  285
+Processed -  286
+Processed -  287
+Processed -  288
+Processed -  289
+Processed -  290
+Processed -  291
+Processed -  292
+Processed -  293
+Processed -  294
+Processed -  295
+Processed -  296
+Processed -  297
+Processed -  298
+Processed -  299
+Processed -  300
+saved generated questions - 300
+Processed -  301
+Processed -  302
+Processed -  303
+Processed -  304
+Processed -  305
+Processed -  306
+Processed -  307
+Processed -  308
+Processed -  309
+Processed -  310
+Processed -  311
+Processed -  312
+Processed -  313
+Processed -  314
+Processed -  315
+Processed -  316
+Processed -  317
+Processed -  318
+Processed -  319
+Processed -  320
+Processed -  321
+Processed -  322
+Processed -  323
+Processed -  324
+Processed -  325
+Processed -  326
+Processed -  327
+Processed -  328
+Processed -  329
+Processed -  330
+Processed -  331
+Processed -  332
+Processed -  333
+Processed -  334
+Processed -  335
+Processed -  336
+Processed -  337
+Processed -  338
+Processed -  339
+Processed -  340
+Processed -  341
+Processed -  342
+Processed -  343
+Processed -  344
+Processed -  345
+Processed -  346
+Processed -  347
+Processed -  348
+Processed -  349
+Processed -  350
+Processed -  351
+Processed -  352
+Processed -  353
+Processed -  354
+Processed -  355
+Processed -  356
+Processed -  357
+Processed -  358
+Processed -  359
+Processed -  360
+Processed -  361
++++ Got closest match: sections of the First International were for the precursors of the First International in The anti-authoritarian sections of the First International were the precursors of the anarcho-syndicalists, seeking to "replace the privilege and authority of the State" with the "free and spontaneous organization of labour".
+Processed -  362
+Processed -  363
+Processed -  364
+Processed -  365
+Processed -  366
+Processed -  367
+Processed -  368
+Processed -  369
+Processed -  370
+Processed -  371
+Processed -  372
+Processed -  373
+Processed -  374
+Processed -  375
+Processed -  376
+Processed -  377
+Processed -  378
+Processed -  379
+Processed -  380
+Processed -  381
+Processed -  382
+Processed -  383
+Processed -  384
+Processed -  385
+Processed -  386
+Processed -  387
+Processed -  388
+Processed -  389
+Processed -  390
+Processed -  391
+Processed -  392
+Processed -  393
+Processed -  394
+Processed -  395
+Processed -  396
+Processed -  397
+Processed -  398
+Processed -  399
+Processed -  400
+saved generated questions - 400
+Processed -  401
+Processed -  402
+Processed -  403
+Processed -  404
+Processed -  405
+Processed -  406
+Processed -  407
+Processed -  408
+Processed -  409
+Processed -  410
+Processed -  411
+Processed -  412
+Processed -  413
+Processed -  414
+Processed -  415
+Processed -  416
+Processed -  417
+Processed -  418
+Processed -  419
+Processed -  420
+Processed -  421
+Processed -  422
+Processed -  423
+Processed -  424
+Processed -  425
+Processed -  426
+Processed -  427
+Processed -  428
+Processed -  429
+Processed -  430
+Processed -  431
+Processed -  432
+Processed -  433
+Processed -  434
+Processed -  435
+Processed -  436
+Processed -  437
+Processed -  438
+Processed -  439
+Processed -  440
+Processed -  441
+Processed -  442
+Processed -  443
+Processed -  444
+Processed -  445
+Processed -  446
+Processed -  447
+Processed -  448
+Processed -  449
+Processed -  450
+Processed -  451
+Processed -  452
+Processed -  453
+Processed -  454
+Processed -  455
+Processed -  456
+Processed -  457
+Processed -  458
+Processed -  459
++++ Got closest match: 1.58 million for 1.58 million in Before the 1940s, the CNT was the major force in Spanish working class politics, attracting 1.58 million members at one point and playing a major role in the Spanish Civil War.
+Processed -  460
+Processed -  461
+Processed -  462
+Processed -  463
+Processed -  464
+Processed -  465
+Processed -  466
+Processed -  467
+Processed -  468
+Processed -  469
+Processed -  470
+Processed -  471
+Processed -  472
+Processed -  473
+Processed -  474
+Processed -  475
+Processed -  476
+Processed -  477
+Processed -  478
+Processed -  479
+Processed -  480
+Processed -  481
+Processed -  482
+Processed -  483
+Processed -  484
+Processed -  485
+Processed -  486
+Processed -  487
+Processed -  488
+Processed -  489
+Processed -  490
+Processed -  491
+Processed -  492
+Processed -  493
+Processed -  494
+Processed -  495
+Processed -  496
+Processed -  497
+Processed -  498
+Processed -  499
+Processed -  500
+saved generated questions - 500
+Processed -  501
+Processed -  502
+Time of generate 502 beam_samples: 0:36:18.064455
++++ Saved to csv format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.txt!
++++ Saved to pickle format /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ans.debug.pkl!

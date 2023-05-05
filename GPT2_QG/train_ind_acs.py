@@ -795,8 +795,8 @@ def train():
             val_loss = evaluator.state.metrics['nll']
             return -val_loss
 
-        early_stopping_handler = EarlyStopping(patience=4, score_function=score_function, trainer=trainer, min_delta=0.01)
-        trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), early_stopping_handler)
+        # early_stopping_handler = EarlyStopping(patience=4, score_function=score_function, trainer=trainer, min_delta=0.01)
+        # trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), early_stopping_handler)
 
         # tb_logger = TensorboardLogger(log_dir=args.output_dir)
         # tb_logger.attach(trainer, log_handler=OutputHandler(tag="training", metric_names=["loss"]), event_name=Events.ITERATION_COMPLETED)
