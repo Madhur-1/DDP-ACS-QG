@@ -5,6 +5,7 @@ It handles SQuAD or other datasets to select all possible answers, clues, and qu
 The selected data can be read by QG data loader, and generate questions.
 """
 from common.constants import EXP_PLATFORM
+
 # !!! for running experiments on Venus
 from config import *
 
@@ -26,12 +27,13 @@ from util.file_utils import load, save
 
 
 def warn_with_traceback(message, category, filename, lineno, file=None, line=None):
-
-    log = file if hasattr(file,'write') else sys.stderr
+    log = file if hasattr(file, "write") else sys.stderr
     traceback.print_stack(file=log)
     log.write(warnings.formatwarning(message, category, filename, lineno, line))
 
+
 warnings.showwarning = warn_with_traceback
+
 
 def normalize_text(text):
     """
@@ -134,6 +136,44 @@ def squad2sentences(
     outfile_p.close()
 
 
+def squad11fp2sentences(
+    input_path,
+    output_path,
+    paragraphs_path,
+    max_length,
+    min_length,
+    max_plength,
+    min_plength,
+):
+    outfile = open(output_path, "w", encoding="utf8")
+    outfile_p = open(paragraphs_path, "w", encoding="utf8")
+    with codecs.open(input_path, "r", encoding="utf8") as infile:
+        source = json.load(infile)
+        pid = 0
+        sid = 0
+        for article in tqdm(source["data"]):
+            for para in article["paragraphs"]:
+                context = para["context"]
+                context = normalize_text(context)
+                outfile_p.write(
+                    str(pid) + "\t" + context.rstrip().replace("\n", "\\n") + "\n"
+                )
+                outfile.write(
+                    str(pid)
+                    + "\t"
+                    + str(sid)
+                    + "\t"
+                    + context.rstrip().replace("\n", "\\n")
+                    + "\n"
+                )
+                sid += 1
+                pid += 1
+
+    infile.close()
+    outfile.close()
+    outfile_p.close()
+
+
 def file2sentences(
     input_path,
     data_type,
@@ -156,6 +196,16 @@ def file2sentences(
         )
     elif data_type.lower() == "squad":
         squad2sentences(
+            input_path,
+            output_path,
+            paragraphs_path,
+            max_length,
+            min_length,
+            max_plength,
+            min_plength,
+        )
+    elif data_type.lower() == "squad1.1-para":
+        squad11fp2sentences(
             input_path,
             output_path,
             paragraphs_path,
@@ -187,7 +237,6 @@ def sentences2augmented_sentences(
         assert end_index <= len(sentences)
         print("Start augment data...")
         for i in tqdm(range(start_index, end_index)):
-
             s_split = sentences[i].rstrip().split("\t")
             pid = s_split[0]
             sid = s_split[1]
@@ -201,6 +250,8 @@ def sentences2augmented_sentences(
                 num_sample_style,
                 max_sample_times,
             )
+            if not augmented_s["selected_infos"]:
+                pass
             augmented_s["pid"] = pid
             augmented_s["sid"] = sid
             augmented_sentences.append(augmented_s)

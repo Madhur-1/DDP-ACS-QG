@@ -13,22 +13,42 @@ source activate /scratch/scratch8/madhurjindal/acs-qg-env
 
 cd /storage/home/madhurjindal/ACS-QG
 
-output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/"
+# output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/"
+# data_file_prefix="train"
+# st_idx=0
+# ed_idx=10000
+# python3 QA_generate.py \
+#         --model_name_or_path "/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad" \
+#         --input_file  "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.txt" \
+#         --output_file "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.qa.txt" \
+#         &> experiments_9_QA_ind_acs
+
+# output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/"
+# data_file_prefix="wiki10000"
+# st_idx=0
+# ed_idx=10000
+# python3 QA_generate.py \
+#         --model_name_or_path "/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad" \
+#         --input_file  "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.txt" \
+#         --output_file "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.qa.txt" \
+#         &>> experiments_9_QA_ind_acs
+
+# output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/"
+# data_file_prefix="dev"
+# st_idx=0
+# ed_idx=2000
+# python3 QA_generate.py \
+#         --model_name_or_path "/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad" \
+#         --input_file  "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.txt" \
+#         --output_file "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.qa.txt" \
+#         &> experiments_9_QA_ind_acs
+
+output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/"
 data_file_prefix="train"
 st_idx=0
-ed_idx=10000
+ed_idx=2000
 python3 QA_generate.py \
         --model_name_or_path "/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad" \
         --input_file  "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.txt" \
         --output_file "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.qa.txt" \
         &> experiments_9_QA_ind_acs
-
-output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/"
-data_file_prefix="wiki10000"
-st_idx=0
-ed_idx=10000
-python3 QA_generate.py \
-        --model_name_or_path "/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad" \
-        --input_file  "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.txt" \
-        --output_file "${output_path}${data_file_prefix}.${st_idx}_${ed_idx}.generated.gpt2.ind_ques.qa.txt" \
-        &>> experiments_9_QA_ind_acs

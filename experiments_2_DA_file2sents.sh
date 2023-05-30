@@ -15,21 +15,38 @@ cd /storage/home/madhurjindal/ACS-QG
 
 # # STEP 3: perform data augmentation. Raw input data -> sentences txt file -> augmented sentences pkl file
 
-python3 -u DA_main.py \
-        --da_task file2sentences \
-        --da_input_type wiki10000 \
-        --da_input_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Wiki10000/wiki10000.json \
-        --da_sentences_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.txt \
-        --da_paragraphs_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.paragraphs.txt \
-        --not_processed_sample_probs_file \
-        &> experiments_2_DA_wiki2sents
+# python3 -u DA_main.py \
+#         --da_task file2sentences \
+#         --da_input_type wiki10000 \
+#         --da_input_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Wiki10000/wiki10000.json \
+#         --da_sentences_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.sentences.txt \
+#         --da_paragraphs_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.paragraphs.txt \
+#         --not_processed_sample_probs_file \
+#         &> experiments_2_DA_wiki2sents
         
         
 
+# python3 -u DA_main.py \
+#         --da_task file2sentences \
+#         --da_input_type squad \
+#         --da_input_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD2.0/train-v2.0.json \
+#         --da_sentences_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.txt \
+#         --da_paragraphs_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.paragraphs.txt \
+#         &> experiments_2_DA_squad2sents
+
+
+# python3 -u DA_main.py \
+#         --da_task file2sentences \
+#         --da_input_type squad1.1-para \
+#         --da_input_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1/dev-v1.1.json \
+#         --da_sentences_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/dev.sentences.txt \
+#         --da_paragraphs_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/dev.paragraphs.txt \
+#         &> experiments_2_DA_squad1.12sents
+
 python3 -u DA_main.py \
         --da_task file2sentences \
-        --da_input_type squad \
-        --da_input_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD2.0/train-v2.0.json \
-        --da_sentences_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.sentences.txt \
-        --da_paragraphs_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.paragraphs.txt \
-        &> experiments_2_DA_squad2sents
+        --da_input_type squad1.1-para \
+        --da_input_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1/train-v1.1.json \
+        --da_sentences_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/train.sentences.txt \
+        --da_paragraphs_file /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/train.paragraphs.txt \
+        &> experiments_2_DA_squad1.1train2sents

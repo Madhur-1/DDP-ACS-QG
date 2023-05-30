@@ -1,4 +1,5 @@
 import os
+import random
 from datetime import datetime
 
 import numpy as np
@@ -60,7 +61,7 @@ def get_processed_examples(raw_examples, debug=False, debug_length=20, shuffle=F
             y1_in_sent=y1_in_sent,
             doc=ans_sent_doc,
             ques_doc=ques_doc,
-            sent_limit=100,
+            sent_limit=100000,
         )
         ans_sent_is_clue = clue_info["selected_clue_binary_ids_padded"]
         clue_token_position = np.where(ans_sent_is_clue == 1)[0]
@@ -89,8 +90,8 @@ def get_processed_examples(raw_examples, debug=False, debug_length=20, shuffle=F
                 clue_end = clue_start + len(clue_tokenized_text)
                 if clue_start > 0:  # not -1
                     clue_text = clue_tokenized_text
-                    # print("clue_text revised: ", clue_text)
-                    # print("clue_start revised: ", clue_start)
+                    print("clue_text revised: ", clue_text)
+                    print("clue_start revised: ", clue_start)
                 else:
                     continue
         else:
@@ -129,7 +130,7 @@ def get_augmented_sents_examples(
     augmented_sentences_pkl_file,
     debug=False,
     debug_length=20,
-    sent_limit=100,
+    sent_limit=600,
     ans_limit=30,
 ):
     """
@@ -141,7 +142,8 @@ def get_augmented_sents_examples(
     para_id = 0
     for example in tqdm(examples):
         ans_sent = example["context"]
-
+        if not example["selected_infos"]:
+            continue
         for info in example["selected_infos"]:
             answer_text = info["answer"]["answer_text"]
             answer_start = info["answer"]["char_start"]
@@ -222,12 +224,26 @@ def get_positional_dataset_from_file(
     if filetype == "augmented_sents":
         data = get_augmented_sents_examples(file, debug, debug_length)
     else:  # "squad"
-        data = get_raw_examples(
-            file, filetype, debug, debug_length
-        )  # NOTICE: add handler for data augmented input data.
-        data = get_processed_examples(data, debug)
+        # Check if the file already exists. If so, we don't need to do anything.
+        if not os.path.isfile(file[:-3] + "_dump.pt"):
+            data = get_raw_examples(
+                file, filetype, debug, debug_length
+            )  # NOTICE: add handler for data augmented input data.
+            data = get_processed_examples(data, debug)
+            torch.save(data, file[:-3] + "_dump.pt")
+        else:
+            data = torch.load(file[:-3] + "_dump.pt")
     truncated_sequences = 0
     for inst in tqdm(data):
+        try:
+            inst["paragraph"] = inst["paragraph"].strip()
+            inst["clue"] = inst["clue"].strip()
+            inst["question"] = inst["question"].strip()
+            inst["answer"] = inst["answer"].strip()
+            inst["ques_type"] = inst["ques_type"].strip()
+        except:
+            pass
+
         inst["answer_position"] = inst["answer_start"]
         clue_exist = inst["clue_start"] is not None
         if clue_exist:
@@ -260,11 +276,26 @@ def get_positional_dataset_from_file(
         )
 
         if total_seq_len > tokenizer.model_max_length:
+            print("Length before chopping: ", total_seq_len)
             # Heuristic to chop off extra tokens in paragraphs
+            print(len(tokenized_para))
+            print(len(tokenized_answer))
+            print(len(tokenized_clue))
+            print(len(tokenized_qtype))
             tokenized_para = tokenized_para[
-                : -1 * (total_seq_len - tokenizer.max_len + 1)
+                : -1 * (total_seq_len - tokenizer.model_max_length + 1)
             ]
+            print(len(tokenized_para))
             truncated_sequences += 1
+            print(
+                "Length after chopping: ",
+                len(tokenized_para)
+                + len(tokenized_answer)
+                + len(tokenized_question)
+                + len(tokenized_clue)
+                + len(tokenized_qtype)
+                + 6,
+            )
             assert (
                 len(tokenized_para)
                 + len(tokenized_answer)
@@ -272,7 +303,7 @@ def get_positional_dataset_from_file(
                 + len(tokenized_clue)
                 + len(tokenized_qtype)
                 + 6
-                < tokenizer.max_len
+                < tokenizer.model_max_length
             )
 
         inst["paragraph"] = tokenizer.convert_tokens_to_ids(tokenized_para)

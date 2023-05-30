@@ -69,6 +69,12 @@ parser.add_argument(
 )
 parser.add_argument("--n_epochs", type=int, default=3, help="Number of training epochs")
 parser.add_argument(
+    "--valid_after_steps",
+    type=int,
+    default=1500,
+    help="Number of training steps between validation runs",
+)
+parser.add_argument(
     "--eval_before_start",
     action="store_true",
     help="If true start with a first evaluation before training",
@@ -104,9 +110,4 @@ parser.add_argument(
     help="Number of GPUs",
 )
 
-parser.add_argument(
-    "--train_target",
-    type=str,
-    default="",
-    help="ans or clue or style"
-)
+parser.add_argument("--train_target", type=str, default="", help="ans or clue or style")

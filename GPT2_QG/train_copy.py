@@ -27,15 +27,23 @@ if EXP_PLATFORM.lower() == "venus":
     pipmain(["install", "pytorch-ignite"])
     pipmain(["install", "transformers"])
 from ignite.contrib.handlers import PiecewiseLinear, ProgressBar
-from ignite.contrib.handlers.tensorboard_logger import (OptimizerParamsHandler,
-                                                        OutputHandler,
-                                                        TensorboardLogger)
+from ignite.contrib.handlers.tensorboard_logger import (
+    OptimizerParamsHandler,
+    OutputHandler,
+    TensorboardLogger,
+)
 from ignite.engine import Engine, Events
 from ignite.handlers import EarlyStopping, ModelCheckpoint
 from ignite.metrics import Loss, MetricsLambda, RunningAverage
 
-from transformers import (CONFIG_NAME, WEIGHTS_NAME, AdamW, GPT2Config,
-                          GPT2LMHeadModel, GPT2Tokenizer)
+from transformers import (
+    CONFIG_NAME,
+    WEIGHTS_NAME,
+    AdamW,
+    GPT2Config,
+    GPT2LMHeadModel,
+    GPT2Tokenizer,
+)
 
 # parser = argparse.ArgumentParser()
 from .arguments import *
@@ -382,7 +390,10 @@ def train():
         # torch.cuda.set_device(args.local_rank)
         print(torch.cuda.device_count())
         args.device = torch.device("cuda")
-        torch.distributed.init_process_group(backend="nccl", init_method="env://", )
+        torch.distributed.init_process_group(
+            backend="nccl",
+            init_method="env://",
+        )
 
     logger.info(
         "Prepare tokenizer, pretrained model and optimizer - add special tokens for fine-tuning"
@@ -480,8 +491,10 @@ def train():
     if args.eval_before_start:
         trainer.add_event_handler(Events.STARTED, lambda _: evaluator.run(val_loader))
 
-    trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), lambda _: evaluator.run(val_loader))
-
+    trainer.add_event_handler(
+        Events.ITERATION_COMPLETED(every=args.valid_after_steps),
+        lambda _: evaluator.run(val_loader),
+    )
 
     # Make sure distributed data samplers split the dataset nicely between the distributed processes
     if args.distributed:
@@ -523,7 +536,7 @@ def train():
 
         def score_function(engine):
             pbar.log_message("Validation: %s" % pformat(evaluator.state.metrics))
-            val_loss = evaluator.state.metrics['nll']
+            val_loss = evaluator.state.metrics["nll"]
             return -val_loss
 
         # early_stopping_handler = EarlyStopping(patience=4, score_function=score_function, trainer=trainer, min_delta=0.01)

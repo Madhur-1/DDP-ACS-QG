@@ -42,8 +42,13 @@ import math
 from collections import Counter
 
 import numpy as np
-from common.constants import (EXP_PLATFORM, FUNCTION_WORDS_LIST, NLP, PARSER,
-                              QUESTION_TYPES)
+from common.constants import (
+    EXP_PLATFORM,
+    FUNCTION_WORDS_LIST,
+    NLP,
+    PARSER,
+    QUESTION_TYPES,
+)
 from data_augmentor.config import *
 from data_loader import FQG_data
 from data_loader.FQG_data_utils import get_question_type
@@ -74,7 +79,7 @@ NOT_BEGIN_TOKENS_FOR_ANSWER_CLUE = [
     "!",
     ".",
     "(",
-    ")"
+    ")",
 ]  # TODO: maybe more tokens
 
 
@@ -240,7 +245,7 @@ def get_clue_info(
     y1_in_sent=None,
     doc=None,
     ques_doc=None,
-    sent_limit=100,
+    sent_limit=100000,
 ):
     example = {"question": question, "ans_sent": sentence, "answer_text": answer}
 
@@ -445,7 +450,6 @@ def get_dataset_info(
     raw_examples = FQG_data.get_raw_examples(filename, filetype, debug, debug_length)
     examples_with_info = []
     for i in tqdm(range(len(raw_examples))):
-
         e = raw_examples[i]
         sentence = e["ans_sent"]
         question = e["question"]
@@ -567,7 +571,9 @@ def select_answers(
     # get all chunks
     chunklist, tree, doc = get_chunks(sentence)
     token2idx, idx2token = get_token2char(doc)
-
+    if not doc or len(chunklist) == 0:
+        print("Length of sentence greater than allowed, skipping it!")
+        return None, None, None, None
     # sample answer chunk
     chunk_ids = list(range(len(chunklist)))
     a_probs = []
@@ -815,7 +821,8 @@ def augment_qg_data(
         answer_length_max_val,
         max_sample_times,
     )
-
+    if not sampled_answers:
+        return {"context": sentence, "selected_infos": None, "ans_sent_doc": doc}
     for ans in sampled_answers:
         (
             answer_text,

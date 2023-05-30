@@ -27,15 +27,23 @@ if EXP_PLATFORM.lower() == "venus":
     pipmain(["install", "pytorch-ignite"])
     pipmain(["install", "transformers"])
 from ignite.contrib.handlers import PiecewiseLinear, ProgressBar
-from ignite.contrib.handlers.tensorboard_logger import (OptimizerParamsHandler,
-                                                        OutputHandler,
-                                                        TensorboardLogger)
+from ignite.contrib.handlers.tensorboard_logger import (
+    OptimizerParamsHandler,
+    OutputHandler,
+    TensorboardLogger,
+)
 from ignite.engine import Engine, Events
 from ignite.handlers import EarlyStopping, ModelCheckpoint
 from ignite.metrics import Loss, MetricsLambda, RunningAverage
 
-from transformers import (CONFIG_NAME, WEIGHTS_NAME, AdamW, GPT2Config,
-                          GPT2LMHeadModel, GPT2Tokenizer)
+from transformers import (
+    CONFIG_NAME,
+    WEIGHTS_NAME,
+    AdamW,
+    GPT2Config,
+    GPT2LMHeadModel,
+    GPT2Tokenizer,
+)
 
 # parser = argparse.ArgumentParser()
 from .arguments import *
@@ -153,7 +161,7 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
         sequence = [sos] + curr_para
         # This segmentation will encode positional information
         token_types = [paragraph for i in range(len(curr_para) + 1)]
-        token_types[ans_start + 1:ans_end + 1] = [answer] * (ans_end - ans_start)        
+        token_types[ans_start + 1 : ans_end + 1] = [answer] * (ans_end - ans_start)
         lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
         # <sos> paragraph <answer> answer
@@ -167,13 +175,15 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
         lm_labels.extend([-100] + curr_clue + [style])
 
     elif train_target == "style":
-         # <sos> paragraph
+        # <sos> paragraph
         sequence = [sos] + curr_para
         # This segmentation will encode positional information
         token_types = [paragraph for i in range(len(curr_para) + 1)]
-        token_types[ans_start + 1:ans_end + 1] = [answer] * (ans_end - ans_start)
+        token_types[ans_start + 1 : ans_end + 1] = [answer] * (ans_end - ans_start)
         if clue_exist:
-            token_types[clue_start + 1:clue_end + 1] = [clue] * (clue_end - clue_start)
+            token_types[clue_start + 1 : clue_end + 1] = [clue] * (
+                clue_end - clue_start
+            )
         lm_labels = [-100 for _ in range(len(curr_para) + 1)]
 
         # <sos> paragraph <answer> answer
@@ -184,7 +194,7 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
         # <sos> paragraph <answer> answer <clue> clue
         sequence.extend([clue] + curr_clue)
         token_types.extend([clue for _ in range(len(curr_clue) + 1)])
-        lm_labels.extend([-100 for _ in range(len(curr_clue) + 1)])   
+        lm_labels.extend([-100 for _ in range(len(curr_clue) + 1)])
 
         # <sos> paragraph <answer> answer <clue> clue <style> style
         sequence.extend([style] + curr_style + [question])
@@ -206,6 +216,7 @@ def build_input_from_segments(data_point, tokenizer, train_target, with_eos=True
     }
     return instance, sequence
 
+
 def build_para_only_input_from_segments_clue(data_point, tokenizer):
     """A paragraph-only version of build_input_from_segments().
     `<sos> .. paragraph text ..`
@@ -223,7 +234,6 @@ def build_para_only_input_from_segments_clue(data_point, tokenizer):
     curr_para = data_point["paragraph"]
     ans_start = data_point["answer_position_tokenized"][0]
     ans_end = data_point["answer_position_tokenized"][1]
-
 
     # <sos> paragraph
     sequence = [sos] + curr_para
@@ -243,6 +253,7 @@ def build_para_only_input_from_segments_clue(data_point, tokenizer):
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def build_para_only_input_from_segments_style(data_point, tokenizer):
     """A paragraph-only version of build_input_from_segments().
@@ -264,7 +275,6 @@ def build_para_only_input_from_segments_style(data_point, tokenizer):
     clue_start = data_point["clue_position_tokenized"][0]
     clue_end = data_point["clue_position_tokenized"][1]
 
-
     # <sos> paragraph
     sequence = [sos] + curr_para
     # This segmentation will encode positional information
@@ -283,6 +293,7 @@ def build_para_only_input_from_segments_style(data_point, tokenizer):
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def build_para_only_input_from_segments(data_point, tokenizer):
     """A paragraph-only version of build_input_from_segments().
@@ -326,6 +337,7 @@ def build_para_only_input_from_segments(data_point, tokenizer):
     }
     return instance, sequence
 
+
 def build_para_only_input_from_segments_ques(data_point, tokenizer):
     """A paragraph-only version of build_input_from_segments().
     `<sos> .. paragraph text ..`
@@ -343,8 +355,6 @@ def build_para_only_input_from_segments_ques(data_point, tokenizer):
     curr_para = data_point["paragraph"]
     ans_start = data_point["answer_position_tokenized"][0]
     ans_end = data_point["answer_position_tokenized"][1]
-
-
 
     clue_start = data_point["clue_position_tokenized"][0]
     clue_end = data_point["clue_position_tokenized"][1]
@@ -367,6 +377,7 @@ def build_para_only_input_from_segments_ques(data_point, tokenizer):
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def build_acsq_only_input_from_segments(data_point, tokenizer, with_eos=True):
     """A answer-clue-style-question-only version of build_input_from_segments()."""
@@ -398,8 +409,6 @@ def build_acsq_only_input_from_segments(data_point, tokenizer, with_eos=True):
     token_types.extend([answer])
     lm_labels.extend([-100])
 
-
-
     assert len(sequence) == len(token_types)
     assert len(token_types) == len(lm_labels)
 
@@ -409,6 +418,7 @@ def build_acsq_only_input_from_segments(data_point, tokenizer, with_eos=True):
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def build_acsq_only_input_from_segments_clue(data_point, tokenizer, with_eos=True):
     """A answer-clue-style-question-only version of build_input_from_segments()."""
@@ -423,7 +433,6 @@ def build_acsq_only_input_from_segments_clue(data_point, tokenizer, with_eos=Tru
     ) = tokenizer.convert_tokens_to_ids(SPECIAL_TOKENS[:-1])
 
     curr_ans = data_point["answer"]
-    
 
     sequence = []
     token_types = []
@@ -439,8 +448,6 @@ def build_acsq_only_input_from_segments_clue(data_point, tokenizer, with_eos=Tru
     token_types.extend([clue])
     lm_labels.extend([-100])
 
-
-
     assert len(sequence) == len(token_types)
     assert len(token_types) == len(lm_labels)
 
@@ -450,6 +457,7 @@ def build_acsq_only_input_from_segments_clue(data_point, tokenizer, with_eos=Tru
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def build_acsq_only_input_from_segments_style(data_point, tokenizer, with_eos=True):
     """A answer-clue-style-question-only version of build_input_from_segments()."""
@@ -482,10 +490,8 @@ def build_acsq_only_input_from_segments_style(data_point, tokenizer, with_eos=Tr
 
     # <sos> paragraph <answer> answer <clue> clue <style>
     sequence.extend([style])
-    token_types.extend([style]) 
+    token_types.extend([style])
     lm_labels.extend([-100])
-
-
 
     assert len(sequence) == len(token_types)
     assert len(token_types) == len(lm_labels)
@@ -496,6 +502,7 @@ def build_acsq_only_input_from_segments_style(data_point, tokenizer, with_eos=Tr
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def build_acsq_only_input_from_segments_ques(data_point, tokenizer, with_eos=True):
     """A answer-clue-style-question-only version of build_input_from_segments()."""
@@ -537,8 +544,6 @@ def build_acsq_only_input_from_segments_ques(data_point, tokenizer, with_eos=Tru
     token_types.extend([question])
     lm_labels.extend([-100])
 
-
-
     assert len(sequence) == len(token_types)
     assert len(token_types) == len(lm_labels)
 
@@ -548,6 +553,7 @@ def build_acsq_only_input_from_segments_ques(data_point, tokenizer, with_eos=Tru
         "lm_labels": lm_labels,
     }
     return instance, sequence
+
 
 def get_data_loaders(args, tokenizer):
     """Prepare the dataset for training and evaluation"""
@@ -576,7 +582,9 @@ def get_data_loaders(args, tokenizer):
 
     for dataset_name, dataset in datasets_raw.items():
         for data_point in dataset:
-            instance, _ = build_input_from_segments(data_point, tokenizer, args.train_target)
+            instance, _ = build_input_from_segments(
+                data_point, tokenizer, args.train_target
+            )
             for input_name, input_array in instance.items():
                 datasets[dataset_name][input_name].append(input_array)
 
@@ -653,7 +661,10 @@ def train():
         # torch.cuda.set_device(args.local_rank)
         print(torch.cuda.device_count())
         args.device = torch.device("cuda")
-        torch.distributed.init_process_group(backend="nccl", init_method="env://", )
+        torch.distributed.init_process_group(
+            backend="nccl",
+            init_method="env://",
+        )
 
     logger.info(
         "Prepare tokenizer, pretrained model and optimizer - add special tokens for fine-tuning"
@@ -673,7 +684,12 @@ def train():
     model.resize_token_embeddings(len(tokenizer))
     model.to(args.device)
     ## Epoch starting from 1+(6/27)
-    # model.load_state_dict(torch.load("/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_question_generation/checkpoint_mymodel_6000.pth", map_location=args.device))
+    # model.load_state_dict(
+    #     torch.load(
+    #         "/scratch/scratch8/madhurjindal/ACS-QG-Scratch/file/QG/gpt2_ind_acs__full_para/train_ans/checkpoint_mymodel_30000.pth",
+    #         map_location=args.device,
+    #     )
+    # )
 
     # Prepare optimizer and schedule (linear warmup and decay)
     # optimizer = OpenAIAdam(model.parameters(), lr=args.lr)
@@ -750,7 +766,10 @@ def train():
         trainer.add_event_handler(Events.COMPLETED, lambda _: evaluator.run(val_loader))
     if args.eval_before_start:
         trainer.add_event_handler(Events.STARTED, lambda _: evaluator.run(val_loader))
-    trainer.add_event_handler(Events.ITERATION_COMPLETED(every=1500), lambda _: evaluator.run(val_loader))
+    trainer.add_event_handler(
+        Events.ITERATION_COMPLETED(every=args.valid_after_steps),
+        lambda _: evaluator.run(val_loader),
+    )
 
     # Make sure distributed data samplers split the dataset nicely between the distributed processes
     if args.distributed:
@@ -789,10 +808,10 @@ def train():
                 "Validation: %s" % pformat(evaluator.state.metrics)
             ),
         )
-        
+
         def score_function(engine):
             pbar.log_message("Validation: %s" % pformat(evaluator.state.metrics))
-            val_loss = evaluator.state.metrics['nll']
+            val_loss = evaluator.state.metrics["nll"]
             return -val_loss
 
         # early_stopping_handler = EarlyStopping(patience=4, score_function=score_function, trainer=trainer, min_delta=0.01)

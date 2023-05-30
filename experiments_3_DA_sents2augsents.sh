@@ -18,22 +18,22 @@ cd /storage/home/madhurjindal/ACS-QG
 
 # squad data
 
-input_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD2.0/"
-output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/"
-data_type="squad"
-data_file_prefix="train"
-st_idx=0
-ed_idx=10000
-python3 -u DA_main.py \
-        --da_task sentences2augmented_sentences \
-        --da_input_type $data_type \
-        --da_input_file "$input_path${data_file_prefix}-v2.0.json" \
-        --da_sentences_file "$output_path${data_file_prefix}.sentences.txt" \
-        --da_paragraphs_file "$output_path${data_file_prefix}.paragraphs.txt" \
-        --da_augmented_sentences_file "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
-        --da_start_index $st_idx \
-        --da_end_index $ed_idx \
-        &> experiments_3_DA_sents2augsents 
+# input_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD2.0/"
+# output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/"
+# data_type="squad"
+# data_file_prefix="train"
+# st_idx=0
+# ed_idx=10000
+# python3 -u DA_main.py \
+#         --da_task sentences2augmented_sentences \
+#         --da_input_type $data_type \
+#         --da_input_file "$input_path${data_file_prefix}-v2.0.json" \
+#         --da_sentences_file "$output_path${data_file_prefix}.sentences.txt" \
+#         --da_paragraphs_file "$output_path${data_file_prefix}.paragraphs.txt" \
+#         --da_augmented_sentences_file "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
+#         --da_start_index $st_idx \
+#         --da_end_index $ed_idx \
+#         &> experiments_3_DA_sents2augsents 
 
 
 
@@ -56,26 +56,61 @@ python3 -u DA_main.py \
 #         --da_end_index $ed_idx \
 #         &>> experiments_3_DA_sents2augsents 
 
+# # SQuAD1.1 Data
+# input_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1/"
+# output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/"
+# data_type="squad"
+# data_file_prefix="dev"
+# st_idx=0
+# ed_idx=2000
+# python3 -u DA_main.py \
+#         --da_task sentences2augmented_sentences \
+#         --da_input_type $data_type \
+#         --da_input_file "$input_path${data_file_prefix}-v1.1.json" \
+#         --da_sentences_file "$output_path${data_file_prefix}.sentences.txt" \
+#         --da_paragraphs_file "$output_path${data_file_prefix}.paragraphs.txt" \
+#         --da_augmented_sentences_file "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
+#         --da_start_index $st_idx \
+#         --da_end_index $ed_idx \
+#         &>> experiments_3_DA_sents2augsents 
 
 
-# wiki data
-
-input_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Wiki10000/"
-output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/"
-data_type="wiki10000"
-data_file_prefix="wiki10000"
+# SQuAD1.1 Data
+input_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/SQuAD1.1/"
+output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/"
+data_type="squad"
+data_file_prefix="train"
 st_idx=0
-ed_idx=10000
+ed_idx=2000
 python3 -u DA_main.py \
         --da_task sentences2augmented_sentences \
         --da_input_type $data_type \
-        --da_input_file "$input_path${data_file_prefix}.json" \
+        --da_input_file "$input_path${data_file_prefix}-v1.1.json" \
         --da_sentences_file "$output_path${data_file_prefix}.sentences.txt" \
         --da_paragraphs_file "$output_path${data_file_prefix}.paragraphs.txt" \
         --da_augmented_sentences_file "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
         --da_start_index $st_idx \
         --da_end_index $ed_idx \
         &>> experiments_3_DA_sents2augsents 
+
+# # wiki data
+
+# input_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/original/Wiki10000/"
+# output_path="/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/"
+# data_type="wiki10000"
+# data_file_prefix="wiki10000"
+# st_idx=0
+# ed_idx=10000
+# python3 -u DA_main.py \
+#         --da_task sentences2augmented_sentences \
+#         --da_input_type $data_type \
+#         --da_input_file "$input_path${data_file_prefix}.json" \
+#         --da_sentences_file "$output_path${data_file_prefix}.sentences.txt" \
+#         --da_paragraphs_file "$output_path${data_file_prefix}.paragraphs.txt" \
+#         --da_augmented_sentences_file "$output_path${data_file_prefix}.sentences.augmented.${st_idx}_${ed_idx}.pkl" \
+#         --da_start_index $st_idx \
+#         --da_end_index $ed_idx \
+#         &>> experiments_3_DA_sents2augsents 
 
 
 

@@ -76,10 +76,10 @@ spec:
         # RAM can be specified in either MiB (1024x1024 bytes) (ex. "500Mi")
         # or GiB (ex. "4Gi")
         memory: "50Gi"
-        cpu: "8" # Number of CPU cores
+        cpu: "32" # Number of CPU cores
      requests:
         memory: "50Gi"
-        cpu: "8"
+        cpu: "32"
     # Here, you can specify where you want the above directories to be mounted
     # within the container. It is recommended to use this configuration as
     # it mirrors what is present on the master machine.

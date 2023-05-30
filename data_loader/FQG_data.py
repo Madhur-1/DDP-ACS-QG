@@ -4,17 +4,18 @@ Load different datasets for QG.
 """
 import codecs
 import copy
+import json
 import random
 from collections import Counter
 from datetime import datetime
 
 import numpy as np
 import torch
+from common.constants import (FUNCTION_WORDS_LIST, NLP, OUTPUT_PATH,
+                              QUESTION_TYPES)
+from data_augmentor import FQG_data_augmentor
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
-
-from common.constants import FUNCTION_WORDS_LIST, NLP, OUTPUT_PATH, QUESTION_TYPES
-from data_augmentor import FQG_data_augmentor
 from util.dict_utils import counter2ordered_dict
 from util.file_utils import load, save
 from util.prepro_utils import *
@@ -22,6 +23,7 @@ from util.re_utils import get_match_spans
 
 from .config import *
 from .FQG_data_utils import *
+
 
 def print_gpu_stats():
     t = torch.cuda.get_device_properties(0).total_memory
@@ -39,6 +41,40 @@ def normalize_text(text):
     text = text.replace("''", '" ').replace("``", '" ')
     return text
 
+def get_squad_para_raw_examples(filename, debug=False, debug_length=20):
+    start = datetime.now()
+    num_examples = 0
+    raw_examples = []
+    with codecs.open(filename, "r", encoding="utf8") as infile:
+        source = json.load(infile)
+        pid = 0
+        for article in tqdm(source['data']):
+            for para in article['paragraphs']:
+                context = para['context']
+                context = normalize_text(context)
+                for qa in para['qas']:
+                    question = qa['question']
+                    question = normalize_text(question)
+                    for ans_dict in qa['answers']:
+                        answer_text = ans_dict['text']
+                        answer_text = normalize_text(answer_text)
+                        answer_start = ans_dict['answer_start']
+                        example = {
+                            "question": question,
+                            "ans_sent": context,
+                            "answer_text": answer_text,
+                            "answer_start": answer_start,
+                        }
+                        raw_examples.append(example)
+                        num_examples += 1
+                        if debug and num_examples >= debug_length:
+                            print(("Time of get raw examples: {}").format(datetime.now() - start))
+                            print("Number of raw examples: ", len(raw_examples))    
+                            return raw_examples
+
+    print(("Time of get raw examples: {}").format(datetime.now() - start))
+    print("Number of raw examples: ", len(raw_examples))    
+    return raw_examples
 
 def get_squad_raw_examples(filename, debug=False, debug_length=20):
     """
@@ -135,6 +171,8 @@ def get_raw_examples(filename, filetype, debug=False, debug_length=20):
         return get_squad_raw_examples(filename, debug, debug_length)
     elif filetype.lower() == "newsqa":
         return get_newsqa_raw_examples(filename, debug, debug_length)
+    elif filetype.lower() == 'squad1.1-para':
+        return get_squad_para_raw_examples(filename, debug, debug_length)
     else:
         print("Haven't implement loader of " + str(filetype) + " dataset")
         return None

@@ -1,10 +1,5 @@
 /scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
-Namespace(data_type='gpt2', input_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ques.txt', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad', output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ques.qa.txt')
-Reading dataset from  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ques.txt
-Saved to  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD2.0/train.0_10000.generated.gpt2.ind_ques.qa.txt
-/scratch/scratch8/madhurjindal/acs-qg-env/lib/python3.7/site-packages/sklearn/utils/validation.py:37: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
-  LARGE_SPARSE_SUPPORTED = LooseVersion(scipy_version) >= '0.14.0'
-Namespace(data_type='gpt2', input_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ques.txt', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad', output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ques.qa.txt')
-Reading dataset from  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ques.txt
-Saved to  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/Wiki10000/wiki10000.0_10000.generated.gpt2.ind_ques.qa.txt
+Namespace(data_type='gpt2', input_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/train.0_2000.generated.gpt2.ind_ques.txt', model_name_or_path='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/models/distilbert-base-cased-distilled-squad', output_file='/scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/train.0_2000.generated.gpt2.ind_ques.qa.txt')
+Reading dataset from  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/train.0_2000.generated.gpt2.ind_ques.txt
+Saved to  /scratch/scratch8/madhurjindal/ACS-QG-Scratch/Datasets/processed/SQuAD1.1/train.0_2000.generated.gpt2.ind_ques.qa.txt
